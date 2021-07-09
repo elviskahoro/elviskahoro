@@ -66,9 +66,8 @@ function c()
 		gcc -o output $1
 }
 
-function gamend()
+function gac()
 {
-	git add .
 	git commit --amend --no-edit
 }
 
@@ -148,9 +147,3 @@ alias vimrc='vim ~/.vimrc'
 alias python=python3
 alias jekyll='bundle exec jekyll serve'
 alias ve='source ~/ve/bin/activate'
-
-alias cgap='cd /Users/elvis/code/CGAP/'
-alias cgapc='cd /Users/elvis/code/CGAP/CGAP-code/'
-alias cgapd='cd /Users/elvis/code/CGAP/CGAP-data/'
-alias y4='cd "/Users/elvis/OneDrive - Pomona College/Y4S/"'
-alias website='pelican /Users/elvis/code/elvis-ai/content/'
