@@ -1,0 +1,13 @@
+set menu-complete-display-prefix on
+set completion-ignore-case on
+set show-all-if-ambiguous on
+set enable-bracketed-paste on
+set editing-mode vi
+set keymap vi-command
+"v": ""
+"p": "i $(echo $(pbpaste))\e"
+
+set keymap vi-insert
+TAB: menu-complete
+"\e[Z": menu-complete-backward
+"p": self-insert
