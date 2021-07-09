@@ -137,7 +137,7 @@ alias mb='ls -lah'
 alias MB='ls -l --block-size=M'
 
 # rc files
-alias dotfiles='/usr/local/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias dfiles='/usr/local/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias bashrc='vim ~/.bashrc'
 alias inputrc='vim ~/.inputrc'
 alias sshrc='vim ~/.ssh/config'
