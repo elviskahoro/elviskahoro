@@ -5,6 +5,7 @@ set showcmd
 set cursorline
 set lazyredraw
 set showmatch
+set autochdir
 
 
 set foldenable
