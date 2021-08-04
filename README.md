@@ -31,6 +31,7 @@ eval "$(ssh-agent -s)"
 Copy SSH Key and Paste into [Github](https://github.com/settings/keys)
 
 # dotfiles
+A helpful [guide.](https://www.ackama.com/blog/posts/the-best-way-to-store-your-dotfiles-a-bare-git-repository-explained)
 Getting dot files
 ```sh
 git init .
