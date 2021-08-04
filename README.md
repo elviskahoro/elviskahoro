@@ -7,10 +7,13 @@ passwd $username$
 # brew
 [Install Brew](https://brew.sh/) 
 ```sh
-brew install gcc
+sudo apt-get install build-essential
+```
+
+# tmux
+```sh
 brew install tmux
 ```
-# tmux
 
 # vim and neovim
 ```sh
