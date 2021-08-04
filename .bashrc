@@ -2,7 +2,8 @@ if [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
 fi
 
-alias ~='cd ~'                              # ~:            Go Home
+alias ls='ls -a'
+alias ~='cd ~'                              # Go Home
 alias cd..='cd ../'                         # Go back 1 directory level (for fast typers)
 alias ..='cd ../'                           # Go back 1 directory level
 alias ...='cd ../../'                       # Go back 2 directory levels
