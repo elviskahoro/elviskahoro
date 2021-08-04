@@ -12,11 +12,6 @@ sudo apt-get update
 sudo apt-get install build-essential
 ```
 
-Brew Packages
-```sh
-brew install grep
-```
-
 # github
 Check Keys
 ```sh
@@ -55,17 +50,15 @@ Rename git repo to dotfiles
 mv .git/ .dotfiles/
 ```
 
-# tmux
+# Brew Packages
 ```sh
+brew install grep
 brew install tmux
-```
-
-# vim and neovim
-```sh
 brew install vim
 brew install neovim
 ```
 
+# vim & neovim
 ## vim plug
 [Download plug.vim](https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim) and put it in the "autoload" directory.
 
@@ -83,4 +76,3 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
 ```vim
 :PlugInstall
 ```
-
