@@ -5,11 +5,36 @@ sudo su
 passwd $username$
 ```
 
-# brew
+# Install
 Install [Brew](https://brew.sh/) 
 ```sh
+sudo apt-get update
+sudo apt-get install xclip
 sudo apt-get install build-essential
 ```
+
+# github
+Check Keys
+```sh
+ls -al ~/.ssh
+```
+
+Create Key
+```sh
+ssh-keygen -t ed25519 -C "ekk0809@gmail.com"
+```
+
+Check Agent
+```sh
+eval "$(ssh-agent -s)"
+```
+
+Copy SSH Key
+```sh
+xclip -selection clipboard < ~/.ssh/id_ed25519.pub
+```
+
+# dotfiles
 Getting dot files
 ```sh
 git init .
