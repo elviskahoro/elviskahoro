@@ -1,13 +1,32 @@
 # chrome os
+Change Linux VM password
 ```sh
 sudo su
 passwd $username$
 ```
 
 # brew
-[Install Brew](https://brew.sh/) 
+Install [Brew](https://brew.sh/) 
 ```sh
 sudo apt-get install build-essential
+```
+Getting dot files
+```sh
+git init .
+git remote add -t \* -f origin git@github.com:elviskahoro/dotfiles.git
+git checkout main
+```
+
+If error due to file override.
+```sh
+git fetch --all
+git reset --hard origin/main
+git checkout main
+```
+
+Rename git repo to dotfiles
+```sh
+mv .git/ .dotfiles/
 ```
 
 # tmux
