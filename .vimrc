@@ -15,8 +15,6 @@ set foldnestmax=10
 set foldmethod=indent
 set history=1000
 set ignorecase
-set incsearch
-set laststatus=2
 set lazyredraw
 set nocompatible
 set noswapfile
@@ -24,7 +22,7 @@ set nowrap
 set nrformats-=octal
 set number
 set ruler
-set scrolloff=3 " keep three lines between the cursor and the edge of the screen
+set scrolloff=3
 set sessionoptions-=options
 set showcmd
 set showmatch
@@ -32,9 +30,8 @@ set smarttab
 set splitright
 set splitbelow
 set viewoptions-=options
-set updatetime=100 " signify - async time reset
 set wildmenu
-set wrapscan  " begin search from top of file when nothing is found anymore
+set wrapscan
 set viewoptions-=options
 
 "remap world
@@ -49,6 +46,7 @@ let g:netrw_browse_split = 2
 let g:netrw_altv = 1
 let g:netrw_winsize = 80
 
+set incsearch
 if maparg('<C-L>', 'n') ==# '' " incsearch  Use <C-L> to clear the highlighting of :set hlsearch.
   nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
 endif
@@ -101,19 +99,38 @@ endif
 
 " Vim Plugged ---------------------------------------------------------------------------------------------------------------------------------
 call plug#begin('~/.vim/plugged')
-Plug 'majutsushi/tagbar'
-Plug 'tpope/vim-fugitive'
-Plug 'mhinz/vim-signify'
-Plug 'lervag/vimtex'
-Plug 'roxma/vim-tmux-clipboard'
-Plug 'tmux-plugins/vim-tmux-focus-events'
-Plug 'tmux-plugins/vim-tmux'
-Plug 'ConradIrwin/vim-bracketed-paste'
-Plug 'itchyny/lightline.vim'
+"
 Plug 'mileszs/ack.vim'
-Plug 'junegunn/goyo.vim'
+
 Plug 'godlygeek/tabular'
+
 Plug 'plasticboy/vim-markdown'
+
+Plug 'junegunn/goyo.vim', { 'for': 'markdown' }
+autocmd! User goyo.vim echom 'Goyo is now loaded!'
+
+Plug 'itchyny/lightline.vim'
+if !has('gui_running') " lightline
+  set t_Co=256
+endif
+set laststatus=2 " lightline
+
+Plug 'ConradIrwin/vim-bracketed-paste'
+
+Plug 'tpope/vim-fugitive'
+if has('nvim') || has('patch-8.0.902')
+  Plug 'mhinz/vim-signify'
+else
+  Plug 'mhinz/vim-signify', { 'branch': 'legacy' }
+endif
+set updatetime=100 " signify - async time reset
+
+Plug 'lervag/vimtex'
+
+Plug 'tmux-plugins/vim-tmux'
+Plug 'tmux-plugins/vim-tmux-focus-events'
+Plug 'roxma/vim-tmux-clipboard'
+" Code to execute when the plugin is lazily loaded on demand
 call plug#end()
 
 let python_highlight_all=1
