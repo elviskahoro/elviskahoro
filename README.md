@@ -48,6 +48,7 @@ git checkout main
 Rename git repo to dotfiles
 ```sh
 mv .git/ .dotfiles/
+dotfiles config --local status.showUntrackedFiles no
 ```
 
 # Brew Packages
