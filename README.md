@@ -9,7 +9,6 @@ passwd $username$
 Install [Brew](https://brew.sh/) 
 ```sh
 sudo apt-get update
-sudo apt-get install xclip
 sudo apt-get install build-essential
 ```
 
@@ -29,10 +28,7 @@ Check Agent
 eval "$(ssh-agent -s)"
 ```
 
-Copy SSH Key
-```sh
-xclip -selection clipboard < ~/.ssh/id_ed25519.pub
-```
+Copy SSH Key and Paste into [Github](https://github.com/settings/keys)
 
 # dotfiles
 Getting dot files
