@@ -12,6 +12,11 @@ sudo apt-get update
 sudo apt-get install build-essential
 ```
 
+Brew Packages
+```sh
+brew install grep
+```
+
 # github
 Check Keys
 ```sh
