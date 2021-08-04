@@ -2,6 +2,7 @@ set -o vi
 
 export TERM=xterm-256color # vim/lightline
 
+alias pip='python3 -m pip'
 alias spull='git submodule foreach --recursive "git pull"'
 alias smaster='git submodule foreach --recursive "git checkout master"'
 alias sstash='git submodule foreach --recursive "git stash"'
