@@ -1,3 +1,9 @@
+# chrome os
+```sh
+sudo su
+passwd $username$
+```
+
 # brew
 [Install Brew](https://brew.sh/) 
 ```sh
