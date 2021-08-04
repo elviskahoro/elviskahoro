@@ -1,30 +1,26 @@
 syntax enable
 colorscheme monokai
-set number
-set showcmd
-set cursorline
-set lazyredraw
-set showmatch
 set autochdir
-
-
+set clipboard^=unnamed,unnamedplus
+set cursorline
+set encoding=utf-8
 set foldenable
 set foldlevelstart=10
 set foldnestmax=10
 set foldmethod=indent
-
-set clipboard^=unnamed,unnamedplus
-set encoding=utf-8
+set ignorecase
+set lazyredraw
 set nocompatible
 set noswapfile
-
-set ignorecase
 set nowrap
+set number
 set scrolloff=3 " keep three lines between the cursor and the edge of the screen
-set wrapscan  " begin search from top of file when nothing is found anymore
-
+set showcmd
+set showmatch
 set splitright
 set splitbelow
+set updatetime=100 " signify - async time reset
+set wrapscan  " begin search from top of file when nothing is found anymore
 
 "remap world
 nnoremap j gj
@@ -55,20 +51,6 @@ Plug 'junegunn/goyo.vim'
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 call plug#end()
-
-
-set updatetime=100 " signify - async time reset
-if executable('ag')
-	  let g:ackprg = 'ag --vimgrep'
-endif
-
-"leader changed to space
-nnoremap <SPACE> <Nop>
-map <Space> <Leader>
-nnoremap <leader>u :GundoToggle<CR>
-nnoremap <leader>s :mksession<CR>
-nnoremap <leader>tag :TagbarToggle<CR>
-nnoremap <Leader>a :Ack!<Space>
 
 let python_highlight_all=1
 au BufNewFile,BufRead *.py;
