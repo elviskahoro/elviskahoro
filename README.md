@@ -80,3 +80,8 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
 ```
 # gcp
 [Install](https://cloud.google.com/sdk/docs/install#deb)
+
+# pelican
+```sh
+python -m pip install "pelican[markdown]"
+```
