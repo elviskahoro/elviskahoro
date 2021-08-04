@@ -31,6 +31,7 @@ eval "$(ssh-agent -s)"
 Copy SSH Key and Paste into [Github](https://github.com/settings/keys)
 
 # dotfiles
+A helpful [guide.](https://www.ackama.com/blog/posts/the-best-way-to-store-your-dotfiles-a-bare-git-repository-explained)
 Getting dot files
 ```sh
 git init .
@@ -48,19 +49,19 @@ git checkout main
 Rename git repo to dotfiles
 ```sh
 mv .git/ .dotfiles/
+dotfiles config --local status.showUntrackedFiles no
 ```
 
-# tmux
+# brew packages
 ```sh
+brew install grep
 brew install tmux
-```
-
-# vim and neovim
-```sh
 brew install vim
 brew install neovim
+brew install texlive
 ```
 
+# vim & neovim
 ## vim plug
 [Download plug.vim](https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim) and put it in the "autoload" directory.
 
@@ -75,3 +76,6 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 ```
 
+```vim
+:PlugInstall
+```
