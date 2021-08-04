@@ -52,12 +52,13 @@ mv .git/ .dotfiles/
 dotfiles config --local status.showUntrackedFiles no
 ```
 
-# Brew Packages
+# brew packages
 ```sh
 brew install grep
 brew install tmux
 brew install vim
 brew install neovim
+brew install texlive
 ```
 
 # vim & neovim
