@@ -106,8 +106,7 @@ Plug 'godlygeek/tabular'
 
 Plug 'plasticboy/vim-markdown'
 
-Plug 'junegunn/goyo.vim', { 'for': 'markdown' }
-autocmd! User goyo.vim echom 'Goyo is now loaded!'
+Plug 'junegunn/goyo.vim'
 
 Plug 'itchyny/lightline.vim'
 if !has('gui_running') " lightline
@@ -124,8 +123,6 @@ else
   Plug 'mhinz/vim-signify', { 'branch': 'legacy' }
 endif
 set updatetime=100 " signify - async time reset
-
-Plug 'lervag/vimtex'
 
 Plug 'tmux-plugins/vim-tmux'
 Plug 'tmux-plugins/vim-tmux-focus-events'
