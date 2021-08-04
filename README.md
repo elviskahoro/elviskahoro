@@ -58,7 +58,6 @@ brew install grep
 brew install tmux
 brew install vim
 brew install neovim
-brew install texlive
 ```
 
 # vim & neovim
@@ -78,4 +77,11 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
 
 ```vim
 :PlugInstall
+```
+# gcp
+[Install](https://cloud.google.com/sdk/docs/install#deb)
+
+# pelican
+```sh
+python -m pip install "pelican[markdown]"
 ```
