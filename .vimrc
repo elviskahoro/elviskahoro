@@ -100,12 +100,6 @@ endif
 " Vim Plugged ---------------------------------------------------------------------------------------------------------------------------------
 call plug#begin('~/.vim/plugged')
 "
-Plug 'mileszs/ack.vim'
-
-Plug 'godlygeek/tabular'
-
-Plug 'plasticboy/vim-markdown'
-
 Plug 'junegunn/goyo.vim'
 
 Plug 'itchyny/lightline.vim'
@@ -116,6 +110,8 @@ set laststatus=2 " lightline
 
 Plug 'ConradIrwin/vim-bracketed-paste'
 
+Plug 'ap/vim-buftabline'
+
 Plug 'tpope/vim-fugitive'
 if has('nvim') || has('patch-8.0.902')
   Plug 'mhinz/vim-signify'
@@ -123,6 +119,9 @@ else
   Plug 'mhinz/vim-signify', { 'branch': 'legacy' }
 endif
 set updatetime=100 " signify - async time reset
+
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
 
 Plug 'tmux-plugins/vim-tmux'
 Plug 'tmux-plugins/vim-tmux-focus-events'
