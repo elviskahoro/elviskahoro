@@ -1,4 +1,5 @@
 set -o vi
+bind TAB:menu-complete
 
 export TERM=xterm-256color # vim/lightline
 
