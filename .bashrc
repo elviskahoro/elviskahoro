@@ -4,12 +4,6 @@ bind TAB:menu-complete
 export TERM=xterm-256color # vim/lightline
 
 alias pip='python3 -m pip'
-alias spull='git submodule foreach --recursive "git pull"'
-alias smaster='git submodule foreach --recursive "git checkout master"'
-alias sstash='git submodule foreach --recursive "git stash"'
-
-alias strack='git stash --include-untracked'
-
 alias tkill='tmux kill-session'
 
 alias o='./output'
@@ -22,6 +16,7 @@ alias inputrc='vim ~/.inputrc'
 alias sshrc='vim ~/.ssh/config'
 alias tmuxrc='vim ~/.tmux.conf'
 alias vimrc='vim ~/.vimrc'
+alias gitrc='vim ~/.gitconfig'
 
 alias ve='source ~/ve/bin/activate'
 
@@ -173,11 +168,11 @@ function gshow()
 function gpush()
 {
 	if [ $# -eq 0 ]; then
-		git add .
+		git add -u
 		git commit -m c
 		git push
 	else
-		git add .
+		git add -u
 		git commit -m $1
 		git push
 	fi
