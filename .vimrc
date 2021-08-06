@@ -114,6 +114,7 @@ Plug 'ConradIrwin/vim-bracketed-paste'
 Plug 'ap/vim-buftabline'
 
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-vinegar'
 if has('nvim') || has('patch-8.0.902')
   Plug 'mhinz/vim-signify'
 else
