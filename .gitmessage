@@ -1,23 +1,13 @@
+#feat: A new feature
+#fix: A bug fix
+#docs: Documentation only changes
+#style: Changes that do not affect the meaning of the code 
+#refactor: A code change that neitherfixes a bug or adds a feature
+#perf: A code change that improves performance
+#test: Adding missing tests
+#chore: Changes to the build process
+
 # Title: Summary, imperative, start upper case, don't end with a period
 # No more than 50 chars. #### 50 chars is here: #
 
-# Remember blank line between title and body.
-
-# Body: Explain *what* and *why* (not *how*). Include task ID (Jira issue).
-# Wrap at 72 chars. ################################## which is here: #
-
-
-# At the end: Include Co-authored-by for all contributors. 
-# Include at least one empty line before it. Format: 
-# Co-authored-by: name <user@users.noreply.github.com>
-#
-# How to Write a Git Commit Message:
-# https://chris.beams.io/posts/git-commit/
-#
-# 1.Separate subject from body with a blank line
-# 2. Limit the subject line to 50 characters
-# 3. Capitalize the subject line
-# 4. Do not end the subject line with a period
-# 5. Use the imperative mood in the subject line
-# 6. Wrap the body at 72 characters
-# 7. Use the body to explain what and why vs. how
+# Body: Explain *what* and *why* (not *how*).
