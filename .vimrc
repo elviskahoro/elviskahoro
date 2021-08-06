@@ -5,10 +5,12 @@ set autoindent
 set autoread
 set backspace=indent,eol,start
 set clipboard^=unnamed,unnamedplus
+set colorcolumn=80
 set complete-=i
 set cursorline
 set display+=lastline
 set encoding=utf-8
+set expandtab
 set foldenable
 set foldlevelstart=10
 set foldnestmax=10
@@ -23,16 +25,25 @@ set nrformats-=octal
 set number
 set ruler
 set scrolloff=3
+set shiftwidth=4
 set sessionoptions-=options
 set showcmd
 set showmatch
+set smartindent
 set smarttab
+set softtabstop=4
 set splitright
 set splitbelow
+set tabstop=4
 set viewoptions-=options
 set wildmenu
 set wrapscan
 set viewoptions-=options
+
+" indent/unindent with tab/shift-tab
+nmap <Tab> >>
+imap <S-Tab> <Esc><<i
+nmap <S-tab> <<
 
 "remap world
 nnoremap j gj
