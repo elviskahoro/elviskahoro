@@ -29,6 +29,12 @@
 	ps = "!git push origin $(git rev-parse --abbrev-ref HEAD)"
 	pl = "!git pull origin $(git rev-parse --abbrev-ref HEAD)"
 	s = status
+    st = stash
+    stc = stash clear
+    std = stash drop
+    stl = stash list
+    stp = stash pop
+    sts = stash show
 	br = branch
 	bra = branch -a
 	brm = branch --merged
