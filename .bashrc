@@ -5,6 +5,7 @@ export TERM=xterm-256color # vim/lightline
 
 alias g='git'
 alias o='./output'
+alias t='tig'
 alias mb='ls -lah'
 alias MB='ls -l --block-size=M'
 alias pip='python3 -m pip'
