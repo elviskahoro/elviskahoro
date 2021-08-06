@@ -14,6 +14,8 @@
 	grep = auto
 	ui = auto
 [alias]
+	si = submodule init
+	su = submodule update
 	spull = submodule foreach --recursive "git pull"
 	smaster = submodule foreach --recursive "git checkout master"
 	sstash = submodule foreach --recursive "git stash"
@@ -26,11 +28,11 @@
 	cin = commit --amend --no-edit
 	ps = "!git push origin $(git rev-parse --abbrev-ref HEAD)"
 	pl = "!git pull origin $(git rev-parse --abbrev-ref HEAD)"
-	st = status
+	s = status
 	br = branch
-	ba = branch -a
-	bm = branch --merged
-	bn = branch --no-merged
+	bra = branch -a
+	brm = branch --merged
+	brn = branch --no-merged
 	df = "!git hist | peco | awk '{print $2}' | xargs -I {} git diff {}^ {}"
 	hist = log --pretty=format:\"%Cgreen%h %Creset%cd %Cblue[%cn] %Creset%s%C(yellow)%d%C(reset)\" --graph --date=relative --decorate --all
 	llog = log --graph --name-status --pretty=format:\"%C(red)%h %C(reset)(%cd) %C(green)%an %Creset%s %C(yellow)%d%Creset\" --date=relative
