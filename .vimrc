@@ -38,6 +38,7 @@ set viewoptions-=options
 nnoremap j gj
 nnoremap k gk
 nnoremap gV `[v`]
+nnoremap dil ^d$
 
 " File Explorer usage
 let g:netrw_banner = 0
