@@ -20,14 +20,11 @@
 	smaster = submodule foreach --recursive "git checkout master"
 	sstash = submodule foreach --recursive "git stash"
 	strack = stash --include-untracked
-	a = "!git status --short | peco | awk '{print $2}' | xargs git add"
 	d = diff
 	cb = checkout
 	cc = commit
 	ca = commit -a
 	cn = commit --amend --no-edit
-	ps = "!git push origin $(git rev-parse --abbrev-ref HEAD)"
-	pl = "!git pull origin $(git rev-parse --abbrev-ref HEAD)"
 	s = status
     st = stash
     sta = stash apply
@@ -40,14 +37,10 @@
 	ba = branch -a
 	bm = branch --merged
 	bn = branch --no-merged
-	df = "!git hist | peco | awk '{print $2}' | xargs -I {} git diff {}^ {}"
 	hist = log --pretty=format:\"%Cgreen%h %Creset%cd %Cblue[%cn] %Creset%s%C(yellow)%d%C(reset)\" --graph --date=relative --decorate --all
 	llog = log --graph --name-status --pretty=format:\"%C(red)%h %C(reset)(%cd) %C(green)%an %Creset%s %C(yellow)%d%Creset\" --date=relative
 	type = cat-file -t
 	dump = cat-file -p
-	find = "!f() { git log --pretty=format:\"%h %cd [%cn] %s%d\" --date=relative -S'pretty' -S\"$@\" | peco | awk '{print $1}' | xargs -I {} git diff {}^ {}; }; f"
-	edit-unmerged = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; vim `f`"
-	add-unmerged = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; git add `f`"
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
