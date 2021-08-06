@@ -3,13 +3,13 @@ bind TAB:menu-complete
 
 export TERM=xterm-256color # vim/lightline
 
-alias pip='python3 -m pip'
-alias tkill='tmux kill-session'
-alias ve='source ~/ve/bin/activate'
-
+alias g='git'
 alias o='./output'
 alias mb='ls -lah'
 alias MB='ls -l --block-size=M'
+alias pip='python3 -m pip'
+alias tkill='tmux kill-session'
+alias ve='source ~/ve/bin/activate'
 
 alias bashp='vim ~/.bash_profile'
 alias bashrc='vim ~/.bashrc'
