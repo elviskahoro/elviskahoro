@@ -5,6 +5,7 @@ export TERM=xterm-256color # vim/lightline
 
 alias pip='python3 -m pip'
 alias tkill='tmux kill-session'
+alias ve='source ~/ve/bin/activate'
 
 alias o='./output'
 alias mb='ls -lah'
@@ -17,8 +18,6 @@ alias sshrc='vim ~/.ssh/config'
 alias tmuxrc='vim ~/.tmux.conf'
 alias vimrc='vim ~/.vimrc'
 alias gitrc='vim ~/.gitconfig'
-
-alias ve='source ~/ve/bin/activate'
 
 if ! shopt -oq posix; then
   if [ -f /usr/share/bash-completion/bash_completion ]; then
@@ -48,11 +47,8 @@ alias mkdir='mkdir -p'
 alias ps='ps auxf'
 alias ping='ping -c 10'
 alias less='less -R'
-alias cls='clear'
 alias apt-get='sudo apt-get'
-alias multitail='multitail --no-repeat -c'
 
-alias ls='ls -a'
 alias ~='cd ~'                              # Go Home
 alias cd..='cd ../'                         # Go back 1 directory level (for fast typers)
 alias ..='cd ../'                           # Go back 1 directory level
@@ -67,17 +63,17 @@ alias .6='cd ../../../../../../'            # Go back 6 directory levels
 alias la='ls -Alh' # show hidden files
 alias ls='ls -aFh --color=always' # add colors and file type extensions
 alias lx='ls -lXBh' # sort by extension
-alias lk='ls -lSrh' # sort by size
-alias lc='ls -lcrh' # sort by change time
-alias lu='ls -lurh' # sort by access time
-alias lr='ls -lRh' # recursive ls
+alias lb='ls -lSrh' # sort by size
 alias lt='ls -ltrh' # sort by date
+alias ltc='ls -lcrh' # sort by change time
+alias lta='ls -lurh' # sort by access time
+alias lr='ls -lRh' # recursive ls
 alias lm='ls -alh |more' # pipe through 'more'
 alias lw='ls -xAh' # wide listing format
 alias ll='ls -Fls' # long listing format
 alias labc='ls -lap' #alphabetical sort
-alias lf="ls -l | egrep -v '^d'" # files only
-alias ldir="ls -l | egrep '^d'" # directories only
+alias lfil="ls -l | egrep -v '^d'" # files only
+alias lfol="ls -l | egrep '^d'" # directories only
 
 # alias chmod commands
 alias mx='chmod a+x'
@@ -128,25 +124,6 @@ alias untar='tar -xvf'
 alias unbz2='tar -xvjf'
 alias ungz='tar -xvzf'
 
-function c()
-{
-		gcc -o output $1
-}
-
-function gac()
-{
-	git commit --amend --no-edit
-}
-
-function gclean()
-{
-        if [ $# -eq 0 ]; then
-                git reset HEAD~1
-        else
-		git reset HEAD~$1
-        fi
-}
-
 function gdiff()
 {
 	if [ $# -eq 0 ]; then
@@ -162,19 +139,6 @@ function gshow()
 		git show
 	else
 		git show HEAD~$1
-	fi
-}
-
-function gpush()
-{
-	if [ $# -eq 0 ]; then
-		git add -u
-		git commit -m c
-		git push
-	else
-		git add -u
-		git commit -m $1
-		git push
 	fi
 }
 

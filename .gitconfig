@@ -22,7 +22,8 @@
 	d = diff
 	co = checkout
 	ci = commit
-	ca = commit -a
+	cia = commit -a
+	cin = commit --amend --no-edit
 	ps = "!git push origin $(git rev-parse --abbrev-ref HEAD)"
 	pl = "!git pull origin $(git rev-parse --abbrev-ref HEAD)"
 	st = status
