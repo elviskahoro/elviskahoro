@@ -4,6 +4,7 @@
 #style: Changes that do not affect the meaning of the code 
 #refactor: A code change that neitherfixes a bug or adds a feature
 #perf: A code change that improves performance
+#submodule: A submodule update
 #test: Adding missing tests
 #chore: Changes to the build process
 
