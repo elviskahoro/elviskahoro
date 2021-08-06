@@ -109,7 +109,14 @@ if !has('nvim') && &ttimeoutlen == -1
 endif
 
 " Vim Plugged ---------------------------------------------------------------------------------------------------------------------------------
-call plug#begin('~/.vim/plugged')
+"
+if has('nvim')
+    call plug#begin(stdpath('data') . '/plugged')
+endif
+if !has('nvim')
+    call plug#begin('~/.vim/plugged')
+endif
+
 "
 Plug 'junegunn/goyo.vim'
 
