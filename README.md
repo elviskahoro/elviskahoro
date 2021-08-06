@@ -8,6 +8,7 @@ passwd $username$
 # Install
 Install [Brew](https://brew.sh/) 
 ```sh
+brew install git
 sudo apt-get update
 sudo apt-get install build-essential
 ```
@@ -58,11 +59,12 @@ brew install grep
 brew install tmux
 brew install vim
 brew install neovim
+brew install tig
 ```
 
 # vim & neovim
 ## vim plug
-[Download plug.vim](https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim) and put it in the "autoload" directory.
+Download [plug.vim](https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim) and put it in the "autoload" directory.
 
 ### vim unix
 ```sh
