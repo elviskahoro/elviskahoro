@@ -30,7 +30,8 @@
 	pl = "!git pull origin $(git rev-parse --abbrev-ref HEAD)"
 	s = status
     st = stash
-    stc = stash clear
+    sta = stash apply
+    stc = stash --patch
     std = stash drop
     stl = stash list
     stp = stash pop
