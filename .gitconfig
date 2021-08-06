@@ -14,6 +14,9 @@
 	grep = auto
 	ui = auto
 [alias]
+    a = add
+    au = add -u
+    aa = add --all
     f = pull
     p = push
 	si = submodule init
