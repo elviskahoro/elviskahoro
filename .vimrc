@@ -102,51 +102,40 @@ if !empty(&viminfo)
   set viminfo^=!
 endif
 
-" Neovim --------------------------------------------------------------------------------------------------------------------------------------
+" Neovim ----------------------------------------------------------------------
 if !has('nvim') && &ttimeoutlen == -1
   set ttimeout
   set ttimeoutlen=100
 endif
 
-" Vim Plugged ---------------------------------------------------------------------------------------------------------------------------------
-"
+" Vim Plugged -----------------------------------------------------------------
 if has('nvim')
     call plug#begin(stdpath('data') . '/plugged')
-endif
-if !has('nvim')
+else
     call plug#begin('~/.vim/plugged')
 endif
-
-"
 Plug 'junegunn/goyo.vim'
-
 Plug 'itchyny/lightline.vim'
-if !has('gui_running') " lightline
-  set t_Co=256
-endif
-set laststatus=2 " lightline
-
 Plug 'ConradIrwin/vim-bracketed-paste'
-
 Plug 'ap/vim-buftabline'
-
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-vinegar'
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
+Plug 'tmux-plugins/vim-tmux'
+Plug 'tmux-plugins/vim-tmux-focus-events'
+Plug 'roxma/vim-tmux-clipboard'
 if has('nvim') || has('patch-8.0.902')
   Plug 'mhinz/vim-signify'
 else
   Plug 'mhinz/vim-signify', { 'branch': 'legacy' }
 endif
 set updatetime=100 " signify - async time reset
-
-Plug 'godlygeek/tabular'
-Plug 'plasticboy/vim-markdown'
-
-Plug 'tmux-plugins/vim-tmux'
-Plug 'tmux-plugins/vim-tmux-focus-events'
-Plug 'roxma/vim-tmux-clipboard'
-" Code to execute when the plugin is lazily loaded on demand
-call plug#end()
+call plug#end() " Vim Plugged -------------------------------------------------
+if !has('gui_running') " lightline
+  set t_Co=256
+endif
+set laststatus=2 " lightline
 
 let python_highlight_all=1
 au BufNewFile,BufRead *.py;
