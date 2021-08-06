@@ -14,6 +14,8 @@
 	grep = auto
 	ui = auto
 [alias]
+    f = pull
+    p = push
 	si = submodule init
 	su = submodule update
 	spull = submodule foreach --recursive "git pull"
