@@ -15,6 +15,7 @@ set foldenable
 set foldlevelstart=10
 set foldnestmax=10
 set foldmethod=indent
+set hidden
 set history=1000
 set ignorecase
 set lazyredraw
@@ -40,10 +41,8 @@ set wildmenu
 set wrapscan
 set viewoptions-=options
 
-" indent/unindent with tab/shift-tab
-nmap <Tab> >>
-imap <S-Tab> <Esc><<i
-nmap <S-tab> <<
+nnoremap <Tab> :bnext<CR>
+nnoremap <S-Tab> :bprev<CR>
 
 "remap world
 nnoremap j gj
