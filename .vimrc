@@ -131,6 +131,11 @@ else
   Plug 'mhinz/vim-signify', { 'branch': 'legacy' }
 endif
 set updatetime=100 " signify - async time reset
+
+if has('nvim')
+    Plug 'neovim/nvim-lspconfig'
+
+endif
 call plug#end() " Vim Plugged -------------------------------------------------
 if !has('gui_running') " lightline
   set t_Co=256
