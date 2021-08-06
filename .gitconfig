@@ -48,3 +48,5 @@
 	process = git-lfs filter-process
 [http]
 	cookiefile = /home/elvis/.gitcookies
+[commit]
+	template = /home/elvis/.gitmessage
