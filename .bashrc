@@ -14,11 +14,12 @@ alias ve='source ~/ve/bin/activate'
 
 alias bashp='vim ~/.bash_profile'
 alias bashrc='vim ~/.bashrc'
+alias gitrc='vim ~/.gitconfig'
 alias inputrc='vim ~/.inputrc'
 alias sshrc='vim ~/.ssh/config'
+alias tigrc='vim ~/.tigrc'
 alias tmuxrc='vim ~/.tmux.conf'
 alias vimrc='vim ~/.vimrc'
-alias gitrc='vim ~/.gitconfig'
 
 if ! shopt -oq posix; then
   if [ -f /usr/share/bash-completion/bash_completion ]; then
