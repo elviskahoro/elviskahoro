@@ -60,6 +60,7 @@ brew install tmux
 brew install vim
 brew install neovim
 brew install tig
+brew install liquidprompt
 ```
 
 # vim & neovim
