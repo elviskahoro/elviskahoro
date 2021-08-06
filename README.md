@@ -56,6 +56,7 @@ dotfiles config --local status.showUntrackedFiles no
 # brew packages
 ```sh
 brew install grep
+brew install npm
 brew install tmux
 brew install vim
 brew install neovim
