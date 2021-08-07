@@ -3,7 +3,7 @@
 	name = elvis kahoro
 [core]
 	excludesfile = ~/.gitignore
-	editor = nvim
+	editor = vim
 [push]
   	default = simple
 [color]
@@ -54,4 +54,4 @@
 [http]
 	cookiefile = /home/elvis/.gitcookies
 [commit]
-	template = /home/elvis/.gitmessage
+	template = ~/.gitmessage
