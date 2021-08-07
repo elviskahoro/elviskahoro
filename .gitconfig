@@ -28,7 +28,6 @@
 	d = diff
 	co = checkout
 	c = commit
-	ca = commit -a
 	cn = commit --amend --no-edit
 	s = status
     st = stash
