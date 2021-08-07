@@ -20,7 +20,6 @@ set history=1000
 set ignorecase
 set lazyredraw
 set nocompatible
-set noswapfile
 set nowrap
 set nrformats-=octal
 set number
