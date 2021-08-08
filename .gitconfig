@@ -29,15 +29,13 @@
     cp = commit -p
 	d = diff
     ds = diff --staged
-    f = pull
-    p = push
+    p = git stash pop
 	s = status
     st = stash
     sta = stash apply
-    stc = stash --patch
     std = stash drop
     stl = stash list
-    stp = stash pop
+    stp = stash --patch
     sts = stash show
     si = submodule init
 	su = submodule update
