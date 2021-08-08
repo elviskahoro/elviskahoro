@@ -20,7 +20,6 @@ set history=1000
 set ignorecase
 set lazyredraw
 set nocompatible
-set noswapfile
 set nowrap
 set nrformats-=octal
 set number
@@ -118,7 +117,6 @@ Plug 'junegunn/goyo.vim'
 Plug 'itchyny/lightline.vim'
 Plug 'ConradIrwin/vim-bracketed-paste'
 Plug 'ap/vim-buftabline'
-Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-vinegar'
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'

@@ -3,7 +3,7 @@
 	name = elvis kahoro
 [core]
 	excludesfile = ~/.gitignore
-	editor = nvim
+	editor = vim
 [push]
   	default = simple
 [color]
@@ -26,6 +26,7 @@
 	sstash = submodule foreach --recursive "git stash"
 	strack = stash --include-untracked
 	d = diff
+    ds = diff --staged
 	c = checkout
 	cc = commit
     cm = commit -m
@@ -53,6 +54,6 @@
 	required = true
 	process = git-lfs filter-process
 [http]
-	cookiefile = /home/elvis/.gitcookies
+	cookiefile = ~/.gitcookies
 [commit]
-	template = /home/elvis/.gitmessage
+	template = ~/.gitmessage
