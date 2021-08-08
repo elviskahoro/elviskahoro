@@ -26,10 +26,11 @@
 	sstash = submodule foreach --recursive "git stash"
 	strack = stash --include-untracked
 	d = diff
-	cb = checkout
+	c = checkout
 	cc = commit
-	ca = commit -a
+    cm = commit -m
 	cn = commit --amend --no-edit
+    cp = commit -p
 	s = status
     st = stash
     sta = stash apply
