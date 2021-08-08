@@ -29,7 +29,7 @@
     cp = commit -p
 	d = diff
     ds = diff --staged
-    p = git stash pop
+    p = stash pop
 	s = status
     st = stash
     sta = stash apply
