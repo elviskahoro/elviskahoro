@@ -3,6 +3,7 @@ bind TAB:menu-complete
 
 export TERM=xterm-256color # vim/lightline
 
+alias vi='nvim'
 alias g='git'
 alias o='./output'
 alias t='tig'
