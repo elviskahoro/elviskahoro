@@ -157,7 +157,3 @@ function spush()
 	fi
 }
 
-if [ -f /home/linuxbrew/.linuxbrew/share/liquidprompt ]; then
-    . /home/linuxbrew/.linuxbrew/share/liquidprompt
-fi
-
