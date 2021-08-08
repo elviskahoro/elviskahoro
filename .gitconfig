@@ -17,21 +17,20 @@
     a = add
     au = add -u
     aa = add --all
-    f = pull
-    p = push
-	si = submodule init
-	su = submodule update
-	spull = submodule foreach --recursive "git pull"
-	smaster = submodule foreach --recursive "git checkout master"
-	sstash = submodule foreach --recursive "git stash"
-	strack = stash --include-untracked
-	d = diff
-    ds = diff --staged
 	b = checkout
-	c = commit
+	bb = checkout -b
+	bl = branch -a
+	bd = branch -d
+	bm = branch --merged
+	bn = branch --no-merged
+    c = commit
     cm = commit -m
 	cn = commit --amend --no-edit
     cp = commit -p
+	d = diff
+    ds = diff --staged
+    f = pull
+    p = push
 	s = status
     st = stash
     sta = stash apply
@@ -40,14 +39,12 @@
     stl = stash list
     stp = stash pop
     sts = stash show
-	bd = branch -d
-	ba = branch -a
-	bm = branch --merged
-	bn = branch --no-merged
-	hist = log --pretty=format:\"%Cgreen%h %Creset%cd %Cblue[%cn] %Creset%s%C(yellow)%d%C(reset)\" --graph --date=relative --decorate --all
-	llog = log --graph --name-status --pretty=format:\"%C(red)%h %C(reset)(%cd) %C(green)%an %Creset%s %C(yellow)%d%Creset\" --date=relative
-	type = cat-file -t
-	dump = cat-file -p
+    si = submodule init
+	su = submodule update
+	spull = submodule foreach --recursive "git pull"
+	smaster = submodule foreach --recursive "git checkout master"
+	sstash = submodule foreach --recursive "git stash"
+	strack = stash --include-untracked
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
