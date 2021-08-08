@@ -86,15 +86,8 @@ alias 666='chmod -R 666'
 alias 755='chmod -R 755'
 alias 777='chmod -R 777'
 
-alias h="history | grep "
-
 # Search running processes
-alias p="ps aux | grep "
 alias topcpu="/bin/ps -eo pcpu,pid,user,args | sort -k 1 -r | head -10"
-
-# Search files in the current folder
-alias f="find . | grep "
-
 # Count all files (recursively) in the current folder
 alias countfiles="for t in files links directories; do echo \`find . -type \${t:0:1} | wc -l\` \$t; done 2> /dev/null"
 
@@ -109,7 +102,6 @@ alias openports='netstat -nape --inet'
 
 # Alias's for safe and forced reboots
 alias rebootsafe='sudo shutdown -r now'
-alias rebootforce='sudo shutdown -r -n now'
 
 # Alias's to show disk space and space used in a folder
 alias diskspace="du -S | sort -n -r |more"
@@ -156,5 +148,12 @@ function spush()
 		git submodule foreach --recursive "git commit -m $1"
 		git push --recurse-submodules=on-demand
 	fi
+}
+
+function ide()
+{
+    tmux split-window -v -p 30
+    tmux split-window -h -p 66
+    tmux split-window -h -p 50
 }
 
