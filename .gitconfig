@@ -27,8 +27,8 @@
 	strack = stash --include-untracked
 	d = diff
     ds = diff --staged
-	c = checkout
-	cc = commit
+	b = checkout
+	c = commit
     cm = commit -m
 	cn = commit --amend --no-edit
     cp = commit -p
@@ -40,7 +40,7 @@
     stl = stash list
     stp = stash pop
     sts = stash show
-	b = branch
+	bd = branch -d
 	ba = branch -a
 	bm = branch --merged
 	bn = branch --no-merged
