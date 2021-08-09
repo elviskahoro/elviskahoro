@@ -52,3 +52,5 @@
 	cookiefile = ~/.gitcookies
 [commit]
 	template = ~/.gitmessage
+[pull]
+	rebase = true
