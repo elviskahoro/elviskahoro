@@ -78,14 +78,16 @@ neovim
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 ```
-```sh
-npm i -g pyright
-```
 
 ```sh
+npm install -g neovim
 pip install --user neovim
 chmod u+x ~/.vim/coc-reinstall.sh
 ~/.vim/coc-reinstall.sh
+```
+
+```sh
+npm i -g pyright
 ```
 
 # gcp
