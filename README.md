@@ -70,15 +70,16 @@ dotfiles config --local status.showUntrackedFiles no
 ## brew packages
 
 ```sh
-brew install grep
-brew install npm
 brew install tmux
 brew install vim
 brew install neovim
+brew install grep
+brew install npm
 brew install tig
 brew install liquidprompt
 brew install bat
 brew install fzf
+brew install python
 ```
 
 ## vim & neovim
@@ -118,4 +119,12 @@ chmod u+x ~/.vim/coc-reinstall.sh
 
 ```sh
 python -m pip install "pelican[markdown]"
+```
+
+## zotero
+
+```sh
+wget -qO- https://github.com/retorquere/zotero-deb/releases/download/apt-get/install.sh | sudo bash
+sudo apt update
+sudo apt install zotero
 ```
