@@ -11,6 +11,7 @@ alias mb='ls -lah'
 alias MB='ls -l --block-size=M'
 alias pip='python3 -m pip'
 alias pipr='python3 -m pip install -r requirements.txt'
+alias prun='pelican --autoreload --listen'
 alias tkill='tmux kill-session'
 alias ve='source ~/ve/bin/activate'
 
