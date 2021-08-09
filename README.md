@@ -123,6 +123,8 @@ python -m pip install "pelican[markdown]"
 
 ## zotero
 
+[Install](https://www.zotero.org/support/kb/installing_on_a_chromebook)
+
 ```sh
 wget -qO- https://github.com/retorquere/zotero-deb/releases/download/apt-get/install.sh | sudo bash
 sudo apt update
