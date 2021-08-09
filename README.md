@@ -130,3 +130,9 @@ wget -qO- https://github.com/retorquere/zotero-deb/releases/download/apt-get/ins
 sudo apt update
 sudo apt install zotero
 ```
+
+[ZotFile](http://zotfile.com/)
+
+[BetterBibText](https://retorque.re/zotero-better-bibtex/)
+
+[Mdnotes](https://github.com/argenos/zotero-mdnotes)
