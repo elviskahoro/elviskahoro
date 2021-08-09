@@ -85,6 +85,7 @@ npm i -g pyright
 ```sh
 pip install --user neovim
 chmod u+x ~/.vim/coc-reinstall.sh
+~/.vim/coc-reinstall.sh
 ```
 
 # gcp
