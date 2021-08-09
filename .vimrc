@@ -118,6 +118,7 @@ else
     call plug#begin('~/.vim/plugged')
 endif
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/goyo.vim'
 Plug 'itchyny/lightline.vim'
 Plug 'ConradIrwin/vim-bracketed-paste'
