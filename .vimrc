@@ -44,6 +44,8 @@ set wildmenu
 set wrapscan
 set viewoptions-=options
 
+let mapleader = ","
+
 nnoremap <Tab> :bnext<CR>
 nnoremap <S-Tab> :bprev<CR>
 
@@ -119,6 +121,7 @@ else
 endif
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'itchyny/lightline.vim'
 Plug 'ConradIrwin/vim-bracketed-paste'
@@ -137,10 +140,26 @@ endif
 set updatetime=100 " signify - async time reset
 
 call plug#end() " Vim Plugged -------------------------------------------------
+
 if !has('gui_running') " lightline
   set t_Co=256
 endif
 set laststatus=2 " lightline
+
+" fzf
+command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, {'options': '--delimiter : --nth 4..'}, <bang>0)
+" Mapping selecting mappings
+nmap <leader><tab> <plug>(fzf-maps-n)
+xmap <leader><tab> <plug>(fzf-maps-x)
+omap <leader><tab> <plug>(fzf-maps-o)
+
+" Insert mode completion
+imap <c-x><c-k> <plug>(fzf-complete-word)
+imap <c-x><c-f> <plug>(fzf-complete-path)
+imap <c-x><c-l> <plug>(fzf-complete-line)
+
+nnoremap <silent> <Leader>f :Files<CR>
+nnoremap <silent> <Leader>F :Rg<CR>
 
 " COC ------------------------------------------------------------------------
 " Use tab for trigger completion with characters ahead and navigate.
@@ -200,8 +219,8 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 nmap <leader>rn <Plug>(coc-rename)
 
 " Formatting selected code.
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
+xmap <leader>rf  <Plug>(coc-format-selected)
+nmap <leader>rf  <Plug>(coc-format-selected)
 
 augroup mygroup
   autocmd!
