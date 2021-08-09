@@ -63,6 +63,7 @@ brew install neovim
 brew install tig
 brew install liquidprompt
 brew install bat
+brew install fzf
 ```
 
 # vim & neovim
