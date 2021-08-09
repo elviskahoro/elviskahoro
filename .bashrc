@@ -65,8 +65,8 @@ alias .5='cd ../../../../../'               # Go back 5 directory
 alias .6='cd ../../../../../../'            # Go back 6 directory
 
 # Alias's for multiple directory listing commands
-alias la='ls -Alh' # show hidden files
-alias ls='ls -aFh --color=always' # add colors and file type extensions
+alias la='ls -aFhl --color=always' # add colors and file type extensions
+alias ls='ls -Fhl --color=always' # add colors and file type extensions
 alias lx='ls -lXBh' # sort by extension
 alias lb='ls -lSrh' # sort by size
 alias lt='ls -ltrh' # sort by date
