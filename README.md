@@ -86,10 +86,6 @@ chmod u+x ~/.vim/coc-reinstall.sh
 ~/.vim/coc-reinstall.sh
 ```
 
-```sh
-npm i -g pyright
-```
-
 # gcp
 [Install](https://cloud.google.com/sdk/docs/install#deb)
 
