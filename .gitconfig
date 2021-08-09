@@ -19,7 +19,7 @@
     aa = add --all
 	b = checkout
 	bc = checkout -b
-	bl = branch -a
+	br = branch -a
 	bd = branch -d
 	bm = branch --merged
 	bn = branch --no-merged
