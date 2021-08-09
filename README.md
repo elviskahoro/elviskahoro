@@ -82,6 +82,11 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
 npm i -g pyright
 ```
 
+```sh
+pip install --user neovim
+chmod u+x ~/.vim/coc-reinstall.sh
+```
+
 # gcp
 [Install](https://cloud.google.com/sdk/docs/install#deb)
 
