@@ -92,16 +92,12 @@ alias 777='chmod -R 777'
 alias topcpu="/bin/ps -eo pcpu,pid,user,args | sort -k 1 -r | head -10"
 # Count all files (recursively) in the current folder
 alias countfiles="for t in files links directories; do echo \`find . -type \${t:0:1} | wc -l\` \$t; done 2> /dev/null"
-
 # To see if a command is aliased, a file, or a built-in command
 alias checkcommand="type -t"
-
 # Show current network connections to the server
 alias ipview="netstat -anpl | grep :80 | awk {'print \$5'} | cut -d\":\" -f1 | sort | uniq -c | sort -n | sed -e 's/^ *//' -e 's/ *\$//'"
-
 # Show open ports
 alias openports='netstat -nape --inet'
-
 # Alias's for safe and forced reboots
 alias rebootsafe='sudo shutdown -r now'
 
