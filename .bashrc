@@ -1,3 +1,5 @@
+$(brew --prefix)/opt/fzf/install
+
 set -o vi
 bind TAB:menu-complete
 

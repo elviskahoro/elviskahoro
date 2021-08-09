@@ -135,10 +135,6 @@ else
 endif
 set updatetime=100 " signify - async time reset
 
-if has('nvim')
-"    Plug 'neovim/nvim-lspconfig'
-"    Plug 'glepnir/lspsaga.nvim'
-endif
 call plug#end() " Vim Plugged -------------------------------------------------
 if !has('gui_running') " lightline
   set t_Co=256
