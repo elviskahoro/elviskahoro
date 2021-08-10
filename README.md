@@ -107,6 +107,11 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
 ```sh
 npm install -g neovim
 pip install --user neovim
+```
+
+[Install Coc](https://github.com/neoclide/coc.nvim/wiki/Install-coc.nvim)
+
+```sh
 chmod u+x ~/.vim/coc-reinstall.sh
 ~/.vim/coc-reinstall.sh
 ```
