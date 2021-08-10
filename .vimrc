@@ -130,7 +130,6 @@ Plug 'tpope/vim-vinegar'
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 Plug 'tmux-plugins/vim-tmux'
-Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'roxma/vim-tmux-clipboard'
 if has('nvim') || has('patch-8.0.902')
   Plug 'mhinz/vim-signify'
