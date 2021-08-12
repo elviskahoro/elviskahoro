@@ -141,12 +141,23 @@ set updatetime=100 " signify - async time reset
 call plug#end()
 " vim plugged ----------------------------------------------------------------
 
-" light line -----------------------------------------------------------------
+" lightline -----------------------------------------------------------------
 if !has('gui_running') " lightline
   set t_Co=256
 endif
 set laststatus=2 " lightline
-" light line -----------------------------------------------------------------
+set noshowmode
+let g:lightline = {
+    \ 'colorscheme': 'wombat',
+    \ 'active': {
+    \   'left': [ [ 'mode', 'paste' ],
+    \             [ 'cocstatus', 'readonly', 'filename', 'modified' ] ]
+    \ },
+    \ 'component_function': {
+    \   'cocstatus': 'coc#status'
+    \ },
+    \ }
+" lightline -----------------------------------------------------------------
 
 " fzf ------------------------------------------------------------------------
 command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, {'options': '--delimiter : --nth 4..'}, <bang>0)
