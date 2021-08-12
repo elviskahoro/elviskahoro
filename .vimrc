@@ -107,7 +107,7 @@ if !empty(&viminfo)
   set viminfo^=!
 endif
 
-" vim plugged ----------------------------------------------------------------
+" vimplugged ----------------------------------------------------------------
 if has('nvim')
     set signcolumn=number
     call plug#begin(stdpath('data') . '/plugged')
@@ -131,6 +131,7 @@ Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 Plug 'tmux-plugins/vim-tmux'
 Plug 'roxma/vim-tmux-clipboard'
+Plug 'honza/vim-snippets' 
 if has('nvim') || has('patch-8.0.902')
   Plug 'mhinz/vim-signify'
 else
@@ -139,7 +140,7 @@ endif
 set updatetime=100 " signify - async time reset
 
 call plug#end()
-" vim plugged ----------------------------------------------------------------
+" vimplugged ----------------------------------------------------------------
 
 " lightline -----------------------------------------------------------------
 if !has('gui_running') " lightline
@@ -326,25 +327,15 @@ let g:coc_snippet_prev = '<c-k>'
 imap <C-j> <Plug>(coc-snippets-expand-jump)
 " Use <leader>x for convert visual selected code to snippet
 xmap <leader>x  <Plug>(coc-convert-snippet)
-
-"tab for snippets
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? coc#_select_confirm() :
-      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
 " COC snippets ----------------------------------------------------------------
+"
 " COC config ------------------------------------------------------------------
 let g:coc_user_config = {                      
           \"markdownlint.config.first-line-h1": v:false,
           \"markdownlint.config.line-length": v:false
           \}
 " COC config ------------------------------------------------------------------
+
 let python_highlight_all=1
 au BufNewFile,BufRead *.py;
     \ set tabstop=4 |
