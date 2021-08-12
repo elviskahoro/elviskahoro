@@ -44,7 +44,7 @@ set wildmenu
 set wrapscan
 set viewoptions-=options
 
-let mapleader = ","
+let mapleader = ";"
 
 nnoremap <Tab> :bnext<CR>
 nnoremap <S-Tab> :bprev<CR>
