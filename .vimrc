@@ -107,7 +107,7 @@ if !empty(&viminfo)
   set viminfo^=!
 endif
 
-" Vim Plugged -----------------------------------------------------------------
+" vim plugged ----------------------------------------------------------------
 if has('nvim')
     set signcolumn=number
     call plug#begin(stdpath('data') . '/plugged')
@@ -138,14 +138,17 @@ else
 endif
 set updatetime=100 " signify - async time reset
 
-call plug#end() " Vim Plugged -------------------------------------------------
+call plug#end()
+" vim plugged ----------------------------------------------------------------
 
+" light line -----------------------------------------------------------------
 if !has('gui_running') " lightline
   set t_Co=256
 endif
 set laststatus=2 " lightline
+" light line -----------------------------------------------------------------
 
-" fzf
+" fzf ------------------------------------------------------------------------
 command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, {'options': '--delimiter : --nth 4..'}, <bang>0)
 " Mapping selecting mappings
 nmap <leader><tab> <plug>(fzf-maps-n)
@@ -159,6 +162,7 @@ imap <c-x><c-l> <plug>(fzf-complete-line)
 
 nnoremap <silent> <Leader>f :Files<CR>
 nnoremap <silent> <Leader>F :Rg<CR>
+" fzf ------------------------------------------------------------------------
 
 " COC ------------------------------------------------------------------------
 " Use tab for trigger completion with characters ahead and navigate.
@@ -297,7 +301,7 @@ nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 " COC -------------------------------------------------------------------------
-"
+
 " COC snippets ----------------------------------------------------------------
 " Use <C-l> for trigger snippet expand.
 imap <C-l> <Plug>(coc-snippets-expand)
@@ -311,6 +315,7 @@ let g:coc_snippet_prev = '<c-k>'
 imap <C-j> <Plug>(coc-snippets-expand-jump)
 " Use <leader>x for convert visual selected code to snippet
 xmap <leader>x  <Plug>(coc-convert-snippet)
+
 "tab for snippets
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? coc#_select_confirm() :
