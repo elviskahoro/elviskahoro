@@ -296,7 +296,7 @@ nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
-" COC ------------------------------------------------------------------------
+" COC -------------------------------------------------------------------------
 "
 " COC snippets ----------------------------------------------------------------
 " Use <C-l> for trigger snippet expand.
@@ -322,10 +322,13 @@ function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
-
-let g:coc_snippet_next = '<tab>'
 " COC snippets ----------------------------------------------------------------
-
+" COC config ------------------------------------------------------------------
+let g:coc_user_config = {                      
+          \"markdownlint.config.first-line-h1": v:false,
+          \"markdownlint.config.line-length": v:false
+          \}
+" COC config ------------------------------------------------------------------
 let python_highlight_all=1
 au BufNewFile,BufRead *.py;
     \ set tabstop=4 |
