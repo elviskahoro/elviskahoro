@@ -1,7 +1,3 @@
-Tags: {{tags}}
-Related: {{related}}
-mdnotesFileName: {{mdnotesFileName}}
+{{title}}
 
-Title: {{title}}
-
-Note Content: {{noteContent}}
+{{noteContent}}
