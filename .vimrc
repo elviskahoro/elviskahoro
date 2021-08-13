@@ -107,7 +107,7 @@ if !empty(&viminfo)
   set viminfo^=!
 endif
 
-" vimplugged ----------------------------------------------------------------
+" vimplugged ------------------------------------------------------------------
 if has('nvim')
     set signcolumn=number
     call plug#begin(stdpath('data') . '/plugged')
@@ -127,8 +127,6 @@ Plug 'itchyny/lightline.vim'
 Plug 'ConradIrwin/vim-bracketed-paste'
 Plug 'ap/vim-buftabline'
 Plug 'tpope/vim-vinegar'
-Plug 'godlygeek/tabular'
-Plug 'plasticboy/vim-markdown'
 Plug 'tmux-plugins/vim-tmux'
 Plug 'roxma/vim-tmux-clipboard'
 Plug 'honza/vim-snippets' 
@@ -140,13 +138,13 @@ endif
 set updatetime=100 " signify - async time reset
 
 call plug#end()
-" vimplugged ----------------------------------------------------------------
+" vimplugged ------------------------------------------------------------------
 
-" lightline -----------------------------------------------------------------
-if !has('gui_running') " lightline
+" lightlinedoc-----------------------------------------------------------------
+if !has('gui_running')
   set t_Co=256
 endif
-set laststatus=2 " lightline
+set laststatus=2
 set noshowmode
 let g:lightline = {
     \ 'colorscheme': 'wombat',
@@ -158,9 +156,9 @@ let g:lightline = {
     \   'cocstatus': 'coc#status'
     \ },
     \ }
-" lightline -----------------------------------------------------------------
+" lightlinedoc-----------------------------------------------------------------
 
-" fzf ------------------------------------------------------------------------
+" fzfdoc-----------------------------------------------------------------------
 command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, {'options': '--delimiter : --nth 4..'}, <bang>0)
 " Mapping selecting mappings
 nmap <leader><tab> <plug>(fzf-maps-n)
@@ -174,9 +172,9 @@ imap <c-x><c-l> <plug>(fzf-complete-line)
 
 nnoremap <silent> <Leader>f :Files<CR>
 nnoremap <silent> <Leader>F :Rg<CR>
-" fzf ------------------------------------------------------------------------
+" fzfdoc-----------------------------------------------------------------------
 
-" COC ------------------------------------------------------------------------
+" COCdoc-----------------------------------------------------------------------
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 " other plugin before putting this into your config.
@@ -307,9 +305,9 @@ nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
-" COC -------------------------------------------------------------------------
+" COCdoc-----------------------------------------------------------------------
 
-" COC snippets ----------------------------------------------------------------
+" COC snippetsdoc--------------------------------------------------------------
 " Use <C-l> for trigger snippet expand.
 imap <C-l> <Plug>(coc-snippets-expand)
 " Use <C-j> for select text for visual placeholder of snippet.
@@ -322,14 +320,14 @@ let g:coc_snippet_prev = '<c-k>'
 imap <C-j> <Plug>(coc-snippets-expand-jump)
 " Use <leader>x for convert visual selected code to snippet
 xmap <leader>x  <Plug>(coc-convert-snippet)
-" COC snippets ----------------------------------------------------------------
+" COC snippetsdoc--------------------------------------------------------------
 "
-" COC config ------------------------------------------------------------------
+" COCconfig  ------------------------------------------------------------------
 let g:coc_user_config = {                      
           \"markdownlint.config.first-line-h1": v:false,
           \"markdownlint.config.line-length": v:false
           \}
-" COC config ------------------------------------------------------------------
+" COCconfig  ------------------------------------------------------------------
 
 let python_highlight_all=1
 au BufNewFile,BufRead *.py;
