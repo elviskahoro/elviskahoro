@@ -24,8 +24,8 @@
 	bm = branch --merged
 	bn = branch --no-merged
     c = commit
+	ca = commit --amend --no-edit
     cm = commit -m
-	cn = commit --amend --no-edit
     cp = commit -p
 	d = diff
     ds = diff --staged
