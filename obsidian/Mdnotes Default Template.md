@@ -1,38 +1,19 @@
-# {{title}}
+{{title}}
 
----
-
-## Metadata
-
-{{itemType}}
 {{author}}
-{{proceedingsTitle}}
-{{date}}
-{{dateAdded}}
-{{url}}
 {{DOI}}
-{{citekey}}
-{{collections}}
-{{related}}
-{{tags}}, #zotero, #literature-notes, #reference
-
-{{abstractNote}}
-
-## Zotero links
-
+{{url}}
 {{localLibrary}}
 {{cloudLibrary}}
 
 {{pdfAttachments}}
 
+{{date}}
+{{dateAdded}}
+
+{{itemType}}
+{{collections}}
+
+{{abstractNote}}
+
 {{notes}}
-
-MD NOTES --------------------------------------------------
-
-![[%(metadataFileName)#Metadata]]
-
-Other files:
-{{mdnotesFileName}}
-{{metadataFileName}}
-
-END OF THEME -----------------------------------------------------
