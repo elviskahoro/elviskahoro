@@ -1,4 +1,6 @@
-{{title}}
+# {{title}}
+
+---
 
 ## Metadata
 
@@ -13,7 +15,6 @@
 {{collections}}
 {{related}}
 {{tags}}, #zotero, #literature-notes, #reference
-{{pdfAttachments}}
 
 {{abstractNote}}
 
@@ -21,6 +22,8 @@
 
 {{localLibrary}}
 {{cloudLibrary}}
+
+{{pdfAttachments}}
 
 {{notes}}
 
@@ -31,14 +34,5 @@ MD NOTES --------------------------------------------------
 Other files:
 {{mdnotesFileName}}
 {{metadataFileName}}
-
-## Zotero links
-
-{{localLibrary}}
-{{cloudLibrary}}
-
-## Notes set in theme
-
--
 
 END OF THEME -----------------------------------------------------
