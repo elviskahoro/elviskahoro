@@ -44,6 +44,7 @@
 	smaster = submodule foreach --recursive "git checkout master"
 	sstash = submodule foreach --recursive "git stash"
 	strack = stash --include-untracked
+    tree = ls-tree -r --full-tree --name-only
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
