@@ -20,6 +20,7 @@ alias tnew='tmux new -s'
 alias tkill='tmux kill-session'
 alias ve='source ~/ve/bin/activate'
 
+alias termrc='vim ~/.config/alacritty/alacritty.yml'
 alias bashp='vim ~/.bash_profile'
 alias bashrc='vim ~/.bashrc'
 alias gitrc='vim ~/.gitconfig'
