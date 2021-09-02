@@ -41,7 +41,7 @@
     si = submodule init
 	su = submodule update
 	spull = submodule foreach --recursive "git pull"
-	smaster = submodule foreach --recursive "git checkout master"
+	smain = submodule foreach --recursive "git checkout main"
 	sstash = submodule foreach --recursive "git stash"
 	strack = stash --include-untracked
     tree = ls-tree -r --full-tree --name-only
