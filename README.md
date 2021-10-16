@@ -47,11 +47,6 @@ git checkout main
 mv .git/ .dotfiles/
 ```
 
-Reset Terminal
-```sh
-dot config --local status.showUntrackedFiles no
-```
-
 Getting profiles
 ```sh
 git init .
@@ -62,6 +57,7 @@ mv .git/ .profiles/
 
 Reset Terminal
 ```sh
+dot config --local status.showUntrackedFiles no
 pro config --local status.showUntrackedFiles no
 ```
 
