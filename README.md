@@ -13,12 +13,6 @@ passwd $username$
 
 Install [Brew](https://brew.sh/)
 
-```sh
-brew install git
-sudo apt-get update
-sudo apt-get install build-essential
-```
-
 ## github
 
 Check Keys
@@ -70,6 +64,9 @@ dot config --local status.showUntrackedFiles no
 ## brew packages
 
 ```sh
+brew install git
+sudo apt-get update
+sudo apt-get install build-essential
 brew install tmux
 brew install vim
 brew install neovim
