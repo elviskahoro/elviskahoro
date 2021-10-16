@@ -57,7 +57,7 @@ git checkout main
 Rename git repo to dotfiles
 
 ```sh
-mv .git/ .dotfile/
+mv .git/ .dotfiles/
 dot config --local status.showUntrackedFiles no
 ```
 
