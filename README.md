@@ -72,7 +72,8 @@ git checkout main
 
 ```sh
 brew install git
-sudo apt-get update
+sudo apt update
+sudo apt-get update --allow-releaseinfo-change
 sudo apt-get install build-essential
 brew install tmux
 brew install vim
