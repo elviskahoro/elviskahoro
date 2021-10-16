@@ -38,27 +38,38 @@ Copy SSH Key and Paste into [Github](https://github.com/settings/keys)
 ## dotfiles
 
 A helpful [guide.](https://www.ackama.com/blog/posts/the-best-way-to-store-your-dotfiles-a-bare-git-repository-explained)
-Getting dot files
 
+Getting dot files
 ```sh
 git init .
 git remote add -t \* -f origin git@github.com:elviskahoro/dotfiles.git
 git checkout main
+mv .git/ .dotfiles/
+```
+
+Reset Terminal
+```sh
+dot config --local status.showUntrackedFiles no
+```
+
+Getting profiles
+```sh
+git init .
+git remote add -t \* -f origin git@github.com:elviskahoro/profiles.git
+git checkout main
+mv .git/ .profiles/
+```
+
+Reset Terminal
+```sh
+pro config --local status.showUntrackedFiles no
 ```
 
 If error due to file override.
-
 ```sh
 git fetch --all
 git reset --hard origin/main
 git checkout main
-```
-
-Rename git repo to dotfiles
-
-```sh
-mv .git/ .dotfiles/
-dot config --local status.showUntrackedFiles no
 ```
 
 ## brew packages
