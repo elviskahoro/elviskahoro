@@ -79,12 +79,11 @@ brew install tmux
 brew install vim
 brew install neovim
 brew install grep
-brew install npm
+brew install node
 brew install tig
 brew install liquidprompt
 brew install bat
 brew install fzf
-brew install python
 ```
 
 ## vim & neovim
@@ -115,10 +114,6 @@ pip install --user neovim
 ```
 
 [Install Coc](https://github.com/neoclide/coc.nvim/wiki/Install-coc.nvim)
-
-```sh
-brew install node
-```
 
 ```sh
 chmod u+x ~/.vim/coc-reinstall.sh
