@@ -2,28 +2,28 @@
 set -o vi
 bind TAB:menu-complete
 
-alias vi='nvim'
 alias g='git'
-alias o='./output'
-alias t='tig'
 alias mb='ls -lah'
 alias MB='ls -l --block-size=M'
+alias o='./output'
 alias pip='python3 -m pip'
 alias pipr='python3 -m pip install -r requirements.txt'
 alias pgcp='gcloud builds submit'
 alias prun='pelican --autoreload --listen'
 alias python=python3
+alias t='tig'
 alias tnew='tmux new -s'
 alias tkill='tmux kill-session'
 alias ve='source ~/ve/bin/activate'
+alias vi='nvim'
 
-alias termrc='vim ~/.config/alacritty/alacritty.yml'
 alias bashp='vim ~/.bash_profile'
 alias bashrc='vim ~/.bashrc'
 alias gitrc='vim ~/.gitconfig'
 alias inputrc='vim ~/.inputrc'
 alias nvimrc='vim ~/.config/nvim/init.vim'
 alias sshrc='vim ~/.ssh/config'
+alias termrc='vim ~/.config/alacritty/alacritty.yml'
 alias tigrc='vim ~/.tigrc'
 alias tmuxrc='vim ~/.tmux.conf'
 alias vimrc='vim ~/.vimrc'
@@ -35,11 +35,6 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-
-# if [ -f /etc/bash_completion ]; then
-#     . /etc/bash_completion
-# fi
-# 
 
 shopt -s checkwinsize
 shopt -s histappend
@@ -66,22 +61,6 @@ alias .3='cd ../../../'                     # Go back 3 directory
 alias .4='cd ../../../../'                  # Go back 4 directory
 alias .5='cd ../../../../../'               # Go back 5 directory
 alias .6='cd ../../../../../../'            # Go back 6 directory
-
-# Alias's for multiple directory listing commands
-alias la='ls -aFhl --color=always' # add colors and file type extensions
-alias ls='ls -Fhl --color=always' # add colors and file type extensions
-alias lx='ls -lXBh' # sort by extension
-alias lb='ls -lSrh' # sort by size
-alias lt='ls -ltrh' # sort by date
-alias ltc='ls -lcrh' # sort by change time
-alias lta='ls -lurh' # sort by access time
-alias lr='ls -lRh' # recursive ls
-alias lm='ls -alh |more' # pipe through 'more'
-alias lw='ls -xAh' # wide listing format
-alias ll='ls -Fls' # long listing format
-alias labc='ls -lap' #alphabetical sort
-alias lfil="ls -l | egrep -v '^d'" # files only
-alias lfol="ls -l | egrep '^d'" # directories only
 
 # alias chmod commands
 alias mx='chmod a+x'
