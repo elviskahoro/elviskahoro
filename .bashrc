@@ -1,10 +1,6 @@
-# move to bashp
 # $(brew --prefix)/opt/fzf/install
-
 set -o vi
 bind TAB:menu-complete
-
-# export TERM=xterm-256color # vim/lightline
 
 alias vi='nvim'
 alias g='git'
@@ -16,6 +12,7 @@ alias pip='python3 -m pip'
 alias pipr='python3 -m pip install -r requirements.txt'
 alias pgcp='gcloud builds submit'
 alias prun='pelican --autoreload --listen'
+alias python=python3
 alias tnew='tmux new -s'
 alias tkill='tmux kill-session'
 alias ve='source ~/ve/bin/activate'
