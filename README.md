@@ -75,15 +75,16 @@ brew install git
 sudo apt update
 sudo apt-get update --allow-releaseinfo-change
 sudo apt-get install build-essential
-brew install tmux
+brew install liquidprompt
 brew install vim
+brew install tmux
+brew install tig
 brew install neovim
 brew install grep
 brew install node
-brew install tig
-brew install liquidprompt
 brew install bat
 brew install fzf
+brew install glow
 ```
 
 ## vim & neovim
