@@ -117,6 +117,10 @@ pip install --user neovim
 [Install Coc](https://github.com/neoclide/coc.nvim/wiki/Install-coc.nvim)
 
 ```sh
+brew install node
+```
+
+```sh
 chmod u+x ~/.vim/coc-reinstall.sh
 ~/.vim/coc-reinstall.sh
 ```
