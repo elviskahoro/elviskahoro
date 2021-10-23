@@ -55,17 +55,17 @@ git checkout main
 mv .git/ .profiles/
 ```
 
-Reset Terminal
-```sh
-dot config --local status.showUntrackedFiles no
-pro config --local status.showUntrackedFiles no
-```
-
 If error due to file override.
 ```sh
 git fetch --all
 git reset --hard origin/main
 git checkout main
+```
+
+Reset Terminal
+```sh
+dot config --local status.showUntrackedFiles no
+pro config --local status.showUntrackedFiles no
 ```
 
 ## brew packages
