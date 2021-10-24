@@ -1,4 +1,4 @@
-# Starter
+# Ramp Up
 
 ## chrome os
 
@@ -9,37 +9,25 @@ sudo su
 passwd $username$
 ```
 
-## Install
-
-Install [Brew](https://brew.sh/)
-
-## github
-
-Check Keys
+Authenticate Github
 
 ```sh
 ls -al ~/.ssh
-```
-
-Create Key
-
-```sh
 ssh-keygen -t ed25519 -C "ekk0809@gmail.com"
-```
-
-Check Agent
-
-```sh
 eval "$(ssh-agent -s)"
 ```
 
 Copy SSH Key and Paste into [Github](https://github.com/settings/keys)
 
-## dotfiles
+Dotfiles [guide](https://www.ackama.com/blog/posts/the-best-way-to-store-your-dotfiles-a-bare-git-repository-explained)
 
-A helpful [guide.](https://www.ackama.com/blog/posts/the-best-way-to-store-your-dotfiles-a-bare-git-repository-explained)
 
-Getting dot files
+Install [Brew](https://brew.sh/)
+```sh
+brew install git
+```
+
+dotfiles
 ```sh
 git init .
 git remote add -t \* -f origin git@github.com:elviskahoro/dotfiles.git
@@ -47,7 +35,7 @@ git checkout main
 mv .git/ .dotfiles/
 ```
 
-Getting profiles
+profiles
 ```sh
 git init .
 git remote add -t \* -f origin git@github.com:elviskahoro/profiles.git
@@ -62,16 +50,16 @@ git reset --hard origin/main
 git checkout main
 ```
 
-Reset Terminal
+Restart shell
+
+Ignore untracked files
 ```sh
 dot config --local status.showUntrackedFiles no
 pro config --local status.showUntrackedFiles no
 ```
 
-## brew packages
-
+brew packages
 ```sh
-brew install git
 sudo apt update
 sudo apt-get update --allow-releaseinfo-change
 sudo apt-get install build-essential
@@ -86,55 +74,48 @@ brew install grep
 brew install bat
 brew install fzf
 brew install glow
+npm install -g neovim
 ```
 
-## vim & neovim
+```sh
+pyenv install 3.10
+pyenv global 3.10
+```
 
-### vim plug
+```
+pip install --user neovim
+```
 
 Download [
 plug.vim](https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim)
 and put it in the "autoload" directory.
 
 vim
-
 ```sh
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 ```
 
 neovim
-
 ```sh
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 ```
 
-```sh
-npm install -g neovim
-pip install --user neovim
-```
-
-[Install Coc](https://github.com/neoclide/coc.nvim/wiki/Install-coc.nvim)
+[Install Coc Plugin](https://github.com/neoclide/coc.nvim/wiki/Install-coc.nvim)
 
 ```sh
 chmod u+x ~/.vim/coc-reinstall.sh
 ~/.vim/coc-reinstall.sh
 ```
 
-## gcp
-
-[Install](https://cloud.google.com/sdk/docs/install#deb)
-
-## pelican
-
 ```sh
 python -m pip install "pelican[markdown]"
 ```
 
-## zotero
+Install [GCP](https://cloud.google.com/sdk/docs/install#deb)
 
-[Install](https://www.zotero.org/support/kb/installing_on_a_chromebook)
+Install [Zotero](https://www.zotero.org/support/kb/installing_on_a_chromebook)
 
 ```sh
 wget -qO- https://github.com/retorquere/zotero-deb/releases/download/apt-get/install.sh | sudo bash
