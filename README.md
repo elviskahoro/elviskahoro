@@ -79,9 +79,10 @@ brew install liquidprompt
 brew install vim
 brew install tmux
 brew install tig
+brew install pyenv
+brew install node
 brew install neovim
 brew install grep
-brew install node
 brew install bat
 brew install fzf
 brew install glow
