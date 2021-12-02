@@ -1,16 +1,17 @@
 # Ramp Up
 
-## chrome os
 
-Change Linux VM password
+Chromebook (cb)
+MacOS (osx)
 
+cb::Change Linux VM password
 ```sh
 sudo su
 passwd $username$
 ```
 
-Authenticate Github
 
+Authenticate Github
 ```sh
 ls -al ~/.ssh
 ssh-keygen -t ed25519 -C "ekk0809@gmail.com"
@@ -20,7 +21,6 @@ eval "$(ssh-agent -s)"
 Copy SSH Key and Paste into [Github](https://github.com/settings/keys)
 
 Dotfiles [guide](https://www.ackama.com/blog/posts/the-best-way-to-store-your-dotfiles-a-bare-git-repository-explained)
-
 
 Install [Brew](https://brew.sh/)
 ```sh
@@ -58,16 +58,18 @@ dot config --local status.showUntrackedFiles no
 pro config --local status.showUntrackedFiles no
 ```
 
-brew packages
+cb::Update packages
 ```sh
 sudo apt update
 sudo apt-get update --allow-releaseinfo-change
 sudo apt-get install build-essential
 brew install liquidprompt
+```
+
+```sh
 brew install vim
 brew install tmux
 brew install tig
-brew install pyenv
 brew install node
 brew install neovim
 brew install grep
@@ -77,18 +79,13 @@ brew install glow
 npm install -g neovim
 ```
 
-```sh
-pyenv install 3.10
-pyenv global 3.10
-```
+TODO: Add poetry instructions for installing python
 
 ```
 pip install --user neovim
 ```
 
-Download [
-plug.vim](https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim)
-and put it in the "autoload" directory.
+Download [plug.vim](https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim) and put it in the "autoload" directory.
 
 vim
 ```sh
@@ -103,20 +100,22 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
 ```
 
 [Install Coc Plugin](https://github.com/neoclide/coc.nvim/wiki/Install-coc.nvim)
-
 ```sh
 chmod u+x ~/.vim/coc-reinstall.sh
 ~/.vim/coc-reinstall.sh
 ```
 
 ```sh
-python -m pip install "pelican[markdown]"
+pip install "pelican[markdown]"
 ```
 
 Install [GCP](https://cloud.google.com/sdk/docs/install#deb)
 
-Install [Zotero](https://www.zotero.org/support/kb/installing_on_a_chromebook)
+Install [flatpak](https://flatpak.org/setup/Chrome%20OS/)
 
+[Zotero flatpak](https://flathub.org/apps/details/org.zotero.Zotero)
+
+If flatpak fails: [link](https://www.zotero.org/support/kb/installing_on_a_chromebook)
 ```sh
 wget -qO- https://github.com/retorquere/zotero-deb/releases/download/apt-get/install.sh | sudo bash
 sudo apt update
