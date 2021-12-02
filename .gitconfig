@@ -40,6 +40,7 @@
     sts = stash show
     si = submodule init
 	su = submodule update
+    sub = submodule update --init --recursive
 	spull = submodule foreach --recursive "git pull"
 	smain = submodule foreach --recursive "git checkout main"
 	sstash = submodule foreach --recursive "git stash"
@@ -51,7 +52,7 @@
 	required = true
 	process = git-lfs filter-process
 [http]
-	cookiefile = ~/.config/git/.gitcookies
+	cookiefile = /Users/elvis/.gitcookies
 [commit]
 	template = ~/.config/git/.gitmessage
 [pull]
