@@ -1,13 +1,16 @@
 # Ramp Up
 
-## chrome os
 
-Change Linux VM password
+Chromebook (cb)
+MacOS (osx)
+
+cb::Change Linux VM password
 
 ```sh
 sudo su
 passwd $username$
 ```
+
 
 Authenticate Github
 
@@ -20,7 +23,6 @@ eval "$(ssh-agent -s)"
 Copy SSH Key and Paste into [Github](https://github.com/settings/keys)
 
 Dotfiles [guide](https://www.ackama.com/blog/posts/the-best-way-to-store-your-dotfiles-a-bare-git-repository-explained)
-
 
 Install [Brew](https://brew.sh/)
 ```sh
@@ -58,22 +60,15 @@ dot config --local status.showUntrackedFiles no
 pro config --local status.showUntrackedFiles no
 ```
 
-brew packages
-just linux
+cb::Update packages
 ```sh
 sudo apt update
 sudo apt-get update --allow-releaseinfo-change
 sudo apt-get install build-essential
-```
-
-```sh
-brew install pyenv
-pyenv install 3.9.9
-pyenv global 3.9.9
-```
-
-```sh
 brew install liquidprompt
+```
+
+```sh
 brew install vim
 brew install tmux
 brew install tig
@@ -86,13 +81,13 @@ brew install glow
 npm install -g neovim
 ```
 
+TODO: Add poetry instructions for installing python
+Install python
 ```
 pip install --user neovim
 ```
 
-Download [
-plug.vim](https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim)
-and put it in the "autoload" directory.
+Download [plug.vim](https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim) and put it in the "autoload" directory.
 
 vim
 ```sh
@@ -114,13 +109,14 @@ chmod u+x ~/.vim/coc-reinstall.sh
 ```
 
 ```sh
-python -m pip install "pelican[markdown]"
+pip install "pelican[markdown]"
 ```
 
 Install [GCP](https://cloud.google.com/sdk/docs/install#deb)
 
-Install [Zotero](https://www.zotero.org/support/kb/installing_on_a_chromebook)
+Install [flatpak](https://flatpak.org/setup/Chrome%20OS/)
 
+Zotero, if flatpak fails: [link](https://www.zotero.org/support/kb/installing_on_a_chromebook)
 ```sh
 wget -qO- https://github.com/retorquere/zotero-deb/releases/download/apt-get/install.sh | sudo bash
 sudo apt update
