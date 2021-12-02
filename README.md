@@ -59,15 +59,23 @@ pro config --local status.showUntrackedFiles no
 ```
 
 brew packages
+just linux
 ```sh
 sudo apt update
 sudo apt-get update --allow-releaseinfo-change
 sudo apt-get install build-essential
+```
+
+```sh
+pyenv install 3.9.9
+pyenv global 3.9.9
+```
+
+```sh
 brew install liquidprompt
 brew install vim
 brew install tmux
 brew install tig
-brew install pyenv
 brew install node
 brew install neovim
 brew install grep
@@ -75,11 +83,6 @@ brew install bat
 brew install fzf
 brew install glow
 npm install -g neovim
-```
-
-```sh
-pyenv install 3.10
-pyenv global 3.10
 ```
 
 ```
