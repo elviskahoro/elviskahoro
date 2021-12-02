@@ -23,6 +23,7 @@ alias termrc='vim ~/.config/alacritty/alacritty.yml'
 alias tigrc='vim ~/.tigrc'
 alias tmuxrc='vim ~/.tmux.conf'
 alias vimrc='vim ~/.vimrc'
+alias warpcd='cd ~/.warp/'
 alias zshrc="vim ~/.zshrc"
 
 alias cp='cp -i'
