@@ -1,4 +1,5 @@
 alias g='git'
+alias la='ls -a'
 alias mb='ls -lah'
 alias MB='ls -l --block-size=M'
 alias o='./output'
