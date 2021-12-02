@@ -83,7 +83,7 @@ alias untar='tar -xvf'
 alias unbz2='tar -xvjf'
 alias ungz='tar -xvzf'
 
-function gdiff()
+function diff()
 {
 	if [ $# -eq 0 ]; then
 		git diff HEAD~1
@@ -92,7 +92,7 @@ function gdiff()
 	fi
 }
 
-function gshow()
+function show()
 {
 	if [ $# -eq 0 ]; then
 		git show
