@@ -1,5 +1,4 @@
-colorscheme monokai
-
+"colorscheme monokai
 set autochdir
 set autoindent
 set autoread
