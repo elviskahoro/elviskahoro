@@ -3,7 +3,6 @@ if [[ $TERM_PROGRAM != "WarpTerminal" ]]; then
     set keymap vi-insert
     "jk": vi-movement-mode
 
-    set editing-mode vi
     set keymap vi-command
     "v": ""
 #    # linux
