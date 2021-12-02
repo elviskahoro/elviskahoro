@@ -1,6 +1,6 @@
 alias dot='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias pro='/usr/bin/git --git-dir=$HOME/.profiles/ --work-tree=$HOME'
-alias pror='cp -u ~/.bash_profile ~/bash_profile_cb.sh'
+alias pror='cp -u ~/.bash_profile ~/bash_profile.sh'
 
 if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
