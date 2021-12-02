@@ -5,7 +5,6 @@ Chromebook (cb)
 MacOS (osx)
 
 cb::Change Linux VM password
-
 ```sh
 sudo su
 passwd $username$
@@ -13,7 +12,6 @@ passwd $username$
 
 
 Authenticate Github
-
 ```sh
 ls -al ~/.ssh
 ssh-keygen -t ed25519 -C "ekk0809@gmail.com"
@@ -82,7 +80,7 @@ npm install -g neovim
 ```
 
 TODO: Add poetry instructions for installing python
-Install python
+
 ```
 pip install --user neovim
 ```
@@ -102,7 +100,6 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
 ```
 
 [Install Coc Plugin](https://github.com/neoclide/coc.nvim/wiki/Install-coc.nvim)
-
 ```sh
 chmod u+x ~/.vim/coc-reinstall.sh
 ~/.vim/coc-reinstall.sh
