@@ -67,6 +67,7 @@ sudo apt-get install build-essential
 ```
 
 ```sh
+brew install pyenv
 pyenv install 3.9.9
 pyenv global 3.9.9
 ```
