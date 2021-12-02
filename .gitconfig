@@ -51,9 +51,9 @@
 	required = true
 	process = git-lfs filter-process
 [http]
-	cookiefile = ~/.config/.gitcookies
+	cookiefile = ~/.config/git/.gitcookies
 [commit]
-	template = ~/.config/.gitmessage
+	template = ~/.config/git/.gitmessage
 [pull]
 	rebase = true
 [fetch]
