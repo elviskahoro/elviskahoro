@@ -1,3 +1,4 @@
+alias d='cd'
 alias g='git'
 alias la='ls -a'
 alias mb='ls -lah'
