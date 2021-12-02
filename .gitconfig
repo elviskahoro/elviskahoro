@@ -21,7 +21,7 @@
 	bc = checkout -b
 	br = branch -a
 	bl = branch -a
-	bd = branch -d
+	bd = branch -D
 	bm = branch --merged
 	bn = branch --no-merged
     c = commit
