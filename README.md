@@ -127,3 +127,7 @@ sudo apt install zotero
 [BetterBibText](https://retorque.re/zotero-better-bibtex/)
 
 [Mdnotes](https://github.com/argenos/zotero-mdnotes)
+
+```sh
+git submodule update --init --recursive
+```
