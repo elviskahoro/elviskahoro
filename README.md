@@ -117,6 +117,7 @@ Install [GCP](https://cloud.google.com/sdk/docs/install#deb)
 Install [flatpak](https://flatpak.org/setup/Chrome%20OS/)
 
 [Zotero flatpak](https://flathub.org/apps/details/org.zotero.Zotero)
+
 If flatpak fails: [link](https://www.zotero.org/support/kb/installing_on_a_chromebook)
 ```sh
 wget -qO- https://github.com/retorquere/zotero-deb/releases/download/apt-get/install.sh | sudo bash
