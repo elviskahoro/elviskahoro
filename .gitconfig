@@ -26,10 +26,12 @@
 	bn = branch --no-merged
     c = commit
 	ca = commit --amend --no-edit
+	cae = commit --amend
     cm = commit -m
     cp = commit -p
 	d = diff
     ds = diff --staged
+    rfin = rebase --continue
     p = stash pop
 	s = status
     st = stash
