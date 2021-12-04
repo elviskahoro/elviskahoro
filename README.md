@@ -14,7 +14,12 @@ passwd $username$
 Authenticate Github
 ```sh
 ls -al ~/.ssh
+```
+```sh
 ssh-keygen -t ed25519 -C "ekk0809@gmail.com"
+```
+
+```sh
 eval "$(ssh-agent -s)"
 ```
 
