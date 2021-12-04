@@ -30,7 +30,7 @@ alias zshrc="vim ~/.zshrc"
 
 alias cp='cp -i'
 alias mv='mv -i'
-alias rm='rm -iv'
+alias rmi='rm -iv'
 alias mkdir='mkdir -p'
 alias ps='ps auxf'
 alias ping='ping -c 10'
