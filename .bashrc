@@ -83,6 +83,19 @@ alias untar='tar -xvf'
 alias unbz2='tar -xvjf'
 alias ungz='tar -xvzf'
 
+function squash()
+{
+	if [ $# -eq 0 ]; then
+		echo "must be more than one"
+	else
+        if [ $1 -eq 1 ]; then
+            echo "must be more than 1"
+        else
+		    git rebase -i HEAD~$1
+        fi
+	fi
+}
+
 function diff()
 {
 	if [ $# -eq 0 ]; then
