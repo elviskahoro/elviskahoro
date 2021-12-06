@@ -10,11 +10,6 @@ if [[ $TERM_PROGRAM != "WarpTerminal" ]]; then
 
     set editing-mode vi
     set keymap vi-command
-    if [ "$(uname)" == "Darwin" ]; then 
-        bind '"p": "i $(echo $(pbpaste))\e"'
-    else
-        bind '"p": "i $(echo $(xclip -selection c -o))\e"'
-    fi
 #    bind 'TAB: menu-complete'
 #    bind '"jk": vi-movement-mode'
 #    bind '"\e[Z": menu-complete-backward'
@@ -23,13 +18,18 @@ if [[ $TERM_PROGRAM != "WarpTerminal" ]]; then
 #    '"\C-n": menu-complete'
 #    '"\C-p": menu-complete-backward'
 
-#    set keymap vi-insert
+    set keymap vi-insert
 #    bind '"p": self-insert'
-#    bind 'Control-l: clear-screen'
+    if [ "$(uname)" == "Darwin" ]; then 
+        bind '"\C-v": "i $(echo $(pbpaste))\e"'
+    else
+        bind '"\C-v": "echo $(xclip -selection c -o)"'
+    fi
+    bind 'Control-l: clear-screen'
+    bind '"\C-w": "exit^M"'
 
-
-#    set vi-ins-mode-string "\1\e[6 q\2"
-#    set vi-cmd-mode-string "\1\e[2 q\2"
+    set vi-ins-mode-string "\1\e[6 q\2"
+    set vi-cmd-mode-string "\1\e[2 q\2"
 
 #    bind '"\e": vi-movement-mode'
 #    bind '"\C-d": delete-char'
