@@ -1,3 +1,5 @@
+source "$HOME/vi-mode.sh"
+
 alias d='cd'
 alias g='git'
 alias la='ls -a'
