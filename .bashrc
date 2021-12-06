@@ -9,6 +9,7 @@ alias o='./output'
 alias pip='python3 -m pip'
 alias pipr='python3 -m pip install -r requirements.txt'
 alias pgcp='gcloud builds submit'
+alias profile='vim .profile'
 alias prun='pelican --autoreload --listen'
 alias python=python3
 alias t='tig'
