@@ -59,9 +59,10 @@ dot config --local status.showUntrackedFiles no
 
 cb::Update packages
 ```sh
-sudo apt update
+sudo apt update -y
 sudo apt-get update --allow-releaseinfo-change
 sudo apt-get install build-essential
+sudo apt-get install -y xclip
 brew install liquidprompt
 ```
 
