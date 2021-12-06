@@ -1,17 +1,20 @@
 if [[ $TERM_PROGRAM != "WarpTerminal" ]]; then
+    set -o vi
+
+    set keymap vi-insert
+    bind '"p": self-insert'
+    bind 'Control-l: clear-screen'
+
     set keymap vi-command
-    bind -r '"v": ""'
-    if [ "$(uname)" == "Darwin" ]; then "p": self-insert
+    if [ "$(uname)" == "Darwin" ]; then 
         bind '"p": "i $(echo $(pbpaste))\e"'
     elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
         # linux
-        bind '"p": "i $(echo $(xclip -selection c -o))\e"'
+        bind '"p": (echo $(xclip -selection c -o))\e'
     fi
-    set editing-mode vi
-    set keymap vi-insertef
-    bind '"jk": vi-movement-mode'
-
-    set keymap vi-insert
     bind 'TAB: menu-complete'
+    bind '"jk": vi-movement-mode'
     bind '"\e[Z": menu-complete-backward'
+    bind -r '"v": ""'
+
 fi
