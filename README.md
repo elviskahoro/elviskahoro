@@ -55,7 +55,6 @@ Restart shell
 Ignore untracked files
 ```sh
 dot config --local status.showUntrackedFiles no
-pro config --local status.showUntrackedFiles no
 ```
 
 cb::Update packages
