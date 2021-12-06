@@ -1,6 +1,6 @@
 source "$HOME/vi-mode.sh"
 
-alias d='cd'
+alias c='cd'
 alias g='git'
 alias la='ls -a'
 alias mb='ls -lah'
