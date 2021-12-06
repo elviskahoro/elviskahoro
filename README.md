@@ -119,15 +119,15 @@ Reload .vimrc and `:PlugInstall` to install plugins.
 | `PlugDiff`                          | Examine changes from the previous update and the pending changes   |
 | `PlugSnapshot[!] [output path]`     | Generate script for restoring the current snapshot of the plugins  |
 
-
-
 ```sh
 pip install "pelican[markdown]"
 ```
 
-Install [GCP](https://cloud.google.com/sdk/docs/install#deb)
-
 Install [flatpak](https://flatpak.org/setup/Chrome%20OS/)
+```sh
+sudo apt install flatpak &&
+flatpak --user remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+```
 
 [Zotero flatpak](https://flathub.org/apps/details/org.zotero.Zotero)
 
@@ -143,6 +143,10 @@ sudo apt install zotero
 [BetterBibText](https://retorque.re/zotero-better-bibtex/)
 
 [Mdnotes](https://github.com/argenos/zotero-mdnotes)
+
+Install [GCP](https://cloud.google.com/sdk/docs/install#deb)
+
+web repo
 
 ```sh
 git submodule update --init --recursive
