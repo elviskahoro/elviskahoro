@@ -130,6 +130,13 @@ flatpak --user remote-add --if-not-exists flathub https://flathub.org/repo/flath
 ```
 
 [Zotero flatpak](https://flathub.org/apps/details/org.zotero.Zotero)
+```sh
+flatpak install flathub org.zotero.Zotero
+```
+
+```sh
+flatpak run org.zotero.Zotero
+```
 
 If flatpak fails: [link](https://www.zotero.org/support/kb/installing_on_a_chromebook)
 ```sh
