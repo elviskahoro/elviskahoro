@@ -35,17 +35,12 @@ brew install git
 dotfiles
 ```sh
 git init .
-git remote add -t \* -f origin git@github.com:elviskahoro/dotfiles.git
-git checkout main
-mv .git/ .dotfiles/
 ```
 
-profiles
 ```sh
-git init .
-git remote add -t \* -f origin git@github.com:elviskahoro/profiles.git
-git checkout main
-mv .git/ .profiles/
+git remote add -t \* -f origin git@github.com:elviskahoro/dotfiles.git &&
+git checkout main &&
+mv .git/ .dotfiles/
 ```
 
 If error due to file override.
