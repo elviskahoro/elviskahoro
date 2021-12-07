@@ -28,6 +28,7 @@
 	ca = commit --amend --no-edit
 	cae = commit --amend
 	cam = commit --amend
+	can = commit --amend
     cm = commit -m
     cp = commit -p
 	d = diff
