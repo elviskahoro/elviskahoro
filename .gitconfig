@@ -34,13 +34,12 @@
 	d = diff
     ds = diff --staged
     rfin = rebase --continue
-    p = stash pop
 	s = status
-    st = stash
-    sta = stash apply
+    st = stash --patch
+    sta = stash
     std = stash drop
     stl = stash list
-    stp = stash --patch
+    stp = stash --pop
     sts = stash show
     si = submodule init
 	su = submodule update
