@@ -17,8 +17,9 @@
     a = add
     au = add -u
     aa = add --all
-	c = checkout
+	ch = checkout
 	cc = checkout -b
+	bc = checkout -b
 	br = branch -a
 	bl = branch -a
 	bd = branch -D
