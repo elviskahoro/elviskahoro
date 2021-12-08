@@ -34,6 +34,7 @@
     cp = commit -p
 	d = diff
     ds = diff --staged
+    lb = switch -
     r1 = reset HEAD^
     rfin = rebase --continue
 	s = status
