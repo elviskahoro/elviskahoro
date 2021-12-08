@@ -35,6 +35,7 @@
 	d = diff
     ds = diff --staged
     lb = switch -
+    p = push
     r1 = reset HEAD^
     rfin = rebase --continue
 	s = status
