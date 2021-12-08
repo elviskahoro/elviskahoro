@@ -33,7 +33,7 @@
     cp = commit -p
 	d = diff
     ds = diff --staged
-    rlast = git reset HEAD^
+    r1 = reset HEAD^
     rfin = rebase --continue
 	s = status
     st = stash --patch
