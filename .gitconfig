@@ -24,7 +24,7 @@
 	bd = branch -D
 	bm = branch --merged
 	bn = branch --no-merged
-    c = commit
+    co = commit
 	ca = commit --amend --no-edit
 	cae = commit --amend
 	cam = commit --amend
@@ -67,3 +67,6 @@
 	colorMoved = zebra
 [init]
 	defaultBranch = main
+[credential "https://github.com"]
+	helper = 
+	helper = !/home/linuxbrew/.linuxbrew/Cellar/gh/2.3.0/bin/gh auth git-credential
