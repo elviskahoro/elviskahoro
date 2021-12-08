@@ -1,5 +1,5 @@
 source "$HOME/vi-mode.sh"
-
+alias prc='gh pr create --web'
 alias c='cd'
 alias g='git'
 alias la='ls -a'
