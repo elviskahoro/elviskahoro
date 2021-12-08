@@ -20,8 +20,8 @@
 	ch = checkout
 	cc = checkout -b
 	bc = checkout -b
-	br = branch -a
-	bl = branch -a
+	blr = branch -a
+	bl = branch
 	bd = branch -D
 	bm = branch --merged
 	bn = branch --no-merged
