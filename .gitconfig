@@ -47,7 +47,7 @@
     sts = stash show
     si = submodule init
 	su = submodule update
-    sub = submodule update --init --recursive
+    sur = submodule update --init --recursive
 	spull = submodule foreach --recursive "git pull"
 	smain = submodule foreach --recursive "git checkout main"
 	sstash = submodule foreach --recursive "git stash"
