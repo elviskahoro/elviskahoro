@@ -7,3 +7,8 @@ for index ({1..9}) alias "$index"="cd +${index}"; unset index
 if [ -f "$HOME/.bashrc" ]; then
     source "$HOME/.bashrc"
 fi
+
+if [[ $TERM_PROGRAM != "WarpTerminal" ]]; then
+    set -o vi
+    CASE_SENSITIVE="false"
+fi
