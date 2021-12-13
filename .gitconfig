@@ -47,7 +47,7 @@
     sta = stash
     std = stash drop
     stl = stash list
-    stp = stash --pop
+    stp = stash pop
     sts = stash show
     si = submodule init
 	su = submodule update
