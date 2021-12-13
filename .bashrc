@@ -1,4 +1,6 @@
-source "$HOME/vi-mode.sh"
+alias bkb='honkit build'
+alias bkr='honkit serve'
+alias bks='honkit serve'
 alias prc='gh pr create --web'
 alias c='cd'
 alias g='git'
