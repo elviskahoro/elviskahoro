@@ -42,6 +42,7 @@
     lg = !"git lg1"
     lb = switch -
     p = push
+    r = reset
     r1 = reset HEAD^
     rbe = rebase elvis
     rbc = rebase --continue
