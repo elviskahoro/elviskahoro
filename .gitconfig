@@ -18,6 +18,7 @@
     au = add -u
     aa = add --all
 	ch = checkout
+    chs = checkout create_stable_changelog_from_latest_beta
 	cc = checkout -b
 	bc = checkout -b
 	blr = branch -a
