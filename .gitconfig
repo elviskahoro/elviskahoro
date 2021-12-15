@@ -19,7 +19,7 @@
     aa = add --all
 	ch = checkout
     chs = checkout create_stable_changelog_from_latest_beta
-    chs = checkout webhook
+    chw = checkout webhook
 	cc = checkout -b
 	bc = checkout -b
 	blr = branch -a
