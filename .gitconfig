@@ -44,6 +44,7 @@
     p = push
     r = reset
     r1 = reset HEAD^
+    rbm = rebase main
     rbe = rebase elvis
     rbc = rebase --continue
     rfin = rebase --continue
