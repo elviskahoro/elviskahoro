@@ -139,3 +139,7 @@ function ide()
     tmux split-window -h -p 50
 }
 
+function cvupdate()
+{
+    git rebase origin/main create_stable_changelog_from_latest_beta
+    git rebase origin/main webhook
