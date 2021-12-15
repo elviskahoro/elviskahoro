@@ -41,6 +41,7 @@
     lb = switch -
     p = push
     r1 = reset HEAD^
+    rbc = rebase --continue
     rfin = rebase --continue
 	s = status
     st = stash --patch
