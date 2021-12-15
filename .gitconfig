@@ -17,30 +17,30 @@
     a = add
     au = add -u
     aa = add --all
+	bc = checkout -b
+	bd = branch -D
+	bl = branch
+	blr = branch -a
+	bn = branch --no-merged
 	ch = checkout
     chs = checkout create_stable_changelog_from_latest_beta
     chw = checkout webhook
 	cc = checkout -b
-	bc = checkout -b
-	blr = branch -a
-	bl = branch
-	bd = branch -D
 	bm = branch --merged
-	bn = branch --no-merged
-    co = commit
 	ca = commit --amend --no-edit
 	cae = commit --amend
 	cam = commit --amend
 	can = commit --amend
     cm = commit -m
+    co = commit
     cp = commit -p
 	d = diff
     ds = diff --staged
     l = log
+    lb = switch -
     lg1 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
     lg2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
     lg = !"git lg1"
-    lb = switch -
     p = push
     r = reset
     r1 = reset HEAD^
