@@ -2,7 +2,7 @@
 	email = ekk0809@gmail.com
 	name = elvis kahoro
 [core]
-	excludesfile = ~/.gitignore
+	excludesfile = /Users/elvis/.gitignore_global
 	editor = vim
 [push]
   	default = simple
