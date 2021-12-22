@@ -142,6 +142,6 @@ function ide()
 function cvupdate()
 {
     git rebase origin/main stable_changelog_generator
-    git rebase origin/main webhook
+    git rebase origin/main webhook-gcp
     git rebase origin/main webhook-local
 }
