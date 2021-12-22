@@ -145,3 +145,4 @@ function cvupdate()
     git rebase origin/main webhook-gcp
     git rebase origin/main webhook-local
 }
+. "$HOME/.cargo/env"
