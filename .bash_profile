@@ -90,3 +90,4 @@ fi
 #     ;;
 # esac
 
+. "$HOME/.cargo/env"

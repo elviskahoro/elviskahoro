@@ -24,7 +24,8 @@
 	bn = branch --no-merged
 	ch = checkout
     chs = checkout create_stable_changelog_from_latest_beta
-    chw = checkout webhook
+    chwg = checkout webhook-gcp
+    chwl = checkout webhook-local
 	cc = checkout -b
 	bm = branch --merged
 	ca = commit --amend --no-edit
