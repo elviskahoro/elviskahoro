@@ -31,7 +31,7 @@
     co = commit
     cp = commit -p
     d = "!f() { if [ $# -eq 0 ]; then git diff; else git diff HEAD~$1; fi }; f"
-    ds = diff --staged
+    dc = diff --staged
     l = log
     lb = switch -
     ls = log --oneline
