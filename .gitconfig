@@ -15,6 +15,7 @@
 	ui = auto
 [alias]
     a = add
+    af = "!git add $(find . -type f -maxdepth 1)"
     au = add -u
     aa = add --all
 	bc = checkout -b
