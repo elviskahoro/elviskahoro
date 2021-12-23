@@ -23,8 +23,6 @@
 	blr = branch -a
 	bn = branch --no-merged
     pf = "!git push origin HEAD"
-    bp = "!git push -u origin $(git branch-name)"
-    bpd = "!git push origin :$(git branch-name)"
 	ch = checkout
 	bm = branch --merged
 	ca = commit --amend --no-edit
@@ -37,7 +35,9 @@
     l = log
     lb = switch -
     ls = log --oneline
-    pb = "!git push origin HEAD"
+    pf = "!git push origin HEAD"
+    pb = "!git push -u origin $(git branch-name)"
+    pbd = "!git push origin :$(git branch-name)"
     pl = pull
     pu = push
     r = "!f() { if [ $# -eq 0 ]; then git reset --mixed; else git reset HEAD~$1 --mixed; fi }; f"
