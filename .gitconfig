@@ -26,7 +26,6 @@
 	bn = branch --no-merged
 	ch = checkout
 	ca = commit --amend --no-edit
-    caa = commit -a --amend -C HEAD
     cm = commit -m
     co = commit
     cp = commit -p
@@ -64,6 +63,7 @@
 	spull = submodule foreach --recursive "git pull"
     spush = "!f() { if [ $# -eq 0 ]; then git submodule foreach --recursive "git add ."; git submodule foreach --recursive "git commit -m c"; git push --recurse-submodules=on-demand; else git submodule foreach --recursive "git add ."; git submodule foreach --recursive "git commit -m $1"; git push --recurse-submodules=on-demand; fi } f"
 	sstash = submodule foreach --recursive "git stash"
+    # caa = commit -a --amend -C HEAD
     # sba = "!f() { git subtree add --prefix $2 $1 master --squash; }; f"
     # bclean = "!f() { git branch --merged ${1-master} | grep -v " ${1-master}$" | xargs -r git branch -d; }; f"
     # new = !sh -c 'git log $1@{1}..$1@{0} "$@"'
