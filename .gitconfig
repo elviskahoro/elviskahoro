@@ -41,7 +41,7 @@
     rbc = rebase --continue
 	s = status
     sh = "!f() { if [ $# -eq 0 ]; then git show; else git show HEAD~$1; fi }"
-    sq = rebase -i
+    sq = "!f() { if [ $# -eq 0 ]; then echo "must be more than one" else if [ $1 -eq 1 ]; then echo "must be more than 1" else git rebase -i HEAD~$1 fi }"
     st = stash --patch
     sta = stash
 	stau = stash --include-untracked
