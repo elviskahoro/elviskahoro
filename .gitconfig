@@ -34,8 +34,7 @@
     dc = diff --staged
     df = "!f() { if [ $# -eq 0 ]; then git diff-tree --no-commit-id --name-status -r HEAD; else git diff-tree --no-commit-id --name-status -r HEAD~$1; fi }; f"
     l = checkout - 
-    lb = switch -
-    ls = log --oneline
+    lg = log --oneline
     m = checkout main
     n = reset HEAD@{1}
     p = checkout HEAD^1
@@ -49,6 +48,7 @@
     rbm = rebase main
     rbc = rebase --continue
 	s = status
+    sw = switch
     sh = "!f() { if [ $# -eq 0 ]; then git show; else git show HEAD~$1; fi }; f"
     sq = "!f() { if [ $# -gt 2 ]; then echo "must be more than one"; else git rebase -i HEAD~$1; fi }; f"
     st = stash --patch
