@@ -87,19 +87,6 @@ alias untar='tar -xvf'
 alias unbz2='tar -xvjf'
 alias ungz='tar -xvzf'
 
-function spush()
-{
-	if [ $# -eq 0 ]; then
-		git submodule foreach --recursive "git add ."
-		git submodule foreach --recursive "git commit -m c"
-		git push --recurse-submodules=on-demand
-	else
-		git submodule foreach --recursive "git add ."
-		git submodule foreach --recursive "git commit -m $1"
-		git push --recurse-submodules=on-demand
-	fi
-}
-
 function ide()
 {
     tmux split-window -v -p 30
