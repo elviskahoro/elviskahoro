@@ -41,6 +41,7 @@
     pl = pull
     pu = push
     r = "!f() { if [ $# -eq 0 ]; then git reset --mixed; else git reset HEAD~$1 --mixed; fi }; f"
+    rba = rebase --abort
     rbm = rebase main
     rbc = rebase --continue
 	s = status
