@@ -24,6 +24,7 @@
 	blr = branch -a
 	bn = branch --no-merged
 	ch = checkout
+    chm = checkout main
 	ca = commit --amend --no-edit
     caa = commit -a --amend -C HEAD
     cm = commit -m
