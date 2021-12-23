@@ -24,7 +24,6 @@
 	blr = branch -a
 	bn = branch --no-merged
 	ch = checkout
-    chm = checkout main
 	ca = commit --amend --no-edit
     caa = commit -a --amend -C HEAD
     cm = commit -m
@@ -36,6 +35,7 @@
     l = checkout - 
     lb = switch -
     ls = log --oneline
+    m = checkout main
     n = reset HEAD@{1}
     p = checkout HEAD^1
     pf = "!git push origin HEAD"
