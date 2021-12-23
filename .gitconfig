@@ -31,14 +31,16 @@
     cm = commit -m
     co = commit
     cp = commit -p
-    d = "!f() { if [ $# -eq 0 ]; then git diff else git diff HEAD~$1 fi }"
+    d = "!f() { if [ $# -eq 0 ]; then git diff; else git diff HEAD~$1; fi }"
     ds = diff --staged
     l = log
     lb = switch -
     p = push
+    r = "!f() { if [ $# -eq 0 ]; then git reset; else git reset HEAD^$1; fi }"
     rbm = rebase main
     rbc = rebase --continue
 	s = status
+    sh = "!f() { if [ $# -eq 0 ]; then git show; else git show HEAD~$1; fi }"
     sq = rebase -i
     st = stash --patch
     sta = stash
