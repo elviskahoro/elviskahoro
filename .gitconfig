@@ -32,7 +32,7 @@
     d = "!f() { if [ $# -eq 0 ]; then git diff; else git diff HEAD~$1; fi }; f"
     dc = diff --staged
     df = "!f() { if [ $# -eq 0 ]; then git diff-tree --no-commit-id --name-status -r HEAD; else git diff-tree --no-commit-id --name-status -r HEAD~$1; fi }; f"
-    l = log
+    l = ch - 
     lb = switch -
     ls = log --oneline
     pf = "!git push origin HEAD"
