@@ -26,31 +26,23 @@
     chs = checkout stable_changelog_generator
     chwg = checkout webhook-gcp
     chwl = checkout webhook-local
-	cc = checkout -b
 	bm = branch --merged
 	ca = commit --amend --no-edit
-	cae = commit --amend
-	cam = commit --amend
-	can = commit --amend
     cm = commit -m
     co = commit
     cp = commit -p
-	d = diff
+    d = "!f() { if [ $# -eq 0 ]; then git diff else git diff HEAD~$1 fi }"
     ds = diff --staged
     l = log
     lb = switch -
-    lg = !"git lg1"
     p = push
-    r = reset
-    r1 = reset HEAD^
     rbm = rebase main
-    rbe = rebase elvis
     rbc = rebase --continue
-    rfin = rebase --continue
 	s = status
     sq = rebase -i
     st = stash --patch
     sta = stash
+	stau = stash --include-untracked
     std = stash drop
     stl = stash list
     stp = stash pop
@@ -61,7 +53,6 @@
 	spull = submodule foreach --recursive "git pull"
 	smain = submodule foreach --recursive "git checkout main"
 	sstash = submodule foreach --recursive "git stash"
-	strack = stash --include-untracked
     tree = ls-tree -r --full-tree --name-only
     lg1 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
     lg2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
@@ -71,7 +62,7 @@
 	required = true
 	process = git-lfs filter-process
 [http]
-	cookiefile = /Users/elvis/.gitcookies
+	cookiefile = ~/.config/.gitcookies
 [commit]
 	template = ~/.config/git/.gitmessage
 [pull]
@@ -83,5 +74,4 @@
 [init]
 	defaultBranch = main
 [credential "https://github.com"]
-	helper = 
 	helper = !/home/linuxbrew/.linuxbrew/Cellar/gh/2.3.0/bin/gh auth git-credential
