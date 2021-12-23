@@ -22,11 +22,10 @@
 	bl = branch
 	blr = branch -a
 	bn = branch --no-merged
-    bp = "!git push origin HEAD"
+    pf = "!git push origin HEAD"
+    bp = "!git push -u origin $(git branch-name)"
+    bpd = "!git push origin :$(git branch-name)"
 	ch = checkout
-    chs = checkout stable_changelog_generator
-    chwg = checkout webhook-gcp
-    chwl = checkout webhook-local
 	bm = branch --merged
 	ca = commit --amend --no-edit
     caa = commit -a --amend -C HEAD
