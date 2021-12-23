@@ -36,7 +36,6 @@
     l = checkout - 
     lg = log --oneline
     m = checkout main
-    n = reset HEAD@{1}
     p = checkout HEAD^1
     pf = "!git push origin HEAD"
     pb = "!git push -u origin $(git branch-name)"
