@@ -48,6 +48,7 @@
     rbc = rebase --continue
     rfin = rebase --continue
 	s = status
+    sq = rebase -i
     st = stash --patch
     sta = stash
     std = stash drop
