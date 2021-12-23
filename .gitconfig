@@ -28,20 +28,22 @@
     chwl = checkout webhook-local
 	bm = branch --merged
 	ca = commit --amend --no-edit
+    caa = commit -a --amend -C HEAD
     cm = commit -m
     co = commit
     cp = commit -p
-    d = "!f() { if [ $# -eq 0 ]; then git diff; else git diff HEAD~$1; fi }"
+    d = "!f() { if [ $# -eq 0 ]; then git diff; else git diff HEAD~$1; fi }; f"
     ds = diff --staged
     l = log
     lb = switch -
+    ls = log --oneline
     p = push
-    r = "!f() { if [ $# -eq 0 ]; then git reset; else git reset HEAD^$1; fi }"
+    r = "!f() { if [ $# -eq 0 ]; then git reset --mixed; else git reset HEAD^$1 --mixed; fi }; f"
     rbm = rebase main
     rbc = rebase --continue
 	s = status
-    sh = "!f() { if [ $# -eq 0 ]; then git show; else git show HEAD~$1; fi }"
-    sq = "!f() { if [ $# -eq 0 ]; then echo "must be more than one" else if [ $1 -eq 1 ]; then echo "must be more than 1" else git rebase -i HEAD~$1 fi }"
+    sh = "!f() { if [ $# -eq 0 ]; then git show; else git show HEAD~$1; fi }; f"
+    sq = "!f() { if [ $# -eq 0 ]; then echo "must be more than one" else if [ $1 -eq 1 ]; then echo "must be more than 1" else git rebase -i HEAD~$1 fi }; f"
     st = stash --patch
     sta = stash
 	stau = stash --include-untracked
@@ -49,13 +51,18 @@
     stl = stash list
     stp = stash pop
     sts = stash show
+    tree = ls-tree -r --full-tree --name-only
+    # from web
     si = submodule init
 	su = submodule update
     sur = submodule update --init --recursive
 	spull = submodule foreach --recursive "git pull"
 	smain = submodule foreach --recursive "git checkout main"
 	sstash = submodule foreach --recursive "git stash"
-    tree = ls-tree -r --full-tree --name-only
+    sba = "!f() { git subtree add --prefix $2 $1 master --squash; }; f"
+    bclean = "!f() { git branch --merged ${1-master} | grep -v " ${1-master}$" | xargs -r git branch -d; }; f"
+    new = !sh -c 'git log $1@{1}..$1@{0} "$@"'
+    sortdiff = !sh -c 'git diff "$@" | grep "^[+-]" | sort --key=1.2 | uniq -u -s1'
     lg1 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
     lg2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
 [filter "lfs"]
