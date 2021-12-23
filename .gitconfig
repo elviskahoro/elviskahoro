@@ -23,7 +23,7 @@
 	blr = branch -a
 	bn = branch --no-merged
 	ch = checkout
-    chs = checout stable_changelog_generator
+    chs = checkout stable_changelog_generator
     chwg = checkout webhook-gcp
     chwl = checkout webhook-local
 	cc = checkout -b
