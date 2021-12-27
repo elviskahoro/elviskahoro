@@ -83,15 +83,15 @@ brew install liquidprompt
 ```
 
 ```sh
-brew install vim
-brew install tmux
-brew install tig
-brew install node
-brew install neovim
-brew install grep
-brew install bat
-brew install fzf
-brew install glow
+brew install vim &&
+brew install tmux &&
+brew install tig &&
+brew install node &&
+brew install neovim &&
+brew install grep &&
+brew install bat &&
+brew install fzf &&
+brew install glow &&
 npm install -g neovim
 ```
 
