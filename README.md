@@ -57,6 +57,22 @@ Ignore untracked files
 dot config --local status.showUntrackedFiles no
 ```
 
+```sh
+brew install pyenv
+```
+
+```sh
+pyenv install 3.10.0
+```
+
+```sh
+pyenv install 3.9.9
+```
+
+```sh
+pyenv gloval 3.9.9
+```
+
 cb::Update packages
 ```sh
 sudo apt update -y
