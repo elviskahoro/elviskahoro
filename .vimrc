@@ -42,6 +42,9 @@ set wildmenu
 set wrapscan
 set viewoptions-=options
 
+filetype plugin on
+syntax on
+
 let mapleader = ";"
 
 nnoremap <Tab> :bnext<CR>
@@ -71,9 +74,6 @@ if has('autocmd')
 endif
 if has('path_extra')
   setglobal tags-=./tags tags-=./tags; tags^=./tags;
-endif
-if has('syntax') && !exists('g:syntax_on')
-  syntax enable
 endif
 
 " if

@@ -9,3 +9,5 @@ if [[ $TERM_PROGRAM != "WarpTerminal" ]]; then
     set -o vi
     CASE_SENSITIVE="false"
 fi
+
+export PATH="$HOME/.poetry/bin:$PATH"
