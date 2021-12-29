@@ -10,7 +10,6 @@ alias mb='ls -lah'
 alias MB='ls -l --block-size=M'
 alias o='./output'
 alias prun='pelican --autoreload --listen'
-alias python=python3
 alias t='tig'
 alias tnew='tmux new -s'
 alias tkill='tmux kill-session'
@@ -90,11 +89,4 @@ function ide()
     tmux split-window -v -p 30
     tmux split-window -h -p 66
     tmux split-window -h -p 50
-}
-
-function cvupdate()
-{
-    git rebase origin/main stable_changelog_generator
-    git rebase origin/main webhook-gcp
-    git rebase origin/main webhook-local
 }
