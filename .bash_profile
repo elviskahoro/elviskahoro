@@ -37,7 +37,7 @@ fi
 
 export PATH="$HOME/.poetry/bin:$PATH"
 # enable color support of ls and also add handy aliases
- if [ -x /usr/bin/dircolors ]; then
+if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     alias ls='ls --color=auto'
     alias dir='dir --color=auto'
@@ -89,14 +89,3 @@ fi
 # *)
 #     ;;
 # esac
-
-. "$HOME/.cargo/env"
-
-##
-# Your previous /Users/elvis/.bash_profile file was backed up as /Users/elvis/.bash_profile.macports-saved_2021-12-29_at_12:27:10
-##
-
-# MacPorts Installer addition on 2021-12-29_at_12:27:10: adding an appropriate PATH variable for use with MacPorts.
-export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
-# Finished adapting your PATH environment variable for use with MacPorts.
-
