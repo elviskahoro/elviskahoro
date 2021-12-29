@@ -102,6 +102,74 @@ if !empty(&viminfo)
   set viminfo^=!
 endif
 
+" vimplugged ------------------------------------------------------------------
+if has('nvim')
+    set signcolumn=number
+    call plug#begin(stdpath('data') . '/plugged')
+else
+    set signcolumn=yes
+    if &ttimeoutlen == -1
+      set ttimeout
+      set ttimeoutlen=100
+    endif
+    call plug#begin('~/.vim/plugged')
+endif
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'chrisbra/Colorizer'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'junegunn/goyo.vim'
+Plug 'itchyny/lightline.vim'
+Plug 'ConradIrwin/vim-bracketed-paste'
+Plug 'ap/vim-buftabline'
+Plug 'tpope/vim-vinegar'
+Plug 'tmux-plugins/vim-tmux'
+Plug 'roxma/vim-tmux-clipboard'
+Plug 'honza/vim-snippets' 
+if has('nvim') || has('patch-8.0.902')
+  Plug 'mhinz/vim-signify'
+else
+  Plug 'mhinz/vim-signify', { 'branch': 'legacy' }
+endif
+set updatetime=100 " signify - async time reset
+
+call plug#end()
+" vimplugged ------------------------------------------------------------------
+
+" lightlinedoc-----------------------------------------------------------------
+if !has('gui_running')
+  set t_Co=256
+endif
+set laststatus=2
+set noshowmode
+let g:lightline = {
+    \ 'colorscheme': 'wombat',
+    \ 'active': {
+    \   'left': [ [ 'mode', 'paste' ],
+    \             [ 'cocstatus', 'readonly', 'filename', 'modified' ] ]
+    \ },
+    \ 'component_function': {
+    \   'cocstatus': 'coc#status'
+    \ },
+    \ }
+" lightlinedoc-----------------------------------------------------------------
+
+" fzfdoc-----------------------------------------------------------------------
+command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, {'options': '--delimiter : --nth 4..'}, <bang>0)
+" Mapping selecting mappings
+nmap <leader><tab> <plug>(fzf-maps-n)
+xmap <leader><tab> <plug>(fzf-maps-x)
+omap <leader><tab> <plug>(fzf-maps-o)
+
+" Insert mode completion
+imap <c-x><c-k> <plug>(fzf-complete-word)
+imap <c-x><c-f> <plug>(fzf-complete-path)
+imap <c-x><c-l> <plug>(fzf-complete-line)
+
+nnoremap <silent> <Leader>f :Files<CR>
+nnoremap <silent> <Leader>F :Rg<CR>
+" fzfdoc-----------------------------------------------------------------------
+
 let python_highlight_all=1
 au BufNewFile,BufRead *.py;
     \ set tabstop=4 |
@@ -117,3 +185,5 @@ au BufNewFile,BufRead *.js,*.html,*.css
     \ set tabstop=2 |
     \ set softtabstop=2 |
     \ set shiftwidth=2 |
+
+
