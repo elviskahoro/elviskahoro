@@ -29,6 +29,7 @@ alias vimrc='vim ~/.vimrc'
 alias warpcd='cd ~/.warp/'
 alias zshrc="vim ~/.zshrc"
 alias zprofile="vim ~/.zprofile"
+alias zenv="vim ~/.zshenv"
 
 alias cp='cp -i'
 alias mv='mv -i'
