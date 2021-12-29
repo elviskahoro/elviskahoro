@@ -117,8 +117,8 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
 
 [Install Coc Plugin](https://github.com/neoclide/coc.nvim/wiki/Install-coc.nvim)
 ```sh
-chmod u+x ~/.vim/coc-reinstall.sh
-~/.vim/coc-reinstall.sh
+chmod u+x ~/.config/coc-reinstall.sh
+~/.config/coc-reinstall.sh
 ```
 
 Reload .vimrc and `:PlugInstall` to install plugins.
