@@ -56,6 +56,8 @@
     stl = stash list
     stp = stash pop
     sts = stash show
+    um = pull origin main
+
     si = submodule init
 	su = submodule update
     sur = submodule update --init --recursive
