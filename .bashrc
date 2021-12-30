@@ -1,3 +1,8 @@
+
+#### FIG ENV VARIABLES ####
+# Please make sure this block is at the start of this file.
+[ -s ~/.fig/shell/pre.sh ] && source ~/.fig/shell/pre.sh
+#### END FIG ENV VARIABLES ####
 alias bkb='npx honkit build'
 alias bkr='npx honkit serve'
 alias bks='npx honkit serve'
@@ -28,8 +33,8 @@ alias tmuxrc='vim ~/.tmux.conf'
 alias vimrc='vim ~/.vimrc'
 alias warpcd='cd ~/.warp/'
 alias zshrc="vim ~/.zshrc"
-alias zprofile="vim ~/.zprofile"
-alias zenv="vim ~/.zshenv"
+alias zshp="vim ~/.zprofile"
+alias zshe="vim ~/.zshenv"
 
 alias cp='cp -i'
 alias mv='mv -i'
@@ -92,3 +97,8 @@ function ide()
     tmux split-window -h -p 66
     tmux split-window -h -p 50
 }
+
+#### FIG ENV VARIABLES ####
+# Please make sure this block is at the end of this file.
+[ -s ~/.fig/fig.sh ] && source ~/.fig/fig.sh
+#### END FIG ENV VARIABLES ####
