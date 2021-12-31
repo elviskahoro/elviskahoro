@@ -41,7 +41,7 @@
     pbd = "!git push origin :$(git branch-name)"
     pl = pull
     pu = push
-    r = "!f() { if [ $# -eq 0 ]; then git reset --mixed; else git reset HEAD~$1 --mixed; fi }; f"
+    r = "!f() { if [ $# -eq 0 ]; then echo 'Specify a number'; else git reset HEAD~$1 --mixed; fi }; f"
     rba = rebase --abort
     rbm = rebase main
     rbc = rebase --continue
