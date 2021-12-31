@@ -36,7 +36,7 @@
     l = log --oneline
     m = checkout main
     p = push
-    prev = checkout HEAD^1
+    prev = "!f() { if [ $# -eq 0 ]; then git checkout HEAD^1; else git checkout HEAD^$1; fi }; f"
     pf = "!git push origin HEAD"
     pb = "!git push -u origin $(git branch-name)"
     pbd = "!git push origin :$(git branch-name)"
