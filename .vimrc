@@ -1,4 +1,4 @@
-colorscheme monokai
+colorscheme delek
 set autochdir
 set autoindent
 set autoread
