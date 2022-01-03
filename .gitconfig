@@ -37,7 +37,7 @@
     m = checkout main
     p = push
     prev = "!f() { if [ $# -eq 0 ]; then git checkout HEAD^1; else git checkout HEAD^$1; fi }; f"
-    prf = "!f() { git push --force origin head:$1; }; f"
+    pbf = "!f() { git push --force origin head:$1; }; f"
     pbd = "!git push origin :$(git branch-name)"
     pl = pull
     pu = push
