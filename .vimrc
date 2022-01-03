@@ -48,9 +48,6 @@ syntax on
 
 let mapleader = ";"
 
-nnoremap <Tab> :bnext<CR>
-nnoremap <S-Tab> :bprev<CR>
-
 "remap world
 nnoremap j gj
 nnoremap k gk
@@ -68,7 +65,6 @@ set incsearch
 if maparg('<C-L>', 'n') ==# '' " incsearch  Use <C-L> to clear the highlighting of :set hlsearch.
   nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
 endif
-
 " has
 if has('autocmd')
   filetype plugin indent on
