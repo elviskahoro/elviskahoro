@@ -1,8 +1,4 @@
-
-#### FIG ENV VARIABLES ####
-# Please make sure this block is at the start of this file.
-# [ -s ~/.fig/shell/pre.sh ] && source ~/.fig/shell/pre.sh
-#### END FIG ENV VARIABLES ####
+alias ghpr='gh pr create --web'
 alias blackp='black --target-version py310 .'
 alias bkb='npx honkit build'
 alias bkr='npx honkit serve'
