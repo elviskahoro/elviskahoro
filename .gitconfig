@@ -24,6 +24,7 @@
 	bla = branch -a
 	bm = branch --merged
 	bn = branch --no-merged
+    br = branch -m
 	ch = checkout
 	ca = commit --amend --no-edit
     cm = commit -m
@@ -38,7 +39,7 @@
     p = push
     prev = "!f() { if [ $# -eq 0 ]; then git checkout HEAD^1; else git checkout HEAD^$1; fi }; f"
     pbf = push -u origin HEAD
-    pbd = "!git push origin :$(git branch-name)"
+    pbd = "!git push origin --delete $(git branch --show-current)"
     pl = pull
     pu = push
     r = "!f() { if [ $# -eq 0 ]; then echo 'Specify a number'; else git reset HEAD~$1 --mixed; fi }; f"
