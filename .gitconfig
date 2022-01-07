@@ -43,6 +43,7 @@
     pl = pull
     pu = push
     r = "!f() { if [ $# -eq 0 ]; then echo 'Specify a number'; else git reset HEAD~$1 --mixed; fi }; f"
+    rb = rebase
     rba = rebase --abort
     rbm = rebase main
     rbc = rebase --continue
