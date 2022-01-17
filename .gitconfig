@@ -43,7 +43,7 @@
     pbd = "!git push origin --delete $(git branch --show-current)"
     pl = pull
     plm = fetch origin main:main
-    pu = push
+    pf = push
     r = "!f() { if [ $# -eq 0 ]; then echo 'Specify a number'; else git reset HEAD~$1 --mixed; fi }; f"
     rb = rebase
     rba = rebase --abort
