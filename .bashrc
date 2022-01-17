@@ -94,8 +94,3 @@ function ide()
     tmux split-window -h -p 66
     tmux split-window -h -p 50
 }
-
-#### FIG ENV VARIABLES ####
-# Please make sure this block is at the end of this file.
-[ -s ~/.fig/fig.sh ] && source ~/.fig/fig.sh
-#### END FIG ENV VARIABLES ####
