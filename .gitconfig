@@ -27,9 +27,10 @@
     br = branch -m
 	ch = checkout
 	ca = commit --amend --no-edit
-    cm = commit -m
+    com = commit -m
     co = commit
-    cp = commit -p
+    cop = commit -p
+    cp = cherry-pick
     d = "!f() { if [ $# -eq 0 ]; then git diff; else git diff HEAD~$1; fi }; f"
     dc = diff --staged
     df = "!f() { if [ $# -eq 0 ]; then git diff-tree --no-commit-id --name-status -r HEAD; else git diff-tree --no-commit-id --name-status -r HEAD~$1; fi }; f"
