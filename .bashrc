@@ -33,6 +33,7 @@ alias zshrc="vim ~/.zshrc"
 alias zshp="vim ~/.zprofile"
 alias zshe="vim ~/.zshenv"
 
+alias d='cd'
 alias cp='cp -i'
 alias mv='mv -i'
 alias rmi='rm -iv'
