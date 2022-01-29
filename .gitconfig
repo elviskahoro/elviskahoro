@@ -27,6 +27,7 @@
     br = branch -m
 	ch = checkout
 	ca = commit --amend --no-edit
+	cam = commit --amend
     com = commit -m
     co = commit
     cop = commit -p
