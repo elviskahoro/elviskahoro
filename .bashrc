@@ -1,3 +1,4 @@
+alias pcall='pre-commit run --all-files'
 alias ghpr='gh pr create --web'
 alias blackp='black --target-version py310 .'
 alias bkb='npx honkit build'
