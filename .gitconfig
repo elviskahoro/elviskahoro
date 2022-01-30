@@ -39,6 +39,7 @@
     df = "!f() { if [ $# -eq 0 ]; then git diff-tree --no-commit-id --name-status -r HEAD; else git diff-tree --no-commit-id --name-status -r HEAD~$1; fi }; f"
     x = checkout - 
     l = log --oneline
+    ls = "!git ls-tree -r $(git branch --show-current) --name-only"
     m = checkout main
     p = push
     prev = "!f() { if [ $# -eq 0 ]; then git checkout HEAD^1; else git checkout HEAD^$1; fi }; f"
