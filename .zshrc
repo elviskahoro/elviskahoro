@@ -5,4 +5,8 @@ if [ -f "$HOME/.bashrc" ]; then
     source "$HOME/.bashrc"
 fi
 
-export PATH="$HOME/.poetry/bin:$PATH"
+eval "$(starship init zsh)"
+
+if [[ $TERM_PROGRAM != "WarpTerminal" ]]; then
+    export PATH="$HOME/.poetry/bin:$PATH"
+fi
