@@ -19,8 +19,8 @@ alias tkill='tmux kill-session'
 alias ve='source ~/ve/bin/activate'
 alias vi='nvim'
 
-alias bashp='vim ~/.bash_profile'
-alias bashrc='vim ~/.bashrc'
+alias bp='vim ~/.bash_profile'
+alias brc='vim ~/.bashrc'
 alias gitrc='vim ~/.gitconfig'
 alias inputrc='vim ~/.inputrc'
 alias nvimrc='vim ~/.config/nvim/init.vim'
@@ -29,10 +29,12 @@ alias termrc='vim ~/.config/alacritty/alacritty.yml'
 alias tigrc='vim ~/.tigrc'
 alias tmuxrc='vim ~/.tmux.conf'
 alias vimrc='vim ~/.vimrc'
-alias warpcd='cd ~/.warp/'
-alias zshrc="vim ~/.zshrc"
-alias zshp="vim ~/.zprofile"
-alias zshe="vim ~/.zshenv"
+alias profile="vim ~/.profile"
+alias zenv="vim ~/.zshenv"
+alias zprofile="vim ~/.zprofile"
+alias zrc="vim ~/.zshrc"
+alias zlogin="vim ~/.zlogin"
+alias zlogout="vim ~/.zlogout"
 
 alias d='cd'
 alias cp='cp -i'
