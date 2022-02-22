@@ -19,7 +19,7 @@ alias tkill='tmux kill-session'
 alias ve='source ~/ve/bin/activate'
 alias vi='nvim'
 
-alias bp='vim ~/.bash_profile'
+alias bprofile='vim ~/.bash_profile'
 alias brc='vim ~/.bashrc'
 alias gitrc='vim ~/.gitconfig'
 alias inputrc='vim ~/.inputrc'
