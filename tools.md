@@ -15,3 +15,5 @@ devutils
 raycast
 
 vscode
+
+obsidian
