@@ -17,3 +17,11 @@ raycast
 vscode
 
 obsidian
+
+cron
+
+brew 
+
+github cli
+
+pyenv
