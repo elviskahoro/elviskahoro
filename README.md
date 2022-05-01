@@ -1,13 +1,13 @@
 ## <em>Hi!</em> I'm elvis!
 
+[![Linkedin](https://img.shields.io/badge/-Linkedin-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/elviskahoro/)](https://www.linkedin.com/in/elviskahoro/) 
+[![Website](https://img.shields.io/badge/-Website-critical?style=flat-square&logo=AddThis&logoColor=white&link=https://elvis.ai/)](https://elvis.ai/)
+
 (he/him/his)
 
 Vim over emacs
 
 Barca over Madrid
-
-[![Linkedin](https://img.shields.io/badge/-Linkedin-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/elviskahoro/)](https://www.linkedin.com/in/elviskahoro/) 
-[![Website](https://img.shields.io/badge/-Website-critical?style=flat-square&logo=AddThis&logoColor=white&link=https://elvis.ai/)](https://elvis.ai/) 
 
 I work at [Warp](https://warp.dev/), where we are building a Rust-based GPU-accelerated modern terminal!
 Our mission is to [elevate developer productivity.](https://github.com/warpdotdev/Warp/discussions?discussions_q=label%3ARoadmap+sort%3Atop)
