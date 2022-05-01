@@ -5,10 +5,6 @@
 
 I'm elvis (he/him/his)
 
-Vim over emacs
-
-Barca over Madrid
-
 I work at [Warp](https://warp.dev/), where we are building a Rust-based GPU-accelerated modern terminal!
 Our mission is to [elevate developer productivity.](https://github.com/warpdotdev/Warp/discussions?discussions_q=label%3ARoadmap+sort%3Atop)
 Join our [Discord!](https://discord.gg/warpdotdev)
@@ -20,3 +16,7 @@ I love well written documentation and play full-back (right back).
 
 I'm fortunate that we're [remote-first at Warp.](https://www.warp.dev/hiring)
 Atlanta, GA is my homebase.
+
+Vim over emacs
+
+Barca over Madrid
