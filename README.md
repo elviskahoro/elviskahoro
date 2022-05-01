@@ -1,7 +1,9 @@
 ## <em>Hi!</em> I'm elvis!
 
 (he/him/his)
+
 Vim over emacs
+
 Barca over Madrid
 
 [![Linkedin](https://img.shields.io/badge/-Linkedin-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/elviskahoro/)](https://www.linkedin.com/in/elviskahoro/) 
