@@ -1,12 +1,9 @@
-alias dot='/usr/local/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-alias dotr='cp ~/.zlogin ~/zlogin_mac.sh'
-
+# eval "$(starship init zsh)"
+# eval "$(pyenv init -)"
+ 
 if [ -f "$HOME/.bashrc" ]; then
     source "$HOME/.bashrc"
 fi
+. "$HOME/.cargo/env"
 
-eval "$(starship init zsh)"
-
-if [[ $TERM_PROGRAM != "WarpTerminal" ]]; then
-    export PATH="$HOME/.poetry/bin:$PATH"
-fi
+# eval "$(direnv hook zsh)"

@@ -14,65 +14,69 @@
 	grep = auto
 	ui = auto
 [alias]
-    a = add
-    af = "!git add $(find . -type f -maxdepth 1)"
-    au = add -u
-    aa = add --all
+	a = add
+	af = "!git add $(find . -type f -maxdepth 1)"
+	au = add -u
+	aa = add --all
 	bc = checkout -b
 	bd = branch -D
 	bl = branch
 	bla = branch -a
 	bm = branch --merged
 	bn = branch --no-merged
-    br = branch -m
+	br = branch -m
 	ch = checkout
 	ca = commit --amend --no-edit
 	cam = commit --amend
-    com = commit -m
-    co = commit
-    cop = commit -p
-    cp = cherry-pick
-    cpa = cherry-pick --abort
-    cpc = cherry-pick --continue
-    d = "!f() { if [ $# -eq 0 ]; then git diff; else git diff HEAD~$1; fi }; f"
-    dc = diff --staged
-    df = "!f() { if [ $# -eq 0 ]; then git diff-tree --no-commit-id --name-status -r HEAD; else git diff-tree --no-commit-id --name-status -r HEAD~$1; fi }; f"
-    x = checkout - 
-    l = log --oneline
-    ls = "!git ls-tree -r $(git branch --show-current) --name-only"
-    m = checkout main
-    p = push
-    prev = "!f() { if [ $# -eq 0 ]; then git checkout HEAD^1; else git checkout HEAD^$1; fi }; f"
-    pbf = push -u origin HEAD
-    pbd = "!git push origin --delete $(git branch --show-current)"
-    pl = pull
-    plm = fetch origin main:main
-    pf = push
-    r = "!f() { if [ $# -eq 0 ]; then echo 'Specify a number'; else git reset HEAD~$1 --mixed; fi }; f"
-    rb = rebase
-    rba = rebase --abort
-    rbm = rebase main
-    rbc = rebase --continue
+	com = commit -m
+	co = commit
+	con = commit --no-verify
+	cop = commit -p
+	cp = cherry-pick
+	cpa = cherry-pick --abort
+	cpc = cherry-pick --continue
+	d = "!f() { if [ $# -eq 0 ]; then git diff; else git diff HEAD~$1; fi }; f"
+	dc = diff --staged
+	df = "!f() { if [ $# -eq 0 ]; then git diff-tree --no-commit-id --name-status -r HEAD; else git diff-tree --no-commit-id --name-status -r HEAD~$1; fi }; f"
+	x = checkout - 
+	l = log --oneline
+	ls = "!git ls-tree -r $(git branch --show-current) --name-only"
+	m = checkout main
+	p = push
+	prev = "!f() { if [ $# -eq 0 ]; then git checkout HEAD^1; else git checkout HEAD^$1; fi }; f"
+	pbf = push -u origin HEAD
+	pbd = "!git push origin --delete $(git branch --show-current)"
+	pl = pull
+	plm = fetch origin main:main
+	pf = push
+	pr = "!gh pr create --web"
+	r = "!f() { if [ $# -eq 0 ]; then echo 'Specify a number'; else git reset HEAD~$1 --mixed; fi }; f"
+	rb = rebase
+	rba = rebase --abort
+	rbm = rebase main
+	rbc = rebase --continue
 	s = status
-    sw = switch
-    swc = switch -c
-    sh = "!f() { if [ $# -eq 0 ]; then git show; else git show HEAD~$1; fi }; f"
-    sq = "!f() { if [ $# -gt 2 ]; then echo "must be more than one"; else git rebase -i HEAD~$1; fi }; f"
-    st = stash --patch
-    sta = stash
+	sw = switch
+	swc = switch -c
+	sh = "!f() { if [ $# -eq 0 ]; then git show; else git show HEAD~$1; fi }; f"
+	sq = "!f() { if [ $# -gt 2 ]; then echo "must be more than one"; else git rebase -i HEAD~$1; fi }; f"
+	st = stash --patch
+	sta = stash
 	stau = stash --include-untracked
-    std = stash drop
-    stl = stash list
-    stp = stash pop
-    sts = stash show
-    um = pull origin main
-
-    si = submodule init
+	std = stash drop
+	stl = stash list
+	stp = stash pop
+	sts = stash show
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	required = true
+	process = git-lfs filter-process
+	si = submodule init
 	su = submodule update
-    sur = submodule update --init --recursive
+	sur = submodule update --init --recursive
 	smain = submodule foreach --recursive "git checkout main"
-	spull = submodule foreach --recursive "git pull"
-    spush = "!f() { if [ $# -eq 0 ]; then git submodule foreach --recursive "git add ."; git submodule foreach --recursive "git commit -m c"; git push --recurse-submodules=on-demand; else git submodule foreach --recursive "git add ."; git submodule foreach --recursive "git commit -m $1"; git push --recurse-submodules=on-demand; fi } f"
+spull = submodule foreach --recursive "git pull"
+   	spush = "!f() { if [ $# -eq 0 ]; then git submodule foreach --recursive "git add ."; git submodule foreach --recursive "git commit -m c"; git push --recurse-submodules=on-demand; else git submodule foreach --recursive "git add ."; git submodule foreach --recursive "git commit -m $1"; git push --recurse-submodules=on-demand; fi } f"
 	sstash = submodule foreach --recursive "git stash"
     # caa = commit -a --amend -C HEAD
     # sba = "!f() { git subtree add --prefix $2 $1 master --squash; }; f"
@@ -82,10 +86,6 @@
     # lg1 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
     # lg2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
 [filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	required = true
-	process = git-lfs filter-process
 [http]
 	cookiefile = ~/.config/.gitcookies
 [commit]
@@ -100,3 +100,5 @@
 	defaultBranch = main
 [credential "https://github.com"]
 	helper = !/home/linuxbrew/.linuxbrew/Cellar/gh/2.3.0/bin/gh auth git-credential
+[credential "https://source.developers.google.com"]
+	helper = gcloud.sh
