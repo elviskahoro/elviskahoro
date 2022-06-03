@@ -1,40 +1,51 @@
-alias pcall='pre-commit run --all-files'
-alias ghpr='gh pr create --web'
-alias blackp='black --target-version py310 .'
+alias rdocs='cd ~/Documents/'
+alias rworkspace='cd ~/Documents/workspace'
+alias rshowcase='cd ~/Documents/showcase'
+alias robsidian='cd ~/Documents/obsidian'
+alias rgb='cd ~/Documents/dx/src/gitbook'
+alias rcv='cd ~/Documents/dx/src/channel-versions'
+alias rdx='cd ~/Documents/dx'
+alias rgitbook='cd ~/Documents/dx/src/gitbook'
+alias rthemes='cd ~/Documents/dx/src/warp/themes'
+alias rwarp='cd ~/Documents/dx/src/Warp'
+alias rwi='cd ~/Documents/warp-internal'
+alias rworkflows='cd ~/Documents/dx/src/Warp/workflows'
+
 alias bkb='npx honkit build'
 alias bkr='npx honkit serve'
 alias bks='npx honkit serve'
-alias prc='gh pr create --web'
-alias pcr='pre-commit run --all-files'
-alias c='cd'
+alias docs='cd ~/Documents/'
+alias ngroks='ngrok start warpdotdev'
 alias g='git'
 alias la='ls -a'
 alias mb='ls -lah'
 alias MB='ls -l --block-size=M'
 alias o='./output'
-alias prun='pelican --autoreload --listen'
+alias pblack='black --target-version py310 .'
+alias ppcr='pre-commit run --all-files'
 alias t='tig'
 alias tnew='tmux new -s'
 alias tkill='tmux kill-session'
 alias ve='source ~/ve/bin/activate'
 alias vi='nvim'
 
-alias bprofile='vim ~/.bash_profile'
-alias brc='vim ~/.bashrc'
-alias gitrc='vim ~/.gitconfig'
-alias inputrc='vim ~/.inputrc'
-alias nvimrc='vim ~/.config/nvim/init.vim'
-alias sshrc='vim ~/.ssh/config'
-alias termrc='vim ~/.config/alacritty/alacritty.yml'
-alias tigrc='vim ~/.tigrc'
-alias tmuxrc='vim ~/.tmux.conf'
-alias vimrc='vim ~/.vimrc'
-alias profile="vim ~/.profile"
-alias zenv="vim ~/.zshenv"
-alias zprofile="vim ~/.zprofile"
-alias zrc="vim ~/.zshrc"
-alias zlogin="vim ~/.zlogin"
-alias zlogout="vim ~/.zlogout"
+alias rcbp='vim ~/.bash_profile'
+alias rcb='vim ~/.bashrc'
+alias rcbs='source ~/.bashrc'
+alias rcg='vim ~/.gitconfig'
+alias rci='vim ~/.inputrc'
+alias rcnvim='vim ~/.config/nvim/init.vim'
+alias rcsh='vim ~/.ssh/config'
+alias rcterm='vim ~/.config/alacritty/alacritty.yml'
+alias rctig='vim ~/.tigrc'
+alias rctmux='vim ~/.tmux.conf'
+alias rcvim='vim ~/.vimrc'
+alias rcp="vim ~/.profile"
+alias rcz="vim ~/.zshenv"
+alias rczp="vim ~/.zprofile"
+alias rcz="vim ~/.zshrc"
+alias rczlogin="vim ~/.zlogin"
+alias rczlogout="vim ~/.zlogout"
 
 alias d='cd'
 alias cp='cp -i'
@@ -62,6 +73,9 @@ alias 644='chmod -R 644'
 alias 666='chmod -R 666'
 alias 755='chmod -R 755'
 alias 777='chmod -R 777'
+
+#powerlevel10k
+
 
 # Search running processes
 alias topcpu="/bin/ps -eo pcpu,pid,user,args | sort -k 1 -r | head -10"
