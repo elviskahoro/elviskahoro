@@ -14,7 +14,7 @@ Prior to this I did research at Emory University, Pomona College, and interned a
 I'm interested in developer advocacy, community building, equity in technology, and computer science education.
 I love well written documentation and play full-back (right back).
 
-I'm fortunate that we're [remote-first at Warp](https://www.warp.dev/hiring); Atlanta, GA is my homebase.
+I'm fortunate that we're [remote-first at Warp](https://rigorous-worm-62d.notion.site/Public-Warp-How-We-Work-b872d41a1da743fca18220a731aeba48); Atlanta, GA is my homebase.
 
 Vim over emacs
 
