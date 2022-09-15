@@ -31,7 +31,8 @@
 	cam = "!gt commit --amend"
 	can = "!gt commit --amend --no-verify"
 	com = "!gt commit -m"
-	co = "!gt commit create"
+	co = commit
+	tco = "!gt commit create"
 	con = "!gt commit --no-verify"
 	cop = "!gt commit -p"
 	cp = "!gt cherry-pick"
@@ -44,7 +45,7 @@
 	ds = "!gt diff --cached"
 	lt = "!gt log --oneline"
 	ls = "!git ls-tree -r $(git branch --show-current) --name-only"
-	m = "!gt checkout main"
+	m = checkout main
 	p = "!gt push"
 	prev = "!f() { if [ $# -eq 0 ]; then git checkout HEAD^1; else git checkout HEAD^$1; fi }; f"
 	pbd = "!git push origin --delete $(git branch --show-current)"
