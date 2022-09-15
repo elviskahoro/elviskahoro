@@ -20,7 +20,7 @@
 	aa = "!gt add --all"
 	bc = "!gt checkout -b"
 	bd = "!gt branch -D"
-	bl = "!gt branch"
+	bl = branch
 	blr = "!gt branch -r"
 	bla = "!gt branch -a"
 	bm = "!gt branch --merged"
@@ -43,7 +43,7 @@
 	df = "!f() { if [ $# -eq 0 ]; then git diff-tree --no-commit-id --name-status -r HEAD; else git diff-tree --no-commit-id --name-status -r HEAD~$1; fi }; f"
 	dl = "!f() { if [ $# -eq 0 ]; then git show --name-status; else git git log --name-status -$1; fi }; f"
 	ds = "!gt diff --cached"
-	lt = "!gt log --oneline"
+	lt = log --oneline
 	ls = "!git ls-tree -r $(git branch --show-current) --name-only"
 	m = checkout main
 	p = "!gt push"
