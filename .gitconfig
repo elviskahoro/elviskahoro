@@ -31,7 +31,7 @@
 	cam = "!gt commit --amend"
 	can = "!gt commit --amend --no-verify"
 	com = "!gt commit -m"
-	co = "!gt commit"
+	co = "!gt commit create"
 	con = "!gt commit --no-verify"
 	cop = "!gt commit -p"
 	cp = "!gt cherry-pick"
