@@ -72,7 +72,7 @@
 	stl = "!gt stash list"
 	stp = "!gt stash pop"
 	sts = "!gt stash show"
-	x = "!gt checkout - "
+	x = checkout -
 	si = "!gt submodule init"
 	su = "!gt submodule update"
 	sur = "!gt submodule update --init --recursive"
