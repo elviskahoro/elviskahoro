@@ -34,7 +34,7 @@
 	co = commit
 	tco = "!gt commit create"
 	con = "!gt commit --no-verify"
-	cop = "!gt commit -p"
+	cop = commit -p
 	cp = "!gt cherry-pick"
 	cpa = "!gt cherry-pick --abort"
 	cpc = "!gt cherry-pick --continue"
