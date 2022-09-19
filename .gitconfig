@@ -15,11 +15,12 @@
 	ui = auto
 [alias]
 	a = "!gt add"
-	af = "!git add $(find . -type f -maxdepth 1)"
-	au = "!gt add -u"
 	aa = "!gt add --all"
-	bc = "!gt checkout -b"
-	bd = "!gt branch -D"
+	ap = "!gt add --patch"
+	au = "!gt add -u"
+	bc = checkout -b
+	tbc = "!gt branch create"
+	bd = branch -D
 	bl = branch
 	blr = "!gt branch -r"
 	bla = "!gt branch -a"
@@ -34,7 +35,6 @@
 	co = commit
 	tco = "!gt commit create"
 	con = "!gt commit --no-verify"
-	cop = commit -p
 	cp = "!gt cherry-pick"
 	cpa = "!gt cherry-pick --abort"
 	cpc = "!gt cherry-pick --continue"
@@ -43,6 +43,7 @@
 	df = "!f() { if [ $# -eq 0 ]; then git diff-tree --no-commit-id --name-status -r HEAD; else git diff-tree --no-commit-id --name-status -r HEAD~$1; fi }; f"
 	dl = "!f() { if [ $# -eq 0 ]; then git show --name-status; else git git log --name-status -$1; fi }; f"
 	ds = "!gt diff --cached"
+	l = "!gt log"
 	lt = log --oneline
 	ls = "!git ls-tree -r $(git branch --show-current) --name-only"
 	m = checkout main
@@ -94,7 +95,11 @@
 [fetch]
 	prune = true
 [diff]
-	colorMoved = zebra
+    tool = difftastic
+[difftool]
+        prompt = false
+[difftool "difftastic"]
+        cmd = difft "$LOCAL" "$REMOTE"
 [init]
 	defaultBranch = main
 [credential "https://github.com"]
