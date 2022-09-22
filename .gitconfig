@@ -18,8 +18,7 @@
 	aa = "!gt add --all"
 	ap = "!gt add --patch"
 	au = "!gt add -u"
-	bc = checkout -b
-	tbc = "!gt branch create"
+	bc = "!gt branch create"
 	bd = branch -D
 	bl = branch
 	blr = "!gt branch -r"
