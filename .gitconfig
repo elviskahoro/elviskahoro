@@ -81,6 +81,8 @@
 	spull =  submodule foreach --recursive "git pull"
    	spush = "!f() { if [ $# -eq 0 ]; then git submodule foreach --recursive "git add ."; git submodule foreach --recursive "git commit -m c"; git push --recurse-submodules=on-demand; else git submodule foreach --recursive "git add ."; git submodule foreach --recursive "git commit -m $1"; git push --recurse-submodules=on-demand; fi } f"
 	sstash = submodule foreach --recursive "git stash"
+    test = "!pre-commit run --all-files"
+
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
