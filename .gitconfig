@@ -28,11 +28,12 @@
 	br = "!gt branch -m"
 	ch = checkout
 	ca = "!gt commit amend"
-	cam = "!gt commit --amend"
-	can = "!gt commit --amend --no-verify"
+	can = "!gt commit amend --no-verify"
 	com = "!gt commit -m"
 	co = "!gt commit create"
-	con = "!gt commit --no-verify"
+	con = "!gt commit create --no-verify"
+	gcon = commit --no-verify
+	gco = commit
 	cp = "!gt cherry-pick"
 	cpa = "!gt cherry-pick --abort"
 	cpc = "!gt cherry-pick --continue"
