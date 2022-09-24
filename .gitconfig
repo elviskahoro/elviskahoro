@@ -31,8 +31,7 @@
 	cam = "!gt commit --amend"
 	can = "!gt commit --amend --no-verify"
 	com = "!gt commit -m"
-	co = commit
-	tco = "!gt commit create"
+	co = "!gt commit create"
 	con = "!gt commit --no-verify"
 	cp = "!gt cherry-pick"
 	cpa = "!gt cherry-pick --abort"
@@ -41,7 +40,6 @@
 	dc = "!gt diff --staged"
 	df = "!f() { if [ $# -eq 0 ]; then git diff-tree --no-commit-id --name-status -r HEAD; else git diff-tree --no-commit-id --name-status -r HEAD~$1; fi }; f"
 	dl = "!f() { if [ $# -eq 0 ]; then git show --name-status; else git git log --name-status -$1; fi }; f"
-	ds = "!gt diff --cached"
 	l = "!gt log"
 	lt = log --oneline
 	ls = "!git ls-tree -r $(git branch --show-current) --name-only"
