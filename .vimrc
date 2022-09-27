@@ -46,6 +46,7 @@ filetype plugin on
 syntax on
 
 let mapleader = ";"
+let NERDTreeShowHidden=1
 
 "remap world
 nnoremap j gj
