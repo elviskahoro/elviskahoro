@@ -19,6 +19,7 @@
 	ap = "!gt add --patch"
 	au = "!gt add -u"
 	bc = "!gt branch create"
+	bcn = "!gt branch create --no-verify"
 	bd = branch -D
 	bl = branch
 	blr = "!gt branch -r"
