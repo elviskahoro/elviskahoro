@@ -392,6 +392,7 @@ kedro.db
 *~
 .*.swo
 .*.swp
+.vim/.netrwhist
 
 .pytest_cache/
 kedro/html
