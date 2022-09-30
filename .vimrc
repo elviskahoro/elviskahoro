@@ -37,6 +37,7 @@ set softtabstop=4
 set splitright
 set splitbelow
 set tabstop=4
+set termguicolors
 set viewoptions-=options
 set wildmenu
 set wrapscan
@@ -46,7 +47,22 @@ filetype plugin on
 syntax on
 
 let mapleader = ";"
-let NERDTreeShowHidden=1
+
+"netrw
+let g:netrw_banner = 0
+let g:netrw_liststyle = 3
+let g:netrw_browse_split = 4
+let g:netrw_altv = 1
+let g:netrw_winsize = 20
+
+"augroup ProjectDrawer
+"  autocmd!
+"  autocmd VimEnter * :Lexplore
+"augroup END
+"
+nnoremap - :Vexplore! %:p:h<CR>
+"nnoremap <leader>dd :Lexplore %:p:h<CR>
+"nnoremap <Leader>da :Lexplore<CR>
 
 "remap world
 nnoremap j gj
