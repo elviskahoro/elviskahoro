@@ -1,3 +1,6 @@
+set termguicolors
+colorscheme monokai_pro
+
 set autochdir
 set autoindent
 set autoread
