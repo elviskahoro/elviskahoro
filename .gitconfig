@@ -6,6 +6,7 @@
 	editor = vim
 [push]
   	default = simple
+	autoSetupRemote = true
 [color]
 	status = auto
 	diff = auto
