@@ -67,7 +67,7 @@
 	rbc = "!gt rebase --continue"
     rs = "!gt repo sync"
 	s = "!gt status"
-    ss = "!gt stack submit"
+    ss = "!gt downstack submit"
 	sw = "!gt switch"
 	swc = "!gt switch -c"
 	sh = "!f() { if [ $# -eq 0 ]; then git show; else git show HEAD~$1; fi }; f"
