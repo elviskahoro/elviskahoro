@@ -47,6 +47,7 @@
 	lt = log --oneline
 	ls = "!git ls-tree -r $(git branch --show-current) --name-only"
 	m = checkout main
+	open = "!gt dash pr"
 	p = "!gt push"
 	prev = "!f() { if [ $# -eq 0 ]; then git checkout HEAD^1; else git checkout HEAD^$1; fi }; f"
 	pbd = "!git push origin --delete $(git branch --show-current)"
