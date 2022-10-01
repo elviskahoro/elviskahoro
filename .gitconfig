@@ -27,7 +27,7 @@
 	bla = "!gt branch -a"
 	bm = "!gt branch --merged"
 	bn = "!gt branch --no-merged"
-	br = "!gt branch -m"
+	branch = "!gt branch"
 	ch = checkout
 	ca = "!gt commit amend"
 	can = "!gt commit amend --no-verify"
