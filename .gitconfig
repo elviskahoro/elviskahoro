@@ -57,7 +57,7 @@
 	pl = "!gt pull"
 	plm = "!gt fetch origin main:main"
 	pf = "!gt push"
-	pr = "!gt stack submit"
+	pr = "!gt downstack submit"
 	# pr = "!gh pr create --web"
 	r = "!f() { if [ $# -eq 0 ]; then echo 'Specify a number'; else git reset HEAD~$1 --mixed; fi }; f"
 	rb = "!gt rebase"
