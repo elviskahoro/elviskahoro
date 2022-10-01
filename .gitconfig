@@ -23,8 +23,8 @@
 	bc = "!gt branch create"
 	bcn = "!gt branch create --no-verify"
     bd = "!gt branch down"
-	bd = branch -D
 	bl = branch
+    brn = "!gt branch rename"
     bt = "!gt branch top"
     bu = "!gt branch up"
 	branch = "!gt branch"
