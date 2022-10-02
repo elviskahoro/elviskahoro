@@ -63,7 +63,7 @@
 	rb = "!gt rebase"
 	rba = "!gt rebase --abort"
 	rbm = "!gt rebase main"
-	rbc = "!gt rebase --continue"
+	rbc = "!gt continue"
     rs = "!gt repo sync"
 	s = "!gt status"
     ss = "!gt downstack submit"
