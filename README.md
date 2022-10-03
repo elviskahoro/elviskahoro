@@ -21,4 +21,4 @@ Pineapple on pizza
 
 Nike over adidas
 
-If there are any other controversial debates you'd like my opinion on please don't hesitate to email (elvis at elvis dot ai) me or open a new issue in this repository.
+If there are any other controversial debates you'd like my opinion on please don't hesitate to email (elvis at warpdotdev) me or open a new issue in this repository.
