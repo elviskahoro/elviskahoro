@@ -18,3 +18,6 @@ Barca over madrid
 Club America over chivas
 
 Pineapple on pizza
+
+Nike over adidas
+
