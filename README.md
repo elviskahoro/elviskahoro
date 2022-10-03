@@ -13,8 +13,8 @@ I love well written documentation! (check out [swimm](https://swimm.io))
 
 Vim over emacs
 
-Barca over Madrid
+Barca over madrid
 
-Club America over Chivas
+Club America over chivas
 
 Pineapple on pizza
