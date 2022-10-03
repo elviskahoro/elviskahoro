@@ -1,7 +1,5 @@
 # Tools 
 
-brave browser - sync chain
-
 1password
 
 icloud
@@ -14,14 +12,16 @@ devutils
 
 raycast
 
-vscode
+intellij
 
 obsidian
 
 cron
 
-brew 
+brew
 
 github cli
 
 pyenv
+
+loom
