@@ -28,7 +28,7 @@
     brn = "!gt branch rename"
     bt = "!gt branch top"
     bu = "!gt branch up"
-	branch = "!gt branch"
+	branch = "!f() { if [ $# -eq 0 ]; then git branch; else gt branch $1; fi }; f"
 	ch = checkout
 	ca = "!gt commit amend"
 	can = "!gt commit amend --no-verify"
