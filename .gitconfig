@@ -26,7 +26,7 @@
     bdl = "!gt branch delete"
 	bl = branch
     brn = "!gt branch rename"
-    bt = "!gt branch top"
+    btop = "!gt branch top"
 	bu = "!f() { if [ $# -eq 0 ]; then gt branch up; else gt branch up $1; fi }; f"
 	ch = checkout
 	ca = "!gt commit amend"
