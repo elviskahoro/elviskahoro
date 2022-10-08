@@ -16,7 +16,7 @@
 	ui = auto
 [alias]
 	a = "!gt add"
-	aa = "!gt add --all"
+	aa = "!gt add ."
 	ap = "!gt add --patch"
 	au = "!gt add -u"
     bb = "!gt branch bottom"
