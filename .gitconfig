@@ -26,7 +26,6 @@
     bdl = "!gt branch delete"
 	bl = branch
     brn = "!gt branch rename"
-    btop = "!gt branch top"
 	bu = "!f() { if [ $# -eq 0 ]; then gt branch up; else gt branch up $1; fi }; f"
 	ch = checkout
 	ca = "!gt commit amend"
@@ -78,6 +77,7 @@
 	stl = "!gt stash list"
 	stp = "!gt stash pop"
 	sts = "!gt stash show"
+    top = "!gt branch top"
 	x = checkout -
 	si = "!gt submodule init"
 	su = "!gt submodule update"
