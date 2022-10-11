@@ -29,7 +29,7 @@ alias mv='mv -i'
 alias rmi='rm -iv'
 alias ping='ping -c 10'
 alias ps='ps auxf'
-alias apt-get='sudo apt-get'lias vi='nvim'
+alias vi='mvim'
 # Alias's to show disk space and space used in a folder
 alias diskspace="du -S | sort -n -r |more"
 alias folders='du -h --max-depth=1'
