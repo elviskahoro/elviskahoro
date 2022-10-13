@@ -17,7 +17,6 @@ set foldenable
 set foldlevelstart=10
 set foldnestmax=10
 set foldmethod=indent
-set hidden
 set history=1000
 set ignorecase
 set lazyredraw
@@ -55,7 +54,7 @@ let mapleader = ";"
 let g:netrw_banner = 0
 let g:netrw_liststyle = 3
 let g:netrw_browse_split = 4
-let g:netrw_altv = 1
+let g:netrw_altv = 0
 let g:netrw_winsize = 30
 
 "augroup ProjectDrawer
@@ -72,6 +71,10 @@ nnoremap j gj
 nnoremap k gk
 nnoremap gV `[v`]
 nnoremap dil ^d$
+
+set hidden
+nnoremap <C-N> :bnext<CR>
+nnoremap <C-P> :bprev<CR>
 
 set incsearch
 set laststatus=2
