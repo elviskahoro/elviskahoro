@@ -22,11 +22,12 @@
     bb = "!gt branch bottom"
 	bc = "!gt branch create"
 	bcn = "!gt branch create --no-verify"
-	bd = "!f() { if [ $# -eq 0 ]; then gt branch down; else gt branch down $1; fi }; f"
+	bp = "!f() { if [ $# -eq 0 ]; then gt branch down; else gt branch down $1; fi }; f"
     bdl = "!gt branch delete"
+    gbd = branch -D
 	bl = branch
     brn = "!gt branch rename"
-	bu = "!f() { if [ $# -eq 0 ]; then gt branch up; else gt branch up $1; fi }; f"
+	bn = "!f() { if [ $# -eq 0 ]; then gt branch up; else gt branch up $1; fi }; f"
 	ch = checkout
 	ca = "!gt commit amend"
 	can = "!gt commit amend --no-verify"
