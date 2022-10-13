@@ -65,6 +65,8 @@
 	rbm = "!gt rebase main"
 	rbc = "!gt continue"
     rs = "!gt repo sync"
+    rsd = "!gt downstack restack"
+    rsu = "!gt upstack restack"
 	s = "!gt status"
     ss = "!gt downstack submit"
 	sw = "!gt switch"
