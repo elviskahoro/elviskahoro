@@ -28,7 +28,10 @@
 	bl = branch
 	bn = "!f() { if [ $# -eq 0 ]; then gt branch up; else gt branch up $1; fi }; f"
 	bp = "!f() { if [ $# -eq 0 ]; then gt branch down; else gt branch down $1; fi }; f"
+	bd = "!f() { if [ $# -eq 0 ]; then gt branch down; else gt branch down $1; fi }; f"
     brn = "!gt branch rename"
+    bs = "!gt branch split"
+	bu = "!f() { if [ $# -eq 0 ]; then gt branch up; else gt branch up $1; fi }; f"
 	ch = checkout
 	ca = "!gt commit amend"
 	can = "!gt commit amend --no-verify"
