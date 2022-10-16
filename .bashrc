@@ -1,3 +1,5 @@
+alias ve='source /Users/elvis/Library/Caches/pypoetry/virtualenvs/warpdotdev-dx-_OAhpmWh-py3.10/bin/activate'
+
 alias cddocs='cd ~/Documents/'
 alias cdworkspace='cd ~/Documents/workspace'
 alias cdshowcase='cd ~/Documents/showcase'
@@ -20,7 +22,6 @@ alias o='./output'
 alias t='tig'
 alias tnew='tmux new -s'
 alias tkill='tmux kill-session'
-alias ve='source ~/ve/bin/activate'
 alias cp='cp -i'
 alias d='cd'
 alias less='less -R'
@@ -30,6 +31,7 @@ alias rmi='rm -iv'
 alias ping='ping -c 10'
 alias ps='ps auxf'
 alias vi='mvim'
+
 # Alias's to show disk space and space used in a folder
 alias diskspace="du -S | sort -n -r |more"
 alias folders='du -h --max-depth=1'
