@@ -32,9 +32,10 @@
     brn = "!gt branch rename"
     bs = "!gt branch split"
 	bu = "!f() { if [ $# -eq 0 ]; then gt branch up; else gt branch up $1; fi }; f"
-	ch = checkout
 	ca = "!gt commit amend"
 	can = "!gt commit amend --no-verify"
+	ch = checkout
+    check = "!trunk check --all --fix"
 	com = "!gt commit -m"
 	co = "!gt commit create"
 	con = "!gt commit create --no-verify"
