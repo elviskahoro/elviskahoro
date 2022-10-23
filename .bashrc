@@ -1,6 +1,7 @@
 alias ve='source /Users/elvis/Library/Caches/pypoetry/virtualenvs/warpdotdev-dx-_OAhpmWh-py3.10/bin/activate'
 
 alias cddocs='cd ~/Documents/'
+alias cdconfig='cd ~/Documents/dx/.trunk/config'
 alias cdworkspace='cd ~/Documents/workspace'
 alias cdshowcase='cd ~/Documents/showcase'
 alias cdobsidian='cd ~/Documents/obsidian'
