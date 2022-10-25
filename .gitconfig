@@ -48,6 +48,7 @@
 	d = "!f() { if [ $# -eq 0 ]; then git diff; else git diff HEAD~$1; fi }; f"
 	dc = "!gt diff --cached"
 	ds = "!f() { if [ $# -eq 0 ]; then git show --name-only; else git log --name-only -$1; fi }; f"
+    dsr = "!gt downstack restack"
 	dl = "!f() { if [ $# -eq 0 ]; then git diff-tree --no-commit-id --name-status -r HEAD; else git diff-tree --no-commit-id --name-status -r HEAD~$1; fi }; f"
 	dls = "!f() { if [ $# -eq 0 ]; then git diff-tree --no-commit-id --name-status -r HEAD; else git diff-tree --no-commit-id --name-status -r HEAD~$1; fi }; f"
 	l = "!gt log"
@@ -72,8 +73,6 @@
 	rbm = "!gt rebase main"
 	rbc = "!gt continue"
     rs = "!gt repo sync"
-    rsd = "!gt downstack restack"
-    rsu = "!gt upstack restack"
 	s = "!gt status"
     ss = "!gt downstack submit"
 	sw = "!gt switch"
@@ -98,6 +97,7 @@
 	sstash = submodule foreach --recursive "git stash"
     test = "!pre-commit run --all-files"
     uso = "!gt upstack onto"
+    usr = "!gt upstack restack"
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
