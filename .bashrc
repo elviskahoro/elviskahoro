@@ -1,3 +1,6 @@
+alias check='trunk check'
+alias fmt='trunk fmt'
+alias ngroks='ngrok start warpdotdev'
 alias ve='source /Users/elvis/Library/Caches/pypoetry/virtualenvs/warpdotdev-dx-_OAhpmWh-py3.10/bin/activate'
 
 alias cdcv='cd ~/Documents/dx/src/channel-versions'
@@ -14,7 +17,6 @@ alias cdwi='cd ~/Documents/warp-internal'
 alias cdworkflows='cd ~/Documents/dx/src/Warp/workflows'
 alias cdworkspace='cd ~/Documents/workspace'
 
-alias ngroks='ngrok start warpdotdev'
 alias g='git'
 alias la='ls -a'
 alias mb='ls -lah'
