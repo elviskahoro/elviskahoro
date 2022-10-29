@@ -1,4 +1,3 @@
-alias check='trunk check'
 alias fmt='trunk fmt'
 alias ngroks='ngrok start warpdotdev'
 alias ve='source /Users/elvis/Library/Caches/pypoetry/virtualenvs/warpdotdev-dx-_OAhpmWh-py3.10/bin/activate'

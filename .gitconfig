@@ -33,6 +33,7 @@
     brn = "!gt branch rename"
     bs = "!gt branch split"
 	bu = "!f() { if [ $# -eq 0 ]; then gt branch up; else gt branch up $1; fi }; f"
+    c = "trunk check --fix --all"
 	ca = "!gt commit amend"
 	can = "!gt commit amend --no-verify"
 	ch = checkout
