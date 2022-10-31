@@ -51,6 +51,7 @@
 	dc = "!gt diff --cached"
 	ds = "!f() { if [ $# -eq 0 ]; then git show --name-only; else git log --name-only -$1; fi }; f"
     dsr = "!gt downstack restack"
+    dst = "!gt downstack test"
 	dl = "!f() { if [ $# -eq 0 ]; then git diff-tree --no-commit-id --name-status -r HEAD; else git diff-tree --no-commit-id --name-status -r HEAD~$1; fi }; f"
 	dls = "!f() { if [ $# -eq 0 ]; then git diff-tree --no-commit-id --name-status -r HEAD; else git diff-tree --no-commit-id --name-status -r HEAD~$1; fi }; f"
 	l = "!gt log"
