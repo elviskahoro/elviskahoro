@@ -1,7 +1,9 @@
-## <em>Hi! I'm elvis (he/him/his)</em>
+## <em></em>
 
 [![Linkedin](https://img.shields.io/badge/-Linkedin-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/elviskahoro/)](https://www.linkedin.com/in/elviskahoro/) 
 [![Website](https://img.shields.io/badge/-Website-critical?style=flat-square&logo=AddThis&logoColor=white&link=https://elvis.ai/)](https://elvis.ai/)
+
+Hi! I'm elvis (he/him/his)
 
 I went to [Pomona College](https://www.pomona.edu/), chirp chirp!
 
