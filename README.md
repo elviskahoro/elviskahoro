@@ -17,7 +17,7 @@ Some tools that give me joy:
 - [graphite](https://graphite.dev/)
 - [trunk](https://trunk.io/)
 - [swimm](https://swimm.io)
-- [motif](https://motif.land/))
+- [motif](https://motif.land/)
 - [linear](https://linear.app/)
 
 Vim over emacs
