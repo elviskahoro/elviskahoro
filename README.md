@@ -7,7 +7,7 @@ Hi! I'm elvis (he/him/his)
 
 I went to [Pomona College](https://www.pomona.edu/), chirp chirp!
 
-I work at [Warp](https://warp.dev/), where we are building a Rust-based GPU-accelerated MODERN terminal! Join our [Discord!](https://discord.gg/warpdotdev)
+I work at [Warp](https://warp.dev/), where we are building a Rust-based **modern** terminal! Join our [Discord!](https://discord.gg/warpdotdev)
 
 Our mission is to [elevate developer productivity.](https://github.com/warpdotdev/Warp/discussions?discussions_q=label%3ARoadmap+sort%3Atop)
 We're [remote first](https://warpdev.notion.site/Public-Warp-How-We-Work-b872d41a1da743fca18220a731aeba48) and I live in Atlanta, GA. Go ATL UTD!!! Go Braves!! Go Hawks! Our other team I will not speak of.
