@@ -45,6 +45,7 @@
 	co = "!gt commit create"
 	con = "!gt commit create --no-verify"
     continue = "!gt continue"
+    ct = "!gt continue"
 	gcon = commit --no-verify
 	gco = commit
 	cp = "!gt cherry-pick"
