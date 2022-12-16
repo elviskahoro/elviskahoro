@@ -77,7 +77,7 @@
 	pf = "!gt push"
 	pr = "!gt downstack submit"
 	# pr = "!gh pr create --web"
-	r = "!f() { if [ $# -eq 0 ]; then echo 'Specify a number'; else git reset HEAD~$1 --mixed; fi }; f"
+	r = "!f() { if [ $# -eq 0 ]; then git reset; else git reset HEAD~$1 --mixed; fi }; f"
 	rb = "!gt rebase"
 	rba = "!gt rebase --abort"
 	rbm = "!gt rebase main"
