@@ -39,8 +39,9 @@
     brsq = "!gt branch squash"
     brt = "!gt branch track"
 	bu = "!f() { if [ $# -eq 0 ]; then gt branch up; else gt branch up $1; fi }; f"
-    c = "!trunk check --fix --all"
     cc = "!trunk check --fix"
+    cca = "!trunk check --fix --all"
+    ccb = "!gt upstack test `trunk check --fix`"
 	ca = "!gt commit amend --no-edit"
 	cam = "!gt commit amend"
 	ch = checkout
@@ -109,6 +110,7 @@
     test = "!pre-commit run --all-files"
     uso = "!gt upstack onto"
     usr = "!gt upstack restack"
+    ust = "!gt upstack test"
 	x = checkout -
 [filter "lfs"]
 	clean = git-lfs clean -- %f
