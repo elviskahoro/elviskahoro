@@ -40,7 +40,7 @@
     brt = "!gt branch track"
 	bu = "!f() { if [ $# -eq 0 ]; then gt branch up; else gt branch up $1; fi }; f"
     cc = "!trunk check --fix"
-    cca = "!trunk check --fix --all"
+    cca = "!trunk check --fix --all --ignore-git-state"
     ccb = "!gt upstack test `trunk check --fix`"
 	ca = "!gt commit amend --no-edit"
 	cam = "!gt commit amend"
