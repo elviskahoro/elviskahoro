@@ -16,6 +16,7 @@ alias cdwarp='cd ~/Documents/dx/src/Warp'
 alias cdwi='cd ~/Documents/warp-internal'
 alias cdworkflows='cd ~/Documents/dx/src/Warp/workflows'
 alias cdworkspace='cd ~/Documents/workspace'
+alias cdwork='cd ~/Documents/workspace'
 
 alias cp='cp -i'
 alias d='cd'
