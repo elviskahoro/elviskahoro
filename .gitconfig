@@ -80,7 +80,7 @@
 	plm = "!gt fetch origin main:main"
 	pf = "!gt push"
 	pr = "!gt downstack submit"
-	# pr = "!gh pr create --web"
+	gpr = "!gh pr create --web"
 	r = "!f() { if [ $# -eq 0 ]; then git reset; else git reset HEAD~$1 --mixed; fi }; f"
 	rb = "!gt rebase"
 	rba = "!gt rebase --abort"
