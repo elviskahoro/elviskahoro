@@ -18,7 +18,7 @@
 	a = "!gt add"
 	aa = "!gt add ."
 	ap = "!gt add --patch"
-	au = "!gt add -u"
+	au = "!gt add -u && gt status"
     bb = "!gt branch bottom"
 	bc = "!gt branch create"
 	gbc = branch -c
