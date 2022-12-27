@@ -24,7 +24,6 @@
 	gbc = branch -c
 	bcn = "!gt branch create --no-verify"
     bdl = "!gt branch delete"
-    gbd = branch -D
     be = "!gt downstack edit"
     bf = "!gt branch fold"
 	bl = branch --list
