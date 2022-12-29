@@ -17,10 +17,15 @@ Some tools that give me joy:
 - [warp](https://warp.dev)
 - [graphite](https://graphite.dev/)
 - [trunk](https://trunk.io/)
-- [swimm](https://swimm.io)
-- [motif](https://motif.land/)
-- [linear](https://linear.app/)
 - [stashpad](https://www.stashpad.com/)
+- [raycast](https://www.raycast.com/)
+- [rectangle (pro)](https://rectangleapp.com/pro)
+- [swimm](https://swimm.io)
+- [linear](https://linear.app/)
+- [motif](https://motif.land/)
+- [cron](https://cron.com/)
+- [front](https://front.com/)
+
 
 Vim over emacs
 
