@@ -20,6 +20,7 @@ Some tools that give me joy:
 - [swimm](https://swimm.io)
 - [motif](https://motif.land/)
 - [linear](https://linear.app/)
+- [stashpad](https://www.stashpad.com/)
 
 Vim over emacs
 
