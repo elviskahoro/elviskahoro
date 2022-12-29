@@ -69,6 +69,7 @@
 	ls = "!gt log short"
 	lt = log --oneline
 	m = checkout main
+	gmmm = merge main
 	open = "!gt dash pr"
     onto = "!gt upstack onto"
 	prev = "!f() { if [ $# -eq 0 ]; then git checkout HEAD^1; else git checkout HEAD^$1; fi }; f"
