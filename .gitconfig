@@ -77,7 +77,7 @@
 	pbdf = "!git push origin --delete $(git branch --show-current) && git push -u origin HEAD"
 	pl = "!gt pull"
 	plm = "!gt fetch origin main:main"
-	pf = "!gt push"
+    pom = pull origin main
 	pr = "!gt downstack submit"
 	gpr = "!gh pr create --web"
 	r = "!f() { if [ $# -eq 0 ]; then git reset; else git reset HEAD~$1 --mixed; fi }; f"
