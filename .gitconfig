@@ -104,6 +104,7 @@
 	sts = "!gt stash show"
     top = "!gt branch top"
 	si = submodule init
+	sir = submodule update --init --recursive
 	su = submodule update
 	sur = submodule update --init --recursive
 	smain = "!git submodule foreach --recursive `git checkout main`"
