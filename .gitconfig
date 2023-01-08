@@ -74,7 +74,7 @@
 	open = "!gt dash pr"
     onto = "!gt upstack onto"
 	prev = "!f() { if [ $# -eq 0 ]; then git checkout HEAD^1; else git checkout HEAD^$1; fi }; f"
-	pbd = "!git push origin --delete $(git branch --show-current)"
+	pbd = "!git push --no-verify origin --delete $(git branch --show-current)"
 	pbf = "!gt push -u origin HEAD"
 	pbdf = "!git push --no-verify origin --delete $(git branch --show-current) && git push --no-verify -u origin HEAD"
 	pl = "!gt pull"
