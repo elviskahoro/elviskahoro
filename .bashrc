@@ -1,3 +1,5 @@
+alias pygithub='cd /Users/elvis/Library/Caches/pypoetry/virtualenvs/warpdotdev-dx-_OAhpmWh-py3.10/lib/python3.10/site-packages/github'
+
 alias jt='jupyter-lab'
 alias fmt='trunk fmt'
 alias ngroks='ngrok start warpdotdev'
