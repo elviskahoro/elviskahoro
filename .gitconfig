@@ -15,9 +15,14 @@
 	grep = auto
 	ui = auto
 [alias]
+	ap = add --patch
+	dc = diff --cached
+	s = status
+	stp = stash pop
+
 	a = "!gt add"
 	aa = "!gt add ."
-	ap = "!gt add --patch"
+	#ap = "!gt add --patch"
 	au = "!gt add -u && gt status"
     bb = "!gt branch bottom"
 	bc = "!gt branch create"
@@ -57,7 +62,7 @@
 	cpa = "!gt cherry-pick --abort"
 	cpc = "!gt cherry-pick --continue"
 	d = "!f() { if [ $# -eq 0 ]; then git diff; else git diff HEAD~$1; fi }; f"
-	dc = "!gt diff --cached"
+	#dc = "!gt diff --cached"
 	ds = "!f() { if [ $# -eq 0 ]; then git show --name-only; else git log --name-only -$1; fi }; f"
     dsr = "!gt downstack restack"
     dst = "!gt downstack test"
@@ -71,6 +76,7 @@
 	lt = log --oneline
 	m = checkout main
 	gmm = merge main
+
 	open = "!gt dash pr"
     onto = "!gt upstack onto"
 	prev = "!f() { if [ $# -eq 0 ]; then git checkout HEAD^1; else git checkout HEAD^$1; fi }; f"
@@ -89,7 +95,7 @@
 	rbc = "!gt continue"
 	grbc = rebase --continue
     rs = "!gt repo sync"
-	s = "!gt status"
+	#s = "!gt status"
     ss = "!gt downstack submit"
 	sw = "!gt switch"
 	swc = "!gt switch -c"
@@ -100,7 +106,7 @@
 	stau = "!gt stash --include-untracked"
 	std = "!gt stash drop"
 	stl = "!gt stash list"
-	stp = "!gt stash pop"
+	#stp = "!gt stash pop"
 	sts = "!gt stash show"
     top = "!gt branch top"
 	si = submodule init
@@ -117,28 +123,39 @@
     usr = "!gt upstack restack"
     ust = "!gt upstack test"
 	x = checkout -
+
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+
 [http]
 	cookiefile = ~/.config/.gitcookies
+
 [commit]
 	template = ~/.config/git/.gitmessage
+
 [pull]
 	rebase = true
+
 [fetch]
 	prune = true
+
 [diff]
     tool = difftastic
+
 [difftool]
         prompt = false
+
 [difftool "difftastic"]
         cmd = difft "$LOCAL" "$REMOTE"
+
 [init]
 	defaultBranch = main
+
 [credential "https://github.com"]
 	helper = !/home/linuxbrew/.linuxbrew/Cellar/gh/2.3.0/bin/gh auth git-credential
+
 [credential "https://source.developers.google.com"]
 	helper = gcloud.sh
