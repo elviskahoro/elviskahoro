@@ -24,7 +24,8 @@ alias cp='cp -i'
 alias d='cd'
 alias g='git'
 alias gtc='gt continue'
-alias la='ls -a'
+alias la='ls -a --color'
+alias ls='ls --color'
 alias less='less -R'
 alias mb='ls -lah'
 alias MB='ls -l --block-size=M'
@@ -77,6 +78,7 @@ alias 777='chmod -R 777'
 alias ~='cd ~'                              # Go Home
 alias ..='cd ../'                           # Go back 1 directory
 alias ...='cd ../../'                       # Go back 2 directory
+alias ....='cd ../../../'                       # Go back 2 directory
 alias .2='cd ../../'                        # Go back 2 directory
 alias .3='cd ../../../'                     # Go back 3 directory
 alias .4='cd ../../../../'                  # Go back 4 directory
