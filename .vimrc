@@ -43,7 +43,6 @@ set termguicolors
 set viewoptions-=options
 set wildmenu
 set wrapscan
-set viewoptions-=options
 
 filetype plugin on
 syntax on
