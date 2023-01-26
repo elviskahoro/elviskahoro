@@ -18,6 +18,8 @@ Some tools that give me joy:
 - [graphite](https://graphite.dev/)
 - [trunk](https://trunk.io/)
 - [stashpad](https://www.stashpad.com/)
+- [dagger.io](https://dagger.io/)
+- [cirrusCI)(https://cirrus-ci.org/)
 - [raycast](https://www.raycast.com/)
 - [rectangle (pro)](https://rectangleapp.com/pro)
 - [swimm](https://swimm.io)
