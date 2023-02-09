@@ -26,6 +26,9 @@ alias g='git'
 alias gtc='gt continue'
 alias la='ls -a --color'
 alias ls='ls --color'
+
+
+
 alias less='less -R'
 alias mb='ls -lah'
 alias MB='ls -l --block-size=M'
@@ -85,3 +88,6 @@ alias .4='cd ../../../../'                  # Go back 4 directory
 alias .5='cd ../../../../../'               # Go back 5 directory
 alias .6='cd ../../../../../../'            # Go back 6 directory
 
+function cdl {
+  cd "$(llama "$@")"
+}
