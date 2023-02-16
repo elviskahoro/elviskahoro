@@ -4,7 +4,9 @@ if [ -f "$HOME/.bashrc" ]; then
 fi
 . "$HOME/.cargo/env"
 
-eval "$(rbenv init - zsh)"
+if [[ $TERM_PROGRAM != "WarpTerminal" ]]; then
+    eval "$(rbenv init - zsh)"
+fi
 # eval "$(starship init zsh)"
 # eval "$(pyenv init -)"
 # eval "$(direnv hook zsh)"
