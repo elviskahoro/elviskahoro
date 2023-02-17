@@ -27,8 +27,6 @@ alias gtc='gt continue'
 alias la='ls -a --color'
 alias ls='ls --color'
 
-
-
 alias less='less -R'
 alias mb='ls -lah'
 alias MB='ls -l --block-size=M'
