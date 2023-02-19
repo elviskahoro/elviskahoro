@@ -1,12 +1,15 @@
 [user]
 	email = elvis@warp.dev
 	name = elvis kahoro
+
 [core]
 	excludesfile = /Users/elvis/.gitignore_global
 	editor = vim
+
 [push]
   	default = simple
 	autoSetupRemote = true
+
 [color]
 	status = auto
 	diff = auto
@@ -14,6 +17,7 @@
 	interactive = auto
 	grep = auto
 	ui = auto
+
 [alias]
 	ap = add --patch
 	dc = diff --cached
