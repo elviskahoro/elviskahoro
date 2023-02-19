@@ -1,3 +1,8 @@
+alias ls='exa'
+alias la='exa -a -1'
+alias th='cd /Users/elvis/Documents/treehacks'
+alias thslides='slides slides.md'
+
 alias pygithub='cd /Users/elvis/Library/Caches/pypoetry/virtualenvs/warpdotdev-dx-_OAhpmWh-py3.10/lib/python3.10/site-packages/github'
 
 alias jt='jupyter-lab'
@@ -24,8 +29,8 @@ alias cp='cp -i'
 alias d='cd'
 alias g='git'
 alias gtc='gt continue'
-alias la='ls -a --color'
-alias ls='ls --color'
+#alias la='ls -a --color'
+#alias ls='ls --color'
 
 alias less='less -R'
 alias mb='ls -lah'
