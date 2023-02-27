@@ -26,7 +26,7 @@
 
 	a = "!gt add"
 	aa = "!gt add ."
-	#ap = "!gt add --patch"
+	ap = "!gt add --patch"
 	au = "!gt add -u && gt status"
     bb = "!gt branch bottom"
 	bc = "!gt branch create"
@@ -47,10 +47,12 @@
     brsq = "!gt branch squash"
     brt = "!gt branch track"
 	bu = "!f() { if [ $# -eq 0 ]; then gt branch up; else gt branch up $1; fi }; f"
+    bucc = "!gt upstack test 'trunk check --fix --ignore-git-state'"
     budc = "!gt branch up && git diff HEAD~$1"
 	ca = "!gt commit amend --no-edit"
 	gca = commit --amend --no-edit
 	cam = "!gt commit amend"
+	cma = "!gt commit amend"
     cc = "!trunk check --fix"
     cca = "!trunk check --fix --all --ignore-git-state"
     ccb = "!gt upstack test `trunk check --fix`"
