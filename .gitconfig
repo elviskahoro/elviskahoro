@@ -127,6 +127,7 @@
     t = "!pytest --ignore-glob='*/pycord/*' --import-mode=prepend"
     test = "!pre-commit run --all-files"
     uso = "!gt upstack onto"
+    pusr = "!git push && gt upstack restack"
     usr = "!gt upstack restack"
     ust = "!gt upstack test"
 	x = checkout -
