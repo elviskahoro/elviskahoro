@@ -55,7 +55,6 @@
 	cma = "!gt commit amend"
     cc = "!trunk check --fix"
     cca = "!trunk check --fix --all --ignore-git-state"
-    ccb = "!gt upstack test `trunk check --fix`"
 	ch = checkout
     check = "!trunk check --all --fix"
 	com = "!gt commit -m"
