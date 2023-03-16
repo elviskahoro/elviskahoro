@@ -1,5 +1,5 @@
 #alias ls='exa'
-alias ls='exa -a -1 --long'
+alias ls='exa -a --long'
 alias th='cd /Users/elvis/Documents/treehacks'
 alias thslides='slides slides.md'
 
