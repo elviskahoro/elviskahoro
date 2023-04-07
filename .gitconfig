@@ -103,6 +103,7 @@
     rs = "!gt repo sync"
 	#s = "!gt status"
     ss = "!gt downstack submit"
+    ssf = "!gt downstack submit --force"
 	sw = "!gt switch"
 	swc = "!gt switch -c"
 	sh = "!f() { if [ $# -eq 0 ]; then git show; else git show HEAD~$1; fi }; f"
