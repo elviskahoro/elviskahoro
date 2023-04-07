@@ -1,5 +1,4 @@
-#lint: which linter was ran
-#feat: A new feature
+#lint: which linter was ran #feat: A new feature
 #fix: A bug fix
 #docs: Documentation only changes
 #style: Changes that do not affect the meaning of the code 
@@ -8,6 +7,8 @@
 #submodule: A submodule update
 #test: Adding missing tests
 #chore: Changes to the build process
+#trunk: Changes to trunk (linter) configuration 
+#rcfiles: Changes to configuration files
 
 # Title: Summary, imperative, start upper case, don't end with a period
 # No more than 50 chars. #### 50 chars is here: #
