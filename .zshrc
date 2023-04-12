@@ -7,8 +7,9 @@ fi
 if [[ $TERM_PROGRAM == "WarpTerminal" ]]; then
     eval "$(starship init zsh)"
 fi
-if [[ $TERM_PROGRAM == "WarpTerminal" ]]; then
+if [[ $TERM_PROGRAM != "WarpTerminal" ]]; then
     eval "$(rbenv init - zsh)"
+    eval $(thefuck --alias)
 fi
 # eval "$(starship init zsh)"
 # eval "$(pyenv init -)"
