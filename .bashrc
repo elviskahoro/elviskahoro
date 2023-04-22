@@ -26,7 +26,6 @@ alias cdworkspace='cd ~/Documents/workspace'
 alias cdwork='cd ~/Documents/workspace'
 
 alias cp='cp -i'
-alias d='cd'
 alias g='git'
 alias gtc='gt continue'
 #alias la='ls -a --color'
