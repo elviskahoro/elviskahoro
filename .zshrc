@@ -8,3 +8,4 @@ if [[ $TERM_PROGRAM != "WarpTerminal" ]]; then
 fi
 . "$HOME/.cargo/env"
 eval "$(/opt/homebrew/bin/brew shellenv)"
+eval "$(pyenv init --path)"
