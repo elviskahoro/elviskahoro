@@ -1,0 +1,11 @@
+---
+name: Remove pycache files
+command: find . | grep -E "(__pycache__|\.pyc$)" | xargs rm -rf
+tags:
+  - warpdotdev
+  - warpdotdev-dx
+description: Recursively removes pycache file"
+source_url: ""
+author: joelverhagen
+author_url: https://gist.github.com/joelverhagen/3853540
+shells: []

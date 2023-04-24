@@ -1,0 +1,11 @@
+---
+name: Run Pre Commit
+command: pre-commit run --all-files
+tags:
+  - warpdotdev
+  - warpdotdev-dx
+description: Runs pre-commit on the currently selected repo.
+source_url: ""
+author: elviskahoro
+author_url: https://elvis.ai
+shells: []

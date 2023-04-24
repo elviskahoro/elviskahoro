@@ -1,0 +1,15 @@
+---
+name: Removes hidden Mac OS X files
+command: 'zip -d {{zip_file}} "__MACOSX*"'
+tags:
+  - warpdotdev
+  - warpdotdev-dx
+description: Run the developer experience (DX) python script.
+arguments:
+  - name: zip_file
+    description: The zipped file to clean.
+    default_value: Archive.zip
+source_url: ""
+author: Tetsujin
+author_url: https://apple.stackexchange.com/users/85275/tetsujin
+shells: []
