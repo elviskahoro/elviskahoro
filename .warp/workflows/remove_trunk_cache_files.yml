@@ -1,0 +1,11 @@
+---
+name: Remove trunk cache files
+command: rm -f .trunk/out/*
+tags:
+  - warpdotdev
+  - warpdotdev-dx
+description: Recursively removes trunk cache
+source_url: ""
+author: elviskahoro
+author_url: https://elvis.ai
+shells: []
