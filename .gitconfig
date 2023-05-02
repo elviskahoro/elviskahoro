@@ -83,6 +83,7 @@
 	gmm = merge main
 
 	open = "!gt dash pr"
+	gopen = "!gh pr view --web"
     onto = "!gt upstack onto"
 	prev = "!f() { if [ $# -eq 0 ]; then git checkout HEAD^1; else git checkout HEAD^$1; fi }; f"
 	pbd = "!git push --no-verify origin --delete $(git branch --show-current)"
