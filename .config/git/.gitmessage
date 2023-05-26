@@ -1,4 +1,4 @@
-#feat: a feature
+#feat: A feature
 #fix: A bug fix
 #docs: Documentation only changes
 #style: Changes that do not affect the meaning of the code 
@@ -10,7 +10,8 @@
 #trunk: Changes to trunk (linter) configuration 
 #rcfiles: Changes to configuration files
 #test: Adding missing tests
-#lint: lint
+#lint: Lint
+#release: a change that's made weekly as a piece of being on the release cop
 
 # Title: Summary, imperative, start upper case, don't end with a period
 # No more than 50 chars. #### 50 chars is here: #
