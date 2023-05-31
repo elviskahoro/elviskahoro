@@ -54,14 +54,14 @@ let g:netrw_banner = 0
 let g:netrw_liststyle = 3
 let g:netrw_browse_split = 4
 let g:netrw_altv = 0
-let g:netrw_winsize = 30
+let g:netrw_winsize = 20
 
 "augroup ProjectDrawer
 "  autocmd!
 "  autocmd VimEnter * :Lexplore
 "augroup END
 "
-nnoremap - :Vexplore! %:p:h<CR>
+nnoremap - :Hexplore! %:p:h<CR>
 "nnoremap <leader>dd :Lexplore %:p:h<CR>
 "nnoremap <Leader>da :Lexplore<CR>
 
