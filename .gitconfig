@@ -2,22 +2,6 @@
 	email = elvis@warp.dev
 	name = elvis kahoro
 
-[core]
-	excludesfile = /Users/elvis/.gitignore_global
-	editor = vim
-
-[push]
-  	default = simple
-	autoSetupRemote = true
-
-[color]
-	status = auto
-	diff = auto
-	branch = auto
-	interactive = auto
-	grep = auto
-	ui = auto
-
 [alias]
 	ap = add --patch
 	dc = diff --cached
@@ -132,36 +116,57 @@
     ust = "!gt upstack test"
 	x = checkout -
 
+[init]
+	defaultBranch = main
+
+[fetch]
+	prune = true
+
+[pull]
+	rebase = true
+
+[push]
+  	default = simple
+	autoSetupRemote = true
+
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
 
+[core]
+	excludesfile = /Users/elvis/.gitignore_global
+	editor = vim
+    pager = delta
+
+
+[color]
+	status = auto
+	diff = auto
+	branch = auto
+	interactive = auto
+	grep = auto
+	ui = auto
+
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    navigate = true    # use n and N to move between diff sections
+    light = false      # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
+
+[merge]
+    conflictstyle = diff3
+
+[diff]
+    colorMoved = default
+
 [http]
 	cookiefile = ~/.config/.gitcookies
 
 [commit]
 	template = ~/.config/git/.gitmessage
-
-[pull]
-	rebase = true
-
-[fetch]
-	prune = true
-
-[diff]
-    tool = difftastic
-
-[difftool]
-        prompt = false
-
-[difftool "difftastic"]
-        cmd = difft "$LOCAL" "$REMOTE"
-
-[init]
-	defaultBranch = main
-
 [credential "https://github.com"]
 	helper = !/home/linuxbrew/.linuxbrew/Cellar/gh/2.3.0/bin/gh auth git-credential
 
