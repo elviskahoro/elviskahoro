@@ -9,3 +9,5 @@ fi
 . "$HOME/.cargo/env"
 eval "$(/opt/homebrew/bin/brew shellenv)"
 eval "$(pyenv init --path)"
+eval "$(starship init zsh)"
+
