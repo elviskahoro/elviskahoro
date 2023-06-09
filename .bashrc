@@ -28,6 +28,7 @@ alias cdwork='cd ~/Documents/workspace'
 alias cp='cp -i'
 alias g='git'
 alias gtc='gt continue'
+alias gopen='gh pr view --web'
 #alias la='ls -a --color'
 #alias ls='ls --color'
 
