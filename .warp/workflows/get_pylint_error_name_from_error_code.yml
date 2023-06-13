@@ -1,0 +1,15 @@
+---
+name: Get pylint error name from error code
+command: 'plerr {{error_code}}'
+tags:
+  - warpdotdev
+  - warpdotdev-dx
+description: Generates the pylint error name based on a passed in error code
+arguments:
+  - name: error_code
+    description: The pylint error code e.g. R01713
+    default_value: R04747
+source_url: ""
+author: elvis
+author_url: https://elvis.ai
+shells: []
