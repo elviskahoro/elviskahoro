@@ -11,14 +11,14 @@ I work at [Warp](https://warp.dev/), where we are building a Rust-based **modern
 
 Some tools that give me joy:
 
-Daily
+## Daily
 - [warp](https://warp.dev)
 - [graphite](https://graphite.dev/)
 - [trunk](https://trunk.io/)
 - [stashpad](https://www.stashpad.com/)
 - [dagger.io](https://dagger.io/)
 
-CLIs
+## CLIs
 - [exa](https://github.com/ogham/exa)
 - [delta](https://github.com/dandavison/delta)
 - [bat](https://github.com/sharkdp/bat)
@@ -28,7 +28,7 @@ CLIs
 I've starred a lot of repos, and have tried to organize them into lists (categories):
 [GitHub star lists](https://github.com/elviskahoro?tab=stars)
 
-# Apps
+## Apps
 - [linear](https://linear.app/)
 - [raycast](https://www.raycast.com/)
 - [rectangle (pro)](https://rectangleapp.com/pro)
@@ -36,6 +36,8 @@ I've starred a lot of repos, and have tried to organize them into lists (categor
 - [cron](https://cron.com/)
 - [front](https://front.com/)
 - [clockwise](https://www.getclockwise.com/)
+
+## Facts
 
 Vim over emacs
 
