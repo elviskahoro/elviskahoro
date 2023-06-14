@@ -14,21 +14,31 @@ We're [remote first](https://warpdev.notion.site/Public-Warp-How-We-Work-b872d41
 
 Some tools that give me joy:
 
+Daily
 - [warp](https://warp.dev)
 - [graphite](https://graphite.dev/)
 - [trunk](https://trunk.io/)
 - [stashpad](https://www.stashpad.com/)
 - [dagger.io](https://dagger.io/)
+
+CLIs
+- [exa](https://github.com/ogham/exa)
+- [delta](https://github.com/dandavison/delta)
+- [bat](https://github.com/sharkdp/bat)
+- [llama](https://github.com/antonmedv/llama)
+- [starship](https://github.com/starship/starship)
+
+I've starred a lot of repos, and have tried to organize them into lists (categories):
+[GitHub star lists](https://github.com/elviskahoro?tab=stars)
+
+# Apps
 - [linear](https://linear.app/)
-- [cirrusCI](https:///cirrus-ci.org/)
 - [raycast](https://www.raycast.com/)
 - [rectangle (pro)](https://rectangleapp.com/pro)
 - [swimm](https://swimm.io)
-- [motif](https://motif.land/)
 - [cron](https://cron.com/)
 - [front](https://front.com/)
 - [clockwise](https://www.getclockwise.com/)
-
 
 Vim over emacs
 
