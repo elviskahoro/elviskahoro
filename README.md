@@ -47,6 +47,6 @@ Club America over chivas
 
 Pineapple on pizza
 
-Move fast and warp things
+[Move fast and warp things](https://www.linkedin.com/in/elviskahoro)
 
 If there are any other controversial debates you'd like my opinion on please don't hesitate to open a new issue in this repository.
