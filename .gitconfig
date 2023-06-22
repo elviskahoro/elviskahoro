@@ -30,6 +30,7 @@
     bsp = "!gt branch split"
     brsq = "!gt branch squash"
     brt = "!gt branch track"
+    bt = "!gt branch track"
 	bu = "!f() { if [ $# -eq 0 ]; then gt branch up; else gt branch up $1; fi }; f"
     bucc = "!gt upstack test 'trunk check --fix --ignore-git-state'"
 	ca = "!gt commit amend --no-edit"
