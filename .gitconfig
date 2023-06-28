@@ -99,6 +99,7 @@
 	sta = "!gt stash"
 	stau = "!gt stash --include-untracked"
 	std = "!gt stash drop"
+	std2 = "!gt stash drop && gt stash drop"
 	stl = "!gt stash list"
 	#stp = "!gt stash pop"
 	sts = "!gt stash show"
