@@ -12,7 +12,7 @@ I work at [Warp.dev](https://www.warp.dev/careers), where we are building a Rust
 Some tools that give me joy:
 
 ## Daily
-- [warp](https://warp.dev)
+- [Warp](https://warp.dev)
 - [graphite](https://graphite.dev/)
 - [trunk](https://trunk.io/)
 - [stashpad](https://www.stashpad.com/)
@@ -47,6 +47,6 @@ Club America over chivas
 
 Pineapple on pizza
 
-[Move fast and warp things](https://www.linkedin.com/in/elviskahoro)
+[Move fast and Warp things](https://www.linkedin.com/in/elviskahoro)
 
 If there are any other controversial debates you'd like my opinion on please don't hesitate to open a new issue in this repository.
