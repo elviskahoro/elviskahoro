@@ -171,6 +171,10 @@
 	minus-style = red "#ffeeee"
 	plus-style = green "#383830"
 
+[stash]
+    showStat = true
+    showPatch = true
+
 [merge]
 	conflictstyle = diff3
 
