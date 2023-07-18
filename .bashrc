@@ -1,6 +1,7 @@
 alias gto='gt dash pr'
 alias gtgo='gt dash pr'
 alias ls='exa -a --long'
+alias lsd='exa -a --long -D'
 alias th='cd /Users/elvis/Documents/treehacks'
 alias thslides='slides slides.md'
 
