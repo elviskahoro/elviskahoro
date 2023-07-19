@@ -94,6 +94,7 @@
 
 	s = status
 	stp = stash pop
+    spt = stash pop
 	ss = "!gt downstack submit"
 	ssf = "!gt downstack submit --force"
 	sw = "!gt switch"
