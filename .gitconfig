@@ -93,6 +93,7 @@
 	rs = "!gt repo sync"
 
 	s = status
+    stahs = stash
 	stp = stash pop
     spt = stash pop
 	ss = "!gt downstack submit"
