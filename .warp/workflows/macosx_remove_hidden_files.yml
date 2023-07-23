@@ -1,5 +1,5 @@
 ---
-name: Removes hidden Mac OS X files
+name: Mac OS - Removes hidden Mac OS X files
 command: 'zip -d {{zip_file}} "__MACOSX*"'
 tags:
   - warpdotdev
