@@ -1,4 +1,5 @@
 alias gto='gt dash pr'
+alias got='gt dash pr'
 alias gtgo='gt dash pr'
 alias ls='exa -a --long'
 alias lsd='exa -a --long -D'
