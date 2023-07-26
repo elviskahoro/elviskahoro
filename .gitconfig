@@ -22,6 +22,7 @@
 	bd = "!f() { if [ $# -eq 0 ]; then gt branch down; else gt branch down $1; fi }; f"
 	brd = "!gt branch delete"
 	gbrd = branch -D
+	grbd = branch -D
 	brf = "!gt branch fold"
 	brn = "!gt branch rename"
 	brsp = "!gt branch split"
