@@ -21,9 +21,9 @@ set history=1000
 set ignorecase
 set lazyredraw
 set nobackup
-set nowritebackup
 set nocompatible
 set nowrap
+set nowritebackup
 set nrformats-=octal
 set number
 set ruler
