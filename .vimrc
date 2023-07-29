@@ -70,6 +70,12 @@ nnoremap j gj
 nnoremap k gk
 nnoremap gV `[v`]
 nnoremap dil ^d$
+vnoremap <Tab> >gv
+vnoremap <S-Tab> <gv
+nnoremap <C-H> 30h
+nnoremap <C-J> 4j
+nnoremap <C-K> 4k
+nnoremap <C-L> 30l
 
 set hidden
 nnoremap <C-N> :bnext<CR>
