@@ -1,0 +1,11 @@
+---
+name: "Download website to machine using Monolith web page downloader"
+command: "monolith -F -a -v -f -j {{url}} -o {{filename-html}}"
+description: "Downloads a website to disk"
+arguments:
+  - name: url
+    description: "URL to web page"
+  - name: filename-html
+    description: "Filename.html"
+author: elvis kahoro
+shells: []
