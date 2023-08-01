@@ -1,0 +1,20 @@
+---
+name: Upload folder to GCP Storage Bucket
+command: find {{currentdir}} -name '*.*' -exec mv {} {{targetdir}} \;
+tags:
+  - warpdotdev
+  - warpdotdev-dx
+  - gcp
+  - front
+description: Runs the bash script that loops through the list of Front tags
+arguments:
+  - name: currentdir
+    description: The local folder with the data that you want to move
+    default_value: "2023-05-18"
+  - name: targetdir
+    description: The destination folder
+    default_value: front_events/
+source_url: ""
+author: elviskahoro
+author_url: https://elvis.ai
+shells: []
