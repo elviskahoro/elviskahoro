@@ -41,6 +41,7 @@
 	cc = "!trunk check --fix"
 	ch = checkout
 	check = "!trunk check --all --fix"
+    comit = commit
 	com = "!gt commit -m"
 	co = "!gt commit create"
 	con = "!gt commit create --no-verify"
