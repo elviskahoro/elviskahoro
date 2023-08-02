@@ -128,6 +128,7 @@
 	uso = "!gt upstack onto"
 	pusr = "!git push && gt upstack restack"
 	usr = "!gt upstack restack"
+	sur = "!gt upstack restack"
 	ust = "!gt upstack test"
 
 	x = checkout -
