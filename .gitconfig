@@ -96,6 +96,7 @@
 	rs = "!gt repo sync"
 
 	s = status
+    gs = status
     stahs = stash
 	stp = stash pop
     spt = stash pop
