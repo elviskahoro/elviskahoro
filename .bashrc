@@ -33,6 +33,7 @@ alias cp='cp -i'
 alias g='git'
 alias gtc='gt continue'
 alias gtopen='gt dash pr'
+alias stp='g stp'
 
 alias less='less -R'
 alias mkdir='mkdir -p'
