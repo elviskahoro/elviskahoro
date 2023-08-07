@@ -1,17 +1,19 @@
+#lint: Lint
 #feat: A feature
 #fix: A bug fix
-#docs: Documentation only changes
 #style: Changes that do not affect the meaning of the code 
-#refactor: A code change that neitherfixes a bug or adds a feature
+
+#refactor: A code change that neither fixes a bug or adds a feature
 #perf: A code change that improves performance
-#submodule: A submodule update
 #chore: Changes to the build process
+
 #poetry: Changes to poetry
-#trunk: Changes to trunk (linter) configuration 
-#rcfiles: Changes to configuration files
 #test: Adding missing tests
-#lint: Lint
+#docs: Documentation only changes
+#trunk: Changes to trunk (linter) configuration 
+
 #release: a change that's made weekly as a piece of being on the release cop
+#submodule: A submodule update
 
 # Title: Summary, imperative, start upper case, don't end with a period
 # No more than 50 chars. #### 50 chars is here: #
