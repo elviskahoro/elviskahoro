@@ -1,3 +1,4 @@
+alias gl='g l'
 alias gbrd='g gbrd'
 alias gbd='g bd'
 alias gto='gt dash pr'
