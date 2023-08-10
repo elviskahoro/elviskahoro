@@ -1,3 +1,4 @@
+alias gct='g ct'
 alias qg='g'
 alias gg='g'
 alias gl='g l'
