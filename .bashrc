@@ -1,3 +1,4 @@
+alias qg='g'
 alias gg='g'
 alias gl='g l'
 alias gbrd='g gbrd'
