@@ -99,6 +99,7 @@
 	s = status
     gs = status
     stahs = stash
+    tash = stash
 	stp = stash pop
     spt = stash pop
 	ss = "!gt downstack submit"
