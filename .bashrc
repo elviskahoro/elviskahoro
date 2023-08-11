@@ -1,3 +1,4 @@
+alias gcca='g cca'
 alias gct='g ct'
 alias qg='g'
 alias gg='g'
