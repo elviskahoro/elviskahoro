@@ -128,7 +128,6 @@
 	t = "!pytest --ignore-glob='*/pycord/*' --import-mode=prepend"
 	test = "!pre-commit run --all-files"
     to = "!gt dash pr"
-    tp = "!gt dash pr"
 	top = "!gt branch top"
 
 	uso = "!gt upstack onto"
