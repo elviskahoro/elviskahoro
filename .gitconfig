@@ -133,6 +133,7 @@
 	top = "!gt branch top"
 
 	uso = "!gt upstack onto"
+	usso = "!gt upstack onto"
 	pusr = "!git push && gt upstack restack"
 	usr = "!gt upstack restack"
 	sur = "!gt upstack restack"
