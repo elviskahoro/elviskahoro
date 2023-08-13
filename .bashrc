@@ -1,3 +1,4 @@
+alias au='g au'
 alias l='g l'
 alias cca='g cca'
 alias gbc='g bc'
