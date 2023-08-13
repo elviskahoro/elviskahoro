@@ -24,6 +24,7 @@
 	brd = "!gt branch delete"
 	gbrd = branch -D
 	grbd = branch -D
+    gbtd = branch -D
 	brf = "!gt branch fold"
 	brn = "!gt branch rename"
 	brsp = "!gt branch split"
