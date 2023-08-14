@@ -1,0 +1,10 @@
+---
+name: Download Trunk Configuration
+command: git submodule add git@github.com:warpdotdev/oss-trunk-linter-config.git .trunk/config/
+tags:
+  - elviskahoro
+description: Download the organization wide linter configuration for Trunk
+source_url: ""
+author: elviskahoro
+author_url: https://elvis.ai
+shells: []

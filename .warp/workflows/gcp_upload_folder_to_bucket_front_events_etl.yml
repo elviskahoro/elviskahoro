@@ -1,0 +1,20 @@
+---
+name: Upload folder to GCP Storage Bucket
+command: gsutil -m cp -r -n {{local_folder_path}} {{gcp_storage_bucket}}
+tags:
+  - warpdotdev
+  - warpdotdev-dx
+  - gcp
+  - front
+description: Runs the bash script that loops through the list of Front tags
+arguments:
+  - name: local_folder_path
+    description: The local folder with the data that you want to upload
+    default_value: "2023-05-18"
+  - name: gcp_storage_bucket
+    description: The GCP Storage Bucket
+    default_value: gs://warpdotdev_devx_elvis/
+source_url: ""
+author: elviskahoro
+author_url: https://elvis.ai
+shells: []
