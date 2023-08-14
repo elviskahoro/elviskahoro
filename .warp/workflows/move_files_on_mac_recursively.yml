@@ -1,5 +1,5 @@
 ---
-name: Move files recursively on mac
+name: MacOS Mac Move files recursively on mac
 command: find {{currentdir}} -name '*.*' -exec mv {} {{targetdir}} \;
 tags:
   - warpdotdev
