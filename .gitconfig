@@ -35,6 +35,7 @@
 	bu = "!f() { if [ $# -eq 0 ]; then gt branch up; else gt branch up $1; fi }; f"
 	bucc = "!gt upstack test 'trunk check --fix --ignore-git-state'"
 
+	aca = "!gt commit amend --no-edit"
 	ca = "!gt commit amend --no-edit"
 	gca = "!git commit --amend --no-edit && gt upstack restack"
 	gca = commit --amend --no-edit
