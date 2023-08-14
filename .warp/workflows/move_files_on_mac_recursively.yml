@@ -1,5 +1,5 @@
 ---
-name: Upload folder to GCP Storage Bucket
+name: Move files recursively on mac
 command: find {{currentdir}} -name '*.*' -exec mv {} {{targetdir}} \;
 tags:
   - warpdotdev
