@@ -1,5 +1,4 @@
 alias ca= 'g ca'
-alias uso= 'g uso'
 alias gst=' g st'
 alias au='g au'
 alias l='g l'
