@@ -1,3 +1,4 @@
+alias gbu= 'g bu'
 alias ca= 'g ca'
 alias gst=' g st'
 alias gsta=' g sta'
