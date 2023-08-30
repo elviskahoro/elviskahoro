@@ -1,3 +1,4 @@
+alias usr='g usr'
 alias gbu= 'g bu'
 alias ca= 'g ca'
 alias gca= 'g ca'
