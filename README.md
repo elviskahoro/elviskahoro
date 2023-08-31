@@ -12,7 +12,7 @@ I work at [Warp.dev](https://www.warp.dev/careers), where we are building a Rust
 Some tools that give me joy:
 
 ## Daily
-- [Warp](https://warp.dev)
+- [warp](https://warp.dev)
 - [graphite](https://graphite.dev/)
 - [trunk](https://trunk.io/)
 - [stashpad](https://www.stashpad.com/)
