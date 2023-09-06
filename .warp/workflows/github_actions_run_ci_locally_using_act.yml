@@ -1,0 +1,15 @@
+---
+name: Runs GitHub action locally using act
+command: act --container-architecture linux/amd64 {{pull_request}}
+tags:
+  - warpdotdev
+  - warpdotdev-dx
+description: Runs GitHub action
+arguments:
+  - name: pull_request
+    description: The GitHub action to run
+    default_value: pull_request
+source_url: ""
+author: elvis
+author_url: https://elvis.ai
+shells: []
