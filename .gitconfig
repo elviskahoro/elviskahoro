@@ -28,6 +28,7 @@
 	grbd = branch -D
     gbtd = branch -D
 	brf = "!gt branch fold"
+	brsf = "!gt branch fold"
 	brn = "!gt branch rename"
 	brsp = "!gt branch split"
 	bsp = "!gt branch split"
