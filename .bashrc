@@ -71,6 +71,7 @@ alias rczlogin="vim ~/.zlogin"
 alias rczlogout="vim ~/.zlogout"
 
 alias cdcv='cd ~/Documents/dx/src/channel-versions'
+alias dcv='cd ~/Documents/dx/src/channel-versions'
 alias cddocs='cd ~/Documents/'
 alias cdgb='cd ~/Documents/dx/src/warp_gitbook'
 alias cdx='cd ~/Documents/dx'
