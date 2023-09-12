@@ -71,9 +71,10 @@
     g = "!g"
 
 	l = "!gt log --reverse"
+    sl = l
 	gl = log
-	ll = "!gt log long"
-	ls = "!gt log short"
+	ll = "!gt log long --reverse"
+	ls = "!gt log short --reverse"
 	lt = log --oneline
 
 	m = checkout main
