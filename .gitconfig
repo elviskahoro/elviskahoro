@@ -82,7 +82,7 @@
 
 	o = "!gh pr view --web"
 	open = o
-	go = "!gt dash pr"
+	go = "!gt pr"
 	onto = "!gt upstack onto"
 
 	prev = "!f() { if [ $# -eq 0 ]; then git checkout HEAD^1; else git checkout HEAD^$1; fi }; f"
