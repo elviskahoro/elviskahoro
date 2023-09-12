@@ -24,8 +24,10 @@
 	db = bd
 	bp = bd
 	dd = bd
-	brd = "!gt branch delete"
+	brd = "!gt branch unbranch"
 	gbrd = branch -D
+	gdd = branch -D
+	gbdd = gdd
 	grbd = gbrd
     gbtd = gbrd
 	brf = "!gt branch fold"
