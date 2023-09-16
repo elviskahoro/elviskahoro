@@ -152,6 +152,7 @@
 	pusr = "!git push && gt upstack restack"
     psr = pusr
 	usr = "!gt upstack restack"
+	us = usr
 	sur = usr
 	ust = "!gt upstack test"
 
