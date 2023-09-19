@@ -125,6 +125,7 @@
 	sq = "!f() { if [ $# -gt 2 ]; then echo "must be more than one"; else git rebase -i HEAD~$1; fi }; f"
 	st = "!gt stash --patch"
 	sta = "!gt stash"
+    stsa = sta
 	bta = sta
 	stau = "!gt stash --include-untracked"
 	std = "!gt stash drop"
