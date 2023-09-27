@@ -97,7 +97,7 @@
 	plm = "!gt fetch origin main:main"
 	pom = pull origin main
 	prev = "!f() { if [ $# -eq 0 ]; then git checkout HEAD^1; else git checkout HEAD^$1; fi }; f"
-	pr = "!gt downstack submit"
+	pr = "!gt pr"
 	gpr = "!gh pr create --web"
     pus = push
     ppush = push
@@ -147,7 +147,7 @@
 
 	t = "!pytest --ignore-glob='*/pycord/*' --import-mode=prepend"
 	test = "!pre-commit run --all-files"
-    to = "!gt dash pr"
+    to = "!gt pr"
 	top = "!gt branch top"
     otp = top
 	topn = "!gt branch top && gt branch down"
