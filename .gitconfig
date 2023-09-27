@@ -74,11 +74,10 @@
 
     g = "!g"
 
-	l = "!gt log --reverse"
+	l = "!gt log short --reverse --show-untracked"
     sl = l
 	gl = log
 	ll = "!gt log long --reverse"
-	ls = "!gt log short --reverse"
 	lt = log --oneline
 
 	m = checkout main
