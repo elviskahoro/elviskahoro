@@ -88,6 +88,7 @@ alias cdworkspace='cd ~/Documents/workspace'
 alias cdwork='cd ~/Documents/workspace'
 
 
+alias gco ='g co'
 alias qg='g'
 alias gg='g'
 alias au='g au'
