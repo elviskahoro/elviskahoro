@@ -24,6 +24,7 @@ Some tools that give me joy:
 ## CLIs
 - [exa](https://github.com/ogham/exa)
 - [delta](https://github.com/dandavison/delta)
+- [fx](https://github.com/antonmedv/fx)
 - [bat](https://github.com/sharkdp/bat)
 - [llama](https://github.com/antonmedv/llama)
 - [starship](https://github.com/starship/starship)
@@ -36,8 +37,10 @@ I've starred a lot of repos, and have tried to organize them into lists (categor
 - [raycast](https://www.raycast.com/)
 - [rectangle (pro)](https://rectangleapp.com/pro)
 - [swimm](https://swimm.io)
+- [retool](https://retool.com/)
 - [cron](https://cron.com/)
 - [front](https://front.com/)
+- [orbit](https://orbit.love/)
 - [clockwise](https://www.getclockwise.com/)
 
 ## Facts
