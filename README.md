@@ -16,7 +16,10 @@ Some tools that give me joy:
 - [graphite](https://graphite.dev/)
 - [trunk](https://trunk.io/)
 - [stashpad](https://www.stashpad.com/)
+- [hookdeck](https://hookdeck.com/)
+- [temporal](https://temporal.io/)
 - [dagger.io](https://dagger.io/)
+
 
 ## CLIs
 - [exa](https://github.com/ogham/exa)
