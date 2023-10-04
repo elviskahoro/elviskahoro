@@ -2,6 +2,8 @@ function cdl {
   cd "$(llama "$@")"
 }
 
+alias c=cdl
+alias d=cdl
 alias cod='code .'
 alias cp='cp -i'
 alias fmt='trunk fmt'
@@ -105,7 +107,6 @@ alias gcca='g cca'
 alias gct='g ct'
 alias gtc='gt ct'
 alias tc='g ct'
-alias d='g d'
 alias dl='g dl'
 alias gdl='g dl'
 alias l='g l'
