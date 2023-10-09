@@ -153,6 +153,7 @@
 	topd = "!gt branch top && gt branch down"
 	topb = "!gt branch top && gt branch down"
 
+    poush = push
 	uso = "!gt upstack onto"
 	usso = uso
 	pusr = "!git push && gt upstack restack"
