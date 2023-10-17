@@ -134,6 +134,7 @@
     stsa = sta
 	bta = sta
 	stau = "!gt stash --include-untracked"
+    stcc = "!gt stash clear"
 	std = "!gt stash drop"
 	std2 = "!gt stash drop && gt stash drop"
 	stl = "!gt stash list"
