@@ -19,14 +19,14 @@
 	bc = "!gt branch create"
 	gbc = branch -c
 	bcn = "!gt branch create --no-verify"
-	bdl = "!gt branch delete"
 	be = "!gt downstack edit"
 	bl = branch --list
 	bn = bu
-	bd = "!f() { if [ $# -eq 0 ]; then gt branch down; else gt branch down $1; fi }; f"
+	bd = "!f() { if [ $# -eq 0 ]; then gt down; else gt down $1; fi }; f"
 	db = bd
 	bp = bd
 	dd = bd
+	bdl = "!gt branch delete"
 	brd = "!gt branch unbranch"
 	gbrd = branch -D
 	gdd = branch -D
