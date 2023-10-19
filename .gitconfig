@@ -21,7 +21,6 @@
 	bcn = "!gt branch create --no-verify"
 	be = "!gt downstack edit"
 	bl = branch --list
-	bn = bu
 	bd = "!f() { if [ $# -eq 0 ]; then gt down; else gt down $1; fi }; f"
 	db = bd
 	bp = bd
@@ -41,7 +40,8 @@
 	brsq = "!gt branch squash"
 	brt = "!gt branch track"
 	bt = brt
-	bu = "!f() { if [ $# -eq 0 ]; then gt branch up; else gt branch up $1; fi }; f"
+	bu = "!f() { if [ $# -eq 0 ]; then gt up; else gt up $1; fi }; f"
+	bn = bu
     bucc = "!gt branch up && trunk check --fix"
 	#bucc = "!gt upstack test 'trunk check --fix --ignore-git-state'"
 
