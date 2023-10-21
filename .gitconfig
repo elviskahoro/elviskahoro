@@ -45,7 +45,7 @@
     bucc = "!gt branch up && trunk check --fix"
 	#bucc = "!gt upstack test 'trunk check --fix --ignore-git-state'"
 
-	ca = "!gt commit amend --no-edit"
+	ca = "!gt modify --all"
 	aca = ca
 	gca = commit --amend --no-edit
 	cam = "!gt commit amend"
@@ -159,7 +159,7 @@
 	topb = "!gt branch top && gt branch down"
 
     poush = push
-	uso = "!gt upstack onto"
+	uso = "!gt move"
 	usso = uso
 	pusr = "!git push && gt upstack restack"
     psr = pusr
