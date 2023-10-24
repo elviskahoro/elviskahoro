@@ -152,7 +152,7 @@
 	t = "!pytest --ignore-glob='*/pycord/*' --import-mode=prepend"
 	test = "!pre-commit run --all-files"
     to = "!gt pr"
-	top = "!gt branch top"
+	top = "!gt top"
     otp = top
 	topn = "!gt branch top && gt branch down"
 	topd = "!gt branch top && gt branch down"
