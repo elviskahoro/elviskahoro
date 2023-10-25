@@ -123,9 +123,9 @@
     tash = stash
 	stp = stash pop
     spt = stp
-	ss = "!gt downstack submit"
-	ssf = "!gt downstack submit --force"
-    ssm = "!gt downstack submit -m"
+	ss = "!gt submit"
+	ssf = "!gt submit --force"
+    ssm = "!gt submit -m"
 	sw = "!gt switch"
 	swc = "!gt switch -c"
 	sh = "!f() { if [ $# -eq 0 ]; then git show; else git show HEAD~$1; fi }; f"
