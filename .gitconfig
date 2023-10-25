@@ -211,6 +211,7 @@
 	line-numbers = true
 	minus-style = red "#ffeeee"
 	plus-style = green "#383830"
+    side-by-side = true
 
 [stash]
     showStat = true
