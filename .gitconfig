@@ -161,9 +161,9 @@
     poush = push
 	uso = "!gt move"
 	usso = uso
-	pusr = "!git push && gt upstack restack"
+	pusr = "!git push && gt restack --upstack"
     psr = pusr
-	usr = "!gt upstack restack"
+	usr = "!gt restack --upstack"
 	us = usr
 	sur = usr
 	ust = "!gt upstack test"
