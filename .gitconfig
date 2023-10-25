@@ -115,7 +115,7 @@
 	rbm = "!gt rebase main"
 	rbc = "!gt continue"
 	grbc = rebase --continue
-	rs = "!gt repo sync"
+	rs = "!gt sync"
 
 	s = status
     gs = s
