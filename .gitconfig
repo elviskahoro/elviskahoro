@@ -16,7 +16,7 @@
 	aui = au
 
 	bb = "!gt branch bottom"
-	bc = "!gt branch create"
+	bc = "!gt create"
 	gbc = branch -c
 	bcn = "!gt branch create --no-verify"
 	be = "!gt downstack edit"
@@ -48,7 +48,7 @@
 	ca = "!gt modify --all"
 	aca = ca
 	gca = commit --amend --no-edit
-	cam = "!gt commit amend"
+	cam = "!gt modify"
 	cma = cam
 	cc = "!trunk check --fix"
 	ch = checkout
@@ -211,7 +211,7 @@
 	line-numbers = true
 	minus-style = red "#ffeeee"
 	plus-style = green "#383830"
-    side-by-side = true
+    side-by-side = false
 
 [stash]
     showStat = true
