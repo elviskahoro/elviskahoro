@@ -77,6 +77,7 @@ alias dcv='cd ~/Documents/dx/src/channel-versions'
 alias cddocs='cd ~/Documents/'
 alias cdgb='cd ~/Documents/dx/src/warp_gitbook'
 alias cdx='cd ~/Documents/dx'
+alias cx= cdx
 alias cdgitbook='cd ~/Documents/dx/src/gitbook'
 alias cdobsidian='cd ~/Documents/obsidian'
 alias cdshowcase='cd ~/Documents/showcase'
