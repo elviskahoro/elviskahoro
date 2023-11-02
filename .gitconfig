@@ -38,7 +38,7 @@
 	brsp = "!gt branch split"
 	bsp = brsp
 	brsq = "!gt squash"
-	brt = "!gt branch track"
+	brt = "!gt track"
 	bt = brt
 	bu = "!f() { if [ $# -eq 0 ]; then gt up; else gt up $1; fi }; f"
 	bn = bu
