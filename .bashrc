@@ -72,6 +72,7 @@ alias rcz="vim ~/.zshrc"
 alias rczlogin="vim ~/.zlogin"
 alias rczlogout="vim ~/.zlogout"
 
+alias desk='cd ~/Desktop'
 alias cdcv='cd ~/Documents/dx/src/channel-versions'
 alias dcv='cd ~/Documents/dx/src/channel-versions'
 alias cddocs='cd ~/Documents/'
