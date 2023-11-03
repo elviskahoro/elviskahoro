@@ -155,9 +155,9 @@
     to = "!gt pr"
 	top = "!gt top"
     otp = top
-	topn = "!gt branch top && gt branch down"
-	topd = "!gt branch top && gt branch down"
-	topb = "!gt branch top && gt branch down"
+	topd = "!gt top && gt down"
+	topn = topd
+	topb = topd
 
     poush = push
 	uso = "!gt move"
