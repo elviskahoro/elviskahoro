@@ -3,7 +3,7 @@
 	name = elvis kahoro
 
 [alias]
-	# cca = "!trunk check --fix --all --ignore-git-state --filter=-trivy,-checkov,-osv-scanner"
+	cca = "!trunk check --fix --all --ignore-git-state --filter=-trivy,-checkov,-osv-scanner"
 
 	a = "!gt add"
 	aa = "!gt add ."
@@ -17,6 +17,7 @@
 
 	bb = "!gt branch bottom"
 	bc = "!gt create"
+	cb = bc
 	gbc = branch -c
 	bcn = "!gt branch create --no-verify"
 	be = "!gt downstack edit"
