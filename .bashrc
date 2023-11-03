@@ -74,6 +74,7 @@ alias rczlogout="vim ~/.zlogout"
 
 alias desk='cd ~/Desktop'
 alias deks='cd ~/Desktop'
+alias dsk='cd ~/Desktop'
 alias cdcv='cd ~/Documents/dx/src/channel-versions'
 alias dcv='cd ~/Documents/dx/src/channel-versions'
 alias cddocs='cd ~/Documents/'
