@@ -46,7 +46,7 @@
     bucc = "!gt branch up && trunk check --fix"
 	#bucc = "!gt upstack test 'trunk check --fix --ignore-git-state'"
 
-	ca = "!gt modify --all"
+	ca = "!gt modify"
 	aca = ca
 	gca = commit --amend --no-edit
 	cam = "!gt modify"
