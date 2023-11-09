@@ -1,0 +1,11 @@
+---
+name: Clean untrack files
+command: git clean -f
+tags:
+  - elviskahoro
+  - git
+description: Cleans the untracked files for a dirty commit
+source_url: ""
+author: elviskahoro
+author_url: https://elvis.ai
+shells: []
