@@ -112,6 +112,7 @@
 	r = "!f() { if [ $# -eq 0 ]; then git reset; else git reset HEAD~$1 --mixed; fi }; f"
     rest = r
     reet = r
+    rset = r
     reabse = rebase
     rcg = "!rcg"
 	rb = "!gt rebase"
