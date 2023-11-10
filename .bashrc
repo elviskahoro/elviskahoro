@@ -92,6 +92,7 @@ alias cdworkflows='cd ~/Documents/dx/src/Warp/workflows'
 alias cdworkspace='cd ~/Documents/workspace'
 alias cdwork='cd ~/Documents/workspace'
 
+alias lg='g'
 alias gaa='g aa'
 alias ca='g ca'
 alias qg='g'
