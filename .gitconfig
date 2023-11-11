@@ -36,7 +36,7 @@
 	brf = "!gt branch fold"
 	brsf = brf
 	brn = "!gt rename"
-	brsp = "!gt branch split"
+	brsp = "!gt split"
 	bsp = brsp
 	brsq = "!gt squash"
 	brt = "!gt track"
