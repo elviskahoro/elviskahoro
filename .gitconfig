@@ -129,6 +129,7 @@
     tash = stash
 	stp = stash pop
     spt = stp
+    tp = stp
 	ss = "!gt submit"
 	ssf = "!gt submit --force"
     ssm = "!gt submit -m"
