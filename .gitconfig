@@ -18,6 +18,7 @@
 	bb = "!gt branch bottom"
 	bc = "!gt create"
 	cb = bc
+	bce = bc
 	gbc = branch -c
 	bcn = "!gt branch create --no-verify"
 	be = "!gt downstack edit"
