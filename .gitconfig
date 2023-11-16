@@ -10,9 +10,10 @@
 	aaaa = aa
 	ap = "!gt add --patch"
 	au = "!gt add -u && gt status"
-	auy = "!gt add -u && gt status"
+	auy = au
 	ua = au
 	aui = au
+    gau = au
 
 	bb = "!gt branch bottom"
 	bc = "!gt create"
@@ -92,8 +93,7 @@
 	lt = log --oneline
 
 	m = checkout main
-	gmm = merge main
-
+    gm = m
 
 	o = "!gh pr view --web || gh repo view --web"
 	open = o
