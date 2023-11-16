@@ -173,6 +173,7 @@
 	uso = "!gt move"
 	usso = uso
     uos = uso
+    suo = uso
 	pusr = "!git push && gt restack --upstack"
     psr = pusr
 	usr = "!gt restack --upstack"
