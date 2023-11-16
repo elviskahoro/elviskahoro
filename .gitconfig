@@ -3,7 +3,6 @@
 	name = elvis kahoro
 
 [alias]
-	cca = "!trunk check --fix --all --ignore-git-state --filter=-trivy,-checkov,-osv-scanner"
 
 	a = "!gt add"
 	aa = "!gt add ."
@@ -54,6 +53,8 @@
 	cam = "!gt modify"
 	cma = cam
 	cc = "!trunk check --fix"
+	cca = "!trunk check --fix --all --ignore-git-state --filter=-trivy,-checkov,-osv-scanner"
+    cac = cca
 	ch = checkout
 	check = "!trunk check --all --fix"
 	com = "!gt commit -m"
