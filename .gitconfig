@@ -51,6 +51,7 @@
     bca = "!gt up && trunk check --fix --ignore-git-state"
 
 	ca = "!gt modify"
+    ac = ca
 	aca = ca
 	gca = commit --amend --no-edit
 	cam = "!gt modify"
