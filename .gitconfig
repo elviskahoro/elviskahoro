@@ -95,7 +95,7 @@
 	gmm = merge main
 
 
-	o = "!gh pr view --web"
+	o = "!gh pr view --web || gh repo view --web"
 	open = o
 	go = "!gt pr"
 	onto = "!gt upstack onto"
