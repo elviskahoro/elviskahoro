@@ -46,6 +46,7 @@
 	bn = bu
 	#bucc = "!gt upstack test 'trunk check --fix --ignore-git-state'"
     bucc = "!gt up && trunk check --fix"
+    bcc = bucc
     bca = "!gt up && trunk check --fix --ignore-git-state"
 
 	ca = "!gt modify"
