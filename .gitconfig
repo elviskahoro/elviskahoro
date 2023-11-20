@@ -46,6 +46,7 @@
 	bt = brt
 	bu = "!f() { if [ $# -eq 0 ]; then gt up; else gt up $1; fi }; f"
 	bn = bu
+	u = bu
 	#bucc = "!gt upstack test 'trunk check --fix --ignore-git-state'"
     bucc = "!gt up && trunk check --fix"
     bcc = bucc
