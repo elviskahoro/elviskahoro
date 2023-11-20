@@ -18,6 +18,7 @@
 	bb = "!gt branch bottom"
 	bc = "!gt create"
     bcdl = bc
+    cdl = bc
 	cb = bc
 	bce = bc
 	gbc = branch -c
