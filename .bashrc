@@ -53,6 +53,7 @@ alias .6='cd ../../../../../../'            # Go back 6 directory
 
 alias rcbp='vim ~/.bash_profile'
 alias rcb='vim ~/.bashrc'
+alias cb='vim ~/.bashrc'
 alias rcgb='vim ~/.bashrc'
 alias rbc='vim ~/.bashrc'
 alias rcbs='source ~/.bashrc'
