@@ -134,6 +134,7 @@
     gs = s
     stahs = stash
     tash = stash
+    ta = st
 	stp = stash pop
     spt = stp
     stop = stp
