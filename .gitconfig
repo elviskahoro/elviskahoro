@@ -62,6 +62,8 @@
 	cca = "!trunk check --fix --all --ignore-git-state --filter=-trivy,-checkov,-osv-scanner"
     cac = cca
 	ch = checkout
+	chr = checkout run
+	cr = checkout run
 	check = "!trunk check --all --fix"
 	com = "!gt commit -m"
 	co = "!gt commit create"
