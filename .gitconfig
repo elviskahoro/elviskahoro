@@ -48,9 +48,9 @@
 	bn = bu
 	u = bu
 	#bucc = "!gt upstack test 'trunk check --fix --ignore-git-state'"
-    bucc = "!gt up && trunk check --fix"
+    bucc = "!gt up && trunk check --fix --filter=-trivy,-checkov,-osv-scanner"
     bcc = bucc
-    bca = "!gt up && trunk check --fix --ignore-git-state"
+    bca = "!gt up && trunk check --fix --ignore-git-state --filter=-trivy,-checkov,-osv-scanner"
 
 	ca = "!gt modify"
     ac = ca
@@ -58,7 +58,7 @@
 	gca = commit --amend --no-edit
 	cam = "!gt modify"
 	cma = cam
-	cc = "!trunk check --fix"
+	cc = "!trunk check --fix --filter=-trivy,-checkov,-osv-scanner"
 	cca = "!trunk check --fix --all --ignore-git-state --filter=-trivy,-checkov,-osv-scanner"
     cac = cca
 	ch = checkout
