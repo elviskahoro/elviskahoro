@@ -122,6 +122,7 @@
     psuh = push
     ppush = push
     psh = push
+    puh = push
 
 	r = "!f() { if [ $# -eq 0 ]; then git reset; else git reset HEAD~$1 --mixed; fi }; f"
     rest = r
