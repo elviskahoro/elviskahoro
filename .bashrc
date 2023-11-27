@@ -95,6 +95,7 @@ alias desk='cd ~/Desktop'
 alias deks='cd ~/Desktop'
 alias dsk='cd ~/Desktop'
 
+alias G='g'
 alias lg='g'
 alias qg='g'
 alias gg='g'
