@@ -73,14 +73,13 @@ alias rcz="vim ~/.zshrc"
 alias rczlogin="vim ~/.zlogin"
 alias rczlogout="vim ~/.zlogout"
 
-alias desk='cd ~/Desktop'
-alias deks='cd ~/Desktop'
-alias dsk='cd ~/Desktop'
+
+alias cdx='cd ~/Documents/dx'
+alias vdx='cd ~/Documents/dx'
 alias cdcv='cd ~/Documents/dx/src/channel-versions'
 alias dcv='cd ~/Documents/dx/src/channel-versions'
 alias cddocs='cd ~/Documents/'
 alias cdgb='cd ~/Documents/dx/src/warp_gitbook'
-alias cdx='cd ~/Documents/dx'
 alias cx='cd ~/Documents/dx'
 alias cdgitbook='cd ~/Documents/dx/src/gitbook'
 alias cdobsidian='cd ~/Documents/obsidian'
@@ -92,6 +91,9 @@ alias cdwi='cd ~/Documents/warp-internal'
 alias cdworkflows='cd ~/Documents/dx/src/Warp/workflows'
 alias cdworkspace='cd ~/Documents/workspace'
 alias cdwork='cd ~/Documents/workspace'
+alias desk='cd ~/Desktop'
+alias deks='cd ~/Desktop'
+alias dsk='cd ~/Desktop'
 
 alias lg='g'
 alias qg='g'
