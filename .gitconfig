@@ -129,13 +129,14 @@
     reet = r
     rset = r
     rst = r
-    reabse = rebase
     rcg = "!rcg"
+    reabse = rebase
 	rb = "!gt rebase"
 	rba = "!gt rebase --abort"
 	rbm = "!gt rebase main"
 	rbc = "!gt continue"
 	grbc = rebase --continue
+    reo = "!gt reorder"
 	rs = "!gt sync"
 
 	s = status
