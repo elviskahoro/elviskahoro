@@ -150,6 +150,7 @@
     spt = stp
     stop = stp
     tp = stp
+    sto = stp
 	ss = "!gt submit"
 	ssf = "!gt submit --force"
     ssm = "!gt submit -m"
