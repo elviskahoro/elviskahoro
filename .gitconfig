@@ -49,6 +49,7 @@
 	bn = bu
     by = bu
 	u = bu
+    nu = bu
 	#bucc = "!gt upstack test 'trunk check --fix --ignore-git-state'"
     bucc = "!gt up && trunk check --fix --filter=-trivy,-checkov,-osv-scanner"
     bcc = bucc
