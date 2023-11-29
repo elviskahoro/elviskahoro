@@ -115,7 +115,8 @@
 	pbf = "!gt push -u origin HEAD"
 	pbdf = "!git push --no-verify origin --delete $(git branch --show-current) && git push --no-verify -u origin HEAD"
 	pl = "!gt pull"
-    poull = pull
+    poull = pl
+    pul = pl
 	plm = "!gt fetch origin main:main"
 	pom = pull origin main
 	prev = "!f() { if [ $# -eq 0 ]; then git checkout HEAD^1; else git checkout HEAD^$1; fi }; f"
