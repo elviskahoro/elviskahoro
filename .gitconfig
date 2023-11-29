@@ -94,7 +94,7 @@
 	du = "!less $(git ls-files --others --exclude-standard)"
     drun = branch -D run
 
-    g = "!g"
+    g = "!git"
 
     l = "!gt log --reverse --show-untracked"
     k = l
