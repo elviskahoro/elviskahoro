@@ -15,6 +15,7 @@
 	ua = au
 	aui = au
     gau = au
+    auq = au
 
 	bb = "!gt branch bottom"
 	bc = "!gt create"
