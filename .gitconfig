@@ -75,6 +75,7 @@
 	gso = co
 	gco = commit
     comit = gco
+    goc = gco
 	com = "!gt commit -m"
 	con = "!gt commit create --no-verify"
 	gcon = commit --no-verify
