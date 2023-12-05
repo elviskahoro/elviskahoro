@@ -56,6 +56,7 @@
 	#bucc = "!gt upstack test 'trunk check --fix --ignore-git-state'"
     bucc = "!gt up && trunk check --fix --filter=-trivy,-checkov,-osv-scanner"
     bcc = bucc
+    buc = bucc
     bud = "!gt up && git diff HEAD~$1"
     bca = "!gt up && trunk check --fix --ignore-git-state --filter=-trivy,-checkov,-osv-scanner"
 
