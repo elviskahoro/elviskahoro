@@ -30,7 +30,7 @@
 	bd = "!f() { if [ $# -eq 0 ]; then gt down; else gt down $1; fi }; f"
 	db = bd
 	bp = bd
-	dd = bd
+	bdd = "!gt down && git diff HEAD~$1"
 	bdl = "!gt branch delete"
 	brd = "!gt branch unbranch"
 	gbrd = branch -D
@@ -56,6 +56,7 @@
 	#bucc = "!gt upstack test 'trunk check --fix --ignore-git-state'"
     bucc = "!gt up && trunk check --fix --filter=-trivy,-checkov,-osv-scanner"
     bcc = bucc
+    bud = "!gt up && git diff HEAD~$1"
     bca = "!gt up && trunk check --fix --ignore-git-state --filter=-trivy,-checkov,-osv-scanner"
 
 	ca = "!gt modify"
@@ -86,6 +87,7 @@
 	cpc = "!gt cherry-pick --continue"
 
 	d = "!f() { if [ $# -eq 0 ]; then git diff; else git diff HEAD~$1; fi }; f"
+    dd = d 1
     d1 = d 1
 	dc = "!gt diff --cached"
 	ddc = dc
