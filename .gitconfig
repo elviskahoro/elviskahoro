@@ -69,6 +69,7 @@
 	cc = "!trunk check --fix --filter=-trivy,-checkov,-osv-scanner"
 	cca = "!trunk check --fix --all --ignore-git-state --filter=-trivy,-checkov,-osv-scanner"
     cac = cca
+    ccc = cca
 	ch = checkout
     hc = ch
 	chr = checkout run
