@@ -30,6 +30,7 @@
 	bd = "!f() { if [ $# -eq 0 ]; then gt down; else gt down $1; fi }; f"
 	db = bd
 	bp = bd
+    gbd = bd
 	bdd = "!gt down && git diff HEAD~$1"
 	bdl = "!gt branch delete"
 	brd = "!gt branch unbranch"
