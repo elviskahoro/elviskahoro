@@ -99,6 +99,7 @@ alias dsk='cd ~/Desktop'
 
 alias h='g'
 alias G='g'
+alias t='g'
 alias lg='g'
 alias qg='g'
 alias gg='g'
