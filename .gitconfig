@@ -143,6 +143,7 @@
     reet = r
     rset = r
     rst = r
+    reest = r
     rcg = "!rcg"
     reabse = rebase
 	rb = "!gt rebase"
