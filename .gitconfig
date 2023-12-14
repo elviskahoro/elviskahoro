@@ -128,6 +128,8 @@
 	pl = "!gt pull"
     poull = pl
     pul = pl
+    oul = pl
+    oull = pl
 	plm = "!gt fetch origin main:main"
 	pom = pull origin main
 	prev = "!f() { if [ $# -eq 0 ]; then git checkout HEAD^1; else git checkout HEAD^$1; fi }; f"
