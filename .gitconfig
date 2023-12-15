@@ -207,6 +207,7 @@
 	usso = uso
     uos = uso
     suo = uso
+    usp = uso
 	pusr = "!git push && gt restack --upstack"
     psr = pusr
 	usr = "!gt restack --upstack"
