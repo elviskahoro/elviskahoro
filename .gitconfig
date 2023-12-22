@@ -70,6 +70,7 @@
 	gca = commit --amend --no-edit
 	cam = "!gt modify"
 	cma = cam
+	canm = cam
 	cc = "!trunk check --fix --filter=-trivy,-checkov,-osv-scanner"
 	cca = "!trunk check --fix --all --ignore-git-state --filter=-trivy,-checkov,-osv-scanner"
     cac = cca
