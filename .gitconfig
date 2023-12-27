@@ -155,7 +155,8 @@
     rst = r
     reest = r
     res = r
-    rcg = "!rcg"
+    rcb= "!vim ~/.bashrc"
+    rcg= "!vim ~/.gitconfig"
     reabse = rebase
 	rb = "!gt rebase"
 	rba = "!gt rebase --abort"
