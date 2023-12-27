@@ -58,6 +58,7 @@
     dbu = bu
     lbu = bu
     ub = bu
+    bug = bu
 	#bucc = "!gt upstack test 'trunk check --fix --ignore-git-state'"
     bucc = "!gt up && trunk check --fix --filter=-trivy,-checkov,-osv-scanner"
     bcc = bucc
@@ -76,6 +77,7 @@
 	cca = "!trunk check --fix --all --ignore-git-state --filter=-trivy,-checkov,-osv-scanner"
     cac = cca
     ccc = cca
+    ccca = cca
 	ch = checkout
     hc = ch
 	chr = checkout run
