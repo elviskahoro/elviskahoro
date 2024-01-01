@@ -125,6 +125,7 @@
 
 	m = checkout main
     gm = m
+    dm = m
 
 	o = "!gh pr view --web || gh repo view --web"
 	open = o
