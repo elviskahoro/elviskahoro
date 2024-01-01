@@ -80,8 +80,9 @@
     ccca = cca
 	ch = checkout
     hc = ch
+    c = ch
 	chr = checkout run
-	cr = checkout run
+	cr = chr
 	check = "!trunk check --all --fix"
 	co = "!gt commit create"
 	gso = co
