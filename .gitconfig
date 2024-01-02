@@ -158,6 +158,7 @@
     rst = r
     reest = r
     res = r
+    e = r
     rcb= "!vim ~/.bashrc"
     rcg= "!vim ~/.gitconfig"
     reabse = rebase
@@ -213,7 +214,6 @@
 	topd = "!gt top && gt down"
 	topn = topd
 	topb = topd
-
     poush = push
 	uso = "!gt move"
 	usso = uso
