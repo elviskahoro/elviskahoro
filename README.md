@@ -5,8 +5,8 @@
 
 Hi! I'm elvis (he/him/his).
 
-I work at [Warp.dev](https://www.warp.dev/careers), where we are building a Rust-based **modern** terminal! Join our [Discord!](https://discord.gg/warpdotdev) We're [remote first](https://warpdev.notion.site/Public-Warp-How-We-Work-b872d41a1da743fca18220a731aeba48), but I live and work in SF.
-I'm grew up in Kennesaw, GA. I went to [Pomona College](https://www.pomona.edu/dos-search/search-committee), chirp chirp! [Erdos #2](https://pages.pomona.edu/~sg064747/PAPERS/PRBTP.pdf)
+I work at [Warp.dev](https://www.warp.dev/careers), where we are modernizing the terminal [(in Rust).](https://www.warp.dev/blog/why-is-building-a-ui-in-rust-so-hard) We're [remote first](https://warpdev.notion.site/Public-Warp-How-We-Work-b872d41a1da743fca18220a731aeba48), but I live and work in SF (we have an office)!
+I'm grew up in Kennesaw, GA and went to [Pomona College](https://www.pomona.edu/dos-search/search-committee). [Erdos #2](https://pages.pomona.edu/~sg064747/PAPERS/PRBTP.pdf)
 
 Some tools that give me joy:
 
