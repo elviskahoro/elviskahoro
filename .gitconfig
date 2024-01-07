@@ -38,10 +38,12 @@
 	bdl = "!gt branch delete"
 	brd = "!gt branch unbranch"
 	gbrd = branch -D
-	gdd = branch -D
+	gdd = gbrd
 	gbdd = gdd
 	grbd = gbrd
     gbtd = gbrd
+    gbr = gbrd
+    gbd = gbrd
 	brf = "!gt branch fold"
 	brsf = brf
 	brn = "!gt rename"
