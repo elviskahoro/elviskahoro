@@ -111,6 +111,7 @@
 	dsr = "!gt downstack restack"
 	dst = "!gt downstack test"
 	dl = "!f() { if [ $# -eq 0 ]; then git diff-tree --no-commit-id --name-status -r HEAD; else git diff-tree --no-commit-id --name-status -r HEAD~$1; fi }; f"
+    gdl = dl
 	ld = dl
 	dls = dl
     ldl = dl
