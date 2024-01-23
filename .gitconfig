@@ -62,6 +62,7 @@
     lbu = bu
     ub = bu
     bug = bu
+    gbu = bu
 	#bucc = "!gt upstack test 'trunk check --fix --ignore-git-state'"
     bucc = "!gt up && trunk check --fix --filter=-trivy,-checkov,-osv-scanner"
     bcc = bucc
