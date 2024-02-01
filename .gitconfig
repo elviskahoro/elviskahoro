@@ -89,7 +89,7 @@
 	chr = checkout run
 	cr = chr
 	check = "!trunk check --all --fix"
-	co = "!gt commit create"
+	co = "! gt modify -c"
 	gso = co
 	gco = commit
     comit = gco
