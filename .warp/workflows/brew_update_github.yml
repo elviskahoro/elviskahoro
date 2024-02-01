@@ -1,0 +1,11 @@
+---
+name: Updates github gh using brew
+command: brew upgrade gh
+tags:
+  - warpdotdev
+  - warpdotdev-dx
+description: Updates github using brew
+source_url: ""
+author: elvis
+author_url: https://elvis.ai
+shells: []
