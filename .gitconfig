@@ -10,6 +10,7 @@
 	aaaa = aa
 	ap = "!gt add --patch"
 	au = "!gt add -u && gt status"
+    aq = au
 	qu = au
 	auy = au
 	aug = au
