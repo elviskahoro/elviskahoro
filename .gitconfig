@@ -190,12 +190,13 @@
 	gsq = "!f() { if [ $# -gt 2 ]; then echo "must be more than one"; else git rebase -i HEAD~$1; fi }; f"
 	st = "!gt stash --patch"
     ta = st
+	stp = "!gt stash pop"
 	sta = "!gt stash"
+    stsh = "sta"
     stsa = sta
 	bta = sta
     stahs = sta
     tash = sta
-	stp = "!gt stash pop"
     spt = stp
     stop = stp
     tp = stp
