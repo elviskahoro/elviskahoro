@@ -10,7 +10,7 @@
 	aaaa = aa
     ab = "!gt absorb"
 	ap = "!gt add --patch"
-	au = "!gt add -u && gt status"
+	au = "!gt add -u"
     aq = au
 	qu = au
 	auy = au
