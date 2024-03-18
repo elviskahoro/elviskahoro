@@ -8,7 +8,8 @@
 	aa = "!gt add ."
 	aaa = aa
 	aaaa = aa
-    ab = "!gt absorb"
+    absorb = "!gt absorb"
+    ab = absorb
 	ap = "!gt add --patch"
 	au = "!gt add -u"
     aq = au
