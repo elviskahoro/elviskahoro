@@ -182,8 +182,7 @@
 
 	s = status
     gs = s
-	ss = "!gt submit --cli"
-	ssf = "!gt submit --cli --force"
+	ss = "!gt submit --cli --ai"
 	sw = "!gt switch"
 	swc = "!gt switch -c"
 	sh = "!f() { if [ $# -eq 0 ]; then git show; else git show HEAD~$1; fi }; f"
