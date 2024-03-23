@@ -200,6 +200,7 @@
     stop = stp
     tp = stp
     sto = stp
+    sp = stp
 	stau = "!gt stash --include-untracked"
     stcc = "!gt stash clear"
 	std = "!gt stash drop"
