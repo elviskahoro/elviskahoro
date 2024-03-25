@@ -75,6 +75,7 @@ alias rczlogin="vim ~/.zlogin"
 alias rczlogout="vim ~/.zlogout"
 
 
+alias cdi='cd ~/Documents/warp-internal'
 alias cdx='cd ~/Documents/devx'
 alias cdv='cd ~/Documents/devx'
 alias vdx='cd ~/Documents/devx'
