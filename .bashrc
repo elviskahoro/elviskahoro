@@ -2,6 +2,7 @@ function cdl {
   cd "$(llama "$@")"
 }
 
+alias cr='cargo run'
 alias cod='code .'
 alias cp='cp -i'
 alias fmt='trunk fmt'
