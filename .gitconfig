@@ -10,6 +10,7 @@
 	aaaa = aa
     absorb = "!gt absorb"
     ab = absorb
+    abn = absorb
 	ap = "!gt add --patch"
 	au = "!gt add -u"
     aui = au
