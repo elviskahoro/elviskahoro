@@ -12,6 +12,7 @@
     ab = absorb
 	ap = "!gt add --patch"
 	au = "!gt add -u"
+    aui = au
     gau = au
     aq = au
 	qu = au
