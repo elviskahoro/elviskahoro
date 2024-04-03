@@ -184,6 +184,7 @@
 	rs = "!gt sync"
 
 	s = status
+    sg = s
     gs = s
 	ss = "!gt submit --cli --ai"
 	sw = "!gt switch"
