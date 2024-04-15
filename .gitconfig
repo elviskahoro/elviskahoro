@@ -11,6 +11,7 @@
     absorb = "!gt absorb"
     ab = absorb
     abn = absorb
+    cab = asborb
 	ap = "!gt add --patch"
 	au = "!gt add -u"
     aui = au
@@ -85,7 +86,7 @@
 	cma = cam
 	canm = cam
 	cc = "!trunk check --fix --filter=-trivy,-checkov,-osv-scanner"
-	cca = "!trunk check --fix --all --ignore-git-state --filter=-trivy,-checkov,-osv-scanner"
+	cca = "!trunk check --fix --all --ignore-git-state --filter=-trivy,-checkov,-osv-scanner,-trufflehog"
     cac = cca
     ccc = cca
     ccca = cca
