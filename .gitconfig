@@ -209,6 +209,7 @@
 	stau = "!gt stash --include-untracked"
     stcc = "!gt stash clear"
 	std = "!gt stash drop"
+    setd = std
 	std2 = "!gt stash drop && gt stash drop"
 	stl = "!gt stash list"
 	sts = "!gt stash show"
