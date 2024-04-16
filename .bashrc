@@ -1,5 +1,5 @@
 function cdl {
-  cd "$(llama "$@")"
+  cd "$(walk "$@")"
 }
 
 alias cr='cargo run'
