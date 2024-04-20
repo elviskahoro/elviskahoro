@@ -132,6 +132,7 @@
 
     l = "!gt log --reverse --show-untracked"
     k = l
+    sl = l
 	ll = "!gt log short --reverse --show-untracked"
 	ls = ll
 	gl = log
