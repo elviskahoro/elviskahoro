@@ -26,6 +26,7 @@
     auq = au
     aau = au
     dau = au
+    gau = au
     auca = "!gt au && gt ca"
 
 	bb = "!gt branch bottom"
