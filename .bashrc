@@ -119,6 +119,8 @@ alias gi='g'
 alias jg='g'
 alias yg='g'
 alias wg='g'
+alias eg='g'
+
 alias ggit='g'
 alias gitg='g'
 alias gaa='g aa'
