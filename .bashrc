@@ -4,6 +4,8 @@ function cdl {
 
 alias cr='cargo run'
 alias cod='code .'
+alias count='ls -l | wc -l'
+alias coun='count'
 alias cp='cp -i'
 alias fmt='trunk fmt'
 alias g='git'

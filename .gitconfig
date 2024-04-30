@@ -126,6 +126,7 @@
 	ld = dl
 	dls = dl
     ldl = dl
+    ddl = dl
 	du = "!less $(git ls-files --others --exclude-standard)"
     drun = branch -D run
 
