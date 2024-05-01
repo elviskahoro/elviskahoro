@@ -116,6 +116,7 @@
 	cpc = "!gt cherry-pick --continue"
 
 	d = "!f() { if [ $# -eq 0 ]; then git diff; else git diff HEAD~$1; fi }; f"
+    f = d
     dd = d 1
     d1 = d 1
 	dc = "!gt diff --cached"
