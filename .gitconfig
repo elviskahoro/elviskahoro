@@ -120,6 +120,7 @@
     dd = d 1
     d1 = d 1
 	dc = "!gt diff --cached"
+    dcd = dc
 	ddc = dc
 	ds = "!f() { if [ $# -eq 0 ]; then git show --name-only; else git log --name-only -$1; fi }; f"
 	dsr = "!gt downstack restack"
