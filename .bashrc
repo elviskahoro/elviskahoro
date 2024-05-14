@@ -127,6 +127,7 @@ alias tg='g'
 alias wg='g'
 alias yg='g'
 alias yyg='g'
+alias gig='g'
 
 alias ggit='g'
 alias gitg='g'
