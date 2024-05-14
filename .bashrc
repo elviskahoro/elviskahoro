@@ -118,6 +118,7 @@ alias gg='g'
 alias ga='g'
 alias gi='g'
 
+alias cg='g'
 alias eg='g'
 alias jg='g'
 alias lg='g'
