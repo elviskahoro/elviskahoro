@@ -243,6 +243,7 @@
     poush = push
 
 	uso = "!gt move"
+    usi = uso
 	usso = uso
     uos = uso
     suo = uso
