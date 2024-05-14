@@ -97,6 +97,7 @@
     hc = ch
     c = ch
     hch = ch
+    gh = ch
 	chr = checkout run
 	cr = chr
 	check = "!trunk check --all --fix"
