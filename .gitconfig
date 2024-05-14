@@ -138,6 +138,7 @@
     g = "!git"
 
     l = "!gt log --reverse --show-untracked"
+    al = l
     k = l
     sl = l
 	ll = "!gt log short --reverse --show-untracked"
