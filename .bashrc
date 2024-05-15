@@ -81,6 +81,7 @@ alias rczlogout="vim ~/.zlogout"
 
 
 alias cdt='cd ~/Desktop/test/temp'
+alias cddt='cd ~/Desktop/test/temp'
 alias cdi='cd ~/Documents/warp-internal'
 alias cdci='cd ~/Documents/warp-internal'
 alias cdc='cd ~/Documents/warp-community'
