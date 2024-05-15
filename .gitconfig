@@ -102,8 +102,8 @@
 	cr = chr
 	check = "!trunk check --all --fix"
 	co = "! gt modify -c"
-	gso = co
 	gco = commit
+	gso = gco
     comit = gco
     goc = gco
     gcp = gco
