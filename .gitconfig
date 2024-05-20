@@ -173,6 +173,7 @@
     ppush = push
     psh = push
     puh = push
+    poush = push
 
     rse = rs
 	r = "!f() { if [ $# -eq 0 ]; then git reset; else git reset HEAD~$1 --mixed; fi }; f"
@@ -238,11 +239,11 @@
 	test = "!pre-commit run --all-files"
     to = "!gt pr"
 	top = "!gt top"
+    op = top
     otp = top
 	topd = "!gt top && gt down"
 	topn = topd
 	topb = topd
-    poush = push
 
 	uso = "!gt move"
     usi = uso
