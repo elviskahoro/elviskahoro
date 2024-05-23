@@ -204,7 +204,7 @@
 	sh = "!f() { if [ $# -eq 0 ]; then git show; else git show HEAD~$1; fi }; f"
 	gsq = "!f() { if [ $# -gt 2 ]; then echo "must be more than one"; else git rebase -i HEAD~$1; fi }; f"
 	sta = "!gt stash"
-    stah = "!gh stash"
+    stah = "!gt stash"
     stsh = "sta"
     stsa = sta
 	bta = sta
