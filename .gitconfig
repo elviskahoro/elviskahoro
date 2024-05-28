@@ -49,6 +49,7 @@
 	brd = "!gt branch unbranch"
 	gbrd = branch -D
 	gdd = gbrd
+	grd = gbrd
 	gbdd = gdd
 	grbd = gbrd
     gbtd = gbrd
