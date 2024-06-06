@@ -95,10 +95,11 @@
     ccc = cca
     ccca = cca
 	ch = checkout
-    hc = ch
     c = ch
-    hch = ch
     gh = ch
+    hc = ch
+    bch = ch
+    hch = ch
 	chr = checkout run
 	cr = chr
 	check = "!trunk check --all --fix"
