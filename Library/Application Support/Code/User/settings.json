@@ -218,4 +218,5 @@
       "<C-s>": false,
       "<C-z>": false
     },
+    "workbench.activityBar.location": "top",
 }
