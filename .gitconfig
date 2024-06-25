@@ -39,6 +39,7 @@
 	gbc = branch -c
 	bcn = "!gt branch create --no-verify"
 	be = "!gt downstack edit"
+    gbl = branch -a
 	bl = branch --list
 	bd = "!f() { if [ $# -eq 0 ]; then gt down; else gt down $1; fi }; f"
 	db = bd
