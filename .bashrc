@@ -204,8 +204,3 @@ alias gusr='g usr'
 alias suo='g uso'
 alias run='g bc run/urn/rnu'
 alias pul='g pull'
-
-if [[ $TERM_PROGRAM != "WarpTerminal" ]]; then
-    echo 'eval "$(atuin init zsh)"'
-fi
-
