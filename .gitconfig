@@ -171,6 +171,7 @@
 	pr = "!gt pr"
 	gpr = "!gh pr create --web"
     pus = push
+    pusj = push
     psuh = push
     ppush = push
     psh = push
