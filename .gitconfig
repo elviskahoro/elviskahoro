@@ -107,6 +107,7 @@
 	co = "! gt modify -c"
 	gco = commit
 	gso = gco
+	ggco = gco
     comit = gco
     goc = gco
     gcp = gco
