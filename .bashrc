@@ -2,7 +2,7 @@ function cdl {
   cd "$(walk "$@")"
 }
 
-alias cr='cargo run'
+
 alias cod='code .'
 alias count='ls -l | wc -l'
 alias coun='count'
@@ -204,3 +204,6 @@ alias gusr='g usr'
 alias suo='g uso'
 alias run='g bc run/urn/rnu'
 alias pul='g pull'
+
+alias cr='cargo run'
+alias cb='cargo build'
