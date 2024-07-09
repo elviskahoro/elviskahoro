@@ -13,8 +13,8 @@ Some tools that give me joy:
 
 ## Daily
 - [warp](https://warp.dev)
-- [graphite](https://graphite.dev/)
 - [trunk](https://trunk.io/)
+- [graphite](https://graphite.dev/)
 - [stashpad](https://www.stashpad.com/)
 - [hookdeck](https://hookdeck.com/)
 - [temporal](https://temporal.io/)
