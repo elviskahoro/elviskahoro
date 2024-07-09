@@ -219,4 +219,5 @@
       "<C-z>": false
     },
     "workbench.activityBar.location": "top",
+    "editor.inlineSuggest.suppressSuggestions": true,
 }
