@@ -224,11 +224,6 @@
         "when": "debugState == 'stopped'"
     },
     {
-        "key": "ctrl+shift+j",
-        "command": "workbench.action.debug.stepOver",
-        "when": "debugState == 'stopped'"
-    },
-    {
         "key": "f10",
         "command": "-workbench.action.debug.stepOver",
         "when": "debugState == 'stopped'"
@@ -282,5 +277,24 @@
         "key": "shift+f5",
         "command": "-workbench.action.debug.stop",
         "when": "inDebugMode && !focusedSessionIsAttach"
+    },
+    {
+        "key": "ctrl+shift+j",
+        "command": "workbench.action.debug.stepOver"
+    },
+    {
+        "key": "cmd+f",
+        "command": "-actions.find",
+        "when": "editorFocus || editorIsOpen"
+    },
+    {
+        "key": "cmd+f",
+        "command": "editor.action.startFindReplaceAction",
+        "when": "editorFocus || editorIsOpen"
+    },
+    {
+        "key": "alt+cmd+f",
+        "command": "-editor.action.startFindReplaceAction",
+        "when": "editorFocus || editorIsOpen"
     }
 ]
