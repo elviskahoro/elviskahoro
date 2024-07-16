@@ -305,5 +305,25 @@
         "key": "cmd+r",
         "command": "-workbench.action.reloadWindow",
         "when": "isDevelopment"
+    },
+    {
+        "key": "shift+cmd+c",
+        "command": "-workbench.action.terminal.openNativeConsole",
+        "when": "!terminalFocus"
+    },
+    {
+        "key": "shift+cmd+c",
+        "command": "copyRelativeFilePath",
+        "when": "editorFocus"
+    },
+    {
+        "key": "cmd+k shift+alt+cmd+c",
+        "command": "-copyRelativeFilePath",
+        "when": "editorFocus"
+    },
+    {
+        "key": "shift+alt+cmd+c",
+        "command": "-copyRelativeFilePath",
+        "when": "!editorFocus"
     }
 ]
