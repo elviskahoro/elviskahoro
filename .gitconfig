@@ -180,6 +180,7 @@
     psh = push
     puh = push
     poush = push
+    oush = push
 
     rse = rs
 	r = "!f() { if [ $# -eq 0 ]; then git reset; else git reset HEAD~$1 --mixed; fi }; f"
