@@ -325,5 +325,19 @@
         "key": "shift+alt+cmd+c",
         "command": "-copyRelativeFilePath",
         "when": "!editorFocus"
+    },
+    {
+        "key": "cmd+b",
+        "command": "workbench.explorer.fileView.focus",
+        "when": "!sideBarFocus || !sideBarVisible"
+    },
+    {
+        "key": "cmd+b",
+        "command": "workbench.action.closeSidebar",
+        "when": "sideBarFocus"
+    },
+    {
+        "key": "f8",
+        "command": "workbench.action.toggleSidebarVisibility"
     }
 ]
