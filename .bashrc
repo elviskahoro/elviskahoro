@@ -76,6 +76,7 @@ alias rcp="vim ~/.profile"
 alias rczp="vim ~/.zprofile"
 alias rcze="vim ~/.zshenv"
 alias rcz="vim ~/.zshrc"
+alias zshrc="vim ~/.zshrc"
 alias rczlogin="vim ~/.zlogin"
 alias rczlogout="vim ~/.zlogout"
 
