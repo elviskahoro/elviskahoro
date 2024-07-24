@@ -173,6 +173,7 @@
 	prev = "!f() { if [ $# -eq 0 ]; then git checkout HEAD^1; else git checkout HEAD^$1; fi }; f"
 	pr = "!gt pr"
 	gpr = "!gh pr create --web"
+    psu = push
     pus = push
     pusj = push
     psuh = push
