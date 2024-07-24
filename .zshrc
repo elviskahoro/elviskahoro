@@ -24,3 +24,5 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 eval "$(pyenv init --path)"
 eval "$(starship init zsh)"
 
+export PATH="/opt/homebrew/bin:${PATH}"
+
