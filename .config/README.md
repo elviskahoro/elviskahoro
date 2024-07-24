@@ -83,6 +83,9 @@ brew install liquidprompt
 ```
 
 ```sh
+brew install git-delta &&
+brew install starship &&
+brew install withgraphite/tap/graphite &&
 brew install vim &&
 brew install tmux &&
 brew install tig &&
