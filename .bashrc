@@ -4,6 +4,7 @@ function cdl {
 
 
 alias brwe='brew'
+alias brw='brew'
 alias cod='code .'
 alias count='ls -l | wc -l'
 alias coun='count'
