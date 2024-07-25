@@ -93,7 +93,7 @@
         "editor.defaultFormatter": "vscode.json-language-features",
         "editor.tabSize": 2
     },
-    "python.defaultInterpreterPath": "/Users/elvis/.pyenv/versions/3.10.3/bin/python",
+    "python.defaultInterpreterPath": "/Users/elvis/.pyenv/versions/3.12.4/bin/python",
     "todo-tree.general.statusBar": "current file",
     "todo-tree.filtering.excludeGlobs": [
         "**/node_modules",
