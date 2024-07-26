@@ -4,8 +4,7 @@
 
 Hi! I'm elvis (he/him/his)
 
-I work at [Warp.dev](https://www.warp.dev/careers), where we are modernizing the terminal [(in Rust).](https://www.warp.dev/blog/why-is-building-a-ui-in-rust-so-hard) We're [remote first](https://warpdev.notion.site/Public-Warp-How-We-Work-b872d41a1da743fca18220a731aeba48), but I live and work in SF (we have an office)!
-I grew up in Kennesaw, GA and went to [Pomona College](https://www.pomona.edu/dos-search/search-committee).
+I'm a christian living and working in SF. I grew up in Kennesaw, GA and went to [Pomona College](https://www.pomona.edu/dos-search/search-committee).
 
 [Erdos #2](https://pages.pomona.edu/~sg064747/PAPERS/PRBTP.pdf)
 
