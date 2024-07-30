@@ -19,14 +19,16 @@ if [ -f "$HOME/.bashrc" ]; then
     source "$HOME/.bashrc"
 fi
 
-. "$HOME/.cargo/env"
+export PATH="/opt/homebrew/bin:${PATH}"
 eval "$(/opt/homebrew/bin/brew shellenv)"
+
+source $(brew --prefix nvm)/nvm.sh
+
 eval "$(pyenv init --path)"
 eval "$(starship init zsh)"
-
-export PATH="/opt/homebrew/bin:${PATH}"
-
 
 # bun
 export BUN_INSTALL="$HOME/Library/Application Support/reflex/bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+
+. "$HOME/.cargo/env"
