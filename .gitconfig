@@ -92,7 +92,8 @@
 	canm = cam
 	cc = "!trunk check --fix --filter=-trivy,-checkov,-osv-scanner"
     gcc = cc
-	cca = "!trunk check --fix --all --ignore-git-state --filter=-trivy,-checkov,-osv-scanner,-trufflehog"
+	cca = "!trunk check --fix --all --ignore-git-state" 
+	#cca = "!trunk check --fix --all --ignore-git-state --filter=-trivy,-checkov,-osv-scanner,-trufflehog"
     cac = cca
     ccc = cca
     ccca = cca
