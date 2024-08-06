@@ -18,7 +18,7 @@ Some tools that give me joy:
 - [stashpad](https://www.stashpad.com/)
 - [hookdeck](https://hookdeck.com/)
 - [temporal](https://temporal.io/)
-- [dagger.io](https://dagger.io/)
+- [dagger](https://dagger.io/)
 
 
 ## CLIs
