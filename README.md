@@ -19,10 +19,12 @@ Some tools that give me joy:
 - [warp](https://warp.dev)
 - [trunk](https://trunk.io/)
 - [graphite](https://graphite.dev/)
-- [stashpad](https://www.stashpad.com/)
 - [hookdeck](https://hookdeck.com/)
-- [temporal](https://temporal.io/)
+- [modal](https://modal.com/)
 - [dagger](https://dagger.io/)
+- [stashpad](https://www.stashpad.com/)
+- [pulumi](https://www.pulumi.com/)
+- [system initiative](https://www.systeminit.com/)
 
 
 ## CLIs
