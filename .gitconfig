@@ -10,15 +10,19 @@
 	aaaa = aa
     absorb = "!gt absorb"
     ab = absorb
+    abb = absorb
     abn = absorb
     cab = asborb
 	ap = "!gt add --patch"
 	au = "!gt add -u"
+    aiu = au
+    ai = au
     aui = au
     gau = au
     aq = au
 	qu = au
 	auy = au
+    auu = au
 	aug = au
 	ua = au
 	aui = au
@@ -30,8 +34,8 @@
     aug = au
     auca = "!gt au && gt ca"
 
-	bb = "!gt branch bottom"
 	bc = "!gt create"
+    bcx = bc
     bcdl = bc
     cdl = bc
 	cb = bc
@@ -42,6 +46,7 @@
     gbl = branch -a
 	bl = branch --list
 	bd = "!f() { if [ $# -eq 0 ]; then gt down; else gt down $1; fi }; f"
+    bds = bd
 	db = bd
 	bp = bd
     gbd = bd
@@ -49,6 +54,8 @@
 	bdl = "!gt branch delete"
 	brd = "!gt branch unbranch"
 	gbrd = branch -D
+    brvd = grbd
+    brd = gbrd
 	gdd = gbrd
 	grd = gbrd
 	gbdd = gdd
@@ -59,11 +66,15 @@
 	brf = "!gt branch fold"
 	brsf = brf
 	brn = "!gt rename"
+    rbn = brn
 	brsp = "!gt split"
 	bsp = brsp
 	brsq = "!gt squash"
+    brrsq = brsq
 	brt = "!gt track"
 	bt = brt
+    btt = bt
+    btm = "!gt bottom"
 	bu = "!f() { if [ $# -eq 0 ]; then gt up; else gt up $1; fi }; f"
 	bn = bu
     by = bu
@@ -75,8 +86,10 @@
     ub = bu
     bug = bu
     gbu = bu
+    buy = bu
+    buff = "!gt up && git push --force"
 	#bucc = "!gt upstack test 'trunk check --fix --ignore-git-state'"
-    bucc = "!gt up && trunk check --fix --filter=-trivy,-checkov,-osv-scanner"
+    bucc = "!gt up && trunk check --fix --filter=-trivy,-checkov,-osv-scanner,-semgrep"
     bcc = bucc
     buc = bucc
     bud = "!gt up && git diff HEAD~$1"
@@ -88,9 +101,10 @@
     cva = ca
 	gca = commit --amend --no-edit
 	cam = "!gt modify"
+    acm = cam
 	cma = cam
 	canm = cam
-	cc = "!trunk check --fix --filter=-trivy,-checkov,-osv-scanner"
+	cc = "!trunk check --fix --filter=-trivy,-checkov,-osv-scanner,-semgrep"
     gcc = cc
 	cca = "!trunk check --fix --all --ignore-git-state" 
 	#cca = "!trunk check --fix --all --ignore-git-state --filter=-trivy,-checkov,-osv-scanner,-trufflehog"
@@ -98,16 +112,19 @@
     ccc = cca
     ccca = cca
 	ch = checkout
-    c = ch
-    gh = ch
-    hc = ch
-    bch = ch
-    hch = ch
+    gh = checkout
+    hc = checkout
+    bch = checkout
+    hch = checkout
+    gcvo = checkout
+
 	chr = checkout run
+    cloen = clone
 	cr = chr
-	check = "!trunk check --all --fix"
+	check = "!trunk check"
 	co = "! gt modify -c"
 	gco = commit
+    gcxo = gco
 	gso = gco
 	ggco = gco
     comit = gco
@@ -117,6 +134,7 @@
 	con = "!gt commit create --no-verify"
 	gcon = commit --no-verify
 	ct = "!gt continue"
+    ctr = ct
 	continue = ct
 	cp = "!gt cherry-pick"
 	cpa = "!gt cherry-pick --abort"
@@ -134,6 +152,7 @@
 	dst = "!gt downstack test"
 	dl = "!f() { if [ $# -eq 0 ]; then git diff-tree --no-commit-id --name-status -r HEAD; else git diff-tree --no-commit-id --name-status -r HEAD~$1; fi }; f"
     gdl = dl
+    dk = dl
 	ld = dl
 	dls = dl
     ldl = dl
@@ -142,6 +161,11 @@
     drun = branch -D run
 
     g = "!git"
+    get = "!gt get"
+
+    iit = init
+    int = init
+    inti = init
 
     l = "!gt log --reverse --show-untracked"
     al = l
@@ -159,6 +183,7 @@
 	o = "!gh pr view --web || gh repo view --web"
 	open = o
 	go = "!gt pr"
+    gfo = go
 	onto = "!gt upstack onto"
 
 	pbd = "!git push --no-verify origin --delete $(git branch --show-current)"
@@ -166,14 +191,16 @@
 	pbdf = "!git push --no-verify origin --delete $(git branch --show-current) && git push --no-verify -u origin HEAD"
 	pl = "!gt pull"
     poull = pl
+    pou = pl
     pul = pl
     oul = pl
     oull = pl
 	plm = "!gt fetch origin main:main"
 	pom = pull origin main
 	prev = "!f() { if [ $# -eq 0 ]; then git checkout HEAD^1; else git checkout HEAD^$1; fi }; f"
-	pr = "!gt pr"
+	prv = "!gt pr"
 	gpr = "!gh pr create --web"
+    pushj = push
     psu = push
     pus = push
     pusj = push
@@ -183,6 +210,8 @@
     puh = push
     poush = push
     oush = push
+    piush = push
+    puff = push --force
 
     rse = rs
 	r = "!f() { if [ $# -eq 0 ]; then git reset; else git reset HEAD~$1 --mixed; fi }; f"
@@ -196,23 +225,30 @@
     rcb= "!vim ~/.bashrc"
     rcg= "!vim ~/.gitconfig"
     reabse = rebase
+    rebse = rebase
+    rebae = rebase
 	rb = "!gt rebase"
 	rba = "!gt rebase --abort"
 	rbm = "!gt rebase main"
 	rbc = "!gt continue"
 	grbc = rebase --continue
     reo = "!gt reorder"
+    rr = "!reflex run"
 	rs = "!gt sync"
 
 	s = status
     sg = s
     gs = s
 	ss = "!gt submit --cli --ai"
+	ssg = "!gh pr create --web"
+	ssp = "!gh pr create --web"
 	sw = "!gt switch"
 	swc = "!gt switch -c"
 	sh = "!f() { if [ $# -eq 0 ]; then git show; else git show HEAD~$1; fi }; f"
 	gsq = "!f() { if [ $# -gt 2 ]; then echo "must be more than one"; else git rebase -i HEAD~$1; fi }; f"
 	sta = "!gt stash"
+    atash = sta
+    tas = sta
     stah = sta
     stahs = sta
     stsh = sta
@@ -233,6 +269,8 @@
     stcc = "!gt stash clear"
 	std = "!gt stash drop"
     setd = std
+    stdt = std
+    sted = std
 	std2 = "!gt stash drop && gt stash drop"
 	stl = "!gt stash list"
 	sts = "!gt stash show"
@@ -245,11 +283,13 @@
 	spush = "!f() { if [ $# -eq 0 ]; then git submodule foreach --recursive "git add ."; git submodule foreach --recursive "git commit -m c"; git push --recurse-submodules=on-demand; else git submodule foreach --recursive "git add ."; git submodule foreach --recursive "git commit -m $1"; git push --recurse-submodules=on-demand; fi } f"
     staash = stash
 	sstash = submodule foreach --recursive "git stash"
+    sync = "!gt sync"
 
 	t = "!pytest --ignore-glob='*/pycord/*' --import-mode=prepend"
 	test = "!pre-commit run --all-files"
     to = "!gt pr"
 	top = "!gt top"
+    vtop = top
     op = top
     otp = top
 	topd = "!gt top && gt down"
@@ -258,6 +298,7 @@
 
 	uso = "!gt move"
     usi = uso
+    usoi = uso
 	usso = uso
     uos = uso
     suo = uso
@@ -266,6 +307,9 @@
     psr = pusr
 	usr = "!gt restack --upstack"
 	us = usr
+	uisr = usr
+	usir = usr
+	usrt = usr
 	sur = usr
 	ust = "!gt upstack test"
 
@@ -331,7 +375,7 @@
 [commit]
 	template = ~/.config/git/.gitmessage
 [credential "https://github.com"]
-	helper = !/home/linuxbrew/.linuxbrew/Cellar/gh/2.3.0/bin/gh auth git-credential
+	helper = /opt/homebrew/bin/gh auth git-credential
 
 [credential "https://source.developers.google.com"]
 	helper = gcloud.sh
