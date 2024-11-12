@@ -26,6 +26,7 @@ Some tools that give me joy:
 - [hookdeck](https://hookdeck.com/)
 - [chromadb](https://www.trychroma.com/)
 - [dagger](https://dagger.io/)
+- [flox](https://flox.dev/)
 - [reflex](https://reflex.dev)
 - [modal](https://modal.com/)
 - [stashpad](https://www.stashpad.com/)
