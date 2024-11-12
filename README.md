@@ -10,10 +10,11 @@ I'm a christian living and working in SF. I grew up in Kennesaw, GA and went to 
 
 I'm a developer advocate!
 
-I previously worked:
+I have previously worked at:
 
 - [Reflex](https://reflex.dev)--an open-source framework empowering Python developers to build internal data, AI and web apps faster with no JavaScript (Frontend. Backend. Pure Python)!
 - [Warp](https://warp.dev)--a modern cross-platform GPU-accelerated cloud-backed terminal (written in Rust) with AI built in!
+- Facebook--spent two summers interning with Core Crowth working on FB4A at MPK21.
 
 Some tools that give me joy:
 
