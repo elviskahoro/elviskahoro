@@ -8,9 +8,12 @@ I'm a christian living and working in SF. I grew up in Kennesaw, GA and went to 
 
 [Erdos #2](https://pages.pomona.edu/~sg064747/PAPERS/PRBTP.pdf)
 
-I work at [Reflex](https://reflex.dev)--an open-source framework empowering Python developers to build internal data, AI and web apps faster [with no JavaScript!](https://reflex.dev/docs/getting-started/introduction/) Build both your [frontend and backend in a single language, Python](https://reflex.dev/docs/getting-started/how-reflex-works/). (`pip install reflex`)
+I'm a developer advocate!
 
-Prior to this I was at [Warp](https://warp.dev)--a modern cross-platform GPU-accelerated cloud-backed terminal (written in Rust) with AI built in!
+I previously worked:
+
+- [Reflex](https://reflex.dev)--an open-source framework empowering Python developers to build internal data, AI and web apps faster with no JavaScript (Frontend. Backend. Pure Python)!
+- [Warp](https://warp.dev)--a modern cross-platform GPU-accelerated cloud-backed terminal (written in Rust) with AI built in!
 
 Some tools that give me joy:
 
