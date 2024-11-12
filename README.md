@@ -18,13 +18,14 @@ I previously worked:
 Some tools that give me joy:
 
 ## Daily
-- [reflex](https://reflex.dev)
 - [warp](https://warp.dev)
 - [trunk](https://trunk.io/)
 - [graphite](https://graphite.dev/)
 - [hookdeck](https://hookdeck.com/)
-- [modal](https://modal.com/)
+- [chromadb](https://www.trychroma.com/)
 - [dagger](https://dagger.io/)
+- [reflex](https://reflex.dev)
+- [modal](https://modal.com/)
 - [stashpad](https://www.stashpad.com/)
 - [pulumi](https://www.pulumi.com/)
 - [system initiative](https://www.systeminit.com/)
