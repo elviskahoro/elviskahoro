@@ -15,7 +15,7 @@ I have previously worked at:
 - [Reflex](https://reflex.dev) - an open-source framework empowering Python developers to build internal data, AI and web apps faster with no JavaScript (Frontend. Backend. Pure Python)!
 - [Warp](https://warp.dev) - a modern cross-platform GPU-accelerated cloud-backed terminal (written in Rust) with AI built in!
 - [Emory University](https://pubmed.ncbi.nlm.nih.gov/36534457/) - doing NLP/IR in Public Health!
-- Facebook - spent two summers interning with Core Crowth working on FB4A at MPK21Z1 (next to full circle).
+- Facebook - spent two summers interning with Core Crowth working on FB4A at MPK21 in Z1 (next to full circle).
 
 Some tools that give me joy:
 
