@@ -21,9 +21,9 @@ Some tools that give me joy:
 
 ## Daily
 - [warp](https://warp.dev)
-- [trunk](https://trunk.io/)
 - [graphite](https://graphite.dev/)
 - [hookdeck](https://hookdeck.com/)
+- [trunk](https://trunk.io/)
 - [chromadb](https://www.trychroma.com/)
 - [dagger](https://dagger.io/)
 - [flox](https://flox.dev/)
