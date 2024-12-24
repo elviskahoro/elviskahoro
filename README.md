@@ -8,18 +8,19 @@ I'm a christian living and working in SF. I grew up in Kennesaw, GA and went to 
 
 [Erdos #2](https://pages.pomona.edu/~sg064747/PAPERS/PRBTP.pdf)
 
-I'm a developer advocate!
+I'm a developer advocate! I get to work at [Chalk.ai](https://chalk.ai)!!!! Chalk is a data platform and feature store that enables innovative machine learning teams to focus on building the unique products and models that make their business stand out.
 
 I have previously worked at:
 
 - [Reflex](https://reflex.dev) - an open-source framework empowering Python developers to build internal data, AI and web apps faster with no JavaScript (Frontend. Backend. Pure Python)!
 - [Warp](https://warp.dev) - a modern cross-platform GPU-accelerated cloud-backed terminal (written in Rust) with AI built in!
 - [Emory University](https://pubmed.ncbi.nlm.nih.gov/36534457/) - doing NLP/IR in Public Health!
-- Facebook - spent two summers interning with Core Crowth working on FB4A at MPK21 in Z1 (next to full circle).
+- Facebook - spent a couple summers interning with Core Crowth working on FB4A at MPK21 in Z1 (next to full circle).
 
 Some tools that give me joy:
 
 ## Daily
+- [chalk](https://chalk.ai)
 - [warp](https://warp.dev)
 - [graphite](https://graphite.dev/)
 - [hookdeck](https://hookdeck.com/)
