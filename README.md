@@ -8,7 +8,7 @@ I'm a christian living and working in SF. I grew up in Kennesaw, GA and went to 
 
 [Erdos #2](https://pages.pomona.edu/~sg064747/PAPERS/PRBTP.pdf)
 
-I'm a developer advocate! I get to work at [Chalk.ai](https://chalk.ai)--a data platform and feature store that enables innovative machine learning teams to focus on building the unique products and models that make their business stand out.
+I'm a developer advocate! I get to work at [Chalk.ai](https://chalk.ai)--a data infrastructure platform for machine learning teams to do feature engineering!
 
 I have previously worked at:
 
