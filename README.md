@@ -12,7 +12,6 @@ I'm a developer advocate! I get to work at [Chalk.ai](https://chalk.ai)--a data 
 
 I have previously worked at:
 
-- [Reflex](https://reflex.dev) - an open-source framework empowering Python developers to build internal data, AI and web apps faster with no JavaScript (Frontend. Backend. Pure Python)!
 - [Warp](https://warp.dev) - a modern cross-platform GPU-accelerated cloud-backed terminal (written in Rust) with AI built in!
 - [Emory University](https://pubmed.ncbi.nlm.nih.gov/36534457/) - doing NLP/IR in Public Health!
 - Facebook - spent a couple summers interning with core growth working on FB4A at MPK21 in Z1 (next to full circle).
@@ -28,7 +27,6 @@ Some tools that give me joy:
 - [chromadb](https://www.trychroma.com/)
 - [dagger](https://dagger.io/)
 - [flox](https://flox.dev/)
-- [reflex](https://reflex.dev)
 - [modal](https://modal.com/)
 - [stashpad](https://www.stashpad.com/)
 - [pulumi](https://www.pulumi.com/)
