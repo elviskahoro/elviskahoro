@@ -10,7 +10,7 @@ I'm a [christian]([https://www.epicsf.com/](https://www.epicsf.com/about#vision)
 
 I'm a developer advocate! I get to work at [Chalk.ai](https://chalk.ai)--an infrastructure platform for teams to do real-time machine learning ([loom](https://www.loom.com/share/a96b36f4ac0a442e9f924bfde4c090de)) Superb DevX around feature engineering!
 
-I've starred a lot of repos (> 1k) and I used to [organize them into lists](https://github.com/elviskahoro?tab=stars); this was becoming to cumbersome to manage so I'm building an app to search for repos based with natural language descriptionis (vector search). Stay tuned!
+I've starred a lot of repos (> 1k) and I used to [organize them into lists](https://github.com/elviskahoro?tab=stars); this was becoming to cumbersome to manage so I'm building an app to search for repos based with natural language descriptions (vector search). Stay tuned!
 
 I have previously worked at:
 
