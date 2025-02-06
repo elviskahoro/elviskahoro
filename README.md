@@ -4,7 +4,7 @@
 
 Hi! I'm elvis (he/him/his)
 
-I'm a christian living and working in SF. I grew up in Kennesaw, GA and went to Pomona College.
+I'm a [christian](https://www.epicsf.com/) living and working in SF. I grew up in Kennesaw, GA and went to Pomona College.
 
 [Erdos #2](https://pages.pomona.edu/~sg064747/PAPERS/PRBTP.pdf)
 
