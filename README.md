@@ -13,7 +13,7 @@ I'm a developer advocate! I get to work at [Chalk.ai](https://chalk.ai)--an infr
 I have previously worked at:
 
 - [Warp](https://warp.dev) - a modern cross-platform GPU-accelerated cloud-backed terminal (written in Rust) with AI built in!
-- [Emory University](https://pubmed.ncbi.nlm.nih.gov/36534457/) - doing NLP/IR in Public Health!
+- Emory University - doing [NLP/IR in Public Health!](https://pubmed.ncbi.nlm.nih.gov/36534457/)
 - Facebook - spent a couple summers interning with core growth working on FB4A at MPK21 in Z1 (next to full circle).
 
 Some tools that give me joy:
