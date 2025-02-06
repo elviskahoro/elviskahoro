@@ -16,7 +16,7 @@ I have previously worked at:
 
 - [Warp](https://warp.dev) - a modern cross-platform GPU-accelerated cloud-backed terminal (written in Rust) with AI built in!
 - Emory University - doing [NLP/IR in Public Health!](https://pubmed.ncbi.nlm.nih.gov/36534457/)
-- Facebook - spent a couple summers interning with core growth working on FB4A at MPK21 in Z1 (next to full circle).
+- Facebook - SWE with Core Growth working on FB4A (MPK21.Z1) right next to Full Circle.
 
 Some tools that give me joy:
 
