@@ -8,7 +8,7 @@ I'm a [christian]([https://www.epicsf.com/](https://www.epicsf.com/about#vision)
 
 [Erdos #2](https://pages.pomona.edu/~sg064747/PAPERS/PRBTP.pdf)
 
-I'm a developer advocate! I get to work at [Chalk.ai](https://chalk.ai)--an infrastructure platform for teams to do real-time machine learning! Superb DevX around feature engineering!
+I'm a developer advocate! I get to work at [Chalk.ai](https://chalk.ai)--an infrastructure platform for teams to do real-time machine learning ([loom](https://www.loom.com/share/a96b36f4ac0a442e9f924bfde4c090de)) Superb DevX around feature engineering!
 
 I have previously worked at:
 
