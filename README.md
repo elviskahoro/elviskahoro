@@ -10,6 +10,8 @@ I'm a [christian]([https://www.epicsf.com/](https://www.epicsf.com/about#vision)
 
 I'm a developer advocate! I get to work at [Chalk.ai](https://chalk.ai)--an infrastructure platform for teams to do real-time machine learning ([loom](https://www.loom.com/share/a96b36f4ac0a442e9f924bfde4c090de)) Superb DevX around feature engineering!
 
+I've starred a lot of repos, and I used to [organize them into lists](https://github.com/elviskahoro?tab=stars); this was becoming to cumbersome to manage so I'm building an app to search for repos based with natural language descriptionis (vector search). Stay tuned!
+
 I have previously worked at:
 
 - [Warp](https://warp.dev) - a modern cross-platform GPU-accelerated cloud-backed terminal (written in Rust) with AI built in!
@@ -40,9 +42,6 @@ Some tools that give me joy:
 - [bat](https://github.com/sharkdp/bat)
 - [llama](https://github.com/antonmedv/llama)
 - [starship](https://github.com/starship/starship)
-
-I've starred a lot of repos, and have tried to organize them into lists (categories):
-[GitHub star lists](https://github.com/elviskahoro?tab=stars)
 
 ## Apps
 - [linear](https://linear.app/)
