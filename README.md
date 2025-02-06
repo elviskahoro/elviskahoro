@@ -24,11 +24,11 @@ Some tools that give me joy:
 - [graphite](https://graphite.dev/)
 - [hookdeck](https://hookdeck.com/)
 - [trunk](https://trunk.io/)
-- [chromadb](https://www.trychroma.com/)
 - [dagger](https://dagger.io/)
+- [lancedb](https://lancedb.com/)
 - [flox](https://flox.dev/)
 - [modal](https://modal.com/)
-- [stashpad](https://www.stashpad.com/)
+- [stashpad](https://www.stashpad.com/) :( rip
 - [pulumi](https://www.pulumi.com/)
 - [system initiative](https://www.systeminit.com/)
 
@@ -65,6 +65,6 @@ Club America over chivas
 
 Pineapple on pizza
 
-[Move fast and Warp things](https://www.linkedin.com/in/elviskahoro)
+[Move fast with stable infrastructure](https://www.linkedin.com/in/elviskahoro)
 
 If there are any other controversial debates you'd like my opinion on please don't hesitate to open a new issue in this repository.
