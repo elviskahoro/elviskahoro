@@ -29,7 +29,6 @@ Some tools that give me joy:
 - [dagger](https://dagger.io/)
 - [lancedb](https://lancedb.com/)
 - [flox](https://flox.dev/)
-- [modal](https://modal.com/)
 - [stashpad](https://www.stashpad.com/) :( rip
 - [pulumi](https://www.pulumi.com/)
 - [system initiative](https://www.systeminit.com/)
