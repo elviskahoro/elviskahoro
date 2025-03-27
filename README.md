@@ -8,9 +8,9 @@ I'm a [christian]([https://www.epicsf.com/](https://www.epicsf.com/about#vision)
 
 [Erdos #2](https://pages.pomona.edu/~sg064747/PAPERS/PRBTP.pdf)
 
-I'm a developer advocate! I get to work at [Chalk.ai](https://chalk.ai)--an infrastructure platform for data teams to do real-time machine learning ([loom](https://www.loom.com/share/a96b36f4ac0a442e9f924bfde4c090de)).
+I'm a developer advocate! I work at [Chalk.ai](https://chalk.ai)--an infrastructure platform for data teams to do real-time machine learning [(loom)](https://www.loom.com/share/2c50068829594de5a5e8d01177ac99d4).
 
-I've starred a lot of repos (> 1k) and I used to [organize them into lists](https://github.com/elviskahoro?tab=stars); this was becoming to cumbersome to manage so I'm building an app to search for repos with natural language  (vector search). Stay tuned!
+I've starred a lot of repos (> 1k) and I used to [organize them into lists](https://github.com/elviskahoro?tab=stars); this was becoming to cumbersome to manage so I'm building an app to search for repos with natural language  with Chalk and LanceDB. Stay tuned!
 
 I have previously worked at:
 
