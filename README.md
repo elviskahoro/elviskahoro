@@ -26,7 +26,7 @@ Some tools that give me joy:
 - [graphite](https://graphite.dev/) - git
 - [hookdeck](https://hookdeck.com/) - webhook
 - [trunk](https://trunk.io/) - linting
-
+- [dlt](https://github.com/dlt-hub/dlt) - ETL
 - [rill](https://www.rilldata.com/) - data exploration + dashboards (honorable mention: duckdb)
 - [lancedb](https://lancedb.com/) - vector DB
 - [dagger](https://dagger.io/) - CI/CD engine + more
