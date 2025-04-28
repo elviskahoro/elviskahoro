@@ -32,6 +32,9 @@ Some tools that give me joy:
 - [dagger](https://dagger.io/) - CI/CD engine + more
 - [flox](https://flox.dev/) - developer environment management
 - [stashpad](https://www.stashpad.com/) :( rip
+- [attio](https://attio.com/) - CRM
+- [clay](http://clay.com/) - GTM
+- [koala](https://getkoala.com/) - even more GTM
 
 
 ## CLIs
