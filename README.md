@@ -35,6 +35,7 @@ Some tools that give me joy:
 - [attio](https://attio.com/) - CRM
 - [clay](http://clay.com/) - GTM
 - [koala](https://getkoala.com/) - even more GTM
+- [front](https://front.com/) - CSM + scaling comms
 
 
 ## CLIs
@@ -47,23 +48,20 @@ Some tools that give me joy:
 - [starship](https://github.com/starship/starship) - prompt (although not needed with Warp)
 
 ## Apps
-- [linear](https://linear.app/)
-- [raycast](https://www.raycast.com/)
-- [rectangle (pro)](https://rectangleapp.com/pro)
-- [swimm](https://swimm.io)
-- [retool](https://retool.com/)
-- [cron](https://cron.com/)
-- [front](https://front.com/)
-- [orbit](https://orbit.love/)
+- [linear](https://linear.app/) - type A
+- [raycast](https://www.raycast.com/) - keybindings
+- [rectangle (pro)](https://rectangleapp.com/pro) - more keybindings
+- [swimm](https://swimm.io) - internal docs
+
 - [clockwise](https://www.getclockwise.com/)
 
 ## Facts
 
-Vim over emacs
+Vim > emacs
 
-Barca over madrid
+Barca > madrid
 
-Club America over chivas
+Club America > chivas
 
 Pineapple on pizza
 
