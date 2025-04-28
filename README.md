@@ -21,17 +21,17 @@ I have previously worked at:
 Some tools that give me joy:
 
 ## Daily
-- [chalk](https://chalk.ai)
-- [warp](https://warp.dev)
-- [graphite](https://graphite.dev/)
-- [hookdeck](https://hookdeck.com/)
-- [trunk](https://trunk.io/)
-- [dagger](https://dagger.io/)
-- [lancedb](https://lancedb.com/)
-- [flox](https://flox.dev/)
+- [chalk](https://chalk.ai) - ML infra
+- [warp](https://warp.dev) - terminal
+- [graphite](https://graphite.dev/) - git
+- [hookdeck](https://hookdeck.com/) - webhook
+- [trunk](https://trunk.io/) - linting
+- [xan](https://github.com/medialab/xan) - CSV + local data exploration
+- [rill](https://www.rilldata.com/) - data exploration + dashboards (honorable mention: duckdb)
+- [lancedb](https://lancedb.com/) - vector DB
+- [dagger](https://dagger.io/) - CI/CD engine + more
+- [flox](https://flox.dev/) - developer environment management
 - [stashpad](https://www.stashpad.com/) :( rip
-- [pulumi](https://www.pulumi.com/)
-- [system initiative](https://www.systeminit.com/)
 
 
 ## CLIs
