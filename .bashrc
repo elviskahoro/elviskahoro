@@ -1,40 +1,72 @@
+# Load pyenv automatically by appending
+# the following to
+# ~/.zprofile (for login shells)
+# and ~/.zshrc (for interactive shells) :
+
+# export PYENV_ROOT="$HOME/.pyenv"
+# [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+# eval "$(pyenv init -)"
+
+# Restart your shell for the changes to take effect.
+
 function cdl {
   cd "$(walk "$@")"
 }
 
 
 alias batp='bat --paging=never'
-alias bp='bauplan'
-alias bpt='bauplan table'
-alias bptg='bauplan table get'
-alias bptl='bauplan table ls'
+alias bl='black .'
+alias bbl='black .'
+alias vbl='black .'
 
 alias brwe='brew'
 alias brw='brew'
 alias cb='cargo build'
+
 alias c='code'
-alias cl='code . '
 alias cod='code'
-alias count='ls -l | wc -l'
-alias coun='count'
+alias cl='chalk lint'
 alias cp='cp -i'
 alias cr='cargo run'
-alias devx='python3 src/__main__.py'
-alias ekk='cd /Users/elvis/Documents/elviskahoro'
 
+alias clx='cd ~/Documents/chalk/'
+alias cdemo='cd /Users/elvis/Documents/chalk-ai/demo_monorepo/'
+alias ccdemo='cd /Users/elvis/Documents/chalk-ai/demo_monorepo/'
+alias cdocs='cd /Users/elvis/Documents/chalk-ai/chalk-private/docs-frontend/src/pages/docs/'
+alias cdevx='cd /Users/elvis/Documents/chalk-ai/devx-growth/'
+
+alias chlak='chalk'
+alias blka='chalk'
+alias chakl='chalk'
+alias chal='chalk'
+alias clk='chalk'
+alias cahlk='chalk'
+alias clkwa='chalk apply --branch=elvis'
+alias clka='chalk apply --branch=elvis'
+alias clkia='chalk apply --branch=elvis'
+alias ckla='chalk apply --branch=elvis'
+alias cka='chalk apply --branch=elvis'
+alias clkd='chalk apply --branch=elvis'
+alias clkb='chalk apply --branch=elvis'
+alias clkbd='chalk apply --branch=elvis'
+alias clkq='chalk query --branch=elvis'
+alias clq='chalk query --branch=elvis'
+
+alias down='cd ~/Downloads/'
+alias play='cd ~/Downloads/playground'
+alias ekk='cd /Users/elvis/Documents/elviskahoro'
+alias exa='eza'
 
 alias fmt='trunk fmt'
 alias jt='jupyter-lab'
 alias less='less -R'
-alias ls='exa -a --long'
+alias ls='eza -a --long'
 alias le='ls'
 
-alias lsd='exa -a --long -D'
+alias lsd='eza -a --long -D'
 alias lsl='lsd'
 alias lks='lsd'
-
-alias lsf='readlink -f'
-alias fdl='lsf'
+alias lsf='eza --oneline'
 
 alias mkdir='mkdir -p'
 alias mdir='mkdir -p'
@@ -44,22 +76,24 @@ alias mv='mv -i'
 alias ngroks='ngrok start warpdotdev'
 
 alias ping='ping -c 10'
-alias pi='uv pip' 
-alias pipu='uv pip' 
-alias pipuv='uv pip' 
-alias piv='uv pip' 
-alias pipv='uv pip' 
+alias pi='uv pip'
+alias pipu='uv pip'
+alias pipuv='uv pip'
+alias piv='uv pip'
+alias pipv='uv pip'
 alias pre='pre-commit run --all-files'
 alias ps='ps auxf'
 alias pygithub='cd /Users/elvis/Library/Caches/pypoetry/virtualenvs/warpdotdev-dx-_OAhpmWh-py3.10/lib/python3.10/site-packages/github'
 alias py='python'
 
-alias o='open .'
-alias opeon='open .'
+alias o='open'
+alias opne='open'
+alias openm='open'
+alias ope='open'
 alias rmi='rm -iv'
 
 alias refelx='reflex'
-alias rr='reflex run' 
+alias rr='reflex run'
 alias rrld='reflex run --loglevel=debug'
 alias wrr='reflex run'
 alias rx='reflex'
@@ -69,12 +103,22 @@ alias rxe='cd /Users/elvis/Documents/reflex/examples'
 alias rxr='cd /Users/elvis/Documents/reflex/reflex'
 alias rxt='cd /Users/elvis/Documents/reflex/template'
 alias rxw='cd /Users/elvis/Documents/reflex/web'
+alias rvx='vim ~/.zshrc'
+alias rcv='vim ~/.bashrc'
+
+alias slide='slides'
+alias slid='slides'
+alias sli='slides'
+
 alias tnew='tmux new -s'
 alias tkill='tmux kill-session'
+
+alias uvr='uv pip install -r requirements.txt'
+
 alias ve='source .venv/bin/activate'
+alias vve='source .venv/bin/activate'
 alias verx='source /Users/elvis/Library/Caches/pypoetry/virtualenvs/reflex-NF09o5gF-py3.11/bin/activate'
 alias vce='source .venv/bin/activate'
-alias vi='mvim'
 alias vs='code'
 alias whitelist='code /Users/elvis/Documents/reflex-dev/reflex-web/pcweb/whitelist.py'
 alias white='code /Users/elvis/Documents/reflex-dev/reflex-web/pcweb/whitelist.py'
@@ -83,8 +127,8 @@ alias white='code /Users/elvis/Documents/reflex-dev/reflex-web/pcweb/whitelist.p
 alias diskspace="du -S | sort -n -r |more"
 alias folders='du -h --max-depth=1'
 alias folderssort='find . -maxdepth 1 -type d -print0 | xargs -0 du -sk | sort -rn'
-alias tree='tree -CAhF --dirsfirst'
-alias treed='tree -CAFd'
+alias tree='eza --tree --git-ignore'
+alias treed='eza --tree --git-ignore --only-dirs'
 alias mountedinfo='df -hT'
 
 # alias chmod commands
@@ -132,11 +176,10 @@ alias rczlogout="vim ~/.zlogout"
 
 alias cdcd='cd ~/Desktop'
 alias cdd='cd ~/Desktop'
-alias cdc='cd ~/Desktop'
+alias cdc='cd ~/Documents/chalk'
 alias cdt='cd ~/Desktop/test/temp'
 alias cddt='cd ~/Desktop/test/temp'
-alias cdc='cd ~/Documents/warp-community'
-alias cdx='cd ~/Documents/reflex-dev/devx'
+alias cdx='cd ~/Documents/chalk-ai'
 alias dcx='cd ~/Documents/reflex-dev/devx'
 alias ccdx='cd ~/Documents/reflex-dev/devx'
 alias cdv='cd ~/Documents/reflex-dev/devx'
@@ -208,6 +251,7 @@ alias cc='g cc'
 alias gch='g ch'
 alias co='g co'
 alias gco='g co'
+alias ct='g ct'
 alias gct='g ct'
 alias gtc='gt ct'
 alias tc='g ct'
@@ -247,3 +291,5 @@ alias gusr='g usr'
 alias suo='g uso'
 alias run='g bc run/urn/rnu'
 alias pul='g pull'
+
+export PATH=$HOME/.rill:$PATH # Added by Rill install
