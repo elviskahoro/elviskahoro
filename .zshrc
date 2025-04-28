@@ -1,3 +1,6 @@
+GIT_EDITOR=vim
+GITHUB_EDITOR=vim
+EDITOR=vim
 HISTFILE="$HOME/.zsh_history"
 HISTSIZE=10000000
 SAVEHIST=10000000
@@ -18,17 +21,15 @@ setopt HIST_BEEP                 # Beep when accessing nonexistent history.
 if [ -f "$HOME/.bashrc" ]; then
     source "$HOME/.bashrc"
 fi
-
-export PATH="/opt/homebrew/bin:${PATH}"
-eval "$(/opt/homebrew/bin/brew shellenv)"
-
-source $(brew --prefix nvm)/nvm.sh
-
-eval "$(pyenv init --path)"
 eval "$(starship init zsh)"
 
-# bun
-export BUN_INSTALL="$HOME/Library/Application Support/reflex/bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init --path)"
+eval "$(pyenv init -)"
 
-. "$HOME/.cargo/env"
+export PATH=$HOME/.rill:$PATH # Added by Rill install
+
+# Added by Windsurf
+export PATH="/Users/elvis/.codeium/windsurf/bin:$PATH"
+alias claude="/Users/elvis/.claude/local/claude"
