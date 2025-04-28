@@ -20,7 +20,10 @@ I have previously worked at:
 
 Some tools that give me joy:
 
+this [gitconfig](/.gitconfig)
+
 ## Daily
+
 - [chalk](https://chalk.ai) - ML infra
 - [warp](https://warp.dev) - terminal
 - [graphite](https://graphite.dev/) - git
