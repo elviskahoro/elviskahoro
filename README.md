@@ -26,7 +26,7 @@ Some tools that give me joy:
 - [graphite](https://graphite.dev/) - git
 - [hookdeck](https://hookdeck.com/) - webhook
 - [trunk](https://trunk.io/) - linting
-- [xan](https://github.com/medialab/xan) - CSV + local data exploration
+
 - [rill](https://www.rilldata.com/) - data exploration + dashboards (honorable mention: duckdb)
 - [lancedb](https://lancedb.com/) - vector DB
 - [dagger](https://dagger.io/) - CI/CD engine + more
@@ -35,12 +35,13 @@ Some tools that give me joy:
 
 
 ## CLIs
-- [exa](https://github.com/ogham/exa)
-- [delta](https://github.com/dandavison/delta)
-- [fx](https://github.com/antonmedv/fx)
-- [bat](https://github.com/sharkdp/bat)
-- [llama](https://github.com/antonmedv/llama)
-- [starship](https://github.com/starship/starship)
+- [xan](https://github.com/medialab/xan) - CSV + local data exploration
+- [exa](https://github.com/ogham/exa) - navigation
+- [delta](https://github.com/dandavison/delta) - git diffs
+- [fx](https://github.com/antonmedv/fx) - json
+- [bat](https://github.com/sharkdp/bat) - modern cat
+- [llama](https://github.com/antonmedv/llama) - navigation
+- [starship](https://github.com/starship/starship) - prompt (although not needed with Warp)
 
 ## Apps
 - [linear](https://linear.app/)
