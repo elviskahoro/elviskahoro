@@ -52,8 +52,6 @@ Some tools that give me joy:
 - [rectangle (pro)](https://rectangleapp.com/pro) - more keybindings
 - [swimm](https://swimm.io) - internal docs
 
-- [clockwise](https://www.getclockwise.com/)
-
 ## Facts
 
 Vim > emacs
