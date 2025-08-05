@@ -1,6 +1,6 @@
-[user]                                                                          
-	email = github@elvis.ai                                                     
-	name = elvis kahoro
+[user]
+ 	email = github@elvis.ai
+ 	name = elvis kahoro
 
 [alias]
 
@@ -42,6 +42,7 @@
 	cb =        bc
 	bce =       bc
     bvc =       bc
+    bci =       "!gt create --insert"
 	gbc =       switch -c
 	bcn =       "!gt branch create --no-verify"
 	be =        "!gt downstack edit"
@@ -56,12 +57,13 @@
 	bdl =       "!gt branch delete"
 	brd =       "!gt branch unbranch"
 	gbrd =      branch -D
-    brvd =      grbd
+    bgrd =      gbrd
+    brvd =      gbrd
     grb =       gbrd
     brd =       gbrd
 	gdd =       gbrd
 	grd =       gbrd
-	gbdd =      gdd
+	gbdd =      gbrd
 	grbd =      gbrd
     gbtd =      gbrd
     gbr =       gbrd
@@ -211,11 +213,14 @@
     pul =       pl
     oul =       pl
     oull =      pl
+    ull =       pl
 	plm =       "!gt fetch origin main:main"
 	pom =       pull origin main
 	prev =      "!f() { if [ $# -eq 0 ]; then git checkout HEAD^1; else git checkout HEAD^$1; fi }; f"
 	prv =       "!gt pr"
 	gpr =       "!gh pr create --web"
+    pshy =      push
+    pusuh=      push
     puis =      push
     puish =     push
     pushj =     push
@@ -229,6 +234,7 @@
     poush =     push
     oush =      push
     piush =     push
+    pusdh = push
     puff =      push --force
 
     rse =       rs
@@ -261,6 +267,7 @@
 	#ss =       "!gh pr create"
 	ss =        "!gt submit --cli --ai"
 	ssg =       "!gh pr create --web"
+    sgs =       ssg
     sss =       ss
     sds =       ss
 	gss =       ssg
@@ -290,12 +297,15 @@
     stpo =      stp
 	st =        "!gt stash --patch"
     ta =        st
+    astash =    stash
 	stau =      "!gt stash --include-untracked"
     stcc =      "!gt stash clear"
 	std =       "!gt stash drop"
+    tsd =       std
     setd =      std
     stdt =      std
     sted =      std
+    stgd =      std
 	std2 =      "!gt stash drop && gt stash drop"
 	stl =       "!gt stash list"
 	sts =       "!gt stash show"
@@ -331,6 +341,7 @@
     suo =       uso
     usp =       uso
 	pusr =      "!git push && gt restack --upstack"
+    psur =      pusr
     psr =       pusr
 	usr =       "!gt restack --upstack"
 	us =        usr
