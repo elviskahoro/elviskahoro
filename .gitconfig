@@ -390,7 +390,6 @@
 	plus-style = green "#383830"
     side-by-side = false
 
-
 [diff]
 	colorMoved = default
 
