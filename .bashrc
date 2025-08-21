@@ -12,17 +12,18 @@
 function cdl {
   cd "$(walk "$@")"
 }
-
+#alias run='modal run'
 
 alias batp='bat --paging=never'
-alias bl='black .'
-alias bbl='black .'
-alias vbl='black .'
+alias bl='black'
+alias bbl='black'
+alias vbl='black'
 
 alias brwe='brew'
 alias brw='brew'
 alias cb='cargo build'
 
+alias code='positron'
 alias c='code'
 alias cod='code'
 alias cl='chalk lint'
@@ -31,9 +32,11 @@ alias cr='cargo run'
 
 alias clx='cd ~/Documents/chalk/'
 alias cdemo='cd /Users/elvis/Documents/chalk-ai/demo_monorepo/'
+alias cdemok='cd /Users/elvis/Documents/chalk-ai/demo_monorepo/'
 alias ccdemo='cd /Users/elvis/Documents/chalk-ai/demo_monorepo/'
 alias cdocs='cd /Users/elvis/Documents/chalk-ai/chalk-private/docs-frontend/src/pages/docs/'
-alias cdevx='cd /Users/elvis/Documents/chalk-ai/devx-growth/'
+alias codcs='cd /Users/elvis/Documents/chalk-ai/chalk-private/docs-frontend/src/pages/docs/'
+alias cdfront='cd ~/Documents/chalk-ai/chalk-private/docs-frontend/'
 
 alias chlak='chalk'
 alias blka='chalk'
@@ -52,17 +55,23 @@ alias clkbd='chalk apply --branch=elvis'
 alias clkq='chalk query --branch=elvis'
 alias clq='chalk query --branch=elvis'
 
+alias dopller='doppler'
 alias down='cd ~/Downloads/'
-alias play='cd ~/Downloads/playground'
+alias dui='duckdb --ui'
+
 alias ekk='cd /Users/elvis/Documents/elviskahoro'
 alias exa='eza'
 
 alias fmt='trunk fmt'
+
+alias grow='cd /Users/elvis/Documents/elviskahoro/growth-machine'
+
 alias jt='jupyter-lab'
 alias less='less -R'
 alias ls='eza -a --long'
 alias le='ls'
 
+alias lsc='eza | wc -l'
 alias lsd='eza -a --long -D'
 alias lsl='lsd'
 alias lks='lsd'
@@ -75,6 +84,14 @@ alias mkldir='mkdir -p'
 alias mv='mv -i'
 alias ngroks='ngrok start warpdotdev'
 
+alias o='open'
+alias opne='open'
+alias openm='open'
+alias ope='open'
+
+alias play='cd ~/Documents/elviskahoro/playground'
+alias cplay='cd ~/Downloads/playground'
+alias cplayh='cd ~/Downloads/playground'
 alias ping='ping -c 10'
 alias pi='uv pip'
 alias pipu='uv pip'
@@ -86,12 +103,7 @@ alias ps='ps auxf'
 alias pygithub='cd /Users/elvis/Library/Caches/pypoetry/virtualenvs/warpdotdev-dx-_OAhpmWh-py3.10/lib/python3.10/site-packages/github'
 alias py='python'
 
-alias o='open'
-alias opne='open'
-alias openm='open'
-alias ope='open'
 alias rmi='rm -iv'
-
 alias refelx='reflex'
 alias rr='reflex run'
 alias rrld='reflex run --loglevel=debug'
@@ -110,6 +122,8 @@ alias slide='slides'
 alias slid='slides'
 alias sli='slides'
 
+alias test='pytest -n auto -v'
+alias tc='trunk check'
 alias tnew='tmux new -s'
 alias tkill='tmux kill-session'
 
@@ -119,9 +133,14 @@ alias ve='source .venv/bin/activate'
 alias vve='source .venv/bin/activate'
 alias verx='source /Users/elvis/Library/Caches/pypoetry/virtualenvs/reflex-NF09o5gF-py3.11/bin/activate'
 alias vce='source .venv/bin/activate'
-alias vs='code'
+alias vs='positron'
+
 alias whitelist='code /Users/elvis/Documents/reflex-dev/reflex-web/pcweb/whitelist.py'
 alias white='code /Users/elvis/Documents/reflex-dev/reflex-web/pcweb/whitelist.py'
+alias ws='windsurf'
+
+alias yran='yarn'
+alias yuarn='yarn'
 
 # Alias's to show disk space and space used in a folder
 alias diskspace="du -S | sort -n -r |more"
@@ -254,13 +273,13 @@ alias gco='g co'
 alias ct='g ct'
 alias gct='g ct'
 alias gtc='gt ct'
-alias tc='g ct'
 alias gd='g d'
 alias d='g d'
 alias dc='g dc'
 alias dl='g dl'
 alias gdl='g dl'
 alias gl='g l'
+alias pull='g pull'
 alias psuh='g push'
 alias push='g push'
 alias gpush='g push'
@@ -289,7 +308,6 @@ alias uso='g uso'
 alias usr='g usr'
 alias gusr='g usr'
 alias suo='g uso'
-alias run='g bc run/urn/rnu'
 alias pul='g pull'
 
 export PATH=$HOME/.rill:$PATH # Added by Rill install
