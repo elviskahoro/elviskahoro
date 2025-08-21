@@ -1,0 +1,120 @@
+{
+    "global": {
+        "check_for_updates_on_startup": false,
+        "show_in_menu_bar": false
+    },
+    "profiles": [
+        {
+            "complex_modifications": {
+                "rules": [
+                    {
+                        "description": "New Rule (change mouse 5 to left_command+])",
+                        "enabled": false,
+                        "manipulators": [
+                            {
+                                "from": { "pointing_button": "button5" },
+                                "to": [
+                                    {
+                                        "key_code": "close_bracket",
+                                        "modifiers": ["left_command"]
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Change mouse buttons to support back and forward within finder",
+                        "manipulators": [
+                            {
+                                "from": { "pointing_button": "button4" },
+                                "to": [
+                                    {
+                                        "key_code": "open_bracket",
+                                        "modifiers": ["left_command"]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": { "pointing_button": "button5" },
+                                "to": [
+                                    {
+                                        "key_code": "close_bracket",
+                                        "modifiers": ["left_command"]
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "devices": [
+                {
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "product_id": 834,
+                        "vendor_id": 1452
+                    },
+                    "ignore": true
+                },
+                {
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "product_id": 258,
+                        "vendor_id": 10730
+                    },
+                    "ignore": true
+                },
+                {
+                    "identifiers": {
+                        "is_pointing_device": true,
+                        "product_id": 50504,
+                        "vendor_id": 1133
+                    },
+                    "ignore": false,
+                    "mouse_flip_vertical_wheel": true
+                },
+                {
+                    "identifiers": {
+                        "is_pointing_device": true,
+                        "product_id": 5,
+                        "vendor_id": 7119
+                    },
+                    "ignore": false,
+                    "mouse_flip_vertical_wheel": true
+                },
+                {
+                    "identifiers": {
+                        "is_pointing_device": true,
+                        "product_id": 45108,
+                        "vendor_id": 1133
+                    },
+                    "ignore": false,
+                    "mouse_flip_vertical_wheel": true
+                },
+                {
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "product_id": 49299,
+                        "vendor_id": 1133
+                    },
+                    "ignore_vendor_events": true
+                },
+                {
+                    "identifiers": {
+                        "is_pointing_device": true,
+                        "product_id": 49299,
+                        "vendor_id": 1133
+                    },
+                    "ignore": false,
+                    "mouse_flip_vertical_wheel": true
+                }
+            ],
+            "name": "Default profile",
+            "selected": true,
+            "virtual_hid_keyboard": { "keyboard_type_v2": "ansi" }
+        }
+    ]
+}
