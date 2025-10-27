@@ -22,20 +22,21 @@ Some tools that give me joy:
 - [git config](/.gitconfig)
 - [chalk](https://chalk.ai) - ML infra
 - [warp](https://warp.dev) - terminal
-- [graphite](https://graphite.dev/) - git
-- [hookdeck](https://hookdeck.com/) - webhook
+- [graphite](https://graphite.dev/) - git navigation + [stacked diffs](https://www.youtube.com/live/m23jkzMFETg?si=b_VE0PK4hcMHI-pc&t=2702)
+- [hookdeck](https://hookdeck.com/) - webhooks
 - [trunk](https://trunk.io/) - linting
-- [dlt](https://github.com/dlt-hub/dlt) - ETL
+- [dlt](https://github.com/dlt-hub/dlt) - ETL / data movement
 - [rill](https://www.rilldata.com/) - data exploration + dashboards (honorable mention: duckdb)
 - [lancedb](https://lancedb.com/) - vector DB
-- [dagger](https://dagger.io/) - CI/CD engine + more
+- [dagger](https://dagger.io/) - CI/CD engine + [see example here](https://gist.github.com/elviskahoro/c6d8440de6dc88622770a48cde78fffa)
 - [flox](https://flox.dev/) - developer environment management
 - [stashpad](https://www.stashpad.com/) :( rip
 - [attio](https://attio.com/) - CRM
 - [clay](http://clay.com/) - GTM
-- [koala](https://getkoala.com/) - even more GTM
+- [koala](https://getkoala.com/) - even more GTM - rip - curse you cursor :(
 - [front](https://front.com/) - CSM + scaling comms
-
+- [modal](https://modal.com/) - compute + python scripts
+- [coderabbit](https://www.coderabbit.ai/) - local AI code review: `coderabbit --prompt-only`
 
 ## CLIs
 - [xan](https://github.com/medialab/xan) - CSV + local data exploration
