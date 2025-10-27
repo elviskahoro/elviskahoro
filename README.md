@@ -31,7 +31,7 @@ Some tools that give me joy:
 - [dagger](https://dagger.io/) - CI/CD engine + [see example here](https://gist.github.com/elviskahoro/c6d8440de6dc88622770a48cde78fffa)
 - [flox](https://flox.dev/) - developer environment management
 - [stashpad](https://www.stashpad.com/) :( rip
-- [attio](https://attio.com/) - CRM
+- [attio](https://attio.com/) - CRM - [Python SDK](https://github.com/elviskahoro/attio-sdk-python)
 - [clay](http://clay.com/) - GTM
 - [koala](https://getkoala.com/) - even more GTM - rip - curse you cursor :(
 - [front](https://front.com/) - CSM + scaling comms
