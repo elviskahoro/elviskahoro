@@ -8,7 +8,7 @@ I'm a [Christian]([https://www.epicsf.com/](https://www.epicsf.com/about#vision)
 
 I work at [Chalk.ai](https://chalk.ai)--an infrastructure platform for data teams to do real-time machine learning [(loom)](https://www.loom.com/share/2c50068829594de5a5e8d01177ac99d4).
 
-I've starred a lot of repos (> 1k) and I used to organize them into lists; this was becoming to cumbersome to manage so I'm building an app to search for repos with natural language with [Chalk](https://chalk.ai) of course!
+I've starred a lot of repos (> 1k) and I used to organize them into lists; this was becoming to cumbersome to manage so I'm building an app to search for repos with natural language.
 
 I have previously worked at:
 
