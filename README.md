@@ -10,6 +10,7 @@ I've starred a lot of repos (> 1k) and I used to organize them into lists; this 
 
 I have previously worked at:
 
+- [Chalk](https://chalk.ai) - a modern data infrastructure platform for real-time machine learning and low-latency inferenc
 - [Warp](https://warp.dev) - a modern cross-platform GPU-accelerated cloud-backed terminal (written in Rust) with AI built in!
 - Emory University - doing [NLP/IR in Public Health!](https://pubmed.ncbi.nlm.nih.gov/36534457/)
 - Facebook - SWE (Core Growth - MPK21.Z1) right next to Full Circle.
