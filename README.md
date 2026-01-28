@@ -6,7 +6,7 @@ Hi! I'm elvis (he/him/his)
 
 I'm a [Christian]([https://www.epicsf.com/](https://www.epicsf.com/about#vision)) living and working in SF. I grew up in Kennesaw, GA and went to Pomona College [(Erdos #2)](https://pages.pomona.edu/~sg064747/PAPERS/PRBTP.pdf)
 
-I've starred a lot of repos (> 1k) and I used to organize them into lists; this was becoming to cumbersome too manage so I'm building an app to search for repos with natural language.
+I've starred a lot of repos (> 1k) and I used to organize them into lists; this was becoming too cumbersome to manage so I'm building an app to search for repos with natural language.
 
 I have previously worked at:
 
