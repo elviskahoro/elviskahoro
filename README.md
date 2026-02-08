@@ -8,6 +8,8 @@ I'm a [Christian]([https://www.epicsf.com/](https://www.epicsf.com/about#vision)
 
 I've starred a lot of repos (> 1k) and I used to organize them into lists; this was becoming too cumbersome to manage so I'm building an app to search for repos with natural language.
 
+I currently work at [dltHub](https://dlthub.com), the company building [dlt](https://github.com/dlt-hub/dlt), the OSS (Apache-2.0) Python SDK for devs (+ their agents) building production-grade data pipelines!
+
 I have previously worked at:
 
 - [Chalk](https://chalk.ai) - a modern data infrastructure platform for real-time machine learning and low-latency inferenc
