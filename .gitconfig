@@ -214,6 +214,7 @@
   oul       = pl
   oull      = pl
   ull       = pl
+  pulp      = pl
   plm       = "!gt fetch origin main:main"
   pom       = pull origin main
   prev      = "!f() { if [ $# -eq 0 ]; then git checkout HEAD^1; else git checkout HEAD^$1; fi }; f"
@@ -235,6 +236,7 @@
   oush      = push
   piush     = push
   pusdh     = push
+  poiush    = push
   puff      = push --force
 
   rse       = rs
@@ -265,7 +267,7 @@
   sg        = s
   gs        = s
   #ss       = "!gh pr create"
-  ss        = "!gt submit --cli --ai"
+  ss        = "!gh pr create --fill --web"
   ssg       = "!gh pr create --web"
   sgs       = ssg
   sss       = ss
@@ -288,6 +290,7 @@
   stahs     = sta
   tash      = sta
   stas      = sta
+  sgta      = sta
   stp       = "!gt stash pop"
   spt       = stp
   stop      = stp
@@ -355,8 +358,8 @@
   x         = checkout -
   count-lines= "!git log --author=\"$1\" --pretty=tformat: --numstat | awk '{ add += $1; subs += $2; loc += $1 - $2 } END { printf \"added lines: %s, removed lines: %s, total lines: %s\\n\", add, subs, loc }' #"
 
-  llm-commit= "!git --no-pager diff HEAD~1 | ollama run wizardlm2  $'Take the passed in diff and create a commit summary that adheres to the rules outlined in conventional commit. Do not explain why it adheres to conventional commits, just return the commit message. All explanations should be in bullet format \n\nThe commit message should be structured as follows:\n\n<type>[optional scope]: <description>\n\n[optional body]\n\n[optional footer(s)]\n\nThe commit contains the following structural elements, to communicate intent to the consumers of your library:\n\nfix: a commit of the type fix patches a bug in your codebase (this correlates with PATCH in Semantic Versioning).\nfeat: a commit of the type feat introduces a new feature to the codebase (this correlates with MINOR in Semantic Versioning).\nBREAKING CHANGE: a commit that has a footer BREAKING CHANGE:, or appends a ! after the type/scope, introduces a breaking API change (correlating with MAJOR in Semantic Versioning). A BREAKING CHANGE can be part of commits of any type.\ntypes other than fix: and feat: are allowed, for example @commitlint/config-conventional (based on the Angular convention) recommends build:, chore:, ci:, docs:, style:, refactor:, perf:, test:, and others.\nfooters other than BREAKING CHANGE: <description> may be provided and follow a convention similar to git trailer format.\n\nAdditional types are not mandated by the Conventional Commits specification, and have no implicit effect in Semantic Versioning (unless they include a BREAKING CHANGE). A scope may be provided to a commit’s type, to provide additional contextual information and is contained within parenthesis, e.g., feat(parser): add ability to parse arrays.\n\nExamples\nCommit message with description and breaking change footer\n\nfeat: allow provided config object to extend other configs\n\nBREAKING CHANGE: `extends` key in config file is now used for extending other config files\n\nCommit message with ! to draw attention to breaking change\n\nfeat!: send an email to the customer when a product is shipped\n\nCommit message with scope and ! to draw attention to breaking change\n\nfeat(api)!: send an email to the customer when a product is shipped\n\nCommit message with both ! and BREAKING CHANGE footer\n\nchore!: drop support for Node 6\n\nBREAKING CHANGE: use JavaScript features not available in Node 6.\n\nCommit message with no body\n\ndocs: correct spelling of CHANGELOG\n\nCommit message with scope\n\nfeat(lang): add Polish language\n\nCommit message with multi-paragraph body and multiple footers\n\nfix: prevent racing of requests\n\nIntroduce a request id and a reference to latest request. Dismiss incoming responses other than from latest request.\n\nRemove timeouts which were used to mitigate the racing issue but are obsolete now.\n\nReviewed-by: Z\nRefs: #123\n\nSpecification\nThe key words “MUST”, “MUST NOT”, “REQUIRED”, “SHALL”, “SHALL NOT”, “RECOMMENDED”, “MAY”, and “OPTIONAL” in this document are to be interpreted as described in RFC 2119.\n\nCommits MUST be prefixed with a type, which consists of a noun, feat, fix, etc., followed by the OPTIONAL scope, OPTIONAL !, and REQUIRED terminal colon and space.\nThe type feat MUST be used when a commit adds a new feature to your application or library.\nThe type fix MUST be used when a commit represents a bug fix for your application.\nA scope MAY be provided after a type. A scope MUST consist of a noun describing a section of the codebase surrounded by parenthesis, e.g., fix(parser):\nA description MUST immediately follow the colon and space after the type/scope prefix. The description is a short summary of the code changes, e.g., fix: array parsing issue when multiple spaces were contained in string.\nA longer commit body MAY be provided after the short description, providing additional contextual information about the code changes. The body MUST begin one blank line after the description.\nA commit body is free-form and MAY consist of any number of newline separated paragraphs.\nOne or more footers MAY be provided one blank line after the body. Each footer MUST consist of a word token, followed by either a :<space> or <space># separator, followed by a string value (this is inspired by the git trailer convention).\nA footer’s token MUST use - in place of whitespace characters, e.g., Acked-by (this helps differentiate the footer section from a multi-paragraph body). An exception is made for BREAKING CHANGE, which MAY also be used as a token.\nA footer’s value MAY contain spaces and newlines, and parsing MUST terminate when the next valid footer token/separator pair is observed.\nBreaking changes MUST be indicated in the type/scope prefix of a commit, or as an entry in the footer.\nIf included as a footer, a breaking change MUST consist of the uppercase text BREAKING CHANGE, followed by a colon, space, and description, e.g., BREAKING CHANGE: environment variables now take precedence over config files.\nIf included in the type/scope prefix, breaking changes MUST be indicated by a ! immediately before the :. If ! is used, BREAKING CHANGE: MAY be omitted from the footer section, and the commit description SHALL be used to describe the breaking change.\nTypes other than feat and fix MAY be used in your commit messages, e.g., docs: update ref docs.\nThe units of information that make up Conventional Commits MUST NOT be treated as case sensitive by implementors, with the exception of BREAKING CHANGE which MUST be uppercase.\nBREAKING-CHANGE MUST be synonymous with BREAKING CHANGE, when used as a token in a footer.'"
-  llmc      = "!git llm-commit | git commit --amend -e -F -"
+	cai = !git commit -m \"$(git diff --cached | claude --print --model haiku --bare --effort low --no-session-persistence \"Create a concise git commit message in conventional commits format (type: description). Return ONLY the message, nothing else.\")\"
+	ssai = "!BASE=$(git merge-base HEAD main) && DIFF=$(git diff \"$BASE\"..HEAD | head -3000) && LOG=$(git log --oneline \"$BASE\"..HEAD) && TITLE=$(printf \"Commits:\\n%s\\n\\nDiff (truncated):\\n%s\" \"$LOG\" \"$DIFF\" | claude --print --model haiku --effort low --no-session-persistence \"Given these commits and diff for a PR, create a concise PR title (under 70 chars, no quotes). Return ONLY the title, nothing else.\" 2>&1) && BODY=$(printf \"Commits:\\n%s\\n\\nDiff (truncated):\\n%s\" \"$LOG\" \"$DIFF\" | claude --print --model haiku --effort low --no-session-persistence \"Given these commits and diff for a PR, write a PR description in markdown with a ## Summary section (2-4 bullet points) and a ## Test plan section (checklist). Be concise. Return ONLY the markdown body, nothing else.\" 2>&1) && PR_URL=$(gh pr view --json url -q .url 2>/dev/null) && if [ -n \"$PR_URL\" ]; then gh pr edit --title \"$TITLE\" --body \"$BODY\" && echo \"Updated PR: $PR_URL\"; else gh pr create --title \"$TITLE\" --body \"$BODY\" --web; fi"
 
 [init]
 	defaultBranch = main
@@ -373,8 +376,8 @@
 
 [filter "lfs"]
 	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
+	smudge = git-lfs smudge --skip -- %f
+	process = git-lfs filter-process --skip
 	required = true
 
 [core]
@@ -421,3 +424,9 @@
 
 [credential "https://source.developers.google.com"]
 	helper = gcloud.sh
+[color "blame"]
+	repeatedLines = bold 114
+	highlightedLine = bold 226
+	highlightedBoundary = bold 161
+[coderabbit]
+	machineId = cli/88a013c1cb39466287b4a9fee534ef17

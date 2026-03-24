@@ -1,18 +1,13 @@
-# Load pyenv automatically by appending
-# the following to
-# ~/.zprofile (for login shells)
-# and ~/.zshrc (for interactive shells) :
-
-# export PYENV_ROOT="$HOME/.pyenv"
-# [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-# eval "$(pyenv init -)"
-
-# Restart your shell for the changes to take effect.
-
 function cdl {
   cd "$(walk "$@")"
 }
+function cdf() {
+  local path="${1/#\~/$HOME}"  # Expand ~ to $HOME
+  cd "${path%/*}"
+}
 #alias run='modal run'
+
+alias ai='cd /Users/elvis/Documents/elviskahoro/ai'
 
 alias batp='bat --paging=never'
 alias bl='black'
@@ -23,48 +18,27 @@ alias brwe='brew'
 alias brw='brew'
 alias cb='cargo build'
 
-alias code='positron'
-alias c='code'
+#alias code='positron'
+alias c='cdl'
 alias cod='code'
-alias cl='chalk lint'
 alias cp='cp -i'
-alias cr='cargo run'
-
-alias clx='cd ~/Documents/chalk/'
-alias cdemo='cd /Users/elvis/Documents/chalk-ai/demo_monorepo/'
-alias cdemok='cd /Users/elvis/Documents/chalk-ai/demo_monorepo/'
-alias ccdemo='cd /Users/elvis/Documents/chalk-ai/demo_monorepo/'
-alias cdocs='cd /Users/elvis/Documents/chalk-ai/chalk-private/docs-frontend/src/pages/docs/'
-alias codcs='cd /Users/elvis/Documents/chalk-ai/chalk-private/docs-frontend/src/pages/docs/'
-alias cdfront='cd ~/Documents/chalk-ai/chalk-private/docs-frontend/'
-
-alias chlak='chalk'
-alias blka='chalk'
-alias chakl='chalk'
-alias chal='chalk'
-alias clk='chalk'
-alias cahlk='chalk'
-alias clkwa='chalk apply --branch=elvis'
-alias clka='chalk apply --branch=elvis'
-alias clkia='chalk apply --branch=elvis'
-alias ckla='chalk apply --branch=elvis'
-alias cka='chalk apply --branch=elvis'
-alias clkd='chalk apply --branch=elvis'
-alias clkb='chalk apply --branch=elvis'
-alias clkbd='chalk apply --branch=elvis'
-alias clkq='chalk query --branch=elvis'
-alias clq='chalk query --branch=elvis'
+alias cr='coderabbit'
 
 alias dopller='doppler'
 alias down='cd ~/Downloads/'
+alias docs='cd ~/Documents/'
 alias dui='duckdb --ui'
 
 alias ekk='cd /Users/elvis/Documents/elviskahoro'
 alias exa='eza'
 
 alias fmt='trunk fmt'
+alias nfm='fnm'
 
 alias grow='cd /Users/elvis/Documents/elviskahoro/growth-machine'
+alias growth='cd /Users/elvis/Documents/elviskahoro/growth-machine'
+
+alias home='cd /Users/elvis/Documents/elviskahoro/obsidian'
 
 alias jt='jupyter-lab'
 alias less='less -R'
@@ -80,9 +54,14 @@ alias lsf='eza --oneline'
 alias mkdir='mkdir -p'
 alias mdir='mkdir -p'
 alias mkldir='mkdir -p'
-
+alias mo='marimo'
 alias mv='mv -i'
+
 alias ngroks='ngrok start warpdotdev'
+
+alias pyen='pyenv'
+alias peynv='pyenv'
+alias pyuenv='pyenv'
 
 alias o='open'
 alias opne='open'
@@ -90,8 +69,8 @@ alias openm='open'
 alias ope='open'
 
 alias play='cd ~/Documents/elviskahoro/playground'
-alias cplay='cd ~/Downloads/playground'
-alias cplayh='cd ~/Downloads/playground'
+alias cplay='play'
+alias cplayh='play'
 alias ping='ping -c 10'
 alias pi='uv pip'
 alias pipu='uv pip'
@@ -102,22 +81,17 @@ alias pre='pre-commit run --all-files'
 alias ps='ps auxf'
 alias pygithub='cd /Users/elvis/Library/Caches/pypoetry/virtualenvs/warpdotdev-dx-_OAhpmWh-py3.10/lib/python3.10/site-packages/github'
 alias py='python'
+alias powd='pwd'
 
+alias rgf='rg -l'
 alias rmi='rm -iv'
 alias refelx='reflex'
 alias rr='reflex run'
 alias rrld='reflex run --loglevel=debug'
-alias wrr='reflex run'
-alias rx='reflex'
-alias rxd='reflex deploy'
-alias rxc='cd /Users/elvis/Documents/reflex/chat'
-alias rxe='cd /Users/elvis/Documents/reflex/examples'
-alias rxr='cd /Users/elvis/Documents/reflex/reflex'
-alias rxt='cd /Users/elvis/Documents/reflex/template'
-alias rxw='cd /Users/elvis/Documents/reflex/web'
 alias rvx='vim ~/.zshrc'
 alias rcv='vim ~/.bashrc'
 
+alias sl='claude --dangerously-skip-permissions --permission-mode bypassPermissions'
 alias slide='slides'
 alias slid='slides'
 alias sli='slides'
@@ -135,9 +109,12 @@ alias verx='source /Users/elvis/Library/Caches/pypoetry/virtualenvs/reflex-NF09o
 alias vce='source .venv/bin/activate'
 alias vs='positron'
 
+alias warp='oz'
+alias awrp='warp'
 alias whitelist='code /Users/elvis/Documents/reflex-dev/reflex-web/pcweb/whitelist.py'
 alias white='code /Users/elvis/Documents/reflex-dev/reflex-web/pcweb/whitelist.py'
-alias ws='windsurf'
+alias ws='positron'
+alias writer='cd /Users/elvis/Documents/elviskahoro/writer'
 
 alias yran='yarn'
 alias yuarn='yarn'
@@ -191,6 +168,7 @@ alias rcz="vim ~/.zshrc"
 alias zshrc="vim ~/.zshrc"
 alias rczlogin="vim ~/.zlogin"
 alias rczlogout="vim ~/.zlogout"
+alias rcl="vim ~/.claude.json"
 
 
 alias cdcd='cd ~/Desktop'
@@ -247,7 +225,6 @@ alias au='g au'
 alias gua=' gau'
 alias gau='g au'
 alias gbc='g bc'
-alias bd='g bd'
 alias gbd='g bd'
 alias qgbd='g bd'
 alias brn='g brn'
@@ -284,6 +261,9 @@ alias psuh='g push'
 alias push='g push'
 alias gpush='g push'
 alias poush='g push'
+alias puush='g push'
+alias pusrh='g push'
+alias ush='g push'
 alias reo='g reo'
 alias greo='g reo'
 alias grs='g rs'
@@ -310,4 +290,6 @@ alias gusr='g usr'
 alias suo='g uso'
 alias pul='g pull'
 
-export PATH=$HOME/.rill:$PATH # Added by Rill install
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/elvis/.lmstudio/bin"
+# End of LM Studio CLI section
