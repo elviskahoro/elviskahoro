@@ -26,10 +26,4 @@ eval "$(starship init zsh)"
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init --path)"
-eval "$(pyenv init -)"
-
-export PATH=$HOME/.rill:$PATH # Added by Rill install
-
-# Added by Windsurf
-export PATH="/Users/elvis/.codeium/windsurf/bin:$PATH"
-alias claude="/Users/elvis/.claude/local/claude"
+eval "$(fnm env --use-on-cd --shell zsh)"
