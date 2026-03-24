@@ -12,7 +12,7 @@ I currently work at [dltHub](https://dlthub.com), the company building [dlt](htt
 
 I have previously worked at:
 
-- [Chalk]([https://chalk.ai](https://github.com/chalk-ai/docs/pull/357/changes)) - a modern data infrastructure platform for real-time machine learning and low-latency inferenc
+- [Chalk](https://github.com/chalk-ai/docs/pull/357/changes) - a modern data infrastructure platform for real-time machine learning and low-latency inferenc
 - [Warp](https://github.com/warpdotdev/Warp/issues?q=is%3Aissue%20author%3Aelviskahoro) - a modern cross-platform GPU-accelerated cloud-backed terminal (written in Rust) with AI built in!
 - Emory University - doing [NLP/IR in Public Health!](https://pubmed.ncbi.nlm.nih.gov/36534457/)
 - Facebook - SWE (Core Growth - MPK21.Z1) right next to Full Circle.
