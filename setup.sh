@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-DOTFILES_DIR="$HOME/Documents/elviskahoro/elviskahoro"
+DOTFILES_DIR="$HOME/Documents/elviskahoro/dotfiles"
 BACKUP_DIR="$HOME/.dotfiles_backup_$(date +%Y%m%d_%H%M%S)"
 DRY_RUN=false
 
