@@ -10,5 +10,10 @@
     {
         "key": "cmd+p",
         "command": "-workbench.action.quickOpen"
+    },
+    {
+        "key": "cmd+n",
+        "command": "continue.newSession",
+        "when": "!editorFocus"
     }
 ]
