@@ -346,6 +346,10 @@
     "command": "-workbench.action.zoomIn"
   },
   {
+    "key": "shift+cmd+-",
+    "command": "-workbench.action.zoomOut"
+  },
+  {
     "key": "cmd+numpad_subtract",
     "command": "-workbench.action.zoomOut"
   },
@@ -370,11 +374,12 @@
   },
   {
     "key": "shift+cmd+=",
-    "command": "editor.action.fontZoomIn"
+    "command": "editor.unfoldRecursively"
   },
   {
     "key": "shift+cmd+-",
-    "command": "editor.action.fontZoomOut"
+    "command": "editor.foldRecursively",
+    "when": "editorTextFocus"
   },
   {
     "key": "ctrl+j",
@@ -424,6 +429,11 @@
     "key": "ctrl+l",
     "command": "extension.vim_navigateCtrlL",
     "when": "editorTextFocus && vim.active && vim.use<C-l> && !inDebugRepl && !inDebugMode"
+  },
+  {
+    "key": "cmd+l",
+    "command": "kilo-code.addToContext",
+    "when": "editorHasSelection && editorTextFocus"
   },
   {
     "key": "shift+cmd+l",
@@ -569,10 +579,5 @@
   {
     "key": "ctrl+cmd+enter",
     "command": "workbench.panel.markers.view.focus"
-  },
-  {
-    "key": "cmd+n",
-    "command": "continue.newSession",
-    "when": "!editorFocus"
   }
 ]
