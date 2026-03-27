@@ -19,7 +19,7 @@ Sync editor settings and keybindings between VS Code forks (Cursor, Positron, VS
 
 ## Architecture
 
-The dotfiles repo at `~/Documents/elviskahoro/elviskahoro/vscode/` uses a layered config:
+The dotfiles repo at `~/Documents/elviskahoro/dotfiles/vscode/` uses a layered config:
 
 ```
 vscode/
