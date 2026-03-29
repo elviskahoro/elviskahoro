@@ -237,6 +237,7 @@
   piush     = push
   pusdh     = push
   poiush    = push
+  ush       = push
   puff      = push --force
 
   rse       = rs
@@ -354,6 +355,9 @@
   usrt      = usr
   sur       = usr
   ust       = "!gt upstack test"
+
+  wls       = worktree list
+  wsl       = worktree list
 
   x         = checkout -
   count-lines= "!git log --author=\"$1\" --pretty=tformat: --numstat | awk '{ add += $1; subs += $2; loc += $1 - $2 } END { printf \"added lines: %s, removed lines: %s, total lines: %s\\n\", add, subs, loc }' #"
