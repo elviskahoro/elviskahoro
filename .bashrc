@@ -54,6 +54,7 @@ alias lsf='eza --oneline'
 alias mkdir='mkdir -p'
 alias mdir='mkdir -p'
 alias mkldir='mkdir -p'
+alias kmdir='mkdir -p'
 alias mo='marimo'
 alias mv='mv -i'
 

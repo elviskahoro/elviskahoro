@@ -1,12 +1,14 @@
 ---
-"workspace:activate_next_tab": cmd-2
-"workspace:toggle_warp_drive": cmd-b
-"pane_group:add_up": shift-cmd-D
-"workspace:toggle_command_palette": shift-cmd-P
 "workspace:toggle_navigation_palette": none
-"workspace:activate_prev_tab": cmd-1
 "workspace:activate_second_tab": none
-"input:open_completion_suggestions": tab
-"workspace:activate_first_tab": none
 "terminal:clear_blocks": cmd-r
+"workspace:toggle_command_palette": shift-cmd-P
+"input:toggle_workflows": shift-cmd-W
+"input:open_completion_suggestions": tab
 "pane_group:add_down": none
+"workspace:close_window": none
+"workspace:toggle_warp_drive": cmd-b
+"workspace:activate_next_tab": cmd-2
+"pane_group:add_up": shift-cmd-D
+"workspace:activate_first_tab": none
+"workspace:activate_prev_tab": cmd-1
