@@ -1,1 +1,4 @@
-{}
+{
+    "continue.enableContinueForCompletions": true,
+    "continue.enableAutoScroll": true
+}

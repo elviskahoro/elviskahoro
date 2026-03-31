@@ -15,7 +15,7 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 GENERATED_DIR="$SCRIPT_DIR/generated"
 
-EDITORS="cursor positron vscodium"
+EDITORS="cursor positron vscodium vscode"
 
 # Map editor name -> Application Support directory name
 app_dir_for() {
@@ -23,6 +23,7 @@ app_dir_for() {
         cursor)   echo "Cursor" ;;
         positron) echo "Positron" ;;
         vscodium) echo "VSCodium" ;;
+        vscode)   echo "Code" ;;
         *) echo ""; return 1 ;;
     esac
 }
