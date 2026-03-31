@@ -1,3 +1,5 @@
 {
-    "window.commandCenter": true
+    "window.commandCenter": true,
+    "cursorPreview.disableInlineCompletions": false,
+    "cursorPreview.enableInlineCompletion": true
 }
