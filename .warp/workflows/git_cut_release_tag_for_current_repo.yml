@@ -1,0 +1,41 @@
+---
+name: Git - Cut Release Tag (Timestamp)
+command: |-
+  set -euo pipefail
+
+  REMOTE="{{remote}}"
+  INPUT_TAG="{{tag}}"
+
+  if [ -n "$INPUT_TAG" ]; then
+    TAG="$INPUT_TAG"
+  else
+    TAG="v0.$(date +%Y.%m.%d.%H.%M)"
+  fi
+
+  if git rev-parse "$TAG" >/dev/null 2>&1; then
+    TAG="${TAG}.$(date +%S)"
+  fi
+
+  echo "Creating tag: $TAG on $(git rev-parse --short HEAD)"
+  git tag -a "$TAG" -m "Release $TAG"
+  git push "$REMOTE" "$TAG"
+  echo "Pushed $TAG to $REMOTE"
+
+tags:
+  - git
+  - release
+  - tagging
+description: Create and push an annotated release tag for the current commit. Defaults to v0.YYYY.MM.DD.HH.MM.
+arguments:
+  - name: remote
+    description: Git remote to push the new tag to
+    default_value: origin
+  - name: tag
+    description: Optional exact tag name; leave blank to auto-generate a timestamp tag
+    default_value: ""
+source_url: "https://docs.warp.dev/terminal/entry/yaml-workflows"
+author: elviskahoro
+author_url: https://elvis.ai
+shells:
+  - zsh
+  - bash
