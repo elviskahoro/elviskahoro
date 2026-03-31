@@ -92,7 +92,11 @@ alias rrld='reflex run --loglevel=debug'
 alias rvx='vim ~/.zshrc'
 alias rcv='vim ~/.bashrc'
 
+alias sclaude='claude --dangerously-skip-permissions --permission-mode bypassPermissions'
 alias sl='claude --dangerously-skip-permissions --permission-mode bypassPermissions'
+alias scodex='codex --yolo'
+alias clx='scodex'
+alias slx='scodex'
 alias slide='slides'
 alias slid='slides'
 alias sli='slides'
@@ -196,6 +200,7 @@ alias desk='cd ~/Desktop'
 alias deks='cd ~/Desktop'
 alias dsk='cd ~/Desktop'
 alias elvis='cd ~/Documents/elviskahoro'
+alias zotero='cd ~/Documents/elviskahoro/zotero'
 
 alias g='git'
 alias ag='g'
@@ -291,7 +296,3 @@ alias usr='g usr'
 alias gusr='g usr'
 alias suo='g uso'
 alias pul='g pull'
-
-# Added by LM Studio CLI (lms)
-export PATH="$PATH:/Users/elvis/.lmstudio/bin"
-# End of LM Studio CLI section

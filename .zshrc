@@ -20,6 +20,25 @@ setopt HIST_BEEP                 # Beep when accessing nonexistent history.
  
 [ -f "$HOME/.env.local" ] && source "$HOME/.env.local"
 
+# Load API keys from macOS Keychain for new shells.
+# Add once with:
+# security add-generic-password -U -a "$USER" -s OPENAI_API_KEY -w "sk-..."
+# security add-generic-password -U -a "$USER" -s ANTHROPIC_API_KEY -w "sk-ant-..."
+if command -v security >/dev/null 2>&1; then
+  OPENAI_API_KEY_VALUE="$(security find-generic-password -a "$USER" -s OPENAI_API_KEY -w 2>/dev/null)"
+  [ -n "$OPENAI_API_KEY_VALUE" ] && export OPENAI_API_KEY="$OPENAI_API_KEY_VALUE"
+
+  ANTHROPIC_API_KEY_VALUE="$(security find-generic-password -a "$USER" -s ANTHROPIC_API_KEY -w 2>/dev/null)"
+  [ -n "$ANTHROPIC_API_KEY_VALUE" ] && export ANTHROPIC_API_KEY="$ANTHROPIC_API_KEY_VALUE"
+fi
+
+# Load Oz API key from macOS Keychain for new shells (default account).
+# Add once with:
+# security add-generic-password -U -a "$USER" -s WARP_API_KEY -w "oz_default_..."
+# security add-generic-password -U -a "$USER" -s WARP_API_KEY_SECONDARY -w "oz_secondary_..."
+WARP_API_KEY_VALUE="$(security find-generic-password -a "$USER" -s WARP_API_KEY -w 2>/dev/null)"
+[ -n "$WARP_API_KEY_VALUE" ] && export WARP_API_KEY="$WARP_API_KEY_VALUE"
+
 if [ -f "$HOME/.bashrc" ]; then
     source "$HOME/.bashrc"
 fi

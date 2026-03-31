@@ -65,11 +65,11 @@
     },
     {
         "key": "cmd+b",
-        "command": "workbench.action.toggleAuxiliaryBar"
+        "command": "workbench.action.toggleSidebarVisibility"
     },
     {
         "key": "cmd+b",
-        "command": "-workbench.action.toggleSidebarVisibility"
+        "command": "-workbench.action.toggleAuxiliaryBar"
     },
     {
         "key": "alt+cmd+b",
@@ -78,7 +78,7 @@
     },
     {
         "key": "shift+cmd+b",
-        "command": "workbench.action.toggleSidebarVisibility"
+        "command": "workbench.action.toggleAuxiliaryBar"
     },
     {
         "key": "cmd+enter",

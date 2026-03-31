@@ -1,5 +1,6 @@
 add_newline = false
 command_timeout = 1000
+scan_timeout = 1000
 right_format = ''
 format = """
 $username\
@@ -87,4 +88,3 @@ $container\
 $shell\
 """
 # $character"""
-
