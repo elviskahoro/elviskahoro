@@ -164,7 +164,7 @@
   ds        = "!f() { if [ $# -eq 0 ]; then git show --name-only; else git log --name-only -$1; fi }; f"
   dsr       = "!gt downstack restack"
   dst       = "!gt downstack test"
-  dl        = "!f() { if [ $# -eq 0 ]; then git diff-tree --no-commit-id --name-status -r HEAD; else git diff-tree --no-commit-id --name-status -r HEAD~$1; fi }; f"
+  dl        = !git diff $(git merge-base HEAD devel)...HEAD
   gdl       = dl
   dk        = dl
   ld        = dl
@@ -192,7 +192,7 @@
   gl        = log
   lt        = log --oneline
 
-  m         = checkout main
+	m = !git-m
   gm        = m
   dm        = m
 
@@ -366,6 +366,7 @@
   caix = !DIFF=$(git diff --cached) && MSG=$(curl -s https://api.openai.com/v1/responses -H \"Authorization: Bearer $OPENAI_API_KEY\" -H \"Content-Type: application/json\" -d \"$(jq -n --arg diff \"$DIFF\" '{model:\"gpt-4.1-mini\",input:[{role:\"system\",content:\"Write a concise git commit message in Conventional Commits format (type: description or type(scope): description). Return only the message.\"},{role:\"user\",content:(\"Create a commit message for this staged diff:\\n\\n\" + $diff)}],max_output_tokens:80,temperature:0.2}')\" | jq -r '.output_text // ([.output[]?.content[]?.text // empty] | join(\"\"))') && git commit -m \"$MSG\"
   caux = caix
   xai  = caix
+  xaic = caix
 
 [init]
 	defaultBranch = main
@@ -425,11 +426,13 @@
 
 [commit]
 	template = ~/.config/git/.gitmessage
+
 [credential "https://github.com"]
 	helper = /opt/homebrew/bin/gh auth git-credential
 
 [credential "https://source.developers.google.com"]
 	helper = gcloud.sh
+
 [color "blame"]
 	repeatedLines = bold 114
 	highlightedLine = bold 226
