@@ -1,5 +1,5 @@
 ---
-name: vscode-config-sync
+name: update-configs-for-ides-like-vscode
 description: Parse a VS Code fork's live settings and keybindings, then propagate changes into the shared generic config and editor-specific overrides in the dotfiles repo.
 version: 2.0.0
 metadata:
