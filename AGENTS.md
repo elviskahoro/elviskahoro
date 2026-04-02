@@ -2,7 +2,7 @@
 
 ## VS Code Config Sync
 
-When asked to sync, update, or fix VS Code/editor settings or keybindings (for Cursor, Positron, or VSCodium), follow the skill defined in `.agents/skills/vscode-config-sync/SKILL.md`.
+When asked to sync, update, or fix VS Code/editor settings or keybindings (for Cursor, Positron, or VSCodium), follow the skill defined in `.agents/skills/update-configs-for-ides-like-vscode/SKILL.md`.
 
 Key points:
 - **Never edit `vscode/generated/` files directly** — they are composed outputs
