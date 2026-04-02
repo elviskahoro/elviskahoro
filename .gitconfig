@@ -164,7 +164,7 @@
   ds        = "!f() { if [ $# -eq 0 ]; then git show --name-only; else git log --name-only -$1; fi }; f"
   dsr       = "!gt downstack restack"
   dst       = "!gt downstack test"
-  dl        = !git diff $(git merge-base HEAD devel)...HEAD
+  dl        = show --name-only
   gdl       = dl
   dk        = dl
   ld        = dl
