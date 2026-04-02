@@ -23,6 +23,8 @@ alias c='cdl'
 alias cod='code'
 alias cp='cp -i'
 alias cr='coderabbit'
+alias cursor='cursor'
+alias cursors='cursor'
 
 alias dopller='doppler'
 alias down='cd ~/Downloads/'
