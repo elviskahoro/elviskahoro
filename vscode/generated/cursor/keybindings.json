@@ -40,6 +40,43 @@
     "command": "editor.action.fontZoomOut"
   },
   {
+    "key": "shift+cmd+e",
+    "command": "-workbench.view.explorer",
+    "when": "viewContainer.workbench.view.explorer.enabled"
+  },
+  {
+    "key": "shift+cmd+e",
+    "command": "workbench.files.action.showActiveFileInExplorer"
+  },
+  {
+    "key": "cmd+numpad_add",
+    "command": "-workbench.action.zoomIn"
+  },
+  {
+    "key": "cmd+numpad_subtract",
+    "command": "-workbench.action.zoomOut"
+  },
+  {
+    "key": "cmd+-",
+    "command": "editor.fold",
+    "when": "editorTextFocus && foldingEnabled"
+  },
+  {
+    "key": "alt+cmd+[",
+    "command": "-editor.fold",
+    "when": "editorTextFocus && foldingEnabled"
+  },
+  {
+    "key": "cmd+=",
+    "command": "editor.unfold",
+    "when": "editorTextFocus && foldingEnabled"
+  },
+  {
+    "key": "alt+cmd+]",
+    "command": "-editor.unfold",
+    "when": "editorTextFocus && foldingEnabled"
+  },
+  {
     "key": "cmd+i",
     "command": "composerMode.agent"
   },
@@ -181,19 +218,5 @@
   {
     "key": "shift+cmd+l",
     "command": "-composer.newAgentChat"
-  },
-  {
-    "key": "alt+cmd+s",
-    "command": "workbench.action.toggleUnifiedSidebarFromKeyboard",
-    "when": "cursor.agentIdeUnification.enabled == true && !isAuxiliaryWindowFocusedContext"
-},
-{
-    "key": "shift+cmd+e",
-    "command": "-workbench.view.explorer",
-    "when": "viewContainer.workbench.view.explorer.enabled"
-},
-{
-    "key": "shift+cmd+e",
-    "command": "workbench.files.action.showActiveFileInExplorer"
-}
+  }
 ]
