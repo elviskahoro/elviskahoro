@@ -23,6 +23,7 @@ alias c='cdl'
 alias cod='code'
 alias cp='cp -i'
 alias cr='coderabbit'
+alias cs='cursor'
 alias cursor='cursor'
 alias cursors='cursor'
 
@@ -108,6 +109,8 @@ alias test='pytest -n auto -v'
 alias tc='trunk check'
 alias tnew='tmux new -s'
 alias tkill='tmux kill-session'
+alias trukn='trunk'
+alias trkn='trunk'
 
 alias uvr='uv pip install -r requirements.txt'
 
