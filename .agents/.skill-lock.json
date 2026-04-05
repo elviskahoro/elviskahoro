@@ -1,0 +1,107 @@
+{
+  "version": 3,
+  "skills": {
+    "skill-creator": {
+      "source": "anthropics/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/anthropics/skills.git",
+      "skillPath": "skills/skill-creator/SKILL.md",
+      "skillFolderHash": "5c26c1472b98de33a48074ba5d3efe3a727b8e37",
+      "installedAt": "2026-02-26T07:10:51.249Z",
+      "updatedAt": "2026-02-26T07:10:51.249Z"
+    },
+    "find-skills": {
+      "source": "vercel-labs/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/vercel-labs/skills.git",
+      "skillPath": "skills/find-skills/SKILL.md",
+      "skillFolderHash": "c2f31172b6f256272305a5e6e7228b258446899f",
+      "installedAt": "2026-02-26T07:13:07.378Z",
+      "updatedAt": "2026-02-26T07:13:07.378Z"
+    },
+    "hookdeck": {
+      "source": "hookdeck/agent-skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/hookdeck/agent-skills.git",
+      "skillPath": "skills/hookdeck/SKILL.md",
+      "skillFolderHash": "4aaba4d0454ebaf8a7a223b7492f0bc5eda11971",
+      "installedAt": "2026-03-07T04:58:44.479Z",
+      "updatedAt": "2026-03-07T04:58:44.479Z"
+    },
+    "browser": {
+      "source": "browserbase/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/browserbase/skills.git",
+      "skillPath": "skills/browser/SKILL.md",
+      "skillFolderHash": "a279551af591c2be19a709515ab609de4461b06b",
+      "pluginName": "browse",
+      "installedAt": "2026-03-29T02:25:22.007Z",
+      "updatedAt": "2026-03-29T02:25:22.007Z"
+    },
+    "browserbase-cli": {
+      "source": "browserbase/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/browserbase/skills.git",
+      "skillPath": "skills/browserbase-cli/SKILL.md",
+      "skillFolderHash": "c929236ee176b36edd12292ea89ef27de8686629",
+      "pluginName": "browserbase-cli",
+      "installedAt": "2026-03-29T02:25:22.489Z",
+      "updatedAt": "2026-03-29T02:25:22.489Z"
+    },
+    "functions": {
+      "source": "browserbase/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/browserbase/skills.git",
+      "skillPath": "skills/functions/SKILL.md",
+      "skillFolderHash": "4ac8e563f1fed2c02a53d6b7454b5cb2734487e0",
+      "pluginName": "functions",
+      "installedAt": "2026-03-29T02:25:22.933Z",
+      "updatedAt": "2026-03-29T02:25:22.933Z"
+    },
+    "cookie-sync": {
+      "source": "browserbase/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/browserbase/skills.git",
+      "skillPath": "skills/cookie-sync/SKILL.md",
+      "skillFolderHash": "50d494a0aad9fa3eadcd940b67cdcc084a745ddb",
+      "installedAt": "2026-03-29T02:25:23.525Z",
+      "updatedAt": "2026-03-29T02:25:23.525Z"
+    },
+    "fetch": {
+      "source": "browserbase/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/browserbase/skills.git",
+      "skillPath": "skills/fetch/SKILL.md",
+      "skillFolderHash": "43fcc06662e3b6d59b66f6e10843e1d470d58b44",
+      "installedAt": "2026-03-29T02:25:24.543Z",
+      "updatedAt": "2026-03-29T02:25:24.543Z"
+    },
+    "search": {
+      "source": "browserbase/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/browserbase/skills.git",
+      "skillPath": "skills/search/SKILL.md",
+      "skillFolderHash": "c131a34283c31dd9e396bfaaad97d9794d88989f",
+      "installedAt": "2026-03-29T02:25:24.965Z",
+      "updatedAt": "2026-03-29T02:25:24.965Z"
+    }
+  },
+  "dismissed": {
+    "findSkillsPrompt": true
+  },
+  "lastSelectedAgents": [
+    "amp",
+    "antigravity",
+    "cline",
+    "codex",
+    "cursor",
+    "deepagents",
+    "gemini-cli",
+    "github-copilot",
+    "kimi-cli",
+    "opencode",
+    "warp",
+    "claude-code",
+    "kilo"
+  ]
+}
