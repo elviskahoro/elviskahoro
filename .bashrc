@@ -30,6 +30,7 @@ alias cursors='cursor'
 alias dopller='doppler'
 alias down='cd ~/Downloads/'
 alias docs='cd ~/Documents/'
+alias dotfiles='cd /Users/elvis/Documents/elviskahoro/dotfiles'
 alias dui='duckdb --ui'
 
 alias ekk='cd /Users/elvis/Documents/elviskahoro'
