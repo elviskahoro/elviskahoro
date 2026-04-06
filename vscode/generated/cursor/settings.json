@@ -187,5 +187,12 @@
   },
   "window.commandCenter": true,
   "cursorPreview.disableInlineCompletions": false,
-  "cursorPreview.enableInlineCompletion": true
+"cursorPreview.enableInlineCompletion": true,
+"cursor.composer.queueMessageDefaultBehavior": "stop-and-send",
+"cursor.composer.usageSummaryDisplay": "always",
+"cursor.general.emailPrivacyEnabled": true,
+"cursor.general.reduceTransparency": true,
+"cursor.rpcFileLogger.enabled": true,
+"cursor.rpcFileLogger.folder": "~/Documents/traces/",
+"cursor.terminal.usePreviewBox": true
 }
