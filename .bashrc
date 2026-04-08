@@ -1,6 +1,7 @@
 function cdl {
   cd "$(walk "$@")"
 }
+alias cld='cdl'
 function cdf() {
   local path="${1/#\~/$HOME}"  # Expand ~ to $HOME
   cd "${path%/*}"
