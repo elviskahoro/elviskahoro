@@ -101,6 +101,7 @@ alias cla='claude --dangerously-skip-permissions --permission-mode bypassPermiss
 alias slc='claude --dangerously-skip-permissions --permission-mode bypassPermissions'
 alias scodex='codex --yolo'
 alias clx='codex --yolo'
+alias senv='source .env.local'
 alias slx='codex --yolo'
 alias slide='slides'
 alias slid='slides'
