@@ -17,7 +17,11 @@
   "gutter": {
     "line_numbers": true,
   },
-  "icon_theme": "Material Icon Theme",
+  "icon_theme": {
+    "mode": "light",
+    "light": "Material Icon Theme",
+    "dark": "Material Icon Theme"
+  },
   "linked_edits": true,
   "minimap": {
     "thumb": "always",
@@ -44,7 +48,11 @@
     "diagnostics": false,
     "metrics": false,
   },
-  "theme": "Monokai Pro (Filter Spectrum)",
+  "theme": {
+    "mode": "system",
+    "light": "One Light",
+    "dark": "Monokai Pro (Filter Spectrum)"
+  },
   "ui_font_family": "MonoLisa",
   "ui_font_size": 14.0,
   "use_auto_surround": false,
