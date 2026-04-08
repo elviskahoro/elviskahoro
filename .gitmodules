@@ -1,0 +1,3 @@
+[submodule "zed/themes/monokai-spectrum"]
+	path = zed/themes/monokai-spectrum
+	url = git@github.com:elviskahoro/monokai-spectrum-zed.git
