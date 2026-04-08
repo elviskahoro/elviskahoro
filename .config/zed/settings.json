@@ -1,0 +1,54 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  "ui_font_family": "MonoLisa",
+  "buffer_line_height": {
+    "custom": 1.8180000305175781,
+  },
+  "restore_on_startup": "empty_tab",
+  "when_closing_with_no_tabs": "close_window",
+  "icon_theme": "Material Icon Theme",
+  "vim_mode": true,
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false,
+  },
+  "project_panel": {
+    "auto_reveal_entries": false,
+    "auto_fold_dirs": false,
+  },
+  "base_keymap": "VSCode",
+  "preview_tabs": {
+    "enabled": false,
+  },
+  "tabs": {
+    "activate_on_close": "left_neighbour",
+    "show_close_button": "hidden",
+  },
+  "relative_line_numbers": "enabled",
+  "sticky_scroll": {
+    "enabled": true,
+  },
+  "vertical_scroll_margin": 7.0,
+  "gutter": {
+    "line_numbers": true,
+  },
+  "minimap": {
+    "thumb": "always",
+  },
+  "buffer_font_family": "MonoLisa",
+  "colorize_brackets": true,
+  "linked_edits": true,
+  "use_auto_surround": false,
+  "show_whitespaces": "boundary",
+  "show_edit_predictions": true,
+  "ui_font_size": 14.0,
+  "buffer_font_size": 14.0,
+  "theme": "Monokai Vibrant Amped",
+}

@@ -37,6 +37,7 @@ mappings=(
   ".config/bash_profile.sh"
   ".config/starship.toml"
   ".config/git/.gitmessage"
+  ".config/zed/settings.json"
 )
 
 # Counters and lists for summary
