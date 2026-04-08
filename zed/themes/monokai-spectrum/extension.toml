@@ -1,9 +1,0 @@
-id = "monokai-spectrum"
-name = "Monokai Spectrum"
-version = "0.1.0"
-schema_version = 1
-authors = ["Monokai (ported by Elvis Kahoro)"]
-description = "Monokai Pro (Filter Spectrum) theme for Zed"
-
-[themes]
-monokai-spectrum = "themes/monokai-spectrum.json"
