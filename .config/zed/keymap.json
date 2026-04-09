@@ -9,13 +9,16 @@
   {
     "context": "Workspace",
     "bindings": {
-      // "shift shift": "file_finder::Toggle"
+      // cmd-o opens file finder instead of system open dialog (matches VSCode quickOpen)
+      "cmd-o": "file_finder::Toggle",
     },
   },
   {
-    "context": "Editor && vim_mode == insert",
+    "context": "Editor",
     "bindings": {
-      // "j k": "vim::NormalBefore"
+      // cmd-/+ fold/unfold in editor (overrides font zoom when editor is focused)
+      "cmd--": "editor::Fold",
+      "cmd-=": "editor::UnfoldLines",
     },
   },
 ]
