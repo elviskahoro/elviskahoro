@@ -1,2 +1,2 @@
 #!/bin/bash
-git checkout main 2>/dev/null || git checkout devel
+git checkout main || git checkout devel
