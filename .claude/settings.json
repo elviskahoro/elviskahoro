@@ -1,0 +1,76 @@
+{
+  "model": "haiku",
+  "hooks": {
+    "WorktreeCreate": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "input=$(cat); name=$(echo \"$input\" | jq -r '.name // empty'); name=${name:-$(openssl rand -hex 4)}; branch=\"worktree-$name\"; root=$(git rev-parse --show-toplevel); dir=\"$root/worktrees/$name\"; if [ -d \"$dir\" ]; then existing_branch=$(git -C \"$dir\" rev-parse --abbrev-ref HEAD); echo \"{\\\"worktreePath\\\": \\\"$dir\\\", \\\"branch\\\": \\\"$existing_branch\\\"}\"; else mkdir -p \"$root/worktrees\" && git worktree add \"$dir\" -b \"$branch\" && echo \"{\\\"worktreePath\\\": \\\"$dir\\\", \\\"branch\\\": \\\"$branch\\\"}\"; fi",
+            "timeout": 30000
+          }
+        ]
+      }
+    ],
+    "WorktreeRemove": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "input=$(cat); path=$(echo \"$input\" | jq -r '.worktreePath // empty'); branch=$(echo \"$input\" | jq -r '.branch // empty'); [ -n \"$path\" ] && git worktree remove \"$path\" 2>/dev/null; [ -n \"$branch\" ] && git branch -D \"$branch\" 2>/dev/null; echo '{}'",
+            "timeout": 30000
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "jq -r '.tool_input.file_path' | { read -r filepath; if [[ \"$filepath\" =~ (design/(plans|specs)|.agents/skills) ]]; then filename=$(basename \"$filepath\"); if ! [[ \"$filename\" =~ ^(done|backlog|in_progress|waiting|deployed|archived|paused)_ ]]; then echo '{\"continue\": false, \"stopReason\": \"Status prefix required: File in design artifacts must start with status prefix (done_, backlog_, in_progress_, waiting_, deployed_, archived_, paused_). Example: backlog_2026-03-29-my-plan.md\"}'; exit 1; fi; fi; echo '{}'; }",
+            "statusMessage": "Validating artifact status prefix..."
+          }
+        ]
+      }
+    ]
+  },
+  "enabledPlugins": {
+    "hookify@claude-plugins-official": true,
+    "pyright-lsp@claude-plugins-official": true,
+    "superpowers@claude-plugins-official": false,
+    "warp@claude-code-warp": true,
+    "linear@claude-plugins-official": false,
+    "adspirer-ads-agent@claude-plugins-official": false,
+    "huggingface-skills@claude-plugins-official": true,
+    "context7@claude-plugins-official": false,
+    "code-review@claude-plugins-official": true,
+    "code-simplifier@claude-plugins-official": true,
+    "github@claude-plugins-official": false,
+    "feature-dev@claude-plugins-official": true,
+    "skill-creator@claude-plugins-official": true,
+    "claude-md-management@claude-plugins-official": true,
+    "security-guidance@claude-plugins-official": true,
+    "commit-commands@claude-plugins-official": true,
+    "claude-code-setup@claude-plugins-official": true,
+    "pr-review-toolkit@claude-plugins-official": true,
+    "agent-sdk-dev@claude-plugins-official": true,
+    "slack@claude-plugins-official": false,
+    "learning-output-style@claude-plugins-official": true,
+    "coderabbit@claude-plugins-official": true,
+    "firecrawl@claude-plugins-official": true,
+    "semgrep@claude-plugins-official": false,
+    "circleback@claude-plugins-official": false
+  },
+  "extraKnownMarketplaces": {
+    "claude-code-warp": {
+      "source": {
+        "source": "github",
+        "repo": "warpdotdev/claude-code-warp"
+      }
+    }
+  },
+  "effortLevel": "low",
+  "skipDangerousModePermissionPrompt": true
+}
