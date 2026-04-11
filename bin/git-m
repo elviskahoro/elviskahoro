@@ -1,2 +1,9 @@
 #!/bin/bash
-git checkout main 2>/dev/null || git checkout devel
+
+# Check if we're in a git worktree
+if [ -f .git ]; then
+    echo "Cannot switch branches: you're in a git worktree"
+    exit 1
+fi
+
+git checkout main || git checkout devel
