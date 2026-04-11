@@ -37,13 +37,14 @@ trust_level = "trusted"
 [notice.model_migrations]
 "gpt-5.3-codex" = "gpt-5.4"
 
+[mcp_servers]
+
 [mcp_servers.linear]
 command = "npx"
 args = ["-y", "mcp-remote", "https://mcp.linear.app/mcp"]
 
 [mcp_servers.linear.env]
 LINEAR_API_KEY = "${op://Personal/api-linear/credential}"
-
 
 [mcp_servers.notion]
 command = "npx"
