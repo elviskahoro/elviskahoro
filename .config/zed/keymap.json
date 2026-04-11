@@ -14,6 +14,13 @@
     },
   },
   {
+    "context": "Pane",
+    "bindings": {
+      "cmd-1": "pane::ActivatePrevItem",
+      "cmd-2": "pane::ActivateNextItem",
+    },
+  },
+  {
     "context": "Editor",
     "bindings": {
       // cmd-/+ fold/unfold in editor (overrides font zoom when editor is focused)

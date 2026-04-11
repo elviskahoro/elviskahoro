@@ -9,6 +9,8 @@ function cdf() {
 #alias run='modal run'
 
 alias ai='cd /Users/elvis/Documents/elviskahoro/ai'
+alias attio='cd /Users/elvis/Documents/elviskahoro/ai/gtm/attio'
+alias apollo='cd /Users/elvis/Documents/elviskahoro/ai/gtm/apollo'
 
 alias batp='bat --paging=never'
 alias bl='black'
@@ -47,14 +49,14 @@ alias home='cd /Users/elvis/Documents/elviskahoro/obsidian'
 
 alias jt='jupyter-lab'
 alias less='less -R'
-alias ls='eza -a --long'
+alias ls='eza --absolute --oneline --git --group-directories-first --all'
 alias le='ls'
 
 alias lsc='eza | wc -l'
-alias lsd='eza -a --long -D'
+alias lsd='eza --oneline -D'
 alias lsl='lsd'
 alias lks='lsd'
-alias lsf='eza --oneline'
+alias lsf='eza --oneline -f'
 
 alias mkdir='mkdir -p'
 alias mdir='mkdir -p'
@@ -96,6 +98,8 @@ alias rr='reflex run'
 alias rrld='reflex run --loglevel=debug'
 alias rvx='vim ~/.zshrc'
 alias rcv='vim ~/.bashrc'
+
+alias video='cd /Users/elvis/Downloads/videos'
 
 alias sclaude='claude --dangerously-skip-permissions --permission-mode bypassPermissions'
 alias cla='claude --dangerously-skip-permissions --permission-mode bypassPermissions'
