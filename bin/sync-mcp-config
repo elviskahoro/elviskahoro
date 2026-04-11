@@ -1,0 +1,435 @@
+#!/usr/bin/env python3
+"""
+Synchronize MCP server configurations from a canonical source to both Claude Code and Codex.
+
+SETUP:
+  1. Ensure mcp.json exists in the dotfiles root with your MCP servers
+  2. Create symlink: ln -s <dotfiles>/.codex/config.toml ~/.codex/config.toml
+  3. For Claude, ~/.claude.json is written to directly (no symlink needed)
+
+USAGE:
+  ./bin/sync-mcp-config
+
+  This syncs MCP servers from mcp.json to:
+  - ~/.claude.json (JSON format, in home directory)
+  - dotfiles/.codex/config.toml (TOML format, in repo, symlinked from ~/.codex/config.toml)
+
+DESIGN:
+  - Canonical source: mcp.json in dotfiles root
+  - Claude target: ~/.claude.json (replaces entire mcpServers section)
+  - Codex target: dotfiles/.codex/config.toml (surgically replaces only mcp_servers section)
+
+  The Codex script uses a surgical replacement approach to preserve all other config
+  (model settings, projects, plugins, features, notice sections). Only mcp_servers is touched.
+
+ENVIRONMENT VARIABLES:
+  API keys should use 1Password references in env sections:
+  "env": {
+    "API_KEY": "${op://Personal/api-key-name/credential}"
+  }
+
+  These are preserved exactly as-is during sync.
+
+FORMAT DIFFERENCES HANDLED:
+  Claude uses: "args": ["item1", "item2"]
+  Codex uses:   args = ["item1", "item2"]
+
+  The script converts between these formats automatically.
+"""
+
+import json
+import sys
+from pathlib import Path
+from typing import Any, Dict
+
+try:
+    import tomllib
+except ImportError:
+    try:
+        import tomli as tomllib  # type: ignore
+    except ImportError:
+        print(
+            "Error: No TOML library available. Install with: pip install tomli",
+            file=sys.stderr,
+        )
+        sys.exit(1)
+
+
+def get_dotfiles_root() -> Path:
+    """Get the dotfiles repository root directory."""
+    script_path = Path(__file__).resolve()
+    return script_path.parent.parent
+
+
+def sync_mcp_config() -> bool:
+    """
+    Main entry point: sync MCP configuration from canonical source to both tools.
+
+    Flow:
+      1. Locate canonical mcp.json in dotfiles root
+      2. Parse MCP servers from JSON
+      3. Sync to Claude Code (~/.claude.json)
+      4. Sync to Codex (dotfiles/.codex/config.toml)
+
+    Returns:
+        True if successful, False otherwise.
+    """
+    dotfiles_root = get_dotfiles_root()
+    canonical_file = dotfiles_root / "mcp.json"
+    claude_config = Path.home() / ".claude.json"
+    codex_config = dotfiles_root / ".codex" / "config.toml"
+
+    # Validate canonical file exists
+    if not canonical_file.exists():
+        print(f"Error: Canonical MCP config not found: {canonical_file}", file=sys.stderr)
+        return False
+
+    # Read canonical MCP configuration
+    try:
+        with open(canonical_file) as f:
+            canonical_data = json.load(f)
+        mcp_servers = canonical_data.get("mcpServers", {})
+    except (json.JSONDecodeError, IOError) as e:
+        print(f"Error reading canonical MCP config: {e}", file=sys.stderr)
+        return False
+
+    # Sync to Claude Code
+    if not sync_claude_config(claude_config, mcp_servers):
+        return False
+
+    # Sync to Codex
+    if not sync_codex_config(codex_config, mcp_servers):
+        return False
+
+    print("✓ MCP configuration synced successfully")
+    print(f"  - Updated {len(mcp_servers)} server(s)")
+    return True
+
+
+def sync_claude_config(config_file: Path, mcp_servers: Dict[str, Any]) -> bool:
+    """
+    Update ~/.claude.json with MCP servers from canonical source.
+
+    Args:
+        config_file: Path to ~/.claude.json
+        mcp_servers: MCP servers dict from canonical source
+
+    Returns:
+        True if successful, False otherwise.
+    """
+    try:
+        # Read existing config, or create minimal structure if missing
+        if config_file.exists():
+            with open(config_file) as f:
+                config = json.load(f)
+        else:
+            config = {}
+
+        # Update mcp servers
+        config["mcpServers"] = mcp_servers
+
+        # Write back with pretty formatting
+        with open(config_file, "w") as f:
+            json.dump(config, f, indent=2)
+            f.write("\n")
+
+        print(f"  - Claude Code: {config_file}")
+        return True
+
+    except (json.JSONDecodeError, IOError) as e:
+        print(f"Error updating Claude config: {e}", file=sys.stderr)
+        return False
+
+
+def sync_codex_config(config_file: Path, mcp_servers: Dict[str, Any]) -> bool:
+    """
+    Update Codex config with MCP servers from canonical source.
+
+    IMPORTANT: This uses a SURGICAL REPLACEMENT approach to protect user data.
+
+    Why surgical replacement?
+      - User's Codex config has critical settings (model, projects, plugins, features, notice)
+      - We only care about syncing the mcp_servers section
+      - A full read-parse-modify approach risks data loss if logic changes
+      - This approach: parse the file, then use text manipulation to replace ONLY mcp_servers
+
+    This preserves:
+      - Top-level settings (model, model_reasoning_effort)
+      - All nested sections (features, plugins, projects, notice)
+      - Any future config the user adds
+
+    Format conversion (Claude JSON to Codex TOML):
+      Claude: "args": ["item1", "item2"]
+      Codex:   args = ["item1", "item2"]
+
+    Args:
+        config_file: Path to .codex/config.toml in dotfiles repo
+        mcp_servers: MCP servers dict from canonical source
+
+    Returns:
+        True if successful, False otherwise.
+    """
+    try:
+        # Read existing config as text
+        existing_content = ""
+        if config_file.exists():
+            with open(config_file, "r") as f:
+                existing_content = f.read()
+
+        # Parse existing config to preserve all non-mcp_servers sections
+        if existing_content:
+            try:
+                config = tomllib.loads(existing_content)
+            except Exception:
+                config = {}
+        else:
+            config = {}
+
+        # Convert mcp_servers to TOML format
+        mcp_servers_toml = {}
+        for name, server_config in mcp_servers.items():
+            mcp_servers_toml[name] = {
+                "command": server_config.get("command"),
+                "args": server_config.get("args", []),
+            }
+            # If there's an env section, include it
+            if "env" in server_config:
+                mcp_servers_toml[name]["env"] = server_config["env"]
+
+        # Replace only the mcp_servers section, preserve everything else
+        config["mcp_servers"] = mcp_servers_toml
+
+        # Write back by replacing only mcp_servers section in the file
+        new_content = _rebuild_config_with_mcp(existing_content, mcp_servers_toml)
+
+        with open(config_file, "w") as f:
+            f.write(new_content)
+
+        print(f"  - Codex: {config_file}")
+        return True
+
+    except (IOError, Exception) as e:
+        print(f"Error updating Codex config: {e}", file=sys.stderr)
+        return False
+
+
+def _rebuild_config_with_mcp(original_content: str, mcp_servers_toml: Dict[str, Any]) -> str:
+    """
+    Rebuild TOML config by surgically replacing only the mcp_servers section.
+
+    Algorithm:
+      1. Split file into lines
+      2. Find [mcp_servers] section
+      3. Skip all lines until the next section header or EOF
+      4. Insert new mcp_servers section at that point
+      5. Preserve everything else exactly
+
+    This ensures:
+      - All other sections (model, projects, plugins, etc) remain unchanged
+      - Whitespace and formatting of non-mcp sections preserved
+      - Safe to run repeatedly (idempotent)
+      - If mcp_servers section doesn't exist, append to end
+
+    Args:
+        original_content: Original TOML file content as string
+        mcp_servers_toml: MCP servers dict formatted for TOML output
+
+    Returns:
+        Updated TOML content with only mcp_servers section replaced
+    """
+    if not original_content.strip():
+        # If file is empty, just write mcp_servers
+        return _format_mcp_servers(mcp_servers_toml)
+
+    lines = original_content.split("\n")
+    new_lines = []
+    in_mcp_section = False
+    skip_until_next_section = False
+
+    for i, line in enumerate(lines):
+        stripped = line.strip()
+
+        # Check if we're entering the mcp_servers section
+        if stripped.startswith("[mcp_servers"):
+            in_mcp_section = True
+            skip_until_next_section = True
+            continue
+
+        # Check if we're at a new section (not mcp_servers)
+        if stripped.startswith("[") and in_mcp_section and not stripped.startswith("[mcp_servers"):
+            # We've exited mcp_servers, insert the new mcp_servers section here
+            in_mcp_section = False
+            skip_until_next_section = False
+            new_lines.append(_format_mcp_servers(mcp_servers_toml))
+            new_lines.append(line)
+            continue
+
+        # Skip lines that are part of the old mcp_servers section
+        if skip_until_next_section and (stripped == "" or not stripped.startswith("[")):
+            continue
+
+        # Once we hit a new section, stop skipping
+        if skip_until_next_section and stripped.startswith("["):
+            skip_until_next_section = False
+            in_mcp_section = False
+
+        new_lines.append(line)
+
+    # If file ends while still in mcp_servers, we'll add the new one at the end
+    if skip_until_next_section:
+        new_lines.append(_format_mcp_servers(mcp_servers_toml))
+
+    # If mcp_servers section was never found, add it at the end
+    if not in_mcp_section and "[mcp_servers" not in original_content:
+        if new_lines and new_lines[-1].strip():
+            new_lines.append("")  # Add blank line before new section
+        new_lines.append(_format_mcp_servers(mcp_servers_toml))
+
+    return "\n".join(new_lines)
+
+
+def _format_mcp_servers(mcp_servers_toml: Dict[str, Any]) -> str:
+    """
+    Format mcp_servers section as TOML.
+
+    Args:
+        mcp_servers_toml: MCP servers dict
+
+    Returns:
+        TOML-formatted mcp_servers section
+    """
+    lines = ["[mcp_servers]"]
+
+    for name in sorted(mcp_servers_toml.keys()):
+        server = mcp_servers_toml[name]
+        lines.append("")
+        lines.append(f"[mcp_servers.{_quote_toml_key(name)}]")
+        lines.append(f'command = "{server.get("command")}"')
+
+        args = server.get("args", [])
+        if args:
+            args_str = "[" + ", ".join(f'"{arg}"' for arg in args) + "]"
+            lines.append(f"args = {args_str}")
+
+        # Handle env section if present
+        if "env" in server:
+            lines.append("")
+            lines.append(f"[mcp_servers.{_quote_toml_key(name)}.env]")
+            for env_key, env_value in server["env"].items():
+                lines.append(f"{_quote_toml_key(env_key)} = {_format_toml_value(env_value)}")
+
+    return "\n".join(lines)
+
+
+def _dict_to_toml(data: Dict[str, Any]) -> str:
+    """
+    Convert a nested dict to TOML format.
+
+    Args:
+        data: Dictionary to convert
+
+    Returns:
+        TOML-formatted string
+    """
+    lines = []
+
+    # Process top-level entries
+    for key, value in data.items():
+        if isinstance(value, dict):
+            # Check the depth of nesting
+            has_nested_dicts = any(isinstance(v, dict) for v in value.values())
+
+            if has_nested_dicts:
+                # This is a section with subsections (like mcp_servers with server entries)
+                lines.append(f"\n[{_quote_toml_key(key)}]")
+                for subkey, subvalue in value.items():
+                    if isinstance(subvalue, dict):
+                        # This is a subsection with its own nested dict (like server with env)
+                        lines.append(f"\n[{_quote_toml_key(key)}.{_quote_toml_key(subkey)}]")
+                        for k, v in subvalue.items():
+                            if isinstance(v, dict):
+                                # Env section within a server
+                                lines.append(f"\n[{_quote_toml_key(key)}.{_quote_toml_key(subkey)}.{_quote_toml_key(k)}]")
+                                for env_k, env_v in v.items():
+                                    lines.append(f"{_quote_toml_key(env_k)} = {_format_toml_value(env_v)}")
+                            else:
+                                lines.append(f"{_quote_toml_key(k)} = {_format_toml_value(v)}")
+                    else:
+                        lines.append(f"{_quote_toml_key(subkey)} = {_format_toml_value(subvalue)}")
+            else:
+                # This is a simple section (like notice.model_migrations)
+                lines.append(f"\n[{_quote_toml_key(key)}]")
+                for subkey, subvalue in value.items():
+                    lines.append(f"{_quote_toml_key(subkey)} = {_format_toml_value(subvalue)}")
+        else:
+            # Top-level key-value
+            lines.append(f"{_quote_toml_key(key)} = {_format_toml_value(value)}")
+
+    return "\n".join(lines) + "\n"
+
+
+def _quote_toml_key(key: str) -> str:
+    """
+    Quote a TOML key if it contains special characters.
+
+    Why this matters:
+      - TOML keys like "projects."/Users/elvis/Documents/..." are INVALID
+      - Must be: projects."/Users/elvis/Documents/..."
+      - Keys with: dots, slashes, spaces, hyphens, @ signs need quoting
+
+    Example:
+      Unquoted:  [projects./Users/elvis/dotfiles]  <- INVALID, parser error
+      Quoted:    [projects."/Users/elvis/dotfiles"] <- VALID
+
+    Args:
+        key: Key to optionally quote
+
+    Returns:
+        Quoted key if it contains special characters, otherwise unchanged
+    """
+    # Keys need quoting if they contain: dots, slashes, spaces, special chars, or start with a digit
+    needs_quoting = any(c in key for c in ['.', '/', ' ', '-', '@']) or (key and key[0].isdigit())
+
+    if needs_quoting:
+        # Escape any quotes and wrap in quotes
+        escaped = key.replace('\\', '\\\\').replace('"', '\\"')
+        return f'"{escaped}"'
+    return key
+
+
+def _format_toml_value(value: Any) -> str:
+    """
+    Format a Python value to TOML syntax.
+
+    Handles:
+      - Booleans: True/False -> true/false (TOML style)
+      - Numbers: passthrough
+      - Strings: escaped, quoted (preserves 1Password references like ${op://...})
+      - Lists: array syntax with recursion for nested formatting
+
+    Args:
+        value: Python value to format
+
+    Returns:
+        TOML-formatted string
+    """
+    if isinstance(value, bool):
+        return "true" if value else "false"
+    elif isinstance(value, (int, float)):
+        return str(value)
+    elif isinstance(value, str):
+        # Escape backslashes and quotes to preserve literal values
+        # Important: keeps ${op://...} references intact
+        escaped = value.replace("\\", "\\\\").replace('"', '\\"')
+        return f'"{escaped}"'
+    elif isinstance(value, list):
+        # Recursively format each item
+        items = [_format_toml_value(item) for item in value]
+        return "[" + ", ".join(items) + "]"
+    else:
+        return str(value)
+
+
+if __name__ == "__main__":
+    success = sync_mcp_config()
+    sys.exit(0 if success else 1)
