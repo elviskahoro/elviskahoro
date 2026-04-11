@@ -1,0 +1,53 @@
+model = "gpt-5.3-codex"
+model_reasoning_effort = "low"
+
+[features]
+multi_agent = true
+
+[plugins."github@openai-curated"]
+enabled = true
+
+[projects."/Users/elvis/Documents/elviskahoro/attio-sdk-python"]
+trust_level = "trusted"
+
+[projects."/Users/elvis/Documents/elviskahoro/ai"]
+trust_level = "trusted"
+
+[projects."/Users/elvis/Documents/elviskahoro/oss-linter-trunk"]
+trust_level = "trusted"
+
+[projects."/Users/elvis"]
+trust_level = "trusted"
+
+[projects."/Users/elvis/Documents/elviskahoro/apollo-sdk-python"]
+trust_level = "trusted"
+
+[projects."/Users/elvis/Documents/elviskahoro/runtime-starter-pack"]
+trust_level = "trusted"
+
+[projects."/Users/elvis/Documents/elviskahoro/ai/tmp/dlt"]
+trust_level = "trusted"
+
+[projects."/Users/elvis/Documents/elviskahoro/ai/tmp/dlt-with-pipeline"]
+trust_level = "trusted"
+
+[projects."/Users/elvis/Documents/elviskahoro/dotfiles"]
+trust_level = "trusted"
+
+[notice.model_migrations]
+"gpt-5.3-codex" = "gpt-5.4"
+
+[mcp_servers.linear]
+command = "npx"
+args = ["-y", "mcp-remote", "https://mcp.linear.app/mcp"]
+
+[mcp_servers.linear.env]
+LINEAR_API_KEY = "${op://Personal/Linear API Key/credential}"
+# 
+# [mcp_servers.notion]
+# command = "sh"
+# args = ["-c", "NOTION_API_KEY=$(op read 'op://Personal/Notion API Key/credential') npx -y @notionhq/mcp"]
+# 
+# [mcp_servers.resend]
+# command = "sh"
+# args = ["-c", "RESEND_API_KEY=$(op read 'op://Personal/Resend API Key/credential') npx -y @resend/mcp"]
