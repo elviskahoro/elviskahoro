@@ -5,18 +5,18 @@ Synchronize MCP server configurations from a canonical source to both Claude Cod
 SETUP:
   1. Ensure mcp.json exists in the dotfiles root with your MCP servers
   2. Create symlink: ln -s <dotfiles>/.codex/config.toml ~/.codex/config.toml
-  3. For Claude, ~/.claude.json is written to directly (no symlink needed)
+  3. For Claude, ~/.claude/settings.json is merged with MCP servers (no symlink needed)
 
 USAGE:
   ./bin/sync-mcp-config
 
   This syncs MCP servers from mcp.json to:
-  - ~/.claude.json (JSON format, in home directory)
+  - ~/.claude/settings.json (JSON format, merges with existing settings)
   - dotfiles/.codex/config.toml (TOML format, in repo, symlinked from ~/.codex/config.toml)
 
 DESIGN:
   - Canonical source: mcp.json in dotfiles root
-  - Claude target: ~/.claude.json (replaces entire mcpServers section)
+  - Claude target: ~/.claude/settings.json (merges mcpServers, preserves other settings)
   - Codex target: dotfiles/.codex/config.toml (surgically replaces only mcp_servers section)
 
   The Codex script uses a surgical replacement approach to preserve all other config
@@ -63,20 +63,21 @@ def get_dotfiles_root() -> Path:
 
 def sync_mcp_config() -> bool:
     """
-    Main entry point: sync MCP configuration from canonical source to both tools.
+    Main entry point: sync MCP configuration from canonical source to all tools.
 
     Flow:
       1. Locate canonical mcp.json in dotfiles root
       2. Parse MCP servers from JSON
-      3. Sync to Claude Code (~/.claude.json)
-      4. Sync to Codex (dotfiles/.codex/config.toml)
+      3. Sync to Claude Code CLI (via `claude mcp add-json`)
+      4. Sync to Claude Code settings (~/.claude/settings.json)
+      5. Sync to Codex (dotfiles/.codex/config.toml)
 
     Returns:
         True if successful, False otherwise.
     """
     dotfiles_root = get_dotfiles_root()
     canonical_file = dotfiles_root / "mcp.json"
-    claude_config = Path.home() / ".claude.json"
+    claude_config = Path.home() / ".claude" / "settings.json"
     codex_config = dotfiles_root / ".codex" / "config.toml"
 
     # Validate canonical file exists
@@ -93,7 +94,11 @@ def sync_mcp_config() -> bool:
         print(f"Error reading canonical MCP config: {e}", file=sys.stderr)
         return False
 
-    # Sync to Claude Code
+    # Sync to Claude Code CLI
+    if not sync_claude_cli(mcp_servers):
+        return False
+
+    # Sync to Claude Code settings
     if not sync_claude_config(claude_config, mcp_servers):
         return False
 
@@ -106,18 +111,81 @@ def sync_mcp_config() -> bool:
     return True
 
 
-def sync_claude_config(config_file: Path, mcp_servers: Dict[str, Any]) -> bool:
+def sync_claude_cli(mcp_servers: Dict[str, Any]) -> bool:
     """
-    Update ~/.claude.json with MCP servers from canonical source.
+    Register MCP servers with Claude Code CLI via `claude mcp add-json`.
+
+    This ensures the CLI's own MCP database is updated so MCPs work when
+    using Claude Code from the command line. If a server already exists, it's
+    considered a success (user may have added it manually before running sync).
 
     Args:
-        config_file: Path to ~/.claude.json
+        mcp_servers: MCP servers dict from canonical source
+
+    Returns:
+        True if successful, False otherwise.
+    """
+    import subprocess
+
+    try:
+        registered_count = 0
+        for name, server_config in mcp_servers.items():
+            # Convert to JSON string for CLI
+            server_json = json.dumps(server_config)
+
+            # Run: claude mcp add-json <name> '<json>'
+            result = subprocess.run(
+                ["claude", "mcp", "add-json", name, server_json],
+                capture_output=True,
+                text=True,
+                timeout=10,
+            )
+
+            # "already exists" is fine - server is registered either way
+            if result.returncode == 0 or "already exists" in result.stderr.lower():
+                registered_count += 1
+            else:
+                print(f"  ⚠ Warning: Failed to register {name} with CLI", file=sys.stderr)
+                print(f"    {result.stderr.strip()}", file=sys.stderr)
+                # Don't fail entirely, continue with other servers
+
+        print(f"  - Claude Code CLI: {registered_count} server(s)")
+        return True
+
+    except FileNotFoundError:
+        print(
+            "  ⚠ Warning: `claude` CLI not found in PATH. MCP servers registered via settings.json only.",
+            file=sys.stderr,
+        )
+        return True  # Don't fail, settings.json will still work
+
+    except subprocess.TimeoutExpired:
+        print(f"  ⚠ Warning: `claude mcp add-json` timed out", file=sys.stderr)
+        return False
+
+    except Exception as e:
+        print(f"Error syncing with Claude Code CLI: {e}", file=sys.stderr)
+        return False
+
+
+def sync_claude_config(config_file: Path, mcp_servers: Dict[str, Any]) -> bool:
+    """
+    Update ~/.claude/settings.json with MCP servers from canonical source.
+
+    Merges MCP servers into existing config while preserving all other settings
+    (model, hooks, plugins, effortLevel, etc).
+
+    Args:
+        config_file: Path to ~/.claude/settings.json
         mcp_servers: MCP servers dict from canonical source
 
     Returns:
         True if successful, False otherwise.
     """
     try:
+        # Create parent directory if it doesn't exist
+        config_file.parent.mkdir(parents=True, exist_ok=True)
+
         # Read existing config, or create minimal structure if missing
         if config_file.exists():
             with open(config_file) as f:
@@ -125,7 +193,7 @@ def sync_claude_config(config_file: Path, mcp_servers: Dict[str, Any]) -> bool:
         else:
             config = {}
 
-        # Update mcp servers
+        # Merge mcp servers into existing config
         config["mcpServers"] = mcp_servers
 
         # Write back with pretty formatting
