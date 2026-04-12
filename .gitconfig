@@ -45,6 +45,7 @@
   bci       = "!gt create --insert"
   gbc       = switch -c
   bcn       = "!gt branch create --no-verify"
+  bcw       = !git_bcw
   be        = "!gt downstack edit"
   gbl       = branch -a
   bl        = branch --list
@@ -119,6 +120,7 @@
   cac       = cca
   ccc       = cca
   ccca      = cca
+  cfa       = !trunk fmt --all --ignore-git-state
   cl        = "!chalk lint"
   ccl       = cl
   chalk     = "!chalk"
@@ -239,6 +241,7 @@
   pusdh     = push
   poiush    = push
   ush       = push
+  pousr     = push
   puff      = push --force
 
   rse       = rs
