@@ -370,6 +370,7 @@
   caux = caix
   xai  = caix
   xaic = caix
+  bcw  = "!f() { git worktree add -b \"$1\" \"$(git rev-parse --show-toplevel)/worktrees/$1\" && echo \"$(git rev-parse --show-toplevel)/worktrees/$1\"; }; f"
 
 [init]
 	defaultBranch = main
