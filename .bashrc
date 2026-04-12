@@ -151,7 +151,7 @@ alias rmi='rm -iv'
 
 # File listing & tree
 alias le='ls'
-alias ls='eza --absolute --git --group-directories-first --all --time-style=relative --long'
+alias ls='eza --absolute --long --git --group-directories-first --all --modified --time-style=relative --no-permissions --no-user --sort=Extension'
 alias lsc='eza | wc -l'
 alias lsd='eza --oneline -D'
 alias lsl='lsd'
