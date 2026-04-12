@@ -49,7 +49,6 @@
     "code-simplifier@claude-plugins-official": true,
     "github@claude-plugins-official": false,
     "feature-dev@claude-plugins-official": true,
-    "skill-creator@claude-plugins-official": true,
     "claude-md-management@claude-plugins-official": true,
     "security-guidance@claude-plugins-official": true,
     "commit-commands@claude-plugins-official": true,
