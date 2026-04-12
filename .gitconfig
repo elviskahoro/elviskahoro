@@ -45,7 +45,6 @@
   bci       = "!gt create --insert"
   gbc       = switch -c
   bcn       = "!gt branch create --no-verify"
-  bcw       = !git_bcw
   be        = "!gt downstack edit"
   gbl       = branch -a
   bl        = branch --list
