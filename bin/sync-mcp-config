@@ -1,22 +1,21 @@
 #!/usr/bin/env python3
 """
-Synchronize MCP server configurations from a canonical source to both Claude Code and Codex.
+Synchronize MCP server configurations from a canonical source to Claude Code (user scope) and Codex.
 
 SETUP:
   1. Ensure mcp.json exists in the dotfiles root with your MCP servers
   2. Create symlink: ln -s <dotfiles>/.codex/config.toml ~/.codex/config.toml
-  3. For Claude, ~/.claude/settings.json is merged with MCP servers (no symlink needed)
 
 USAGE:
   ./bin/sync-mcp-config
 
   This syncs MCP servers from mcp.json to:
-  - ~/.claude/settings.json (JSON format, merges with existing settings)
+  - Claude Code CLI (via `claude mcp add-json --scope user`, available globally)
   - dotfiles/.codex/config.toml (TOML format, in repo, symlinked from ~/.codex/config.toml)
 
 DESIGN:
   - Canonical source: mcp.json in dotfiles root
-  - Claude target: ~/.claude/settings.json (merges mcpServers, preserves other settings)
+  - Claude target: `claude mcp add-json --scope user` (no settings.json needed)
   - Codex target: dotfiles/.codex/config.toml (surgically replaces only mcp_servers section)
 
   The Codex script uses a surgical replacement approach to preserve all other config
@@ -68,16 +67,14 @@ def sync_mcp_config() -> bool:
     Flow:
       1. Locate canonical mcp.json in dotfiles root
       2. Parse MCP servers from JSON
-      3. Sync to Claude Code CLI (via `claude mcp add-json`)
-      4. Sync to Claude Code settings (~/.claude/settings.json)
-      5. Sync to Codex (dotfiles/.codex/config.toml)
+      3. Sync to Claude Code CLI (via `claude mcp add-json --scope user`)
+      4. Sync to Codex (dotfiles/.codex/config.toml)
 
     Returns:
         True if successful, False otherwise.
     """
     dotfiles_root = get_dotfiles_root()
     canonical_file = dotfiles_root / "mcp.json"
-    claude_config = Path.home() / ".claude" / "settings.json"
     codex_config = dotfiles_root / ".codex" / "config.toml"
 
     # Validate canonical file exists
@@ -94,12 +91,8 @@ def sync_mcp_config() -> bool:
         print(f"Error reading canonical MCP config: {e}", file=sys.stderr)
         return False
 
-    # Sync to Claude Code CLI
+    # Sync to Claude Code CLI (user scope — available in all projects)
     if not sync_claude_cli(mcp_servers):
-        return False
-
-    # Sync to Claude Code settings
-    if not sync_claude_config(claude_config, mcp_servers):
         return False
 
     # Sync to Codex
@@ -135,7 +128,7 @@ def sync_claude_cli(mcp_servers: Dict[str, Any]) -> bool:
 
             # Run: claude mcp add-json <name> '<json>'
             result = subprocess.run(
-                ["claude", "mcp", "add-json", name, server_json],
+                ["claude", "mcp", "add-json", name, server_json, "--scope", "user"],
                 capture_output=True,
                 text=True,
                 timeout=10,
