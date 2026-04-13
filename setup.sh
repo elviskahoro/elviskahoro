@@ -5,16 +5,24 @@ DOTFILES_DIR="$HOME/Documents/elviskahoro/dotfiles"
 BACKUP_DIR="$HOME/.dotfiles_backup_$(date +%Y%m%d_%H%M%S)"
 DRY_RUN=false
 
-# Parse args
-for arg in "$@"; do
-  case "$arg" in
-    --dry-run) DRY_RUN=true ;;
-    *) echo "Unknown argument: $arg"; echo "Usage: $0 [--dry-run]"; exit 1 ;;
-  esac
-done
+usage() {
+  cat <<EOF
+Usage: $0 [--dry-run] [command]
 
-# Define mappings: relative paths from DOTFILES_DIR -> $HOME
-mappings=(
+Commands:
+  (none)      Run all setup steps
+  symlinks    Create dotfile symlinks only
+  mcp         Sync MCP server configs to Claude Code CLI and Codex
+  help        Show this help message
+
+Options:
+  --dry-run   Preview changes without applying them
+EOF
+}
+
+# --- Symlinks -----------------------------------------------------------------
+
+symlinks_mappings=(
   # Dotfiles (repo root -> $HOME)
   ".bash_profile"
   ".bashrc"
@@ -40,10 +48,6 @@ mappings=(
   ".config/zed/settings.json"
 )
 
-# Counters and lists for summary
-created=()
-skipped=()
-backed_up=()
 backup_dir_created=false
 
 ensure_backup_dir() {
@@ -63,81 +67,135 @@ log() {
   fi
 }
 
-for item in "${mappings[@]}"; do
-  source="$DOTFILES_DIR/$item"
-  target="$HOME/$item"
+cmd_symlinks() {
+  local created=()
+  local skipped=()
+  local backed_up=()
 
-  # Verify source exists
-  if [[ ! -e "$source" ]]; then
-    echo "WARNING: Source does not exist, skipping: $source"
-    continue
-  fi
+  for item in "${symlinks_mappings[@]}"; do
+    source="$DOTFILES_DIR/$item"
+    target="$HOME/$item"
 
-  # Check if target is already a correct symlink
-  if [[ -L "$target" ]]; then
-    existing_target="$(readlink "$target")"
-    if [[ "$existing_target" == "$source" ]]; then
-      skipped+=("$item")
+    # Verify source exists
+    if [[ ! -e "$source" ]]; then
+      echo "WARNING: Source does not exist, skipping: $source"
       continue
     fi
-  fi
 
-  # Backup existing file/dir/symlink if present
-  if [[ -e "$target" || -L "$target" ]]; then
-    ensure_backup_dir
-    backup_path="$BACKUP_DIR/$item"
-    backup_parent="$(dirname "$backup_path")"
-    log "Backing up: $target -> $backup_path"
-    if [[ "$DRY_RUN" == false ]]; then
-      mkdir -p "$backup_parent"
-      mv "$target" "$backup_path"
+    # Check if target is already a correct symlink
+    if [[ -L "$target" ]]; then
+      existing_target="$(readlink "$target")"
+      if [[ "$existing_target" == "$source" ]]; then
+        skipped+=("$item")
+        continue
+      fi
     fi
-    backed_up+=("$item")
-  fi
 
-  # Create parent directory
-  target_parent="$(dirname "$target")"
-  if [[ ! -d "$target_parent" ]]; then
-    log "Creating directory: $target_parent"
-    if [[ "$DRY_RUN" == false ]]; then
-      mkdir -p "$target_parent"
+    # Backup existing file/dir/symlink if present
+    if [[ -e "$target" || -L "$target" ]]; then
+      ensure_backup_dir
+      backup_path="$BACKUP_DIR/$item"
+      backup_parent="$(dirname "$backup_path")"
+      log "Backing up: $target -> $backup_path"
+      if [[ "$DRY_RUN" == false ]]; then
+        mkdir -p "$backup_parent"
+        mv "$target" "$backup_path"
+      fi
+      backed_up+=("$item")
     fi
-  fi
 
-  # Create symlink
-  log "Linking: $target -> $source"
-  if [[ "$DRY_RUN" == false ]]; then
-    ln -s "$source" "$target"
-  fi
-  created+=("$item")
-done
+    # Create parent directory
+    target_parent="$(dirname "$target")"
+    if [[ ! -d "$target_parent" ]]; then
+      log "Creating directory: $target_parent"
+      if [[ "$DRY_RUN" == false ]]; then
+        mkdir -p "$target_parent"
+      fi
+    fi
 
-# Summary
-echo ""
-echo "=== Summary ==="
-echo "Created: ${#created[@]}"
-for item in "${created[@]:+"${created[@]}"}"; do
-  echo "  + $item"
-done
+    # Create symlink
+    log "Linking: $target -> $source"
+    if [[ "$DRY_RUN" == false ]]; then
+      ln -s "$source" "$target"
+    fi
+    created+=("$item")
+  done
 
-echo "Skipped (already linked): ${#skipped[@]}"
-for item in "${skipped[@]:+"${skipped[@]}"}"; do
-  echo "  - $item"
-done
-
-echo "Backed up: ${#backed_up[@]}"
-for item in "${backed_up[@]:+"${backed_up[@]}"}"; do
-  echo "  ~ $item"
-done
-
-if [[ ${#backed_up[@]} -gt 0 ]]; then
+  # Summary
   echo ""
-  echo "Backups saved to: $BACKUP_DIR"
-fi
+  echo "=== Symlinks ==="
+  echo "Created: ${#created[@]}"
+  for item in "${created[@]:+"${created[@]}"}"; do
+    echo "  + $item"
+  done
 
-# Remove empty backup dir
-if [[ "$DRY_RUN" == false && "$backup_dir_created" == true && -d "$BACKUP_DIR" ]]; then
-  if [[ -z "$(ls -A "$BACKUP_DIR")" ]]; then
-    rmdir "$BACKUP_DIR"
+  echo "Skipped (already linked): ${#skipped[@]}"
+  for item in "${skipped[@]:+"${skipped[@]}"}"; do
+    echo "  - $item"
+  done
+
+  echo "Backed up: ${#backed_up[@]}"
+  for item in "${backed_up[@]:+"${backed_up[@]}"}"; do
+    echo "  ~ $item"
+  done
+
+  if [[ ${#backed_up[@]} -gt 0 ]]; then
+    echo ""
+    echo "Backups saved to: $BACKUP_DIR"
   fi
-fi
+
+  # Remove empty backup dir
+  if [[ "$DRY_RUN" == false && "$backup_dir_created" == true && -d "$BACKUP_DIR" ]]; then
+    if [[ -z "$(ls -A "$BACKUP_DIR")" ]]; then
+      rmdir "$BACKUP_DIR"
+    fi
+  fi
+}
+
+# --- MCP Sync ----------------------------------------------------------------
+
+cmd_mcp() {
+  echo ""
+  echo "=== MCP Config Sync ==="
+  if [[ "$DRY_RUN" == true ]]; then
+    echo "[DRY RUN] Would run: bin/sync-mcp-config"
+  else
+    if "$DOTFILES_DIR/bin/sync-mcp-config"; then
+      echo "MCP sync completed."
+    else
+      echo "WARNING: MCP sync failed (non-fatal)." >&2
+    fi
+  fi
+}
+
+# --- Main ---------------------------------------------------------------------
+
+# Parse flags and command
+COMMAND=""
+for arg in "$@"; do
+  case "$arg" in
+    --dry-run) DRY_RUN=true ;;
+    help|--help|-h) usage; exit 0 ;;
+    *)
+      if [[ -z "$COMMAND" ]]; then
+        COMMAND="$arg"
+      else
+        echo "Unknown argument: $arg"; usage; exit 1
+      fi
+      ;;
+  esac
+done
+
+case "${COMMAND:-all}" in
+  all)
+    cmd_symlinks
+    cmd_mcp
+    ;;
+  symlinks) cmd_symlinks ;;
+  mcp)      cmd_mcp ;;
+  *)
+    echo "Unknown command: $COMMAND"
+    usage
+    exit 1
+    ;;
+esac
