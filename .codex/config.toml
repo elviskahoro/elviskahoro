@@ -36,6 +36,13 @@ trust_level = "trusted"
 
 [mcp_servers]
 
+[mcp_servers.dosu]
+type = "http"
+url = "https://api.dosu.dev/v1/mcp/deployments/d23fd603-faca-4166-8ba5-71414c8a9d81"
+
+[mcp_servers.dosu.headers]
+"X-Dosu-API-Key" = "${op://Personal/api-dosu/credential}"
+
 [mcp_servers.linear]
 command = "npx"
 args = ["-y", "mcp-remote", "https://mcp.linear.app/mcp"]
