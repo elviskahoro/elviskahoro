@@ -17,6 +17,13 @@
       "env": {
         "RESEND_API_KEY": "${op://Personal/api-resend/credential}"
       }
+    },
+    "dosu": {
+      "type": "http",
+      "url": "https://api.dosu.dev/v1/mcp/deployments/d23fd603-faca-4166-8ba5-71414c8a9d81",
+      "headers": {
+        "X-Dosu-API-Key": "${op://Personal/api-dosu/credential}"
+      }
     }
   }
 }

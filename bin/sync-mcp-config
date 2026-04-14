@@ -246,16 +246,10 @@ def sync_codex_config(config_file: Path, mcp_servers: Dict[str, Any]) -> bool:
         else:
             config = {}
 
-        # Convert mcp_servers to TOML format
+        # Convert mcp_servers to TOML format, preserving all fields
         mcp_servers_toml = {}
         for name, server_config in mcp_servers.items():
-            mcp_servers_toml[name] = {
-                "command": server_config.get("command"),
-                "args": server_config.get("args", []),
-            }
-            # If there's an env section, include it
-            if "env" in server_config:
-                mcp_servers_toml[name]["env"] = server_config["env"]
+            mcp_servers_toml[name] = dict(server_config)
 
         # Replace only the mcp_servers section, preserve everything else
         config["mcp_servers"] = mcp_servers_toml
@@ -365,19 +359,21 @@ def _format_mcp_servers(mcp_servers_toml: Dict[str, Any]) -> str:
         server = mcp_servers_toml[name]
         lines.append("")
         lines.append(f"[mcp_servers.{_quote_toml_key(name)}]")
-        lines.append(f'command = "{server.get("command")}"')
 
-        args = server.get("args", [])
-        if args:
-            args_str = "[" + ", ".join(f'"{arg}"' for arg in args) + "]"
-            lines.append(f"args = {args_str}")
+        # Write all scalar and list fields first, dicts (env, headers) as sub-tables after
+        dict_fields = {}
+        for key, value in server.items():
+            if isinstance(value, dict):
+                dict_fields[key] = value
+            else:
+                lines.append(f"{_quote_toml_key(key)} = {_format_toml_value(value)}")
 
-        # Handle env section if present
-        if "env" in server:
+        # Write dict fields as TOML sub-tables
+        for dict_key, dict_value in dict_fields.items():
             lines.append("")
-            lines.append(f"[mcp_servers.{_quote_toml_key(name)}.env]")
-            for env_key, env_value in server["env"].items():
-                lines.append(f"{_quote_toml_key(env_key)} = {_format_toml_value(env_value)}")
+            lines.append(f"[mcp_servers.{_quote_toml_key(name)}.{_quote_toml_key(dict_key)}]")
+            for k, v in dict_value.items():
+                lines.append(f"{_quote_toml_key(k)} = {_format_toml_value(v)}")
 
     return "\n".join(lines)
 
