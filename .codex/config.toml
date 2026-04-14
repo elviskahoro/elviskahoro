@@ -4,9 +4,6 @@ model_reasoning_effort = "low"
 [features]
 multi_agent = true
 
-[plugins."github@openai-curated"]
-enabled = true
-
 [projects."/Users/elvis/Documents/elviskahoro/attio-sdk-python"]
 trust_level = "trusted"
 
