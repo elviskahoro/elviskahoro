@@ -44,8 +44,7 @@
   "workbench.editor.tabActionCloseVisibility": false,
   "workbench.editor.focusRecentEditorAfterClose": false,
   "workbench.editor.enablePreview": false,
-  "workbench.startupEditor": "none",
-  "workbench.sideBar.location": "right",
+"workbench.startupEditor": "none",
   "workbench.iconTheme": "Monokai Pro (Filter Spectrum) Icons",
   "workbench.list.smoothScrolling": true,
   "workbench.reduceMotion": "on",
@@ -113,7 +112,7 @@
   "python.disableInstallationCheck": true,
   "python.terminal.activateEnvInCurrentTerminal": true,
   "python.languageServer": "Pylance",
-  "python.defaultInterpreterPath": "/Users/elvis/.pyenv/versions/3.12.4/bin/python",
+  "python.defaultInterpreterPath": "",
   "python.testing.cwd": "src/tests/",
   "python.testing.pytestPath": "/Users/elvis/.pyenv/shims/pytest",
   "[python]": {
