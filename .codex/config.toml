@@ -43,6 +43,10 @@ url = "https://api.dosu.dev/v1/mcp/deployments/d23fd603-faca-4166-8ba5-71414c8a9
 [mcp_servers.dosu.headers]
 "X-Dosu-API-Key" = "${op://Personal/api-dosu/credential}"
 
+[mcp_servers.fathom]
+command = "npx"
+args = ["-y", "mcp-remote", "https://api.fathom.ai/mcp"]
+
 [mcp_servers.linear]
 command = "npx"
 args = ["-y", "mcp-remote", "https://mcp.linear.app/mcp"]
