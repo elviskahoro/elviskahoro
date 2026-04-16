@@ -45,7 +45,9 @@ This skill renames files to follow a consistent, clean naming convention designe
 ## Bash command examples
 
 ### Generate rename mappings with preview
+
 Show all files in a directory with their planned new names:
+
 ```bash
 ls -1 | while read file; do
   newname=$(echo "$file" | tr ' ' '_' | tr '[:upper:]' '[:lower:]' | sed 's/[^a-z0-9._-]//g')
@@ -54,6 +56,7 @@ done
 ```
 
 ### Handle spaces and convert to lowercase
+
 ```bash
 for file in *; do
   newname=$(echo "$file" | sed 's/ /_/g' | tr '[:upper:]' '[:lower:]')
@@ -62,6 +65,7 @@ done
 ```
 
 ### Remove special characters
+
 ```bash
 for file in *; do
   newname=$(echo "$file" | sed 's/[^a-zA-Z0-9._-]//g' | tr '[:upper:]' '[:lower:]')
@@ -70,6 +74,7 @@ done
 ```
 
 ### Handle leading numbers (move to end)
+
 ```bash
 for file in *; do
   # Extract extension
@@ -89,6 +94,7 @@ done
 ```
 
 ### Check for conflicts (duplicate target names)
+
 ```bash
 for file in *; do
   newname=$(echo "$file" | sed 's/ /_/g' | tr '[:upper:]' '[:lower:]' | sed 's/[^a-z0-9._-]//g')
@@ -97,7 +103,9 @@ done | sort | uniq -d
 ```
 
 ### Execute renames from a mapping (safe approach)
+
 First create and review a mapping file, then execute:
+
 ```bash
 # Generate mapping file
 for file in *; do
@@ -117,7 +125,9 @@ done
 ```
 
 ### Batch rename with pattern matching
+
 Rename only certain files (e.g., PDFs):
+
 ```bash
 for file in *.pdf; do
   [ -f "$file" ] || continue

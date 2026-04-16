@@ -1,20 +1,21 @@
 # Ramp Up
 
-
 Chromebook (cb)
 MacOS (osx)
 
 cb::Change Linux VM password
+
 ```sh
 sudo su
 passwd $username$
 ```
 
-
 Authenticate Github
+
 ```sh
 ls -al ~/.ssh
 ```
+
 ```sh
 ssh-keygen -t ed25519 -C "ekk0809@gmail.com"
 ```
@@ -28,11 +29,13 @@ Copy SSH Key and Paste into [Github](https://github.com/settings/keys)
 Dotfiles [guide](https://www.ackama.com/blog/posts/the-best-way-to-store-your-dotfiles-a-bare-git-repository-explained)
 
 Install [Brew](https://brew.sh/)
+
 ```sh
 brew install git
 ```
 
 dotfiles
+
 ```sh
 git init .
 ```
@@ -44,6 +47,7 @@ mv .git/ .dotfiles/
 ```
 
 If error due to file override.
+
 ```sh
 git fetch --all
 git reset --hard origin/main
@@ -53,6 +57,7 @@ git checkout main
 Restart shell
 
 Ignore untracked files
+
 ```sh
 dot config --local status.showUntrackedFiles no
 ```
@@ -74,6 +79,7 @@ pyenv gloval 3.9.9
 ```
 
 cb::Update packages
+
 ```sh
 sudo apt update -y
 sudo apt-get update --allow-releaseinfo-change
@@ -100,25 +106,28 @@ npm install -g neovim
 
 TODO: Add poetry instructions for installing python
 
-```
+```sh
 pip install --user neovim
 ```
 
 Download [plug.vim](https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim) and put it in the "autoload" directory.
 
 vim
+
 ```sh
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 ```
 
 neovim
+
 ```sh
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 ```
 
 [Install Coc Plugin](https://github.com/neoclide/coc.nvim/wiki/Install-coc.nvim)
+
 ```sh
 chmod u+x ~/.config/coc-reinstall.sh
 ~/.config/coc-reinstall.sh
@@ -126,29 +135,31 @@ chmod u+x ~/.config/coc-reinstall.sh
 
 Reload .vimrc and `:PlugInstall` to install plugins.
 
-### Commands
+## Commands
 
-| Command                             | Description                                                        |
-| ----------------------------------- | ------------------------------------------------------------------ |
-| `PlugInstall [name ...] [#threads]` | Install plugins                                                    |
-| `PlugUpdate [name ...] [#threads]`  | Install or update plugins                                          |
-| `PlugClean[!]`                      | Remove unlisted plugins (bang version will clean without prompt) |
-| `PlugUpgrade`                       | Upgrade vim-plug itself                                            |
-| `PlugStatus`                        | Check the status of plugins                                        |
-| `PlugDiff`                          | Examine changes from the previous update and the pending changes   |
-| `PlugSnapshot[!] [output path]`     | Generate script for restoring the current snapshot of the plugins  |
+| Command                             | Description                                                       |
+| ----------------------------------- | ----------------------------------------------------------------- |
+| `PlugInstall [name ...] [#threads]` | Install plugins                                                   |
+| `PlugUpdate [name ...] [#threads]`  | Install or update plugins                                         |
+| `PlugClean[!]`                      | Remove unlisted plugins (bang version will clean without prompt)  |
+| `PlugUpgrade`                       | Upgrade vim-plug itself                                           |
+| `PlugStatus`                        | Check the status of plugins                                       |
+| `PlugDiff`                          | Examine changes from the previous update and the pending changes  |
+| `PlugSnapshot[!] [output path]`     | Generate script for restoring current snapshot of plugins         |
 
 ```sh
 pip install "pelican[markdown]"
 ```
 
 Install [flatpak](https://flatpak.org/setup/Chrome%20OS/)
+
 ```sh
 sudo apt install flatpak &&
 flatpak --user remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 ```
 
 [Zotero flatpak](https://flathub.org/apps/details/org.zotero.Zotero)
+
 ```sh
 flatpak install flathub org.zotero.Zotero
 ```
@@ -157,7 +168,8 @@ flatpak install flathub org.zotero.Zotero
 flatpak run org.zotero.Zotero
 ```
 
-If flatpak fails: [link](https://www.zotero.org/support/kb/installing_on_a_chromebook)
+If flatpak fails: [GitHub Install Guide](https://www.zotero.org/support/kb/installing_on_a_chromebook)
+
 ```sh
 wget -qO- https://github.com/retorquere/zotero-deb/releases/download/apt-get/install.sh | sudo bash
 sudo apt update

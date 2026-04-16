@@ -124,7 +124,7 @@ Zed's contexts make up a tree, with the root being `Workspace`. Workspaces conta
 
 For example:
 
-```
+```text
 # in an editor, it might look like this:
 Workspace os=macos keyboard_layout=com.apple.keylayout.QWERTY
   Pane
@@ -304,4 +304,3 @@ For example, `ctrl-n` creates a new tab in Zed on Linux. If you want to send `ct
 
 You can also bind keys to launch Zed Tasks defined in your `tasks.json`.
 See the [tasks documentation](tasks.md#custom-keybindings-for-tasks) for more.
-

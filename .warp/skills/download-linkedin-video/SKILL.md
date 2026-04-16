@@ -53,6 +53,7 @@ After download, rename the output file following this convention:
 - Keep the summary to 3-5 words maximum
 
 Generate the timestamp:
+
 ```bash
 TIMESTAMP=$(date +%Y%m%d%H%M%S)
 ```
@@ -62,6 +63,7 @@ Example renames:
 - `Why AI agents matter - Sarah Chen.mp4` becomes `linkedin-20260411143022-why_ai_agents_matter.mp4`
 
 Move the renamed file to the output directory:
+
 ```bash
 mv "<downloaded_file>" ~/Downloads/videos/linkedin-${TIMESTAMP}-<concise_summary>.mp4
 ```
@@ -69,6 +71,7 @@ mv "<downloaded_file>" ~/Downloads/videos/linkedin-${TIMESTAMP}-<concise_summary
 ### 5. Confirm
 
 Print the final file path and size:
+
 ```bash
 ls -lh ~/Downloads/videos/linkedin-${TIMESTAMP}-*.mp4
 ```

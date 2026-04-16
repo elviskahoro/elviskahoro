@@ -1,4 +1,3 @@
----
 name: Remove forbidden characters for GCP
 command: "mkdir save/ && for FILE in *; do tr < $FILE -d '\000' > ./save/$FILE; done"
 tags:

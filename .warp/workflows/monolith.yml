@@ -1,4 +1,3 @@
----
 name: "Download website to machine using Monolith web page downloader"
 command: "monolith -F -a -v -f -j {{url}} -o {{filename-html}}"
 description: "Downloads a website to disk"
