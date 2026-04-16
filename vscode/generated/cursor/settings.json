@@ -25,7 +25,7 @@
   "editor.stickyScroll.maxLineCount": 6,
   "editor.stickyTabStops": true,
   "editor.detectIndentation": false,
-  "editor.hover.sticky": false,
+  "editor.hover.sticky": true,
   "editor.lineNumbers": "relative",
   "editor.defaultFormatter": "trunk.io",
   "editor.acceptSuggestionOnCommitCharacter": false,
@@ -46,7 +46,7 @@
   "workbench.editor.enablePreview": false,
   "workbench.startupEditor": "none",
   "workbench.sideBar.location": "right",
-  "workbench.iconTheme": "material-icon-theme",
+  "workbench.iconTheme": "Monokai Pro (Filter Spectrum) Icons",
   "workbench.list.smoothScrolling": true,
   "workbench.reduceMotion": "on",
   "workbench.fontAliasing": "auto",
@@ -187,12 +187,5 @@
   },
   "window.commandCenter": true,
   "cursorPreview.disableInlineCompletions": false,
-"cursorPreview.enableInlineCompletion": true,
-"cursor.composer.queueMessageDefaultBehavior": "stop-and-send",
-"cursor.composer.usageSummaryDisplay": "always",
-"cursor.general.emailPrivacyEnabled": true,
-"cursor.general.reduceTransparency": true,
-"cursor.rpcFileLogger.enabled": true,
-"cursor.rpcFileLogger.folder": "~/Documents/traces/",
-"cursor.terminal.usePreviewBox": true
+  "cursorPreview.enableInlineCompletion": true
 }
