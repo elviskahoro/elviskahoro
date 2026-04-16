@@ -1,0 +1,118 @@
+# This file controls the behavior of Trunk: https://docs.trunk.io/cli
+# To learn more about the format of this file, see https://docs.trunk.io/reference/trunk-yaml
+version: 0.1
+cli:
+  version: 1.25.0
+#
+# Trunk provides extensibility via plugins. (https://docs.trunk.io/plugins)
+plugins:
+  sources:
+    - id: trunk
+      ref: v1.7.6
+      uri: https://github.com/trunk-io/plugins
+    - id: oss-linter-trunk
+      ref: v0.2026.04.14.00.00
+      uri: https://github.com/elviskahoro/oss-linter-trunk
+#
+# This is the section where you manage your linters. (https://docs.trunk.io/check/configuration)
+lint:
+  definitions:
+    - name: ruff
+      commands:
+        - name: format
+          enabled: true
+
+  enabled:
+    - actionlint@1.7.11
+    - markdownlint-cli2@0.22.0
+    - markdown-link-check@3.14.2
+    - osv-scanner@2.3.5
+    - pyright@1.1.408
+    - ruff@0.15.8
+    - shellcheck@0.11.0
+    - shfmt@3.6.0
+    - taplo@0.10.0
+    - trufflehog@3.94.1
+    - yamlfmt@0.20.0
+    - yamllint@1.38.0
+
+  disabled:
+    - ansible-lint
+    - autopep8
+    - bandit
+    - biome
+    - black
+    - checkov
+    - codespell
+    - cspell
+    - dotenv-linter
+    - eslint
+    - flake8
+    - git-diff-check
+    - gitleaks
+    - hadolint
+    - isort
+    - markdownlint
+    - mypy
+    - nbstripout
+    - prettier
+    - pylint
+    - remark-lint
+    - renovate
+    - ruff-nbqa
+    - semgrep
+    - sort-package-json
+    - sourcery
+    - trivy
+    - trunk-toolbox
+    - vale
+    - yapf
+
+  ignore:
+    - linters: [ALL]
+      paths:
+        - archive/**
+        - tmp/**
+
+    - linters: [markdown-link-check, markdownlint-cli2]
+      paths:
+        - .agents/skills/**
+
+  exported_configs:
+    - plugin_id: oss-linter-trunk
+      configs:
+        - configs/.bandit
+        - configs/.clang-format
+        - configs/.clang-tidy
+        - configs/.clangd
+        - configs/.editorconfig
+        - configs/.flake8
+        - configs/.gitattributes
+        - configs/.gitignore
+        - configs/.hadolint.yaml
+        - configs/.isort.cfg
+        - configs/.markdownlint.yaml
+        - configs/.mypy.ini
+        - configs/.pr-labels.yaml
+        - configs/.prettierrc.yaml
+        - configs/.pylintrc
+        - configs/.remarkrc.yaml
+        - configs/.shellcheckrc
+        - configs/.sqlfluff
+        - configs/.stylelintrc.js
+        - configs/.stylelintrc.yaml
+        - configs/.yamllint.yaml
+        - configs/pyrightconfig.json
+        - configs/ruff.toml
+        - configs/rustfmt.toml
+        - configs/svgo.config.js
+
+actions:
+  enabled:
+    - trunk-announce
+    - trunk-cache-prune
+    - trunk-upgrade-available
+    - trunk-check-pre-push
+
+  disabled:
+    - trunk-fmt-pre-commit
