@@ -25,7 +25,7 @@
     "editor.stickyScroll.maxLineCount": 6,
     "editor.stickyTabStops": true,
     "editor.detectIndentation": false,
-    "editor.hover.sticky": false,
+    "editor.hover.sticky": true,
     "editor.lineNumbers": "relative",
     "editor.defaultFormatter": "trunk.io",
     "editor.acceptSuggestionOnCommitCharacter": false,

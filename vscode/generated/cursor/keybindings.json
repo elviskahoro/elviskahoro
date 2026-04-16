@@ -80,7 +80,15 @@
     "key": "cmd+i",
     "command": "composerMode.agent"
   },
-{
+  {
+    "key": "cmd+1",
+    "command": "workbench.action.previousEditor"
+  },
+  {
+    "key": "cmd+2",
+    "command": "workbench.action.nextEditor"
+  },
+  {
     "key": "cmd+shift+b",
     "command": "-composer.openBrowserTab"
   },
@@ -210,56 +218,5 @@
   {
     "key": "shift+cmd+l",
     "command": "-composer.newAgentChat"
-},
-{
-    "key": "cmd+1",
-    "command": "-workbench.action.focusFirstEditorGroup",
-    "when": "!cursor.chatEditorGroup.enabled"
-},
-{
-    "key": "cmd+]",
-    "command": "workbench.action.focusSecondEditorGroup"
-},
-{
-    "key": "cmd+2",
-    "command": "-workbench.action.focusSecondEditorGroup"
-},
-{
-    "key": "cmd+[",
-    "command": "-editor.action.outdentLines",
-    "when": "editorTextFocus && !editorReadonly"
-},
-{
-    "key": "cmd+]",
-    "command": "-editor.action.indentLines",
-    "when": "editorTextFocus && !editorReadonly"
-},
-{
-    "key": "cmd+1",
-    "command": "workbench.action.previousEditorInGroup"
-},
-{
-    "key": "cmd+r alt+cmd+left",
-    "command": "-workbench.action.previousEditorInGroup"
-},
-{
-    "key": "shift+cmd+2",
-    "command": "workbench.action.focusNextGroup"
-},
-{
-    "key": "cmd+2",
-    "command": "workbench.action.nextEditorInGroup"
-},
-{
-    "key": "cmd+r alt+cmd+right",
-    "command": "-workbench.action.nextEditorInGroup"
-},
-{
-    "key": "shift+cmd+1",
-    "command": "workbench.action.focusPreviousGroup"
-},
-{
-    "key": "cmd+n",
-    "command": "-workbench.action.files.newUntitledFile"
-}
+  }
 ]
