@@ -1,4 +1,3 @@
----
 name: Runs GitHub action locally using act
 command: act --container-architecture linux/amd64 {{pull_request}}
 tags:

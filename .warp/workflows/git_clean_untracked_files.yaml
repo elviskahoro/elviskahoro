@@ -1,4 +1,3 @@
----
 name: Clean untrack files
 command: git clean -f
 tags:

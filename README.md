@@ -1,6 +1,6 @@
 ## <em></em>
 
-[![Linkedin](https://img.shields.io/badge/-Linkedin-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/elviskahoro/)](https://www.linkedin.com/in/elviskahoro/) 
+[![Linkedin](https://img.shields.io/badge/-Linkedin-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/elviskahoro/)](https://www.linkedin.com/in/elviskahoro/)
 
 Hi! I'm elvis (he/him/his)
 
@@ -20,6 +20,7 @@ I have previously worked at:
 Some tools that give me joy:
 
 ## Daily
+
 - [git config](/.gitconfig)
 - [chalk](https://chalk.ai) - ML infra
 - [warp](https://warp.dev) - terminal
@@ -40,6 +41,7 @@ Some tools that give me joy:
 - [coderabbit](https://www.coderabbit.ai/) - local AI code review: `coderabbit --prompt-only`
 
 ## CLIs
+
 - [xan](https://github.com/medialab/xan) - CSV + local data exploration
 - [exa](https://github.com/ogham/exa) - navigation
 - [delta](https://github.com/dandavison/delta) - git diffs
@@ -49,6 +51,7 @@ Some tools that give me joy:
 - [starship](https://github.com/starship/starship) - prompt (although not needed with Warp)
 
 ## Apps
+
 - [linear](https://linear.app/) - type A
 - [raycast](https://www.raycast.com/) - keybindings
 - [rectangle (pro)](https://rectangleapp.com/pro) - more keybindings

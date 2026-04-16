@@ -74,9 +74,26 @@ lint:
         - archive/**
         - tmp/**
 
-    - linters: [markdown-link-check, markdownlint-cli2]
+    - linters: [checkov, semgrep]
       paths:
         - .agents/skills/**
+        - "**/*.py"
+        - "**/*.sh"
+        - "**/*.md"
+
+    - linters: [markdown-link-check, markdownlint-cli2, trivy]
+      paths:
+        - .agents/skills/**
+        - design/**
+
+    - linters: [trivy]
+      paths:
+        - .trunk/**
+
+    - linters: [ruff]
+      paths:
+        - .agents/skills/**
+        - "*.ipynb"
 
   exported_configs:
     - plugin_id: oss-linter-trunk

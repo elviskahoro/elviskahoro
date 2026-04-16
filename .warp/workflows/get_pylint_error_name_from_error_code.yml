@@ -1,6 +1,5 @@
----
-name: Get pylint error name from error code
-command: 'plerr {{error_code}}'
+name: "Get pylint error name from error code"
+command: "plerr {{error_code}}"
 tags:
   - warpdotdev
   - warpdotdev-dx

@@ -1,13 +1,7 @@
----
 # The name of the workflow.
 name: MacOS 13+ - Disable/Enabled mouse acceleration
 # The corresponding command for the workflow. Any arguments should be surrounded with two curly braces. E.g `command {{arg}}`.
-command: |-
-  echo "old value:"
-  defaults read -g com.apple.mouse.scaling 
-  defaults write -g com.apple.mouse.scaling -integer {{acceleration_amount}}
-  echo "new value:"
-  defaults read -g com.apple.mouse.scaling
+command: "echo \"old value:\"\ndefaults read -g com.apple.mouse.scaling \ndefaults write -g com.apple.mouse.scaling -integer {{acceleration_amount}}\necho \"new value:\"\ndefaults read -g com.apple.mouse.scaling"
 # Any tags that the workflow should be categorized with.
 tags:
   - MacOS

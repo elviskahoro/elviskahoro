@@ -1,4 +1,3 @@
----
 name: Upload folder to GCP Storage Bucket
 command: gsutil -m cp -r -n {{local_folder_path}} {{gcp_storage_bucket}}
 tags:

@@ -1,4 +1,3 @@
----
 name: Git - Cut Release Tag (Timestamp)
 command: |-
   set -euo pipefail

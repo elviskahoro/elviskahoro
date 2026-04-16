@@ -1,23 +1,26 @@
+#!/usr/bin/env bash
+
 alias dot='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias dotr='cp -u ~/.bash_profile ~/bash_profile.sh'
 
-if [ -d "$HOME/bin" ] ; then
-    PATH="$HOME/bin:$PATH"
+if [[ -d "${HOME}/bin" ]]; then
+  PATH="${HOME}/bin:${PATH}"
 fi
-if [ -d "$HOME/.local/bin" ] ; then
-    PATH="$HOME/.local/bin:$PATH"
+if [[ -d "${HOME}/.local/bin" ]]; then
+  PATH="${HOME}/.local/bin:${PATH}"
 fi
 
 # Brew
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)" # brew
-if [ -n "$BASH_VERSION" ]; then
-    # include .bashrc if it exists
-    if [ -f "$HOME/.bashrc" ]; then
-        . "$HOME/.bashrc"
-    fi
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)" || true
+if [[ -n ${BASH_VERSION} ]]; then
+  # include .bashrc if it exists
+  if [[ -f "${HOME}/.bashrc" ]]; then
+    . "${HOME}/.bashrc"
+  fi
 fi
-if [ -f /home/linuxbrew/.linuxbrew/share/liquidprompt ]; then
-    . /home/linuxbrew/.linuxbrew/share/liquidprompt
+if [[ -f /home/linuxbrew/.linuxbrew/share/liquidprompt ]]; then
+  # shellcheck disable=SC1091
+  . /home/linuxbrew/.linuxbrew/share/liquidprompt
 fi
 
 # $(brew --prefix)/opt/fzf/install
@@ -35,7 +38,7 @@ fi
 #     alias ls='ls --color=auto'
 #     alias dir='dir --color=auto'
 #     alias vdir='vdir --color=auto'
-# 
+#
 #     alias grep='grep --color=auto'
 #     alias fgrep='fgrep --color=auto'
 #     alias egrep='egrep --color=auto'
@@ -44,13 +47,11 @@ fi
 # colored GCC warnings and errors
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
-
-
 # set variable identifying the chroot you work in (used in the prompt below)
 # if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
 #     debian_chroot=$(cat /etc/debian_chroot)
 # fi
- 
+
 # set a fancy prompt (non-color, unless we know we "want" color)
 # case "$TERM" in
 #     xterm-color|*-256color) color_prompt=yes;;
@@ -84,4 +85,3 @@ fi
 # *)
 #     ;;
 # esac
-
