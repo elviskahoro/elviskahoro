@@ -1,7 +1,0 @@
-name = "ai"
-
-[[panes]]
-id = "p1"
-type = "terminal"
-is_focused = true
-directory = "/Users/elvis/Documents/elviskahoro/ai"

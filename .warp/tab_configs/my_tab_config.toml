@@ -6,10 +6,10 @@
 #
 # Docs at https://docs.warp.dev/terminal/sessions/tab-configs
 
-name = "My Tab Config"
+name = "ai"
 
 [[panes]]
 id = "main"
 type = "terminal"
-# directory = "~/code/my-project"
+# directory = "~/elviskahoro/ai"
 commands = []

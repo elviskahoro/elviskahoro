@@ -1,14 +1,16 @@
-"workspace:close_window": none
-"workspace:activate_next_tab": cmd-2
+---
 "workspace:toggle_warp_drive": cmd-b
-"workspace:toggle_navigation_palette": none
 "workspace:toggle_vertical_tabs_panel": cmd-s
-"input:toggle_workflows": shift-cmd-W
-"workspace:activate_prev_tab": cmd-1
-"terminal:clear_blocks": cmd-r
-"workspace:toggle_command_palette": shift-cmd-P
-"workspace:activate_first_tab": none
-"workspace:activate_second_tab": none
-"input:open_completion_suggestions": tab
+"workspace:toggle_navigation_palette": none
 "pane_group:add_up": none
+"workspace:close_window": none
+"terminal:clear_blocks": cmd-r
+"workspace:activate_second_tab": none
+"workspace:activate_next_tab": cmd-2
+"workspace:toggle_command_palette": shift-cmd-P
+"workspace:toggle_project_explorer": shift-cmd-E
 "pane_group:add_down": shift-cmd-D
+"input:toggle_workflows": shift-cmd-W
+"input:open_completion_suggestions": tab
+"workspace:activate_first_tab": none
+"workspace:activate_prev_tab": cmd-1
