@@ -189,5 +189,6 @@
     "plaintext": false,
     "markdown": false,
     "scminput": false
-  }
+},
+"workbench.sideBar.location": "right"
 }
