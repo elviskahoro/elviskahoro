@@ -112,7 +112,7 @@
   "python.disableInstallationCheck": true,
   "python.terminal.activateEnvInCurrentTerminal": true,
   "python.languageServer": "Pylance",
-  "python.defaultInterpreterPath": "/Users/elvis/.pyenv/versions/3.12.4/bin/python",
+  "python.defaultInterpreterPath": "",
   "python.testing.cwd": "src/tests/",
   "python.testing.pytestPath": "/Users/elvis/.pyenv/shims/pytest",
   "[python]": {
