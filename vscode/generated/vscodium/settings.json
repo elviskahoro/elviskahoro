@@ -44,8 +44,7 @@
   "workbench.editor.tabActionCloseVisibility": false,
   "workbench.editor.focusRecentEditorAfterClose": false,
   "workbench.editor.enablePreview": false,
-  "workbench.startupEditor": "none",
-  "workbench.sideBar.location": "right",
+"workbench.startupEditor": "none",
   "workbench.iconTheme": "Monokai Pro (Filter Spectrum) Icons",
   "workbench.list.smoothScrolling": true,
   "workbench.reduceMotion": "on",
@@ -186,5 +185,10 @@
     "<C-z>": false
   },
   "continue.enableContinueForCompletions": true,
-  "continue.enableAutoScroll": true
+"continue.enableAutoScroll": true,
+"terminal.integrated.commandsToSkipShell": [
+    "kilo-code.new.agentManagerOpen",
+    "kilo-code.new.agentManager.showTerminal",
+    "kilo-code.new.agentManager.runScript"
+]
 }

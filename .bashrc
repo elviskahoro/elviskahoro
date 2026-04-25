@@ -194,6 +194,11 @@ alias verx='source /Users/elvis/Library/Caches/pypoetry/virtualenvs/reflex-NF09o
 alias whitelist='code /Users/elvis/Documents/reflex-dev/reflex-web/pcweb/whitelist.py'
 alias white='code /Users/elvis/Documents/reflex-dev/reflex-web/pcweb/whitelist.py'
 
+alias dparq='pqrs'
+alias dcsv='xan'
+alias djson='tw'
+alias data='vd'
+
 # Config editors (rc aliases)
 alias rcb='vim ~/.bashrc'
 alias rb='vim ~/.bashrc'
