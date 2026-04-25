@@ -32,7 +32,7 @@ Some tools that give me joy:
 - [hookdeck](https://hookdeck.com/) - webhooks
 - [flox](https://flox.dev/) - developer environment management
 - [stashpad](https://www.stashpad.com/) :( rip
-- [attio](https://attio.com/) - CRM - [Python SDK](https://github.com/elviskahoro/attio-sdk-python)
+- [attio](https://attio.com/) - CRM - built a [Python SDK](https://github.com/elviskahoro/attio-sdk-python)
 - [clay](http://clay.com/) - GTM
 - [koala](https://getkoala.com/) - even more GTM - rip - curse you cursor :(
 - [front](https://front.com/) - CSM + scaling comms
