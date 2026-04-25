@@ -197,6 +197,7 @@
   gm        = m
   dm        = m
   mere      = merge
+  mrege     = merge
 
   o         = "!gh pr view --web || gh repo view --web"
   open      = o
@@ -370,6 +371,7 @@
   caux      = caix
   xai       = caix
   xaic      = caix
+  caox      = caix
   bcw       = "!f() { git worktree add -b \"$1\" \"$(git rev-parse --show-toplevel)/worktrees/$1\" && echo \"$(git rev-parse --show-toplevel)/worktrees/$1\"; }; f"
   brw       = "!f() { branch=$(git -C \"$1\" rev-parse --abbrev-ref HEAD 2>/dev/null); git worktree remove \"$1\" && { [ -n \"$branch\" ] && git branch -d \"$branch\" 2>/dev/null; echo \"Removed worktree: $1${branch:+ (branch: $branch)}\"; }; }; f"
 	gbrw = "!f() { branch=$(git -C \"$1\" rev-parse --abbrev-ref HEAD 2>/dev/null); git worktree remove \"$1\" && { [ -n \"$branch\" ] && git branch -d \"$branch\" 2>/dev/null; echo \"Removed worktree: $1${branch:+ (branch: $branch)}\"; }; }; f"
