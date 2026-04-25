@@ -1,5 +1,5 @@
 {
-  "model": "opus",
+  "model": "haiku",
   "hooks": {
     "WorktreeCreate": [
       {
@@ -40,7 +40,6 @@
     "hookify@claude-plugins-official": false,
     "pyright-lsp@claude-plugins-official": true,
     "superpowers@claude-plugins-official": false,
-    "warp@claude-code-warp": true,
     "linear@claude-plugins-official": false,
     "adspirer-ads-agent@claude-plugins-official": false,
     "context7@claude-plugins-official": false,
@@ -59,7 +58,8 @@
     "coderabbit@claude-plugins-official": false,
     "firecrawl@claude-plugins-official": false,
     "semgrep@claude-plugins-official": false,
-    "circleback@claude-plugins-official": false
+    "circleback@claude-plugins-official": false,
+    "warp@claude-code-warp": true
   },
   "extraKnownMarketplaces": {
     "claude-code-warp": {
@@ -69,6 +69,7 @@
       }
     }
   },
-  "effortLevel": "high",
-  "skipDangerousModePermissionPrompt": true
+  "effortLevel": "low",
+  "skipDangerousModePermissionPrompt": true,
+  "theme": "dark"
 }

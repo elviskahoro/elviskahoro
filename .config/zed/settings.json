@@ -7,6 +7,46 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "context_servers": {
+    "mcp-server-context7": {
+      "enabled": false,
+      "remote": false,
+      "settings": {}
+    },
+    "mcp-server-exa-search": {
+      "enabled": false,
+      "remote": false,
+      "settings": {}
+    }
+  },
+  "cli_default_open_behavior": "new_window",
+  "outline_panel": {
+    "dock": "right"
+  },
+  "collaboration_panel": {
+    "dock": "right"
+  },
+  "agent": {
+    "tool_permissions": {
+      "tools": {
+        "terminal": {
+          "default": "allow"
+        }
+      }
+    },
+    "default_model": {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6-latest",
+      "enable_thinking": true,
+      "effort": "high"
+    },
+    "dock": "left",
+    "favorite_models": [],
+    "model_parameters": []
+  },
+  "git_panel": {
+    "dock": "right"
+  },
   "session": {
     "trust_all_worktrees": true
   },
@@ -36,6 +76,7 @@
     "enabled": false,
   },
   "project_panel": {
+    "dock": "right",
     "auto_fold_dirs": false,
     "auto_reveal_entries": false,
   },
