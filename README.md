@@ -22,22 +22,20 @@ Some tools that give me joy:
 ## Daily
 
 - [git config](/.gitconfig)
-- [chalk](https://chalk.ai) - ML infra
 - [warp](https://warp.dev) - terminal
 - [graphite](https://graphite.dev/) - git navigation + [stacked diffs](https://www.youtube.com/live/m23jkzMFETg?si=b_VE0PK4hcMHI-pc&t=2702)
-- [hookdeck](https://hookdeck.com/) - webhooks
+- [dagger](https://dagger.io/) - CI/CD engine + [see example here](https://gist.github.com/elviskahoro/b6c0afe6ceba1f3b27010ceea7a2cc2f)
 - [trunk](https://trunk.io/) - linting
 - [dlt](https://github.com/dlt-hub/dlt) - ETL / data movement
-- [rill](https://www.rilldata.com/) - data exploration + dashboards (honorable mention: duckdb)
 - [lancedb](https://lancedb.com/) - vector DB
-- [dagger](https://dagger.io/) - CI/CD engine + [see example here](https://gist.github.com/elviskahoro/c6d8440de6dc88622770a48cde78fffa)
+- [modal](https://modal.com/) - compute + python scripts
+- [hookdeck](https://hookdeck.com/) - webhooks
 - [flox](https://flox.dev/) - developer environment management
 - [stashpad](https://www.stashpad.com/) :( rip
 - [attio](https://attio.com/) - CRM - [Python SDK](https://github.com/elviskahoro/attio-sdk-python)
 - [clay](http://clay.com/) - GTM
 - [koala](https://getkoala.com/) - even more GTM - rip - curse you cursor :(
 - [front](https://front.com/) - CSM + scaling comms
-- [modal](https://modal.com/) - compute + python scripts
 - [coderabbit](https://www.coderabbit.ai/) - local AI code review: `coderabbit --prompt-only`
 
 ## CLIs
