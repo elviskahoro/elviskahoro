@@ -53,7 +53,8 @@ Some tools that give me joy:
 - [linear](https://linear.app/) - type A
 - [raycast](https://www.raycast.com/) - keybindings
 - [rectangle (pro)](https://rectangleapp.com/pro) - more keybindings
-- [swimm](https://swimm.io) - internal docs
+- [dia](https://www.diabrowser.com/)
+
 
 ## Facts
 
