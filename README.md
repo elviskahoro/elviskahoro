@@ -10,7 +10,7 @@ I've starred a lot of repos (nearly 2k) and I used to organize them into lists; 
 
 I currently work at [dltHub](https://dlthub.com/blog/hugging-face-dlt-ml), the company building [dlt](https://github.com/dlt-hub/dlt)--an OSS (Apache-2.0) Python SDK for devs (+ their agents) building production-grade data pipelines!
 
-I have previously worked at:
+I previously worked at:
 
 - [Chalk](https://github.com/chalk-ai/docs/pull/357/changes) - a modern data infrastructure platform for real-time machine learning and low-latency inference
 - [Warp](https://github.com/warpdotdev/Warp/issues?q=is%3Aissue%20author%3Aelviskahoro) - a modern cross-platform GPU-accelerated cloud-backed terminal (written in Rust) with AI built in!
