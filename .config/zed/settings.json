@@ -7,6 +7,9 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "edit_predictions": {
+    "provider": "copilot"
+  },
   "context_servers": {
     "mcp-server-context7": {
       "enabled": false,
@@ -76,7 +79,7 @@
     "enabled": false,
   },
   "project_panel": {
-    "dock": "right",
+    "dock": "left",
     "auto_fold_dirs": false,
     "auto_reveal_entries": false,
   },
