@@ -1,5 +1,5 @@
 {
-  "model": "haiku",
+  "model": "opus[1m]",
   "hooks": {
     "WorktreeCreate": [
       {
@@ -69,7 +69,7 @@
       }
     }
   },
-  "effortLevel": "low",
+  "effortLevel": "high",
   "skipDangerousModePermissionPrompt": true,
   "theme": "dark"
 }

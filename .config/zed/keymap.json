@@ -16,7 +16,7 @@
   {
     "context": "Pane",
     "bindings": {
-      "cmd-1": "pane::ActivatePrevItem",
+      "cmd-1": "pane::ActivatePreviousItem",
       "cmd-2": "pane::ActivateNextItem",
     },
   },
@@ -26,6 +26,13 @@
       // cmd-/+ fold/unfold in editor (overrides font zoom when editor is focused)
       "cmd--": "editor::Fold",
       "cmd-=": "editor::UnfoldLines",
+    },
+  },
+  {
+    "context": "ProjectPanel",
+    "bindings": {
+      // shift-cmd-c copies the relative file path of selected file in file explorer
+      "shift-cmd-c": "project_panel::CopyRelativePath",
     },
   },
 ]
