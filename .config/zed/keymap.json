@@ -26,6 +26,12 @@
       // cmd-/+ fold/unfold in editor (overrides font zoom when editor is focused)
       "cmd--": "editor::Fold",
       "cmd-=": "editor::UnfoldLines",
+      // cmd-enter goes to definition (matches VSCode editor.action.revealDefinition)
+      "cmd-enter": "editor::GoToDefinition",
+      // shift-cmd-enter finds all references (matches VSCode shift+f12)
+      "shift-cmd-enter": "editor::FindAllReferences",
+      // alt-cmd-enter goes to implementation
+      "alt-cmd-enter": "editor::GoToImplementation",
     },
   },
   {
