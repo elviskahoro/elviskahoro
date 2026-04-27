@@ -2,11 +2,13 @@
 
 [![Linkedin](https://img.shields.io/badge/-Linkedin-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/elviskahoro/)](https://www.linkedin.com/in/elviskahoro/)
 
-Hi! I'm elvis (he/him/his)
 
-I'm a [Christian]([https://www.epicsf.com/](https://www.epicsf.com/about#vision)) living and working in SF. I grew up in Kennesaw, GA and went to Pomona College [(Erdos #2)](https://pages.pomona.edu/~sg064747/PAPERS/PRBTP.pdf)
+I've starred a lot of repos (nearly 2k) and I used to organize them into lists but this was becoming too cumbersome so I built a [web app to search for (~30k) projects with natural language.](https://githubsearch.app)
 
-I've starred a lot of repos (nearly 2k) and I used to organize them into lists; this was becoming too cumbersome to manage so I'm building an app to search for repos with natural language.
+
+Hi! I'm elvis (he/him/his), I like Python, playing soccer, watching JJK, and attending [Epic Church SF]([https://www.epicsf.com/](https://www.epicsf.com/about#vision))
+
+I grew up in Kennesaw, GA and went to Pomona College [(Erdos #2)](https://pages.pomona.edu/~sg064747/PAPERS/PRBTP.pdf)
 
 I currently work at [dltHub](https://dlthub.com/blog/hugging-face-dlt-ml), the company building [dlt](https://github.com/dlt-hub/dlt)--an OSS (Apache-2.0) Python SDK for devs (+ their agents) building production-grade data pipelines!
 
