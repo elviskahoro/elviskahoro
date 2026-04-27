@@ -54,10 +54,6 @@ args = ["-y", "mcp-remote", "https://mcp.linear.app/mcp"]
 [mcp_servers.linear.env]
 LINEAR_API_KEY = "${op://Personal/api-linear/credential}"
 
-[mcp_servers.notion]
-command = "npx"
-args = ["-y", "mcp-remote", "https://mcp.notion.com/mcp"]
-
 [mcp_servers.resend]
 command = "npx"
 args = ["-y", "resend-mcp"]
