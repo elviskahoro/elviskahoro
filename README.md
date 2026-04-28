@@ -3,7 +3,7 @@
 [![Linkedin](https://img.shields.io/badge/-Linkedin-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/elviskahoro/)](https://www.linkedin.com/in/elviskahoro/)
 
 
-I've starred a lot of repos (nearly 2k) and I used to organize them into lists but this was becoming too cumbersome so I built a [web app to search for (~30k) projects with natural language.](https://githubsearch.app)
+I've starred a lot of repos (nearly 2k) and I used to organize them into lists but this was becoming too cumbersome so I built a [web app to search through (~30k) projects with natural language.](https://githubsearch.app)
 
 
 Hi! I'm elvis (he/him/his), I like Python, playing soccer, watching JJK, and attending [Epic Church SF]([https://www.epicsf.com/](https://www.epicsf.com/about#vision))
