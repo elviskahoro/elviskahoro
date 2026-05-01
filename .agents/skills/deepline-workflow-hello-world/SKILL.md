@@ -1,5 +1,5 @@
 ---
-name: workflow-hello-world
+name: deepline-workflow-hello-world
 description: "Create a cloud Deepline workflow that runs on a recurring cron schedule or via webhook, inspect it, and validate trigger behavior end to end."
 ---
 
