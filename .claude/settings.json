@@ -71,5 +71,11 @@
   },
   "effortLevel": "high",
   "skipDangerousModePermissionPrompt": true,
-  "theme": "dark"
+  "theme": "dark",
+  "permissions": {
+    "allow": [
+      "Bash(deepline *)",
+      "Bash(export PATH=$HOME/.local/bin:$PATH && deepline *)"
+    ]
+  }
 }
