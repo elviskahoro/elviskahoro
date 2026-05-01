@@ -1,0 +1,13 @@
+{
+  "title": "GTM Meta Skill",
+  "documents": {
+    "SKILL.md": {
+      "kind": "entrypoint",
+      "title": "GTM Meta Skill",
+      "tags": [
+        "deprecated"
+      ],
+      "providers": []
+    }
+  }
+}

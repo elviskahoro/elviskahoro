@@ -84,6 +84,86 @@
       "skillFolderHash": "c131a34283c31dd9e396bfaaad97d9794d88989f",
       "installedAt": "2026-03-29T02:25:24.965Z",
       "updatedAt": "2026-03-29T02:25:24.965Z"
+    },
+    "deepline-build-tam": {
+      "source": "code.deepline.com",
+      "sourceType": "well-known",
+      "sourceUrl": "https://code.deepline.com/.well-known/skills/index.json/.well-known/agent-skills/deepline-build-tam/SKILL.md",
+      "skillFolderHash": "",
+      "installedAt": "2026-05-01T01:31:34.942Z",
+      "updatedAt": "2026-05-01T01:40:52.329Z"
+    },
+    "deepline-clay-to-deepline": {
+      "source": "code.deepline.com",
+      "sourceType": "well-known",
+      "sourceUrl": "https://code.deepline.com/.well-known/skills/index.json/.well-known/agent-skills/deepline-clay-to-deepline/SKILL.md",
+      "skillFolderHash": "",
+      "installedAt": "2026-05-01T01:31:34.943Z",
+      "updatedAt": "2026-05-01T01:40:52.330Z"
+    },
+    "deepline-feedback": {
+      "source": "code.deepline.com",
+      "sourceType": "well-known",
+      "sourceUrl": "https://code.deepline.com/.well-known/skills/index.json/.well-known/agent-skills/deepline-feedback/SKILL.md",
+      "skillFolderHash": "",
+      "installedAt": "2026-05-01T01:31:34.943Z",
+      "updatedAt": "2026-05-01T01:40:52.330Z"
+    },
+    "deepline-gtm": {
+      "source": "code.deepline.com",
+      "sourceType": "well-known",
+      "sourceUrl": "https://code.deepline.com/.well-known/skills/index.json/.well-known/agent-skills/deepline-gtm/SKILL.md",
+      "skillFolderHash": "",
+      "installedAt": "2026-05-01T01:31:34.944Z",
+      "updatedAt": "2026-05-01T01:40:52.330Z"
+    },
+    "deepline-quickstart": {
+      "source": "code.deepline.com",
+      "sourceType": "well-known",
+      "sourceUrl": "https://code.deepline.com/.well-known/skills/index.json/.well-known/agent-skills/deepline-quickstart/SKILL.md",
+      "skillFolderHash": "",
+      "installedAt": "2026-05-01T01:31:34.944Z",
+      "updatedAt": "2026-05-01T01:40:52.330Z"
+    },
+    "deepline-gtm-meta-skill": {
+      "source": "code.deepline.com",
+      "sourceType": "well-known",
+      "sourceUrl": "https://code.deepline.com/.well-known/skills/index.json/.well-known/agent-skills/deepline-gtm-meta-skill/SKILL.md",
+      "skillFolderHash": "",
+      "installedAt": "2026-05-01T01:31:34.944Z",
+      "updatedAt": "2026-05-01T01:40:52.331Z"
+    },
+    "deepline-linkedin-url-lookup": {
+      "source": "code.deepline.com",
+      "sourceType": "well-known",
+      "sourceUrl": "https://code.deepline.com/.well-known/skills/index.json/.well-known/agent-skills/deepline-linkedin-url-lookup/SKILL.md",
+      "skillFolderHash": "",
+      "installedAt": "2026-05-01T01:31:34.944Z",
+      "updatedAt": "2026-05-01T01:40:52.331Z"
+    },
+    "deepline-niche-signal-discovery": {
+      "source": "code.deepline.com",
+      "sourceType": "well-known",
+      "sourceUrl": "https://code.deepline.com/.well-known/skills/index.json/.well-known/agent-skills/deepline-niche-signal-discovery/SKILL.md",
+      "skillFolderHash": "",
+      "installedAt": "2026-05-01T01:31:34.945Z",
+      "updatedAt": "2026-05-01T01:40:52.331Z"
+    },
+    "deepline-portfolio-prospecting": {
+      "source": "code.deepline.com",
+      "sourceType": "well-known",
+      "sourceUrl": "https://code.deepline.com/.well-known/skills/index.json/.well-known/agent-skills/deepline-portfolio-prospecting/SKILL.md",
+      "skillFolderHash": "",
+      "installedAt": "2026-05-01T01:31:34.945Z",
+      "updatedAt": "2026-05-01T01:40:52.331Z"
+    },
+    "deepline-workflow-hello-world": {
+      "source": "code.deepline.com",
+      "sourceType": "well-known",
+      "sourceUrl": "https://code.deepline.com/.well-known/skills/index.json/.well-known/agent-skills/deepline-workflow-hello-world/SKILL.md",
+      "skillFolderHash": "",
+      "installedAt": "2026-05-01T01:31:34.945Z",
+      "updatedAt": "2026-05-01T01:40:52.331Z"
     }
   },
   "dismissed": {
@@ -96,6 +176,8 @@
     "codex",
     "cursor",
     "deepagents",
+    "dexto",
+    "firebender",
     "gemini-cli",
     "github-copilot",
     "kimi-cli",
