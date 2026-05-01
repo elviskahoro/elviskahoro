@@ -327,3 +327,4 @@ alias jg='g'
 alias lg='g'
 alias qg='g'
 
+alias marimio='marimo'
