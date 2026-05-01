@@ -1,5 +1,5 @@
 ---
-name: portfolio-prospecting
+name: deepline-portfolio-prospecting
 description: "Find companies backed by a specific investor or accelerator, then find contacts and build personalized outbound."
 ---
 

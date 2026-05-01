@@ -1,5 +1,5 @@
 ---
-name: linkedin-url-lookup
+name: deepline-linkedin-url-lookup
 description: "Resolve LinkedIn profile URLs from name + company with strict identity validation to avoid false positives."
 ---
 
