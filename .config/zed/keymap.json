@@ -11,11 +11,9 @@
     "bindings": {
       // cmd-o opens file finder instead of system open dialog (matches VSCode quickOpen)
       "cmd-o": "file_finder::Toggle",
-    },
-  },
-  {
-    "context": "Pane",
-    "bindings": {
+      // cmd-l toggles the agent panel
+      "cmd-l": "agent::ToggleFocus",
+      // cmd-1 / cmd-2 navigate previous/next tab globally (override default activate-by-index)
       "cmd-1": "pane::ActivatePreviousItem",
       "cmd-2": "pane::ActivateNextItem",
     },
@@ -32,6 +30,13 @@
       "shift-cmd-enter": "editor::FindAllReferences",
       // alt-cmd-enter goes to implementation
       "alt-cmd-enter": "editor::GoToImplementation",
+    },
+  },
+  {
+    // cmd-l opens the agent panel and adds the current selection as context
+    "context": "Editor && !agent_diff && !AgentPanel",
+    "bindings": {
+      "cmd-l": "agent::AddSelectionToThread",
     },
   },
   {
