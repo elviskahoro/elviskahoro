@@ -199,8 +199,8 @@ alias white='code /Users/elvis/Documents/reflex-dev/reflex-web/pcweb/whitelist.p
 
 alias dparq='pqrs'
 alias dcsv='xan'
-alias djson='tw'
-alias data='vd'
+alias datah='vd'
+alias datal='tw'
 
 # Config editors (rc aliases)
 alias rcb='vim ~/.bashrc'
@@ -242,6 +242,7 @@ alias bnucc='g bucc'
 alias bbu='g bu'
 alias bu='g bu'
 alias gbu='g bu'
+alias caix='g caix'
 alias ca='g ca'
 alias cca='g cca'
 alias cc='g cc'
