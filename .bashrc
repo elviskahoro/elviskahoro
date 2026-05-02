@@ -43,7 +43,7 @@ alias .4='cd ../../../../'
 alias .5='cd ../../../../../'
 alias .6='cd ../../../../../../'
 
-alias ai='cd /Users/elvis/Documents/elviskahoro/ai'
+alias ai='cd /Users/elvis/Documents/ai'
 alias apollo='cd /Users/elvis/Documents/elviskahoro/ai/gtm/apollo'
 alias attio='cd /Users/elvis/Documents/elviskahoro/ai/gtm/attio'
 alias c='cdl'
@@ -193,9 +193,6 @@ alias pyuenv='pyenv'
 alias ve='source .venv/bin/activate'
 alias vve='source .venv/bin/activate'
 alias vce='source .venv/bin/activate'
-alias verx='source /Users/elvis/Library/Caches/pypoetry/virtualenvs/reflex-NF09o5gF-py3.11/bin/activate'
-alias whitelist='code /Users/elvis/Documents/reflex-dev/reflex-web/pcweb/whitelist.py'
-alias white='code /Users/elvis/Documents/reflex-dev/reflex-web/pcweb/whitelist.py'
 
 alias dparq='pqrs'
 alias dcsv='xan'
@@ -229,6 +226,8 @@ alias rczlogout="vim ~/.zlogout"
 alias rcl="vim ~/.claude.json"
 alias rcv='vim ~/.bashrc'
 alias rvx='vim ~/.zshrc'
+
+alias sl='ls'
 
 # Git
 alias g='git'
