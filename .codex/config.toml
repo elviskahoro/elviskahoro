@@ -31,6 +31,9 @@ trust_level = "trusted"
 [projects."/Users/elvis/Documents/elviskahoro/dotfiles"]
 trust_level = "trusted"
 
+[projects."/Users/elvis/Documents/ai/projects/github-search-app"]
+trust_level = "trusted"
+
 [notice.model_migrations]
 "gpt-5.3-codex" = "gpt-5.4"
 
