@@ -11,6 +11,8 @@
     "bindings": {
       // cmd-o opens file finder instead of system open dialog (matches VSCode quickOpen)
       "cmd-o": "file_finder::Toggle",
+      // shift-cmd-o opens file finder
+      "shift-cmd-o": "file_finder::Toggle",
       // cmd-l toggles the agent panel
       "cmd-l": "agent::ToggleFocus",
       // cmd-1 / cmd-2 navigate previous/next tab globally (override default activate-by-index)
