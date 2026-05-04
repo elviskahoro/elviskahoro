@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Synchronize MCP server configurations from a canonical source to Claude Code (user scope) and Codex.
+"""Synchronize MCP server configurations from a canonical source to Claude Code (user scope), Codex, and Warp.
 
 SETUP:
   1. Ensure mcp.json exists in the dotfiles root with your MCP servers
@@ -11,14 +11,17 @@ USAGE:
   This syncs MCP servers from mcp.json to:
   - Claude Code CLI (via `claude mcp add-json --scope user`, available globally)
   - dotfiles/.codex/config.toml (TOML format, in repo, symlinked from ~/.codex/config.toml)
+  - ~/.warp/.mcp.json (JSON format, synced directly)
 
 DESIGN:
   - Canonical source: mcp.json in dotfiles root
   - Claude target: `claude mcp add-json --scope user` (no settings.json needed)
   - Codex target: dotfiles/.codex/config.toml (surgically replaces only mcp_servers section)
+  - Warp target: ~/.warp/.mcp.json (direct merge of mcpServers into JSON file)
 
   The Codex script uses a surgical replacement approach to preserve all other config
   (model settings, projects, plugins, features, notice sections). Only mcp_servers is touched.
+  The Warp sync uses JSON merge to preserve any other fields while replacing mcpServers.
 
 ENVIRONMENT VARIABLES:
   API keys should use 1Password references in env sections:
@@ -26,7 +29,11 @@ ENVIRONMENT VARIABLES:
     "API_KEY": "${op://Personal/api-key-name/credential}"
   }
 
-  These are preserved exactly as-is during sync.
+  Sync behavior:
+  - Claude Code: ${op://...} references preserved at runtime (Claude resolves them)
+  - Codex: ${op://...} references preserved at runtime (Codex resolves them)
+  - Warp: ${op://...} references RESOLVED before writing (injects actual credentials)
+    This is because Warp doesn't support 1Password token expansion syntax.
 
 FORMAT DIFFERENCES HANDLED:
   Claude uses: "args": ["item1", "item2"]
@@ -36,7 +43,9 @@ FORMAT DIFFERENCES HANDLED:
 """
 
 import json
+import re
 import shutil
+import subprocess
 import sys
 from pathlib import Path
 from typing import Any
@@ -68,6 +77,7 @@ def sync_mcp_config() -> bool:
       2. Parse MCP servers from JSON
       3. Sync to Claude Code CLI (via `claude mcp add-json --scope user`)
       4. Sync to Codex (dotfiles/.codex/config.toml)
+      5. Sync to Warp (~/.warp/.mcp.json)
 
     Returns:
         True if successful, False otherwise.
@@ -75,6 +85,7 @@ def sync_mcp_config() -> bool:
     dotfiles_root = get_dotfiles_root()
     canonical_file = dotfiles_root / "mcp.json"
     codex_config = dotfiles_root / ".codex" / "config.toml"
+    warp_config = Path.home() / ".warp" / ".mcp.json"
 
     # Validate canonical file exists
     if not canonical_file.exists():
@@ -101,6 +112,10 @@ def sync_mcp_config() -> bool:
     if not sync_codex_config(codex_config, mcp_servers):
         return False
 
+    # Sync to Warp
+    if not sync_warp_config(warp_config, mcp_servers):
+        return False
+
     print("✓ MCP configuration synced successfully")
     print(f"  - Updated {len(mcp_servers)} server(s)")
     return True
@@ -119,8 +134,6 @@ def sync_claude_cli(mcp_servers: dict[str, Any]) -> bool:
     Returns:
         True if successful, False otherwise.
     """
-    import subprocess
-
     try:
         registered_count = 0
         # Resolve claude executable path to avoid S607 warning
@@ -201,6 +214,43 @@ def sync_claude_config(config_file: Path, mcp_servers: dict[str, Any]) -> bool:
         return False
     else:
         print(f"  - Claude Code: {config_file}")
+        return True
+
+
+def sync_warp_config(config_file: Path, mcp_servers: dict[str, Any]) -> bool:
+    """Update Warp config with MCP servers from canonical source.
+
+    Merges MCP servers into existing config while preserving all other fields.
+    Resolves 1Password references in env variables (${op://...}) before writing.
+
+    Args:
+        config_file: Path to ~/.warp/.mcp.json
+        mcp_servers: MCP servers dict from canonical source
+
+    Returns:
+        True if successful, False otherwise.
+    """
+    try:
+        config_file.parent.mkdir(parents=True, exist_ok=True)
+
+        if config_file.exists():
+            with config_file.open() as f:
+                config = json.load(f)
+        else:
+            config = {}
+
+        # Resolve 1Password references in env variables for Warp
+        mcp_servers_resolved = _resolve_op_credentials(mcp_servers)
+        config["mcpServers"] = mcp_servers_resolved
+
+        with config_file.open("w") as f:
+            json.dump(config, f, indent=2)
+            f.write("\n")
+    except (OSError, json.JSONDecodeError) as e:
+        print(f"Error updating Warp config: {e}", file=sys.stderr)
+        return False
+    else:
+        print(f"  - Warp: {config_file}")
         return True
 
 
@@ -450,6 +500,99 @@ def _format_toml_value(value: Any) -> str:  # noqa: ANN401
         items = [_format_toml_value(item) for item in value]
         return "[" + ", ".join(items) + "]"
     return str(value)
+
+
+def _resolve_op_credentials(mcp_servers: dict[str, Any]) -> dict[str, Any]:
+    """Resolve 1Password credential references in MCP server env variables.
+
+    Finds ${op://...} references in env values and replaces them with actual
+    credentials fetched from 1Password via the `op` CLI.
+
+    This allows storing MCP configs with 1Password references in the canonical
+    mcp.json, which works for Claude/Codex (they resolve at runtime), but Warp
+    needs the actual credentials baked in.
+
+    Args:
+        mcp_servers: MCP servers dict from canonical source
+
+    Returns:
+        New dict with same structure but 1Password references resolved to actual values.
+        If a reference can't be resolved, the original ${op://...} is preserved.
+    """
+    resolved_servers = {}
+
+    for server_name, server_config in mcp_servers.items():
+        resolved_config = dict(server_config)
+
+        # Process env section if it exists
+        if "env" in resolved_config and isinstance(resolved_config["env"], dict):
+            resolved_env = {}
+            for key, value in resolved_config["env"].items():
+                if isinstance(value, str) and "${op://" in value:
+                    # This is a 1Password reference
+                    resolved_value = _resolve_op_reference(value)
+                    resolved_env[key] = resolved_value
+                else:
+                    resolved_env[key] = value
+            resolved_config["env"] = resolved_env
+
+        # Process headers section if it exists
+        if "headers" in resolved_config and isinstance(resolved_config["headers"], dict):
+            resolved_headers = {}
+            for key, value in resolved_config["headers"].items():
+                if isinstance(value, str) and "${op://" in value:
+                    resolved_value = _resolve_op_reference(value)
+                    resolved_headers[key] = resolved_value
+                else:
+                    resolved_headers[key] = value
+            resolved_config["headers"] = resolved_headers
+
+        resolved_servers[server_name] = resolved_config
+
+    return resolved_servers
+
+
+def _resolve_op_reference(op_ref: str) -> str:
+    """Resolve a single 1Password reference using the `op` CLI.
+
+    Example:
+        Input:  "${op://Personal/api-linear/credential}"
+        Output: "lin_abc123..." (the actual token)
+
+    Args:
+        op_ref: String containing ${op://vault/item/field} reference
+
+    Returns:
+        Resolved credential value, or the original op_ref if resolution fails.
+    """
+    # Extract the op:// path from ${op://...}
+    match = re.search(r"\$\{op://(.+?)\}", op_ref)
+    if not match:
+        return op_ref
+
+    op_path = match.group(1)
+
+    try:
+        # Run: op read op://vault/item/field
+        result = subprocess.run(  # noqa: S603, S607
+            ["op", "read", f"op://{op_path}"],
+            check=True,
+            capture_output=True,
+            text=True,
+            timeout=5,
+        )
+        resolved = result.stdout.strip()
+        if resolved:
+            return resolved
+    except (subprocess.CalledProcessError, FileNotFoundError, subprocess.TimeoutExpired):
+        # If resolution fails, warn but don't crash
+        print(
+            f"  ⚠ Warning: Could not resolve 1Password reference: {op_ref}",
+            file=sys.stderr,
+        )
+
+    # Return original if resolution failed
+    return op_ref
 
 
 if __name__ == "__main__":
