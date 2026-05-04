@@ -100,7 +100,7 @@
     "metrics": false,
   },
   "theme": {
-    "mode": "system",
+    "mode": "dark",
     "light": "One Light",
     "dark": "Monokai Pro (Filter Spectrum)"
   },
