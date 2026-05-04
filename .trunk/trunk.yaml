@@ -95,7 +95,7 @@ lint:
     - linters: [ruff]
       paths:
         - .agents/skills/**
-        - .warp/skills/**
+        - .warp/**
         - "*.ipynb"
 
   exported_configs:
