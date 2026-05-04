@@ -537,7 +537,10 @@ def _resolve_op_credentials(mcp_servers: dict[str, Any]) -> dict[str, Any]:
             resolved_config["env"] = resolved_env
 
         # Process headers section if it exists
-        if "headers" in resolved_config and isinstance(resolved_config["headers"], dict):
+        if "headers" in resolved_config and isinstance(
+            resolved_config["headers"],
+            dict,
+        ):
             resolved_headers = {}
             for key, value in resolved_config["headers"].items():
                 if isinstance(value, str) and "${op://" in value:
@@ -574,8 +577,8 @@ def _resolve_op_reference(op_ref: str) -> str:
 
     try:
         # Run: op read op://vault/item/field
-        result = subprocess.run(  # noqa: S603, S607
-            ["op", "read", f"op://{op_path}"],
+        result = subprocess.run(  # noqa: S603
+            ["op", "read", f"op://{op_path}"],  # noqa: S607
             check=True,
             capture_output=True,
             text=True,
@@ -584,7 +587,11 @@ def _resolve_op_reference(op_ref: str) -> str:
         resolved = result.stdout.strip()
         if resolved:
             return resolved
-    except (subprocess.CalledProcessError, FileNotFoundError, subprocess.TimeoutExpired):
+    except (
+        subprocess.CalledProcessError,
+        FileNotFoundError,
+        subprocess.TimeoutExpired,
+    ):
         # If resolution fails, warn but don't crash
         print(
             f"  ⚠ Warning: Could not resolve 1Password reference: {op_ref}",
