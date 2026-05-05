@@ -59,7 +59,8 @@
     "firecrawl@claude-plugins-official": false,
     "semgrep@claude-plugins-official": false,
     "circleback@claude-plugins-official": false,
-    "warp@claude-code-warp": true
+    "warp@claude-code-warp": true,
+    "marimo-pair@marimo-pair": true
   },
   "extraKnownMarketplaces": {
     "claude-code-warp": {
