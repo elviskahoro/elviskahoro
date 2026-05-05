@@ -1,5 +1,5 @@
 ---
-name: deepline-clay-to-deepline
+name: clay-to-deepline
 description: "Convert a Clay table configuration into local Deepline scripts. Handles extraction (MCP or script), documentation, action mapping, script generation, and parity validation against Clay ground truth."
 ---
 
