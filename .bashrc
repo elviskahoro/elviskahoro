@@ -32,6 +32,24 @@ git_bcw() {
   git worktree add -b "$name" "../worktrees/$name" && cd "../worktrees/$name"
 }
 
+cdt() {
+  local path
+  path=$(/usr/bin/git worktree list --porcelain | /usr/bin/awk -v name="$1" '
+    $1 == "worktree" {
+      current = substr($0, 10)
+      if (index(current, name)) {
+        print current
+        exit
+      }
+    }
+  ')
+  if [ -z "$path" ]; then
+    echo "Worktree '$1' not found"
+    return 1
+  fi
+  cd "$path"
+}
+
 # Navigation - Directory shortcuts
 alias ~='cd ~'
 alias ..='cd ../'
@@ -51,7 +69,6 @@ alias cdc='cd ~/Documents/chalk'
 alias cddocs='cd ~/Documents/'
 alias cdcd='cd ~/Desktop'
 alias cdd='cd ~/Desktop'
-alias cdt='cd ~/Desktop/test/temp'
 alias cddt='cd ~/Desktop/test/temp'
 alias cdx='cd ~/Documents/chalk-ai'
 alias cdobsidian='cd ~/Documents/obsidian'
@@ -194,6 +211,7 @@ alias pyuenv='pyenv'
 alias ve='source .venv/bin/activate'
 alias vve='source .venv/bin/activate'
 alias vce='source .venv/bin/activate'
+alias pin='pip install --upgrade pip'
 
 alias dparq='pqrs'
 alias dcsv='xan'
@@ -206,6 +224,7 @@ alias rb='vim ~/.bashrc'
 alias rcbp='vim ~/.bash_profile'
 alias rcbs='source ~/.bashrc'
 alias rcgb='vim ~/.bashrc'
+alias rcfg='rcg'
 alias rbc='vim ~/.bashrc'
 alias rcg='vim ~/.gitconfig'
 alias rcgf='vim ~/.gitconfig'
