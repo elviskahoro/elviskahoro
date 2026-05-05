@@ -1,5 +1,5 @@
 ---
-name: deepline-build-tam
+name: build-tam
 description: "Build a Total Addressable Market list by sourcing accounts and contacts from providers like Apollo, Crustdata, and PDL."
 ---
 
