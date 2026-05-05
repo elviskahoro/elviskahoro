@@ -30,7 +30,8 @@ ENVIRONMENT VARIABLES:
   }
 
   Sync behavior:
-  - Claude Code: ${op://...} references preserved at runtime (Claude resolves them)
+  - Claude Code: ${op://...} references RESOLVED before registering (Claude treats
+    ${VAR} as a literal env-var name lookup and won't shell out to `op`).
   - Codex: ${op://...} references preserved at runtime (Codex resolves them)
   - Warp: ${op://...} references RESOLVED before writing (injects actual credentials)
     This is because Warp doesn't support 1Password token expansion syntax.
@@ -138,7 +139,20 @@ def sync_claude_cli(mcp_servers: dict[str, Any]) -> bool:
         registered_count = 0
         # Resolve claude executable path to avoid S607 warning
         claude_path = shutil.which("claude") or "claude"
-        for name, server_config in mcp_servers.items():
+        # Claude does not expand ${op://...} — bake in the actual credentials.
+        mcp_servers_resolved = _resolve_op_credentials(mcp_servers)
+        for name, server_config in mcp_servers_resolved.items():
+            # Remove first so re-runs refresh credentials. `add-json` is a
+            # no-op when the server already exists, which would leave stale
+            # ${op://...} literals in ~/.claude.json.
+            subprocess.run(  # noqa: S603
+                [claude_path, "mcp", "remove", name, "--scope", "user"],
+                check=False,
+                capture_output=True,
+                text=True,
+                timeout=10,
+            )
+
             # Convert to JSON string for CLI
             server_json = json.dumps(server_config)
 
@@ -151,8 +165,7 @@ def sync_claude_cli(mcp_servers: dict[str, Any]) -> bool:
                 timeout=10,
             )
 
-            # "already exists" is fine - server is registered either way
-            if result.returncode == 0 or "already exists" in result.stderr.lower():
+            if result.returncode == 0:
                 registered_count += 1
             else:
                 print(
