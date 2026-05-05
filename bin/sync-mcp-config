@@ -326,6 +326,8 @@ def sync_codex_config(config_file: Path, mcp_servers: dict[str, Any]) -> bool:
 
         # Write back by replacing only mcp_servers section in the file
         new_content = _rebuild_config_with_mcp(existing_content, mcp_servers_toml)
+        if not new_content.endswith("\n"):
+            new_content += "\n"
 
         with config_file.open("w") as f:
             f.write(new_content)
