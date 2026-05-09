@@ -1,0 +1,212 @@
+[appearance]
+spacing = "normal"
+
+[appearance.text]
+font_name = "MonoLisa"
+enforce_minimum_contrast = "never"
+line_height_ratio = 1.399999976158142
+font_size = 14.0
+ai_font_name = "MonoLisa"
+notebook_font_size = 14.0
+match_ai_font = false
+match_notebook_to_monospace_font_size = false
+use_thin_strokes = "always"
+
+[appearance.vertical_tabs]
+compact_subtitle = "working_directory"
+enabled = false
+show_details_on_hover = true
+display_granularity = "tabs"
+primary_info = "command"
+view_mode = "compact"
+use_latest_prompt_as_title = false
+
+[appearance.blocks]
+show_block_dividers = true
+
+[appearance.tabs]
+show_indicators_button = true
+workspace_decoration_visibility = "always_show"
+tab_close_button_position = "right"
+
+[appearance.input]
+input_mode = "pinned_to_bottom"
+
+[appearance.themes]
+theme = {
+  custom = {
+    name = "Monokai Pro Spectrum",
+    path = "/Users/elvis/.warp-preview/themes/monokai_pro_spectrum.yml",
+  },
+}
+
+[appearance.window]
+zoom_level = 110
+override_opacity = 100
+
+[appearance.panes]
+should_dim_inactive_panes = true
+
+[appearance.full_screen_apps]
+alt_screen_padding = { custom = { uniform_padding = 0.0 } }
+
+[terminal]
+maximum_grid_size = 500000
+show_terminal_zero_state_block = false
+
+[terminal.input]
+error_underlining_enabled = false
+alias_expansion_enabled = true
+command_corrections = false
+show_terminal_input_message_bar = true
+syntax_highlighting = false
+show_hint_text = false
+input_box_type_setting = "universal"
+honor_ps1 = false
+enable_slash_commands_in_terminal = true
+
+[terminal.input.autosuggestions]
+enabled = false
+show_ignore_button = true
+keybinding_hint = false
+
+[agents]
+cloud_conversation_storage_enabled = true
+
+[agents.warp_agent]
+
+[agents.warp_agent.input]
+nld_in_terminal_enabled = true
+ai_auto_detection_enabled = false
+show_agent_tips = false
+include_agent_commands_in_history = true
+
+[agents.warp_agent.other]
+open_conversation_layout_preference = "split_pane"
+cloud_agent_computer_use_enabled = false
+thinking_display_mode = "always_show"
+should_render_use_agent_toolbar_for_user_commands = false
+
+[agents.warp_agent.active_ai]
+enabled = true
+intelligent_autosuggestions_enabled = false
+agent_mode_query_suggestions_enabled = true
+code_suggestions_enabled = true
+rule_suggestions_enabled = true
+
+[agents.voice]
+voice_input_enabled = false
+
+[agents.third_party]
+auto_open_composer_on_cli_agent_start = false
+auto_dismiss_composer_after_submit = false
+auto_toggle_composer = false
+
+[agents.profiles]
+agent_mode_execute_readonly_commands = true
+
+[agents.mcp_servers]
+file_based_mcp_enabled = false
+
+[notifications]
+toast_duration_secs = 8
+
+[notifications.preferences]
+is_agent_task_completed_enabled = true
+is_long_running_enabled = true
+is_needs_attention_enabled = true
+is_password_prompt_enabled = true
+long_running_threshold = 4
+mode = "enabled"
+play_notification_sound = false
+
+[code]
+
+[code.editor]
+open_file_layout = "new_tab"
+open_code_panels_file_editor = "warp"
+open_file_editor = "warp"
+prefer_tabbed_editor_view = true
+show_project_explorer = true
+auto_open_code_review_pane_on_first_agent_change = false
+show_code_review_button = true
+prefer_markdown_viewer = true
+
+[code.indexing]
+agent_mode_codebase_context_auto_indexing = true
+
+[cloud_platform]
+
+[cloud_platform.third_party_api_keys]
+can_use_warp_credits_with_byok = false
+
+[account]
+is_settings_sync_enabled = true
+
+[general]
+default_session_mode = "terminal"
+show_warning_before_quitting = false
+should_confirm_close_session = false
+restore_session = false
+link_tooltip = false
+login_item = false
+new_tab_placement = "after_current_tab"
+
+[keys]
+ctrl_tab_behavior_setting = "activate_prev_next_tab"
+
+[privacy]
+crash_reporting_enabled = false
+telemetry_enabled = false
+custom_secret_regex_list = [
+  { name = "IPv4 Address", pattern = '\b((25[0-5]|(2[0-4]|1\d|[1-9]|)\d)\.?\b){4}\b' },
+  {
+    name = "IPv6 Address",
+    pattern = '\b((([0-9A-Fa-f]{1,4}:){1,6}:)|(([0-9A-Fa-f]{1,4}:){7}))([0-9A-Fa-f]{1,4})\b',
+  },
+  { name = "Slack App Token", pattern = '\bxapp-[0-9]+-[A-Za-z0-9_]+-[0-9]+-[a-f0-9]+\b' },
+  { name = "Phone Number", pattern = '\b(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}\b' },
+  {
+    name = "AWS Access ID",
+    pattern = '\b(AKIA|A3T|AGPA|AIDA|AROA|AIPA|ANPA|ANVA|ASIA)[A-Z0-9]{12,}\b',
+  },
+  {
+    name = "MAC Address",
+    pattern = '\b((([a-zA-z0-9]{2}[-:]){5}([a-zA-z0-9]{2}))|(([a-zA-z0-9]{2}:){5}([a-zA-z0-9]{2})))\b',
+  },
+  { name = "Google API Key", pattern = '\bAIza[0-9A-Za-z-_]{35}\b' },
+  { name = "Google OAuth ID", pattern = '\b[0-9]+-[0-9A-Za-z_]{32}\.apps\.googleusercontent\.com\b' },
+  { name = "GitHub Classic Personal Access Token", pattern = '\bghp_[A-Za-z0-9_]{36}\b' },
+  { name = "GitHub Fine-Grained Personal Access Token", pattern = '\bgithub_pat_[A-Za-z0-9_]{82}\b' },
+  { name = "GitHub OAuth Access Token", pattern = '\bgho_[A-Za-z0-9_]{36}\b' },
+  { name = "GitHub User-to-Server Token", pattern = '\bghu_[A-Za-z0-9_]{36}\b' },
+  { name = "GitHub Server-to-Server Token", pattern = '\bghs_[A-Za-z0-9_]{36}\b' },
+  { name = "Stripe Key", pattern = '\b(?:r|s)k_(test|live)_[0-9a-zA-Z]{24}\b' },
+  { name = "Firebase Auth Domain", pattern = '\b([a-z0-9-]){1,30}(\.firebaseapp\.com)\b' },
+  { name = "JWT", pattern = '\b(ey[a-zA-z0-9_\-=]{10,}\.){2}[a-zA-z0-9_\-=]{10,}\b' },
+  { name = "OpenAI API Key", pattern = '\bsk-[a-zA-Z0-9]{48}\b' },
+  { name = "Anthropic API Key", pattern = '\bsk-ant-api\d{0,2}-[a-zA-Z0-9\-]{80,120}\b' },
+  { name = "Generic SK API Key", pattern = '\bsk-[a-zA-Z0-9\-]{10,100}\b' },
+  { name = "Fireworks API Key", pattern = '\bfw_[a-zA-Z0-9]{24}\b' },
+]
+
+[privacy.secret_redaction]
+enabled = false
+secret_display_mode_setting = "asterisks"
+
+[global_hotkey]
+
+[global_hotkey.toggle_all_windows]
+keybinding = "shift-cmd-R"
+enabled = true
+
+[global_hotkey.dedicated_window]
+enabled = false
+
+[text_editing]
+vim_unnamed_system_clipboard = false
+vim_mode_enabled = true
+autocomplete_symbols = false
+
+[workflows]
+show_global_workflows_in_universal_search = true
