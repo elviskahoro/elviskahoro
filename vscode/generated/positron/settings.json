@@ -192,11 +192,11 @@
     "kilo-code.new.agentManagerOpen",
     "kilo-code.new.agentManager.showTerminal",
     "kilo-code.new.agentManager.runScript"
-],
-"workbench.editorAssociations": {
+  ],
+  "workbench.editorAssociations": {
     "*.copilotmd": "vscode.markdown.preview.editor",
     "*.parquet": "duckdb.dataFileViewer",
     "*.csv": "duckdb.dataFileViewer",
     "*.tsv": "duckdb.dataFileViewer"
-}
+  }
 }
