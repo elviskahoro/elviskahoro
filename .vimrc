@@ -52,8 +52,8 @@ let mapleader = ";"
 "netrw
 let g:netrw_banner = 0
 let g:netrw_liststyle = 3
-let g:netrw_browse_split = 4
-let g:netrw_altv = 0
+let g:netrw_browse_split = 0
+let g:netrw_altv = 1
 let g:netrw_winsize = 20
 
 "augroup ProjectDrawer
@@ -61,7 +61,7 @@ let g:netrw_winsize = 20
 "  autocmd VimEnter * :Lexplore
 "augroup END
 "
-nnoremap - :Hexplore! %:p:h<CR>
+nnoremap - :Lexplore! %:p:h<CR>
 "nnoremap <leader>dd :Lexplore %:p:h<CR>
 "nnoremap <Leader>da :Lexplore<CR>
 
