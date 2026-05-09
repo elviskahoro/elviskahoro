@@ -1,5 +1,11 @@
 {
-  "model": "opus[1m]",
+  "permissions": {
+    "allow": [
+      "Bash(deepline *)",
+      "Bash(export PATH=$HOME/.local/bin:$PATH && deepline *)"
+    ]
+  },
+  "model": "opus",
   "hooks": {
     "WorktreeCreate": [
       {
@@ -29,7 +35,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "jq -r '.tool_input.file_path' | { read -r filepath; if [[ \"$filepath\" =~ (design/(plans|specs)|.agents/skills) ]]; then filename=$(basename \"$filepath\"); if ! [[ \"$filename\" =~ ^(done|backlog|in_progress|waiting|deployed|archived|paused)_ ]]; then echo '{\"continue\": false, \"stopReason\": \"Status prefix required: File in design artifacts must start with status prefix (done_, backlog_, in_progress_, waiting_, deployed_, archived_, paused_). Example: backlog_2026-03-29-my-plan.md\"}'; exit 1; fi; fi; echo '{}'; }",
+            "command": "jq -r '.tool_input.file_path' | { read -r filepath; if [[ \"$filepath\" =~ design/(plans|specs) ]]; then filename=$(basename \"$filepath\"); if ! [[ \"$filename\" =~ ^(done|backlog|in_progress|waiting|deployed|archived|paused)_ ]]; then echo '{\"continue\": false, \"stopReason\": \"Status prefix required: File in design artifacts must start with status prefix (done_, backlog_, in_progress_, waiting_, deployed_, archived_, paused_). Example: backlog_2026-03-29-my-plan.md\"}'; exit 1; fi; fi; echo '{}'; }",
             "statusMessage": "Validating artifact status prefix..."
           }
         ]
@@ -73,10 +79,5 @@
   "effortLevel": "high",
   "skipDangerousModePermissionPrompt": true,
   "theme": "dark",
-  "permissions": {
-    "allow": [
-      "Bash(deepline *)",
-      "Bash(export PATH=$HOME/.local/bin:$PATH && deepline *)"
-    ]
-  }
+  "editorMode": "vim"
 }
