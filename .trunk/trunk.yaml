@@ -98,6 +98,10 @@ lint:
         - .warp/**
         - "*.ipynb"
 
+    - linters: [taplo]
+      paths:
+        - .warp/settings.toml
+
   exported_configs:
     - plugin_id: oss-linter-trunk
       configs:
