@@ -40,4 +40,3 @@ fi
 if [ -f "$HOME/.bashrc" ]; then
     source "$HOME/.bashrc"
 fi
-eval "$(starship init zsh)"
