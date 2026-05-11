@@ -1,4 +1,3 @@
----
 "input:toggle_workflows": shift-cmd-W
 "workspace:activate_first_tab": none
 "terminal:clear_blocks": cmd-r
