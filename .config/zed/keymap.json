@@ -11,6 +11,8 @@
     "bindings": {
       "shift-cmd-o": "file_finder::Toggle",
       "cmd-o": "file_finder::Toggle",
+      // ctrl-alt-cmd-n creates a new file
+      "ctrl-alt-cmd-n": "workspace::NewFile",
       // cmd-l toggles the agent panel
       "cmd-l": "agent::ToggleFocus",
       // cmd-1 / cmd-2 navigate previous/next tab globally (override default activate-by-index)
