@@ -18,6 +18,16 @@
       // cmd-1 / cmd-2 navigate previous/next tab globally (override default activate-by-index)
       "cmd-1": "pane::ActivatePreviousItem",
       "cmd-2": "pane::ActivateNextItem",
+      // zoom out with minus: ctrl-cmd, alt-cmd, shift-cmd, or ctrl-alt-cmd
+      "ctrl-cmd--": "zed::DecreaseBufferFontSize",
+      "alt-cmd--": "zed::DecreaseBufferFontSize",
+      "shift-cmd--": "zed::DecreaseBufferFontSize",
+      "ctrl-alt-cmd--": "zed::DecreaseBufferFontSize",
+      // zoom in with plus: ctrl-cmd, alt-cmd, shift-cmd, or ctrl-alt-cmd
+      "ctrl-cmd-=": "zed::IncreaseBufferFontSize",
+      "alt-cmd-=": "zed::IncreaseBufferFontSize",
+      "shift-cmd-=": "zed::IncreaseBufferFontSize",
+      "ctrl-alt-cmd-=": "zed::IncreaseBufferFontSize",
     },
   },
   {
@@ -27,7 +37,9 @@
       "shift-cmd-o": "file_finder::Toggle",
       "cmd-o": "file_finder::Toggle",
       "cmd--": "editor::Fold",
+      "cmd-_": "editor::FoldRecursive",
       "cmd-=": "editor::UnfoldLines",
+      "cmd-+": "editor::UnfoldRecursive",
       // cmd-enter goes to definition (matches VSCode editor.action.revealDefinition)
       "cmd-enter": "editor::GoToDefinition",
       // shift-cmd-enter finds all references (matches VSCode shift+f12)
