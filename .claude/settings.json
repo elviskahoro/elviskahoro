@@ -5,7 +5,7 @@
       "Bash(export PATH=$HOME/.local/bin:$PATH && deepline *)"
     ]
   },
-  "model": "opus",
+  "model": "opus[1m]",
   "hooks": {
     "WorktreeCreate": [
       {
