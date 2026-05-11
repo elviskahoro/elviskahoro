@@ -381,6 +381,7 @@
   gbrw      = "!f() { branch=$(git -C \"$1\" rev-parse --abbrev-ref HEAD 2>/dev/null); git worktree remove \"$1\" && { [ -n \"$branch\" ] && git branch -d \"$branch\" 2>/dev/null; echo \"Removed worktree: $1${branch:+ (branch: $branch)}\"; }; }; f"
   wd        = "!f() { branch=$(git -C \"$1\" rev-parse --abbrev-ref HEAD 2>/dev/null); git worktree remove \"$1\" && { [ -n \"$branch\" ] && git branch -d \"$branch\" 2>/dev/null; echo \"Removed worktree: $1${branch:+ (branch: $branch)}\"; }; }; f"
   caip      = !git ai && git push
+	tai = !roborev review
 
 [init]
 	defaultBranch = main
