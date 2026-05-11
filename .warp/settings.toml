@@ -18,11 +18,11 @@ enabled = false
 show_details_on_hover = true
 display_granularity = "tabs"
 primary_info = "command"
-view_mode = "compact"
+view_mode = "expanded"
 use_latest_prompt_as_title = false
 
 [appearance.blocks]
-show_block_dividers = true
+show_block_dividers = false
 
 [appearance.tabs]
 show_indicators_button = true
@@ -41,7 +41,7 @@ theme = {
 }
 
 [appearance.window]
-zoom_level = 110
+zoom_level = 100
 override_opacity = 100
 
 [appearance.panes]
@@ -56,14 +56,14 @@ show_terminal_zero_state_block = false
 
 [terminal.input]
 error_underlining_enabled = false
-alias_expansion_enabled = false
+alias_expansion_enabled = true
 command_corrections = false
-show_terminal_input_message_bar = true
+show_terminal_input_message_bar = false
 syntax_highlighting = false
 show_hint_text = false
 input_box_type_setting = "universal"
 honor_ps1 = false
-enable_slash_commands_in_terminal = true
+enable_slash_commands_in_terminal = false
 
 [terminal.input.autosuggestions]
 enabled = false
@@ -90,7 +90,7 @@ should_render_use_agent_toolbar_for_user_commands = false
 [agents.warp_agent.active_ai]
 enabled = true
 intelligent_autosuggestions_enabled = false
-agent_mode_query_suggestions_enabled = true
+agent_mode_query_suggestions_enabled = false
 code_suggestions_enabled = true
 rule_suggestions_enabled = false
 
@@ -116,9 +116,9 @@ is_agent_task_completed_enabled = true
 is_long_running_enabled = true
 is_needs_attention_enabled = true
 is_password_prompt_enabled = true
-long_running_threshold = 4
+long_running_threshold = 3
 mode = "enabled"
-play_notification_sound = false
+play_notification_sound = true
 
 [code]
 
@@ -128,7 +128,7 @@ open_code_panels_file_editor = "warp"
 open_file_editor = "warp"
 prefer_tabbed_editor_view = true
 show_project_explorer = true
-auto_open_code_review_pane_on_first_agent_change = false
+auto_open_code_review_pane_on_first_agent_change = true
 show_code_review_button = true
 prefer_markdown_viewer = true
 
@@ -138,7 +138,7 @@ agent_mode_codebase_context_auto_indexing = true
 [cloud_platform]
 
 [cloud_platform.third_party_api_keys]
-can_use_warp_credits_with_byok = false
+can_use_warp_credits_with_byok = true
 
 [account]
 is_settings_sync_enabled = true
@@ -153,7 +153,7 @@ login_item = false
 new_tab_placement = "after_current_tab"
 
 [keys]
-ctrl_tab_behavior_setting = "activate_prev_next_tab"
+ctrl_tab_behavior_setting = "cycle_most_recent_session"
 
 [privacy]
 crash_reporting_enabled = false
@@ -188,6 +188,7 @@ custom_secret_regex_list = [
   { name = "Anthropic API Key", pattern = '\bsk-ant-api\d{0,2}-[a-zA-Z0-9\-]{80,120}\b' },
   { name = "Generic SK API Key", pattern = '\bsk-[a-zA-Z0-9\-]{10,100}\b' },
   { name = "Fireworks API Key", pattern = '\bfw_[a-zA-Z0-9]{24}\b' },
+  { name = "Warp API Key", pattern = '\bwk-[0-9]+\.[A-Fa-f0-9.\-]+\b' },
 ]
 
 [privacy.secret_redaction]
@@ -207,6 +208,7 @@ enabled = false
 vim_unnamed_system_clipboard = false
 vim_mode_enabled = true
 autocomplete_symbols = false
+vim_status_bar = false
 
 [workflows]
 show_global_workflows_in_universal_search = true
