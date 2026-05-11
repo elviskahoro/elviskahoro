@@ -405,6 +405,7 @@
 	excludesfile = /Users/elvis/.gitignore_global
 	editor = vim
 	pager = delta
+	hooksPath = /Users/elvis/.config/git/hooks
 
 [delta]
 	navigate = true    # use n and N to move between diff sections
