@@ -412,3 +412,4 @@ alias wg='g'
 
 alias yg='g'
 alias yyg='g'
+alias robo='roborev'
