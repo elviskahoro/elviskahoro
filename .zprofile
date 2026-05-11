@@ -1,8 +1,5 @@
 eval "$(/opt/workbrew/bin/brew shellenv)"
 
-# Added by Obsidian
-export PATH="$PATH:/Applications/Obsidian.app/Contents/MacOS"
-
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init --path)"
