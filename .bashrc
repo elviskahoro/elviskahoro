@@ -200,6 +200,8 @@ alias ws='positron'
 alias cp='cp -i'
 
 alias kmdir='mkdir -p'
+alias mdkdir='mkdir -p'
+alias mkdr='mkdir -p'
 
 alias mdir='mkdir -p'
 alias mkdir='mkdir -p'
