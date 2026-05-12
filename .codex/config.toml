@@ -60,6 +60,13 @@ args = ["-y", "mcp-remote", "https://mcp.linear.app/mcp"]
 [mcp_servers.linear.env]
 LINEAR_API_KEY = "${op://Personal/api-linear/credential}"
 
+[mcp_servers.octolens]
+type = "http"
+url = "https://app.octolens.com/api/mcp"
+
+[mcp_servers.octolens.headers]
+Authorization = "Bearer ${op://Personal/api-octolens/credential}"
+
 [mcp_servers.resend]
 command = "npx"
 args = ["-y", "resend-mcp"]
