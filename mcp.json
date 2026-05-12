@@ -24,6 +24,13 @@
       "headers": {
         "X-Dosu-API-Key": "${op://Personal/api-dosu/credential}"
       }
+    },
+    "octolens": {
+      "type": "http",
+      "url": "https://app.octolens.com/api/mcp",
+      "headers": {
+        "Authorization": "Bearer ${op://Personal/api-octolens/credential}"
+      }
     }
   }
 }
