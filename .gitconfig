@@ -165,7 +165,7 @@
   ds        = "!f() { if [ $# -eq 0 ]; then git show --name-only; else git log --name-only -$1; fi }; f"
   dsr       = "!gt downstack restack"
   dst       = "!gt downstack test"
-  dl        = show --name-only
+  dl        = "!f() { if [ $# -eq 0 ]; then git show --name-only; else git show --name-only HEAD~$(($1 - 1)); fi }; f"
   gdl       = dl
   dk        = dl
   ld        = dl
