@@ -36,6 +36,21 @@ ENVIRONMENT VARIABLES:
   - Warp: ${op://...} references RESOLVED before writing (injects actual credentials)
     This is because Warp doesn't support 1Password token expansion syntax.
 
+AUTH HELPERS (headersHelper / envHelper):
+  HTTP MCP servers can specify auth via a shell command that prints a JSON object:
+  "headersHelper": "printf '{\"Authorization\":\"Bearer %s\"}' \"$(op read op://...)\""
+  "envHelper":     "printf '{\"API_KEY\":\"%s\"}' \"$(op read op://...)\""
+
+  These mirror Claude Code's own `headersHelper` field. The sync script EXECUTES
+  the helper at sync time, resolving 1Password references:
+  - Claude Code CLI: helpers executed at registration → actual credentials baked in
+  - Warp: helpers executed at sync → actual credentials baked in (~/.warp/.mcp.json is local)
+  - Codex: helpers NOT executed → original `headersHelper` preserved (config.toml
+    is symlinked in public repo, so credentials must not be committed)
+
+  For targets that keep headersHelper (Codex in public repos), Claude Code will
+  execute it at runtime. To rotate credentials, re-run the sync.
+
 FORMAT DIFFERENCES HANDLED:
   Claude uses: "args": ["item1", "item2"]
   Codex uses:   args = ["item1", "item2"]
@@ -105,16 +120,22 @@ def sync_mcp_config() -> bool:
         print(f"Error reading canonical MCP config: {e}", file=sys.stderr)
         return False
 
+    # Resolve auth helpers (headersHelper/envHelper) once — bake results into
+    # Claude/Warp configs so 1Password is queried only during sync, not on each MCP
+    # startup. Codex keeps the originals (with ${op://...}) since it's symlinked in
+    # a public repo and the file stays in version control.
+    mcp_servers_resolved = _resolve_auth_helpers(mcp_servers)
+
     # Sync to Claude Code CLI (user scope — available in all projects)
-    if not sync_claude_cli(mcp_servers):
+    if not sync_claude_cli(mcp_servers_resolved):
         return False
 
-    # Sync to Codex
+    # Sync to Codex (original, unresolved — safe for public repo)
     if not sync_codex_config(codex_config, mcp_servers):
         return False
 
-    # Sync to Warp
-    if not sync_warp_config(warp_config, mcp_servers):
+    # Sync to Warp (resolved — local only, not in repo)
+    if not sync_warp_config(warp_config, mcp_servers_resolved):
         return False
 
     print("✓ MCP configuration synced successfully")
@@ -515,6 +536,96 @@ def _format_toml_value(value: Any) -> str:  # noqa: ANN401
         items = [_format_toml_value(item) for item in value]
         return "[" + ", ".join(items) + "]"
     return str(value)
+
+
+def _resolve_auth_helpers(mcp_servers: dict[str, Any]) -> dict[str, Any]:
+    """Execute headersHelper / envHelper shell commands and bake results in.
+
+    Mirrors Claude Code's `headersHelper` field: a shell command that prints a
+    JSON object. We run it at sync time and replace it with literal `headers`
+    (or `env`), merging into anything already present. This means 1Password is
+    only queried during sync, not on every MCP startup, and Codex/Warp — which
+    don't understand `headersHelper` — get a usable config too.
+    """
+    resolved_servers = {}
+
+    for server_name, server_config in mcp_servers.items():
+        resolved_config = dict(server_config)
+
+        for helper_key, target_key in (("headersHelper", "headers"), ("envHelper", "env")):
+            helper_cmd = resolved_config.pop(helper_key, None)
+            if not helper_cmd or not isinstance(helper_cmd, str):
+                continue
+
+            resolved = _execute_auth_helper(server_name, helper_key, helper_cmd)
+            if resolved is None:
+                # Resolution failed — restore the helper so the user notices and
+                # so Claude Code (which understands it) can still try at runtime.
+                resolved_config[helper_key] = helper_cmd
+                continue
+
+            existing = resolved_config.get(target_key) or {}
+            if not isinstance(existing, dict):
+                existing = {}
+            # Helper output wins on key conflicts — it's the authoritative source.
+            merged = {**existing, **resolved}
+            resolved_config[target_key] = merged
+
+        resolved_servers[server_name] = resolved_config
+
+    return resolved_servers
+
+
+def _execute_auth_helper(
+    server_name: str,
+    helper_key: str,
+    helper_cmd: str,
+) -> dict[str, str] | None:
+    """Run an auth helper shell command and parse its stdout as a JSON object.
+
+    Returns the parsed dict, or None if execution / parsing failed.
+    """
+    try:
+        result = subprocess.run(  # noqa: S602
+            helper_cmd,
+            shell=True,
+            check=True,
+            capture_output=True,
+            text=True,
+            timeout=15,
+        )
+    except subprocess.CalledProcessError as e:
+        print(
+            f"  ⚠ Warning: {server_name}.{helper_key} exited {e.returncode}: "
+            f"{e.stderr.strip()}",
+            file=sys.stderr,
+        )
+        return None
+    except subprocess.TimeoutExpired:
+        print(
+            f"  ⚠ Warning: {server_name}.{helper_key} timed out",
+            file=sys.stderr,
+        )
+        return None
+
+    try:
+        parsed = json.loads(result.stdout)
+    except json.JSONDecodeError as e:
+        print(
+            f"  ⚠ Warning: {server_name}.{helper_key} did not produce valid JSON: {e}",
+            file=sys.stderr,
+        )
+        return None
+
+    if not isinstance(parsed, dict):
+        print(
+            f"  ⚠ Warning: {server_name}.{helper_key} JSON must be an object, "
+            f"got {type(parsed).__name__}",
+            file=sys.stderr,
+        )
+        return None
+
+    return {str(k): str(v) for k, v in parsed.items()}
 
 
 def _resolve_op_credentials(mcp_servers: dict[str, Any]) -> dict[str, Any]:

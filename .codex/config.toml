@@ -63,9 +63,7 @@ LINEAR_API_KEY = "${op://Personal/api-linear/credential}"
 [mcp_servers.octolens]
 type = "http"
 url = "https://app.octolens.com/api/mcp"
-
-[mcp_servers.octolens.headers]
-Authorization = "Bearer ${op://Personal/api-octolens/credential}"
+headersHelper = "printf '{\"Authorization\":\"Bearer %s\"}' \"$(op read op://Personal/api-octolens/credential)\""
 
 [mcp_servers.resend]
 command = "npx"
