@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Synchronize MCP server configurations from a canonical source to Claude Code (user scope), Codex, and Warp.
+r"""Synchronize MCP server configurations from a canonical source to Claude Code (user scope), Codex, and Warp.
 
 SETUP:
   1. Ensure mcp.json exists in the dotfiles root with your MCP servers
@@ -552,7 +552,10 @@ def _resolve_auth_helpers(mcp_servers: dict[str, Any]) -> dict[str, Any]:
     for server_name, server_config in mcp_servers.items():
         resolved_config = dict(server_config)
 
-        for helper_key, target_key in (("headersHelper", "headers"), ("envHelper", "env")):
+        for helper_key, target_key in (
+            ("headersHelper", "headers"),
+            ("envHelper", "env"),
+        ):
             helper_cmd = resolved_config.pop(helper_key, None)
             if not helper_cmd or not isinstance(helper_cmd, str):
                 continue
