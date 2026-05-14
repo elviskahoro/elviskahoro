@@ -28,9 +28,7 @@
     "octolens": {
       "type": "http",
       "url": "https://app.octolens.com/api/mcp",
-      "headers": {
-        "Authorization": "Bearer ${op://Personal/api-octolens/credential}"
-      }
+      "headersHelper": "printf '{\"Authorization\":\"Bearer %s\"}' \"$(op read op://Personal/api-octolens/credential)\""
     }
   }
 }
