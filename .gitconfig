@@ -103,7 +103,7 @@
   ac        = ca
   aca       = ca
   cva       = ca
-  gca       = commit --amend --no-edit
+  gca       = commit --amend --no-edit --no-verify
   cam       = "!gt modify"
   acam      = cam
   cvam      = cam
@@ -198,6 +198,7 @@
   dm        = m
   mere      = merge
   mrege     = merge
+  mege      = merge
 
   o         = "!gh pr view --web || gh repo view --web"
   open      = o
@@ -368,7 +369,8 @@
   count-lines= "!git log --author=\"$1\" --pretty=tformat: --numstat | awk '{ add += $1; subs += $2; loc += $1 - $2 } END { printf \"added lines: %s, removed lines: %s, total lines: %s\\n\", add, subs, loc }' #"
 
   ai        = "!DIFF=$(git diff --cached) && if [ -z \"$DIFF\" ]; then DIFF=$(git diff HEAD~1 HEAD) && AMEND=true; else AMEND=false; fi && MSG=$(curl -s https://api.anthropic.com/v1/messages -H \"x-api-key: $ANTHROPIC_API_KEY\" -H \"anthropic-version: 2023-06-01\" -H \"content-type: application/json\" -d \"$(jq -n --arg diff \"$DIFF\" '{model:\"claude-haiku-4-5-20251001\",max_tokens:100,messages:[{role:\"user\",content:(\"Create a concise git commit message in conventional commits format (type: description). Return ONLY the message, nothing else.\\n\\n\" + $diff)}]}')\" 2>/dev/null | jq -r \".content[0].text\") && if [ -z \"$MSG\" ] || [ \"$MSG\" = \"null\" ]; then echo \"Error: API call failed to generate commit message\" >&2; exit 1; fi && if [ \"$AMEND\" = true ]; then git commit --amend -m \"$MSG\"; else git commit -m \"$MSG\"; fi"
-  caix      = !git ai
+  cai       = !MSG=$(git aislc) && git commit -m \"$MSG\"
+  caix      = !MSG=$(git aiclx) && git commit -m \"$MSG\"
   acix      = caix
   ciax      = caix
   caux      = caix
@@ -382,6 +384,9 @@
   wd        = "!f() { branch=$(git -C \"$1\" rev-parse --abbrev-ref HEAD 2>/dev/null); git worktree remove \"$1\" && { [ -n \"$branch\" ] && git branch -d \"$branch\" 2>/dev/null; echo \"Removed worktree: $1${branch:+ (branch: $branch)}\"; }; }; f"
   caip      = !git ai && git push
 	tai = !roborev review --wait
+	bcai = !MSG=$(git aiclx) && gt create -m \"$MSG\"
+	aislc = "!DIFF=$(git diff --cached) && if [ -z \"$DIFF\" ]; then echo \"Error: no staged changes\" >&2; exit 1; fi && MSG=$(curl -s https://api.anthropic.com/v1/messages -H \"x-api-key: $ANTHROPIC_API_KEY\" -H \"anthropic-version: 2023-06-01\" -H \"content-type: application/json\" -d \"$(jq -n --arg diff \"$DIFF\" '{model:\"claude-haiku-4-5-20251001\",max_tokens:100,messages:[{role:\"user\",content:(\"Create a concise git commit message in conventional commits format (type: description). Return ONLY the message, nothing else.\\n\\n\" + $diff)}]}')\" 2>/dev/null | jq -r \".content[0].text\") && if [ -z \"$MSG\" ] || [ \"$MSG\" = \"null\" ]; then echo \"Error: API call failed to generate commit message\" >&2; exit 1; fi && printf \"%s\\n\" \"$MSG\""
+	aiclx = "!DIFF=$(git diff --cached) && if [ -z \"$DIFF\" ]; then echo \"Error: no staged changes\" >&2; exit 1; fi && TMP=$(mktemp) && printf \"%s\" \"$DIFF\" | codex exec -o \"$TMP\" \"Create a concise git commit message in conventional commits format (type: description). Return ONLY the message, nothing else.\" >/dev/null 2>&1 && MSG=$(cat \"$TMP\") && rm -f \"$TMP\" && if [ -z \"$MSG\" ]; then echo \"Error: codex failed to generate commit message\" >&2; exit 1; fi && printf \"%s\\n\" \"$MSG\""
 
 [init]
 	defaultBranch = main
