@@ -13,11 +13,11 @@ match_notebook_to_monospace_font_size = false
 use_thin_strokes = "always"
 
 [appearance.vertical_tabs]
-compact_subtitle = "working_directory"
+compact_subtitle = "command"
 enabled = true
 show_details_on_hover = true
 display_granularity = "panes"
-primary_info = "command"
+primary_info = "working_directory"
 view_mode = "compact"
 use_latest_prompt_as_title = false
 
@@ -124,8 +124,8 @@ play_notification_sound = false
 
 [code.editor]
 open_file_layout = "new_tab"
-open_code_panels_file_editor = "warp"
-open_file_editor = "warp"
+open_code_panels_file_editor = "system_default"
+open_file_editor = "system_default"
 prefer_tabbed_editor_view = true
 show_project_explorer = true
 auto_open_code_review_pane_on_first_agent_change = false
