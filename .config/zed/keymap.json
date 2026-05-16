@@ -9,12 +9,14 @@
   {
     "context": "Workspace",
     "bindings": {
-      "shift-cmd-o": "file_finder::Toggle",
+      "shift-cmd-o": "outline::Toggle",
       "cmd-o": "file_finder::Toggle",
       // ctrl-alt-cmd-n creates a new file
       "ctrl-alt-cmd-n": "workspace::NewFile",
-      // cmd-l toggles the agent panel
+      // cmd-l focuses the agent panel (opens+focuses if closed/unfocused, unfocuses if focused)
       "cmd-l": "agent::ToggleFocus",
+      // shift-cmd-b opens/closes the right dock (where the agent panel lives)
+      "shift-cmd-b": "workspace::ToggleRightDock",
       // cmd-1 / cmd-2 navigate previous/next tab globally (override default activate-by-index)
       "cmd-1": "pane::ActivatePreviousItem",
       "cmd-2": "pane::ActivateNextItem",
@@ -34,7 +36,7 @@
     "context": "Editor",
     "bindings": {
       // cmd-/+ fold/unfold in editor (overrides font zoom when editor is focused)
-      "shift-cmd-o": "file_finder::Toggle",
+      "shift-cmd-o": "outline::Toggle",
       "cmd-o": "file_finder::Toggle",
       "cmd--": "editor::Fold",
       "cmd-_": "editor::FoldRecursive",
@@ -49,10 +51,12 @@
     },
   },
   {
-    // cmd-l opens the agent panel and adds the current selection as context
+    // cmd-l opens/focuses the agent panel; if text is selected, also attaches it as context.
+    // AddSelectionToThread no-ops without a selection, so we chain ToggleFocus first to
+    // guarantee the panel opens either way. cmd-? and cmd-> are Zed defaults for these actions.
     "context": "Editor && !agent_diff && !AgentPanel",
     "bindings": {
-      "cmd-l": "agent::AddSelectionToThread",
+      "cmd-l": ["workspace::SendKeystrokes", "cmd-? cmd->"],
     },
   },
   {

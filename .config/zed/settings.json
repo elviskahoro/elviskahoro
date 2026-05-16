@@ -100,8 +100,8 @@
     "metrics": false,
   },
   "theme": {
-    "mode": "dark",
-    "light": "One Light",
+    "mode": "light",
+    "light": "Solarized Light",
     "dark": "Monokai Pro (Filter Spectrum)"
   },
   "ui_font_family": "MonoLisa",
