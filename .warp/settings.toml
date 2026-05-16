@@ -33,12 +33,7 @@ tab_close_button_position = "right"
 input_mode = "pinned_to_bottom"
 
 [appearance.themes]
-theme = {
-  custom = {
-    name = "Monokai Pro Spectrum",
-    path = "/Users/elvis/.warp-preview/themes/monokai_pro_spectrum.yml",
-  },
-}
+theme = "solarized_light"
 
 [appearance.window]
 zoom_level = 100
@@ -130,7 +125,7 @@ prefer_tabbed_editor_view = true
 show_project_explorer = true
 auto_open_code_review_pane_on_first_agent_change = false
 show_code_review_button = true
-prefer_markdown_viewer = true
+prefer_markdown_viewer = false
 
 [code.indexing]
 agent_mode_codebase_context_auto_indexing = true
