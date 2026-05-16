@@ -20,7 +20,18 @@ command! Dark  call <SID>ApplyBackground('dark')
 command! Light call <SID>ApplyBackground('light')
 nnoremap <silent> <leader>bg :call <SID>ToggleBackground()<CR>
 
-call s:ApplyBackground('dark')
+function! s:DetectThemeMode() abort
+  if $VIM_THEME ==# 'light'
+    return 'light'
+  endif
+  let l:f = expand('~/.config/theme-mode')
+  if filereadable(l:f) && get(readfile(l:f), 0, '') ==# 'light'
+    return 'light'
+  endif
+  return 'dark'
+endfunction
+
+call s:ApplyBackground(s:DetectThemeMode())
 
 set autochdir
 set autoindent

@@ -1,3 +1,5 @@
 tmp/
-.claude/
+.claude/*
+!.claude/settings.json
+!.claude/themes/
 .mcp.json

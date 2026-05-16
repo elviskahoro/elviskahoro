@@ -313,6 +313,7 @@ alias slx='codex --yolo'
 
 alias cr='coderabbit'
 alias robo='roborev'
+<<<<<<< HEAD
 
 # Python & data tools
 alias py='python'
@@ -429,3 +430,39 @@ alias rcze="vim ~/.zshenv"
 alias rvx='vim ~/.zshrc'
 
 alias zshrc="vim ~/.zshrc"
+||||||| parent of a89c412 (feat(theme): add light/dark toggle for delta, bat, vim, and Claude Code)
+alias treef='eza --tree --all --icons'
+=======
+alias treef='eza --tree --all --icons'
+
+# Light/dark toggle for delta (git pager), bat, vim, and Claude Code.
+# Mode is persisted to ~/.config/theme-mode so new shells and new vim
+# sessions in any pane pick it up. Claude Code's settings.json permanently
+# points at "custom:current"; the alias rewrites ~/.claude/themes/current.json,
+# which Claude Code hot-reloads in any running session.
+_THEME_MODE_FILE="$HOME/.config/theme-mode"
+_CLAUDE_THEMES_DIR="$HOME/.claude/themes"
+_claude_set_theme() {
+  local source="$_CLAUDE_THEMES_DIR/$1.json" target="$_CLAUDE_THEMES_DIR/current.json"
+  [ -f "$source" ] || return 0
+  if command -v jq >/dev/null; then
+    jq '.name = "Current"' "$source" > "$target"
+  else
+    command cp -f "$source" "$target"
+  fi
+}
+_theme_apply_env() {
+  case "$1" in
+    light) export DELTA_FEATURES=light-mode BAT_THEME=gruvbox-light VIM_THEME=light COLORFGBG="0;15" ;;
+    *)     unset DELTA_FEATURES BAT_THEME VIM_THEME; export COLORFGBG="15;0" ;;
+  esac
+}
+theme-light()  { mkdir -p "$(dirname "$_THEME_MODE_FILE")" && echo light > "$_THEME_MODE_FILE"; _theme_apply_env light; _claude_set_theme gruvbox-light-flat; }
+theme-dark()   { mkdir -p "$(dirname "$_THEME_MODE_FILE")" && echo dark  > "$_THEME_MODE_FILE"; _theme_apply_env dark;  _claude_set_theme monokai-spectrum-flat; }
+theme-toggle() { [ "$(cat "$_THEME_MODE_FILE" 2>/dev/null)" = "light" ] && theme-dark || theme-light; }
+light-theme()  { theme-light; }
+dark-theme()   { theme-dark; }
+
+# Apply persisted theme to this shell on startup.
+[ -r "$_THEME_MODE_FILE" ] && _theme_apply_env "$(cat "$_THEME_MODE_FILE")"
+>>>>>>> a89c412 (feat(theme): add light/dark toggle for delta, bat, vim, and Claude Code)

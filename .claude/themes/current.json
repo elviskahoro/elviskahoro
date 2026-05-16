@@ -1,0 +1,7 @@
+{
+  "name": "Current",
+  "base": "light",
+  "overrides": {
+    "userMessageBackground": "#fbf1c7"
+  }
+}

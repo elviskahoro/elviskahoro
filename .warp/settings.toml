@@ -206,3 +206,6 @@ vim_status_bar = false
 
 [workflows]
 show_global_workflows_in_universal_search = true
+
+[accessibility]
+accessibility_verbosity = "concise"
