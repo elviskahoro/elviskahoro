@@ -187,5 +187,6 @@
   },
   "window.commandCenter": true,
   "cursorPreview.disableInlineCompletions": false,
-  "cursorPreview.enableInlineCompletion": true
+"cursorPreview.enableInlineCompletion": true,
+"window.autoDetectColorScheme": false
 }
