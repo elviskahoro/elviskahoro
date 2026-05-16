@@ -434,11 +434,21 @@
 
 [delta]
 	navigate = true    # use n and N to move between diff sections
-	light = false      # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
 	line-numbers = true
+	side-by-side = false
+	features = dark-mode   # default; override per-shell with DELTA_FEATURES=light-mode
+
+[delta "dark-mode"]
+	light = false
+	syntax-theme = Monokai Extended
 	minus-style = red "#ffeeee"
 	plus-style = green "#383830"
-    side-by-side = false
+
+[delta "light-mode"]
+	light = true
+	syntax-theme = gruvbox-light
+	minus-style = syntax "#ffd7d7"
+	plus-style = syntax "#d7ffaf"
 
 [diff]
 	colorMoved = default

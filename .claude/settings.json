@@ -78,6 +78,5 @@
   },
   "effortLevel": "high",
   "skipDangerousModePermissionPrompt": true,
-  "theme": "dark",
   "editorMode": "vim"
 }

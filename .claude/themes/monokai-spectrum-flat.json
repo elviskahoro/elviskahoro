@@ -1,0 +1,7 @@
+{
+  "name": "Monokai Spectrum (flat)",
+  "base": "dark",
+  "overrides": {
+    "userMessageBackground": "#222222"
+  }
+}

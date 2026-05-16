@@ -1,0 +1,7 @@
+{
+  "name": "Gruvbox Light (flat)",
+  "base": "light",
+  "overrides": {
+    "userMessageBackground": "#fbf1c7"
+  }
+}
