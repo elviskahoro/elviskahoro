@@ -1,3 +1,6 @@
 [submodule "zed/themes/monokai-spectrum"]
 	path = zed/themes/monokai-spectrum
 	url = git@github.com:elviskahoro/monokai-spectrum-zed.git
+[submodule ".vim/pack/vendor/start/gruvbox"]
+	path = .vim/pack/vendor/start/gruvbox
+	url = https://github.com/morhetz/gruvbox.git
