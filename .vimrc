@@ -1,5 +1,26 @@
 set termguicolors
-colorscheme monokai_pro
+
+" Background toggle: dark = monokai_pro, light = gruvbox.
+" <leader>bg toggles; :Dark / :Light force a mode.
+function! s:ApplyBackground(mode) abort
+  if a:mode ==# 'light'
+    set background=light
+    silent! colorscheme gruvbox
+  else
+    set background=dark
+    silent! colorscheme monokai_pro
+  endif
+endfunction
+
+function! s:ToggleBackground() abort
+  call s:ApplyBackground(&background ==# 'dark' ? 'light' : 'dark')
+endfunction
+
+command! Dark  call <SID>ApplyBackground('dark')
+command! Light call <SID>ApplyBackground('light')
+nnoremap <silent> <leader>bg :call <SID>ToggleBackground()<CR>
+
+call s:ApplyBackground('dark')
 
 set autochdir
 set autoindent
@@ -39,7 +60,6 @@ set softtabstop=4
 set splitright
 set splitbelow
 set tabstop=4
-set termguicolors
 set viewoptions-=options
 set wildmenu
 set wrapscan
