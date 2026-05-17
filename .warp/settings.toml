@@ -87,7 +87,7 @@ enabled = true
 intelligent_autosuggestions_enabled = false
 agent_mode_query_suggestions_enabled = true
 code_suggestions_enabled = true
-rule_suggestions_enabled = false
+rule_suggestions_enabled = true
 
 [agents.voice]
 voice_input_enabled = false
