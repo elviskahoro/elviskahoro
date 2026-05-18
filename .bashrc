@@ -109,6 +109,7 @@ alias home='cd /Users/elvis/Documents/elviskahoro/obsidian'
 alias os='cd /Users/elvis/Documents/dlt-hub/gtm-os'
 
 alias play='cd ~/Documents/elviskahoro/playground'
+alias pygithub='cd ~/Library/Caches/pypoetry/virtualenvs/warpdotdev-dx-_OAhpmWh-py3.10/lib/python3.10/site-packages/github'
 
 alias skills='cd /Users/elvis/Documents/elviskahoro/ai/.agents/skills'
 alias sills='skills'
@@ -120,97 +121,6 @@ alias video='cd /Users/elvis/Downloads/videos'
 alias writer='cd /Users/elvis/Documents/elviskahoro/writer'
 
 alias zotero='cd ~/Documents/elviskahoro/zotero'
-
-# Tools - Shortcuts & overrides
-alias ab='uv run attio-backfill'
-alias awrp='warp'
-
-alias batp='bat --paging=never'
-alias bbl='black'
-alias bl='black'
-alias brw='brew'
-alias brwe='brew'
-
-alias cb='cargo build'
-alias cla='claude --dangerously-skip-permissions --permission-mode bypassPermissions'
-alias clx='codex --yolo'
-alias cod='code'
-alias cr='coderabbit'
-alias cs='cursor'
-alias cursor='cursor'
-alias cursors='cursor'
-
-alias dopller='doppler'
-alias dui='duckdb --ui'
-
-alias exa='eza'
-
-alias fmt='trunk fmt'
-
-alias jt='jupyter-lab'
-
-alias less='less -R'
-
-alias marimio='marimo'
-alias mo='uv run marimo edit notebook.py --watch --no-token'
-
-alias nfm='fnm'
-alias ngroks='ngrok start warpdotdev'
-
-alias o='open'
-alias ope='open'
-alias openm='open'
-alias opne='open'
-
-alias ping='ping -c 10'
-alias pre='pre-commit run --all-files'
-alias py='python'
-alias pygithub='cd ~/Library/Caches/pypoetry/virtualenvs/warpdotdev-dx-_OAhpmWh-py3.10/lib/python3.10/site-packages/github'
-
-alias refelx='reflex'
-alias rr='reflex run'
-alias rrld='reflex run --loglevel=debug'
-
-alias sclaude='claude --dangerously-skip-permissions --permission-mode bypassPermissions'
-alias scodex='codex --yolo'
-alias senv='source .env.local'
-alias slc='claude --dangerously-skip-permissions --permission-mode bypassPermissions'
-alias sli='slides slides.md'
-alias slid='slides'
-alias slide='slides'
-alias slx='codex --yolo'
-
-alias tc='trunk check'
-alias test='pytest -n auto -v'
-alias tkill='tmux kill-session'
-alias tnew='tmux new -s'
-alias trkn='trunk'
-alias trukn='trunk'
-
-alias urp='uv run python'
-alias uvr='uv pip install -r requirements.txt'
-
-alias vbl='black'
-alias vs='positron'
-
-alias warp='oz'
-alias ws='positron'
-
-# File operations
-alias cp='cp -i'
-
-alias kmdir='mkdir -p'
-alias mdkdir='mkdir -p'
-alias mkdr='mkdir -p'
-
-alias mdir='mkdir -p'
-alias mkdir='mkdir -p'
-alias mkldir='mkdir -p'
-alias mv='mv -i'
-
-alias rmi='rm -iv'
-
-alias verm='find . -maxdepth 1 -not -name ".venv" -not -name "." -not -name ".." -not -name ".git" -exec rm -rf {} +'
 
 # File listing & tree
 alias le='ls'
@@ -228,6 +138,34 @@ alias sl='ls'
 
 alias tree='eza --tree --git-ignore'
 alias treed='eza --tree --git-ignore --only-dirs'
+alias treef='eza --tree --all --icons'
+
+alias exa='eza'
+
+# File operations
+alias cp='cp -i'
+
+alias kmdir='mkdir -p'
+alias mdkdir='mkdir -p'
+alias mkdr='mkdir -p'
+
+alias mdir='mkdir -p'
+alias mkdir='mkdir -p'
+alias mkldir='mkdir -p'
+alias mv='mv -i'
+
+alias rmi='rm -iv'
+
+alias verm='find . -maxdepth 1 -not -name ".venv" -not -name "." -not -name ".." -not -name ".git" -exec rm -rf {} +'
+
+# Permissions
+alias 000='chmod -R 000'
+alias 644='chmod -R 644'
+alias 666='chmod -R 666'
+alias 755='chmod -R 755'
+alias 777='chmod -R 777'
+
+alias mx='chmod a+x'
 
 # System utilities
 alias diskspace="du -S | sort -n -r |more"
@@ -240,64 +178,7 @@ alias mountedinfo='df -hT'
 alias powd='pwd'
 alias ps='ps auxf'
 
-# Permissions
-alias 000='chmod -R 000'
-alias 644='chmod -R 644'
-alias 666='chmod -R 666'
-alias 755='chmod -R 755'
-alias 777='chmod -R 777'
-
-alias mx='chmod a+x'
-
-# Python & data tools
-alias datah='vd'
-alias datal='tw'
-alias dcsv='xan'
-alias dparq='pqrs'
-
-alias peynv='pyenv'
-alias pi='uv pip'
-alias pin='pip install --upgrade pip'
-alias pipu='uv pip'
-alias pipuv='uv pip'
-alias pipv='uv pip'
-alias piv='uv pip'
-alias pyen='pyenv'
-alias pyuenv='pyenv'
-
-alias vce='source .venv/bin/activate'
-alias ve='source .venv/bin/activate'
-alias vve='source .venv/bin/activate'
-
-# Config editors (rc aliases)
-alias rb='vim ~/.bashrc'
-alias rbc='vim ~/.bashrc'
-alias rcb='vim ~/.bashrc'
-alias rcbp='vim ~/.bash_profile'
-alias rcbs='source ~/.bashrc'
-alias rcfg='rcg'
-alias rcg='vim ~/.gitconfig'
-alias rcgb='vim ~/.bashrc'
-alias rcgf='vim ~/.gitconfig'
-alias rcgm='vim ~/.config/git/.gitmessage'
-alias rci='vim ~/.inputrc'
-alias rcl="vim ~/.claude.json"
-alias rcnvim='vim ~/.config/nvim/init.vim'
-alias rcp="vim ~/.profile"
-alias rcsh='vim ~/.ssh/config'
-alias rcterm='vim ~/.config/alacritty/alacritty.yml'
-alias rctig='vim ~/.tigrc'
-alias rctmux='vim ~/.tmux.conf'
-alias rcv='vim ~/.bashrc'
-alias rcvim='vim ~/.vimrc'
-alias rcz="vim ~/.zshrc"
-alias rczlogin="vim ~/.zlogin"
-alias rczlogout="vim ~/.zlogout"
-alias rczp="vim ~/.zprofile"
-alias rcze="vim ~/.zshenv"
-alias rvx='vim ~/.zshrc'
-
-alias zshrc="vim ~/.zshrc"
+alias ping='ping -c 10'
 
 # Git
 alias ag='g'
@@ -412,5 +293,139 @@ alias wg='g'
 
 alias yg='g'
 alias yyg='g'
+
+# Editors & IDEs
+alias cod='code'
+alias cs='cursor'
+alias cursor='cursor'
+alias cursors='cursor'
+alias vs='positron'
+alias ws='positron'
+
+# AI / Code assistants
+alias cla='claude --dangerously-skip-permissions --permission-mode bypassPermissions'
+alias sclaude='claude --dangerously-skip-permissions --permission-mode bypassPermissions'
+alias slc='claude --dangerously-skip-permissions --permission-mode bypassPermissions'
+
+alias clx='codex --yolo'
+alias scodex='codex --yolo'
+alias slx='codex --yolo'
+
+alias cr='coderabbit'
 alias robo='roborev'
-alias treef='eza --tree --all --icons'
+
+# Python & data tools
+alias py='python'
+alias urp='uv run python'
+
+alias pi='uv pip'
+alias pipu='uv pip'
+alias pipuv='uv pip'
+alias pipv='uv pip'
+alias piv='uv pip'
+alias pin='pip install --upgrade pip'
+alias uvr='uv pip install -r requirements.txt'
+
+alias vce='source .venv/bin/activate'
+alias ve='source .venv/bin/activate'
+alias vve='source .venv/bin/activate'
+
+alias peynv='pyenv'
+alias pyen='pyenv'
+alias pyuenv='pyenv'
+
+alias bbl='black'
+alias bl='black'
+alias vbl='black'
+
+alias pre='pre-commit run --all-files'
+alias test='pytest -n auto -v'
+
+alias jt='jupyter-lab'
+alias marimio='marimo'
+alias mo='uv run marimo edit notebook.py --watch --no-token'
+
+alias ab='uv run attio-backfill'
+
+alias datah='vd'
+alias datal='tw'
+alias dcsv='xan'
+alias dparq='pqrs'
+alias dui='duckdb --ui'
+
+# Build & package managers
+alias brw='brew'
+alias brwe='brew'
+
+alias cb='cargo build'
+
+alias nfm='fnm'
+
+# Reflex
+alias refelx='reflex'
+alias rr='reflex run'
+alias rrld='reflex run --loglevel=debug'
+
+# Tmux
+alias tkill='tmux kill-session'
+alias tnew='tmux new -s'
+
+# Trunk / formatters
+alias fmt='trunk fmt'
+alias tc='trunk check'
+alias trkn='trunk'
+alias trukn='trunk'
+
+# Misc tools
+alias awrp='warp'
+alias warp='oz'
+
+alias batp='bat --paging=never'
+alias less='less -R'
+
+alias dopller='doppler'
+
+alias ngroks='ngrok start warpdotdev'
+
+alias o='open'
+alias ope='open'
+alias openm='open'
+alias opne='open'
+
+alias senv='source .env.local'
+
+alias sli='slides slides.md'
+alias slid='slides'
+alias slide='slides'
+
+alias xed='zed'
+
+# Config editors (rc aliases)
+alias rb='vim ~/.bashrc'
+alias rbc='vim ~/.bashrc'
+alias rcb='vim ~/.bashrc'
+alias rcbp='vim ~/.bash_profile'
+alias rcbs='source ~/.bashrc'
+alias rcfg='rcg'
+alias rcg='vim ~/.gitconfig'
+alias rcgb='vim ~/.bashrc'
+alias rcgf='vim ~/.gitconfig'
+alias rcgm='vim ~/.config/git/.gitmessage'
+alias rci='vim ~/.inputrc'
+alias rcl="vim ~/.claude.json"
+alias rcnvim='vim ~/.config/nvim/init.vim'
+alias rcp="vim ~/.profile"
+alias rcsh='vim ~/.ssh/config'
+alias rcterm='vim ~/.config/alacritty/alacritty.yml'
+alias rctig='vim ~/.tigrc'
+alias rctmux='vim ~/.tmux.conf'
+alias rcv='vim ~/.bashrc'
+alias rcvim='vim ~/.vimrc'
+alias rcz="vim ~/.zshrc"
+alias rczlogin="vim ~/.zlogin"
+alias rczlogout="vim ~/.zlogout"
+alias rczp="vim ~/.zprofile"
+alias rcze="vim ~/.zshenv"
+alias rvx='vim ~/.zshrc'
+
+alias zshrc="vim ~/.zshrc"
