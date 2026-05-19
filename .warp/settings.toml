@@ -33,7 +33,12 @@ tab_close_button_position = "right"
 input_mode = "pinned_to_bottom"
 
 [appearance.themes]
-theme = "solarized_light"
+theme = {
+  custom = {
+    name = "Monokai Pro Spectrum",
+    path = "/Users/elvis/.warp-preview/themes/monokai_pro_spectrum.yml",
+  },
+}
 
 [appearance.window]
 zoom_level = 100
