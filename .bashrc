@@ -313,7 +313,6 @@ alias slx='codex --yolo'
 
 alias cr='coderabbit'
 alias robo='roborev'
-<<<<<<< HEAD
 
 # Python & data tools
 alias py='python'
@@ -430,10 +429,6 @@ alias rcze="vim ~/.zshenv"
 alias rvx='vim ~/.zshrc'
 
 alias zshrc="vim ~/.zshrc"
-||||||| parent of a89c412 (feat(theme): add light/dark toggle for delta, bat, vim, and Claude Code)
-alias treef='eza --tree --all --icons'
-=======
-alias treef='eza --tree --all --icons'
 
 # Light/dark toggle for delta (git pager), bat, vim, and Claude Code.
 # Mode is persisted to ~/.config/theme-mode so new shells and new vim
@@ -465,4 +460,3 @@ dark-theme()   { theme-dark; }
 
 # Apply persisted theme to this shell on startup.
 [ -r "$_THEME_MODE_FILE" ] && _theme_apply_env "$(cat "$_THEME_MODE_FILE")"
->>>>>>> a89c412 (feat(theme): add light/dark toggle for delta, bat, vim, and Claude Code)
