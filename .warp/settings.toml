@@ -34,12 +34,8 @@ input_mode = "pinned_to_bottom"
 
 [appearance.themes]
 theme = {
-  custom = {
-    name = "Monokai Pro Spectrum",
-    path = "/Users/elvis/.warp-preview/themes/monokai_pro_spectrum.yml",
-  },
+  custom = { name = "Monokai Pro Spectrum", path = "/Users/elvis/.warp-preview/themes/monokai_pro_spectrum.yml" },
 }
-
 [appearance.window]
 zoom_level = 100
 override_opacity = 100

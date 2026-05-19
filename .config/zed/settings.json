@@ -100,7 +100,7 @@
     "metrics": false,
   },
   "theme": {
-    "mode": "light",
+    "mode": "dark",
     "light": "Gruvbox Light",
     "dark": "Monokai Pro (Filter Spectrum)"
   },
