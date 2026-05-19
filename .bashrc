@@ -437,6 +437,8 @@ alias zshrc="vim ~/.zshrc"
 # which Claude Code hot-reloads in any running session.
 _THEME_MODE_FILE="$HOME/.config/theme-mode"
 _CLAUDE_THEMES_DIR="$HOME/.claude/themes"
+_ZED_SETTINGS_FILE="$HOME/.config/zed/settings.json"
+_WARP_SETTINGS_FILE="$HOME/.warp/settings.toml"
 _claude_set_theme() {
   local source="$_CLAUDE_THEMES_DIR/$1.json" target="$_CLAUDE_THEMES_DIR/current.json"
   [ -f "$source" ] || return 0
@@ -446,14 +448,48 @@ _claude_set_theme() {
     command cp -f "$source" "$target"
   fi
 }
+_zed_set_theme() {
+  [ -e "$_ZED_SETTINGS_FILE" ] || return 0
+  # macOS sed -i refuses symlinks (settings.json is symlinked to the dotfiles
+  # repo), so resolve to the real path. Zed hot-reloads settings.json, so the
+  # edit takes effect in running windows.
+  local target
+  target="$(readlink "$_ZED_SETTINGS_FILE" 2>/dev/null || echo "$_ZED_SETTINGS_FILE")"
+  sed -i '' -e '/"theme": {/,/}/ s/"mode": "[^"]*"/"mode": "'"$1"'"/' "$target"
+}
+_warp_set_theme() {
+  [ -e "$_WARP_SETTINGS_FILE" ] || return 0
+  # NB: zsh ties `$path` to `$PATH` as an array, so assigning `path=...` would
+  # clobber PATH and break subsequent command lookups (e.g. `awk`). Use a name
+  # that isn't a zsh special.
+  local theme_name theme_path
+  case "$1" in
+    light) theme_name="Gruvbox Light";        theme_path="$HOME/.warp-preview/themes/gruvbox_light.yml" ;;
+    dark)  theme_name="Monokai Pro Spectrum"; theme_path="$HOME/.warp-preview/themes/monokai_pro_spectrum.yml" ;;
+    *) return 0 ;;
+  esac
+  # Rewrite the [appearance.themes] block. Warp hot-reloads settings.toml.
+  awk -v name="$theme_name" -v path="$theme_path" '
+    /^\[appearance\.themes\]/ {
+      print
+      print "theme = {"
+      print "  custom = { name = \"" name "\", path = \"" path "\" },"
+      print "}"
+      skip = 1
+      next
+    }
+    skip && /^\[/ { skip = 0 }
+    !skip { print }
+  ' "$_WARP_SETTINGS_FILE" > "$_WARP_SETTINGS_FILE.tmp" && command mv -f "$_WARP_SETTINGS_FILE.tmp" "$_WARP_SETTINGS_FILE"
+}
 _theme_apply_env() {
   case "$1" in
     light) export DELTA_FEATURES=light-mode BAT_THEME=gruvbox-light VIM_THEME=light COLORFGBG="0;15" ;;
     *)     unset DELTA_FEATURES BAT_THEME VIM_THEME; export COLORFGBG="15;0" ;;
   esac
 }
-theme-light()  { mkdir -p "$(dirname "$_THEME_MODE_FILE")" && echo light > "$_THEME_MODE_FILE"; _theme_apply_env light; _claude_set_theme gruvbox-light-flat; }
-theme-dark()   { mkdir -p "$(dirname "$_THEME_MODE_FILE")" && echo dark  > "$_THEME_MODE_FILE"; _theme_apply_env dark;  _claude_set_theme monokai-spectrum-flat; }
+theme-light()  { mkdir -p "$(dirname "$_THEME_MODE_FILE")" && echo light > "$_THEME_MODE_FILE"; _theme_apply_env light; _claude_set_theme gruvbox-light-flat;   _zed_set_theme light; _warp_set_theme light; }
+theme-dark()   { mkdir -p "$(dirname "$_THEME_MODE_FILE")" && echo dark  > "$_THEME_MODE_FILE"; _theme_apply_env dark;  _claude_set_theme monokai-spectrum-flat; _zed_set_theme dark;  _warp_set_theme dark; }
 theme-toggle() { [ "$(cat "$_THEME_MODE_FILE" 2>/dev/null)" = "light" ] && theme-dark || theme-light; }
 light-theme()  { theme-light; }
 dark-theme()   { theme-dark; }

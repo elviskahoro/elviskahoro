@@ -1,7 +1,7 @@
 {
   "name": "Current",
-  "base": "light",
+  "base": "dark",
   "overrides": {
-    "userMessageBackground": "#fbf1c7"
+    "userMessageBackground": "#222222"
   }
 }
