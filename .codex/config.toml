@@ -1,4 +1,4 @@
-model = "gpt-5.3-codex"
+model = "gpt-5.4-mini"
 model_reasoning_effort = "low"
 
 [features]
@@ -43,6 +43,9 @@ trust_level = "trusted"
 [projects."/Users/elvis/Documents/ai/gtm-sdk"]
 trust_level = "trusted"
 
+[projects."/Users/elvis/Documents/elviskahoro/obsidian"]
+trust_level = "trusted"
+
 [notice.model_migrations]
 "gpt-5.3-codex" = "gpt-5.4"
 
@@ -77,3 +80,6 @@ args = ["-y", "resend-mcp"]
 
 [mcp_servers.resend.env]
 RESEND_API_KEY = "${op://Personal/api-resend/credential}"
+
+[tui.model_availability_nux]
+"gpt-5.5" = 3
