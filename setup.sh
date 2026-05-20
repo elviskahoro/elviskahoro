@@ -158,9 +158,9 @@ cmd_mcp() {
   echo ""
   echo "=== MCP Config Sync ==="
   if [[ ${DRY_RUN} == true ]]; then
-    echo "[DRY RUN] Would run: bin/sync-mcp-config"
+    echo "[DRY RUN] Would run: scripts/sync-mcp-config"
   else
-    if "${DOTFILES_DIR}/bin/sync-mcp-config"; then
+    if "${DOTFILES_DIR}/scripts/sync-mcp-config"; then
       echo "MCP sync completed."
     else
       echo "WARNING: MCP sync failed (non-fatal)." >&2
