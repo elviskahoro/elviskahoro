@@ -196,6 +196,7 @@
   m         = !git-m
   gm        = m
   dm        = m
+  mmm       = "!git push . $(git symbolic-ref --short HEAD):main"
   mere      = merge
   mrege     = merge
   mege      = merge
