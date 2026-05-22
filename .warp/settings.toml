@@ -72,8 +72,8 @@ cloud_conversation_storage_enabled = true
 [agents.warp_agent]
 
 [agents.warp_agent.input]
-nld_in_terminal_enabled = true
-ai_auto_detection_enabled = false
+nld_in_terminal_enabled = false
+ai_auto_detection_enabled = true
 show_agent_tips = false
 include_agent_commands_in_history = true
 
