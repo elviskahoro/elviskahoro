@@ -1,0 +1,13 @@
+{
+  "workspace:new-tab": [],
+  "file-explorer:new-file": [
+    {
+      "modifiers": [
+        "Alt",
+        "Ctrl",
+        "Mod"
+      ],
+      "key": "N"
+    }
+  ]
+}
