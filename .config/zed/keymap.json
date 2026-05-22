@@ -44,8 +44,8 @@
       "cmd-+": "editor::UnfoldRecursive",
       // cmd-enter goes to definition (matches VSCode editor.action.revealDefinition)
       "cmd-enter": "editor::GoToDefinition",
-      // shift-cmd-enter finds all references (matches VSCode shift+f12)
-      "shift-cmd-enter": "editor::FindAllReferences",
+      // shift-cmd-enter maximizes the focused pane (press again to unmaximize)
+      "shift-cmd-enter": "workspace::ToggleZoom",
       // alt-cmd-enter goes to implementation
       "alt-cmd-enter": "editor::GoToImplementation",
     },
