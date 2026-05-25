@@ -28,7 +28,7 @@ lint:
     - markdown-link-check@3.14.2
     - osv-scanner@2.3.5
     - pyright@1.1.409
-    - ruff@0.15.12
+    - ruff@0.15.14
     - shellcheck@0.11.0
     - shfmt@3.6.0
     - taplo@0.10.0
