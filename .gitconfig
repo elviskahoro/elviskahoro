@@ -480,7 +480,8 @@
 	template = ~/.config/git/.gitmessage
 
 [credential "https://github.com"]
-	helper = /opt/homebrew/bin/gh auth git-credential
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential
 
 [credential "https://source.developers.google.com"]
 	helper = gcloud.sh
@@ -493,3 +494,6 @@
 	machineId = cli/88a013c1cb39466287b4a9fee534ef17
 [gitbutler]
 	aiOpenAIKeyOption = butlerAPI
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential
