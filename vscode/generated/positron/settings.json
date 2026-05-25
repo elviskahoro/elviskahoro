@@ -198,5 +198,6 @@
     "*.parquet": "duckdb.dataFileViewer",
     "*.csv": "duckdb.dataFileViewer",
     "*.tsv": "duckdb.dataFileViewer"
-  }
+},
+"kilo-code.new.autocomplete.model": "mistralai/codestral-2508"
 }
