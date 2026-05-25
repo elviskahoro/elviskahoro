@@ -258,6 +258,7 @@
   e         = r
   rcb       = "!vim ~/.bashrc"
   rcg       = "!vim ~/.gitconfig"
+  review    = "!f() { sha=$(git rev-parse HEAD) || return 1; if roborev list --json --limit 200 | jq -e --arg s \"$sha\" 'any(.[]; (.git_ref // \"\") | startswith($s[0:12]))' >/dev/null 2>&1; then echo \"roborev: review already exists for ${sha:0:12} — skipping\"; else roborev review \"$@\"; fi; }; f"
 
   rebae     = rebase
   reabse    = rebase
@@ -407,7 +408,7 @@
   bcao = bcai
   gcai = !MSG=$(git aiclx) && git commit -m \"$MSG\"
 
-  tai = !roborev review --wait
+  tai = "!f() { sha=$(git rev-parse HEAD) || return 1; if roborev list --json --limit 200 | jq -e --arg s \"$sha\" 'any(.[]; (.git_ref // \"\") | startswith($s[0:12]))' >/dev/null 2>&1; then echo \"roborev: review already exists for ${sha:0:12} — waiting\"; roborev wait \"$@\"; else roborev review --wait \"$@\"; fi; }; f"
 
 [init]
 	defaultBranch = main
