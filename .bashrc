@@ -50,6 +50,19 @@ git_bcw() {
   git worktree add -b "$name" "../worktrees/$name" && cd "../worktrees/$name"
 }
 
+# Enqueue a roborev review for HEAD only if no job (any status) exists for it yet.
+roborev-once() {
+  local sha
+  sha=$(git rev-parse HEAD) || return 1
+  if roborev list --json --limit 200 \
+       | jq -e --arg sha "$sha" 'any(.[]; (.git_ref // "") | startswith($sha[0:12]))' \
+       >/dev/null 2>&1; then
+    echo "roborev: review already exists for ${sha:0:12} — skipping"
+  else
+    roborev review "$@"
+  fi
+}
+
 # Navigation - Directory shortcuts
 alias ~='cd ~'
 alias ..='cd ../'
@@ -363,6 +376,7 @@ alias nfm='fnm'
 # Reflex
 alias refelx='reflex'
 alias rr='reflex run'
+alias rv='roborev'
 alias rrld='reflex run --loglevel=debug'
 
 # Tmux
