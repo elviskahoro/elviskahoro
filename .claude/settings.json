@@ -47,7 +47,6 @@
     "pyright-lsp@claude-plugins-official": true,
     "superpowers@claude-plugins-official": false,
     "linear@claude-plugins-official": false,
-    "adspirer-ads-agent@claude-plugins-official": false,
     "context7@claude-plugins-official": false,
     "code-review@claude-plugins-official": false,
     "code-simplifier@claude-plugins-official": false,
