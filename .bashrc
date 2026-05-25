@@ -62,6 +62,7 @@ alias .5='cd ../../../../../'
 alias .6='cd ../../../../../../'
 
 alias ai='cd /Users/elvis/Documents/ai'
+alias aai='cd /Users/elvis/Documents/ai'
 alias apollo='cd /Users/elvis/Documents/elviskahoro/ai/gtm/apollo'
 alias attio='cd /Users/elvis/Documents/elviskahoro/ai/gtm/attio'
 
@@ -72,7 +73,6 @@ alias cdcd='cd ~/Desktop'
 alias cdd='cd ~/Desktop'
 alias cddocs='cd ~/Documents/'
 alias cddt='cd ~/Desktop/test/temp'
-alias cdobsidian='cd ~/Documents/obsidian'
 alias cdr='cd ~/Documents/reflex-dev'
 alias cdshowcase='cd ~/Documents/showcase'
 alias cdtrunk='cd ~/Documents/devx/.trunk/config'
@@ -104,8 +104,7 @@ alias fcdx='cd ~/Documents/reflex-dev/devx'
 alias grow='cd /Users/elvis/Documents/elviskahoro/growth-machine'
 alias growth='cd /Users/elvis/Documents/elviskahoro/growth-machine'
 
-alias home='cd /Users/elvis/Documents/elviskahoro/obsidian'
-
+alias obsidian='cd /Users/elvis/Documents/elviskahoro/obsidian'
 alias os='cd /Users/elvis/Documents/dlt-hub/gtm-os'
 
 alias play='cd ~/Documents/elviskahoro/playground'
