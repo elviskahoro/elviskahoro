@@ -1090,6 +1090,10 @@
   },
   {
     "key": "cmd+l",
+    "command": "workbench.view.extension.kilo-code-ActivityBar"
+  },
+  {
+    "key": "cmd+l",
     "command": "kilo-code.addToContext",
     "when": "editorHasSelection && editorTextFocus"
   },
