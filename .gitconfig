@@ -264,6 +264,7 @@
   reabse    = rebase
   rebse     = rebase
   rebae     = rebase
+  roborev   = "!roborev"
 
   rb        = "!gt rebase"
   rba       = "!gt rebase --abort"
