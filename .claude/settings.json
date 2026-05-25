@@ -3,9 +3,18 @@
     "allow": [
       "Bash(deepline *)",
       "Bash(export PATH=$HOME/.local/bin:$PATH && deepline *)"
-    ]
+    ],
+    "deny": [
+      "TaskCreate",
+      "TaskGet",
+      "TaskList",
+      "TaskOutput",
+      "TaskStop",
+      "TaskUpdate"
+    ],
+    "defaultMode": "auto"
   },
-  "model": "opus[1m]",
+  "model": "opus",
   "hooks": {
     "WorktreeCreate": [
       {
@@ -39,6 +48,16 @@
             "statusMessage": "Validating artifact status prefix..."
           }
         ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "$HOME/.claude/hooks/block-push-protected.sh",
+            "statusMessage": "Checking git push branch policy..."
+          }
+        ]
       }
     ]
   },
@@ -64,8 +83,9 @@
     "firecrawl@claude-plugins-official": false,
     "semgrep@claude-plugins-official": false,
     "circleback@claude-plugins-official": false,
+    "marimo-pair@marimo-pair": true,
     "warp@claude-code-warp": true,
-    "marimo-pair@marimo-pair": true
+    "logfire-session-capture@pydantic-claude-code-logfire-plugin": true
   },
   "extraKnownMarketplaces": {
     "claude-code-warp": {
@@ -73,9 +93,23 @@
         "source": "github",
         "repo": "warpdotdev/claude-code-warp"
       }
+    },
+    "braintrust-claude-plugin": {
+      "source": {
+        "source": "github",
+        "repo": "braintrustdata/braintrust-claude-plugin"
+      }
+    },
+    "pydantic-claude-code-logfire-plugin": {
+      "source": {
+        "source": "github",
+        "repo": "pydantic/claude-code-logfire-plugin"
+      }
     }
   },
-  "effortLevel": "high",
+  "effortLevel": "low",
   "skipDangerousModePermissionPrompt": true,
-  "editorMode": "vim"
+  "theme": "custom:current",
+  "editorMode": "vim",
+  "skipAutoPermissionPrompt": true
 }
