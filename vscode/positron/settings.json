@@ -1,4 +1,5 @@
 {
+    "workbench.editor.enablePreview": true,
     "files.associations": {
         "renv.lock": "json"
     },
