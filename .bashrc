@@ -50,12 +50,13 @@ git_bcw() {
   git worktree add -b "$name" "../worktrees/$name" && cd "../worktrees/$name"
 }
 
-# Enqueue a roborev review for HEAD only if no job (any status) exists for it yet.
+# Enqueue a roborev review for HEAD only if a non-failed job (queued/running/done)
+# already exists for it. Previously-failed reviews are allowed to retry.
 roborev-once() {
   local sha
   sha=$(git rev-parse HEAD) || return 1
-  if roborev list --json --limit 200 \
-       | jq -e --arg sha "$sha" 'any(.[]; (.git_ref // "") | startswith($sha[0:12]))' \
+  if roborev list --json --limit 0 \
+       | jq -e --arg sha "$sha" 'any(.[]; ((.git_ref // "") | startswith($sha[0:12])) and .status != "failed")' \
        >/dev/null 2>&1; then
     echo "roborev: review already exists for ${sha:0:12} — skipping"
   else
