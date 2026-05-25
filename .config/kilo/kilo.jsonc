@@ -2,5 +2,35 @@
   "$schema": "https://app.kilo.ai/config.json",
   "permission": {
     "bash": "allow"
+  },
+  "model": "kilo/kilo-auto/frontier",
+  "small_model": "kilo/kilo-auto/frontier",
+  "agent": {
+    "plan": {
+      "model": "kilo/kilo-auto/frontier"
+    },
+    "debug": {
+      "model": "kilo/kilo-auto/frontier"
+    },
+    "orchestrator": {
+      "model": "kilo/kilo-auto/frontier"
+    },
+    "ask": {
+      "model": "kilo/kilo-auto/frontier"
+    },
+    "code": {
+      "model": "kilo/kilo-auto/frontier"
+    }
+  },
+  "experimental": {
+    "batch_tool": true,
+    "codebase_search": true,
+    "semantic_indexing": true,
+    "agent_manager_tool": true,
+    "openTelemetry": true
+  },
+  "indexing": {
+    "provider": "kilo",
+    "model": "mistralai/mistral-embed-2312"
   }
 }
