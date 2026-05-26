@@ -84,16 +84,10 @@
     "semgrep@claude-plugins-official": false,
     "circleback@claude-plugins-official": false,
     "marimo-pair@marimo-pair": true,
-    "warp@claude-code-warp": true,
-    "logfire-session-capture@pydantic-claude-code-logfire-plugin": true
+    "logfire-session-capture@pydantic-claude-code-logfire-plugin": true,
+    "warp@claude-code-warp": true
   },
   "extraKnownMarketplaces": {
-    "claude-code-warp": {
-      "source": {
-        "source": "github",
-        "repo": "warpdotdev/claude-code-warp"
-      }
-    },
     "braintrust-claude-plugin": {
       "source": {
         "source": "github",
@@ -104,6 +98,12 @@
       "source": {
         "source": "github",
         "repo": "pydantic/claude-code-logfire-plugin"
+      }
+    },
+    "claude-code-warp": {
+      "source": {
+        "source": "github",
+        "repo": "warpdotdev/claude-code-warp"
       }
     }
   },
