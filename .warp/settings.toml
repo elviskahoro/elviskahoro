@@ -87,7 +87,7 @@ should_render_use_agent_toolbar_for_user_commands = false
 enabled = true
 intelligent_autosuggestions_enabled = false
 agent_mode_query_suggestions_enabled = true
-code_suggestions_enabled = true
+code_suggestions_enabled = false
 rule_suggestions_enabled = true
 
 [agents.voice]
