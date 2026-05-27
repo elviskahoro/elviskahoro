@@ -101,16 +101,16 @@
         "repo": "braintrustdata/braintrust-claude-plugin"
       }
     },
-    "claude-code-warp": {
-      "source": {
-        "source": "github",
-        "repo": "warpdotdev/claude-code-warp"
-      }
-    },
     "pydantic-claude-code-logfire-plugin": {
       "source": {
         "source": "github",
         "repo": "pydantic/claude-code-logfire-plugin"
+      }
+    },
+    "claude-code-warp": {
+      "source": {
+        "source": "github",
+        "repo": "warpdotdev/claude-code-warp"
       }
     }
   },
