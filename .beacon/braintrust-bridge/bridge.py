@@ -19,20 +19,26 @@ import signal
 import sys
 import time
 import urllib.error
+import urllib.parse
 import urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any, Iterable
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from collections.abc import Iterable
 
 DEFAULT_INPUT = Path("/Users/elvis/.beacon/endpoint/logs/runtime.jsonl")
 DEFAULT_BATCH_SIZE = 16
 DEFAULT_FLUSH_SECONDS = 5.0
 HTTP_TIMEOUT = 10.0
+HTTP_INVALID_STATUS = 300
+HEX_TRACE_ID_LENGTH = 32
 SCOPE_NAME = "beacon-braintrust-bridge"
 SCOPE_VERSION = "0.1"
 
 
-def log(level: str, msg: str, **fields: Any) -> None:
+def log(level: str, msg: str, **fields: object) -> None:
     ts = datetime.now(timezone.utc).isoformat(timespec="milliseconds")
     extra = " ".join(f"{k}={json.dumps(v, default=str)}" for k, v in fields.items())
     line = f"{ts} {level} {msg}"
@@ -51,7 +57,7 @@ def parse_timestamp_ns(value: str) -> int:
     return int(dt.timestamp() * 1_000_000_000)
 
 
-def attr_value(v: Any) -> dict:
+def attr_value(v: object) -> dict:
     # OTLP/JSON AnyValue encoding. Stringify nested structures so Braintrust
     # always sees a leaf primitive (its UI flattens these into key/value rows).
     if isinstance(v, bool):
@@ -67,7 +73,7 @@ def attr_value(v: Any) -> dict:
     return {"stringValue": json.dumps(v, default=str, separators=(",", ":"))}
 
 
-def flatten(obj: Any, prefix: str = "") -> Iterable[tuple[str, Any]]:
+def flatten(obj: object, prefix: str = "") -> Iterable[tuple[str, object]]:
     if isinstance(obj, dict):
         for k, v in obj.items():
             key = f"{prefix}.{k}" if prefix else k
@@ -89,7 +95,9 @@ def derive_trace_id(event: dict) -> str:
     sess = (event.get("session") or {}).get("id")
     if isinstance(sess, str):
         hex_only = sess.replace("-", "")
-        if len(hex_only) == 32 and all(c in "0123456789abcdefABCDEF" for c in hex_only):
+        if len(hex_only) == HEX_TRACE_ID_LENGTH and all(
+            c in "0123456789abcdefABCDEF" for c in hex_only
+        ):
             return hex_only.lower()
     return secrets.token_hex(16)
 
@@ -108,7 +116,8 @@ def event_to_span(event: dict) -> dict:
     ts_str = event.get("timestamp")
     if not isinstance(ts_str, str):
         # Unknown shape — skip rather than backdate.
-        raise ValueError("missing timestamp")
+        msg = "missing timestamp"
+        raise TypeError(msg)
     start_ns = parse_timestamp_ns(ts_str)
     # Beacon events are point-in-time. Give a 1µs dummy duration so the span
     # is non-degenerate in trace viewers that filter zero-duration spans.
@@ -125,7 +134,7 @@ def event_to_span(event: dict) -> dict:
     }
 
 
-def severity_to_status(severity: Any) -> int:
+def severity_to_status(severity: object) -> int:
     # OTel StatusCode: 0=UNSET, 1=OK, 2=ERROR.
     if isinstance(severity, str) and severity.lower() in {"error", "critical", "fatal"}:
         return 2
@@ -141,16 +150,20 @@ def build_payload(spans: list[dict], resource_attrs: dict) -> bytes:
                     {
                         "scope": {"name": SCOPE_NAME, "version": SCOPE_VERSION},
                         "spans": spans,
-                    }
+                    },
                 ],
-            }
-        ]
+            },
+        ],
     }
     return json.dumps(body, separators=(",", ":")).encode()
 
 
 def post_batch(endpoint: str, auth: str, parent: str, payload: bytes) -> None:
-    req = urllib.request.Request(
+    parsed = urllib.parse.urlparse(endpoint)
+    if parsed.scheme not in ("http", "https"):
+        msg = f"Invalid URL scheme: {parsed.scheme}"
+        raise ValueError(msg)
+    req = urllib.request.Request(  # noqa: S310
         endpoint,
         data=payload,
         headers={
@@ -160,11 +173,16 @@ def post_batch(endpoint: str, auth: str, parent: str, payload: bytes) -> None:
         },
         method="POST",
     )
-    with urllib.request.urlopen(req, timeout=HTTP_TIMEOUT) as resp:
+    with urllib.request.urlopen(req, timeout=HTTP_TIMEOUT) as resp:  # noqa: S310
         status = resp.status
         body = resp.read(512)
-    if status >= 300:
-        log("warn", "braintrust returned non-2xx", status=status, body=body.decode(errors="replace"))
+    if status >= HTTP_INVALID_STATUS:
+        log(
+            "warn",
+            "braintrust returned non-2xx",
+            status=status,
+            body=body.decode(errors="replace"),
+        )
 
 
 def tail_lines(path: Path, stop: dict) -> Iterable[str]:
@@ -210,12 +228,20 @@ def env(name: str, default: str | None = None) -> str:
     return v
 
 
-def main() -> int:
+def make_config() -> tuple[argparse.Namespace, str, str, str, dict]:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--input", default=str(DEFAULT_INPUT), help="JSONL file to tail")
+    parser.add_argument(
+        "--input",
+        default=str(DEFAULT_INPUT),
+        help="JSONL file to tail",
+    )
     parser.add_argument("--batch-size", type=int, default=DEFAULT_BATCH_SIZE)
     parser.add_argument("--flush-seconds", type=float, default=DEFAULT_FLUSH_SECONDS)
-    parser.add_argument("--once", action="store_true", help="Drain available lines and exit (for testing)")
+    parser.add_argument(
+        "--once",
+        action="store_true",
+        help="Drain available lines and exit (for testing)",
+    )
     args = parser.parse_args()
 
     api_url = env("BRAINTRUST_API_URL").rstrip("/")
@@ -229,11 +255,17 @@ def main() -> int:
         "telemetry.sdk.name": "beacon-braintrust-bridge",
         "telemetry.sdk.language": "python",
     }
+    return args, endpoint, api_key, parent, resource_attrs
 
+
+def main() -> int:
+    args, endpoint, api_key, parent, resource_attrs = make_config()
     stop: dict = {}
-    def handle_signal(signum, _frame):
+
+    def handle_signal(signum: int, _frame: object) -> None:
         log("info", "received signal, draining", signum=signum)
         stop["stop"] = True
+
     signal.signal(signal.SIGTERM, handle_signal)
     signal.signal(signal.SIGINT, handle_signal)
 
@@ -252,7 +284,13 @@ def main() -> int:
         try:
             post_batch(endpoint, api_key, parent, payload)
             sent += len(batch)
-            log("info", "flushed", spans=len(batch), total_sent=sent, bytes=len(payload))
+            log(
+                "info",
+                "flushed",
+                spans=len(batch),
+                total_sent=sent,
+                bytes=len(payload),
+            )
         except urllib.error.HTTPError as e:
             body = e.read(512).decode(errors="replace") if e.fp else ""
             log("warn", "http error", status=e.code, body=body)
@@ -277,7 +315,10 @@ def main() -> int:
             log("warn", "skip malformed line", error=str(e), preview=line[:120])
             continue
         batch.append(span)
-        if len(batch) >= args.batch_size or (time.monotonic() - last_flush) >= args.flush_seconds:
+        if (
+            len(batch) >= args.batch_size
+            or (time.monotonic() - last_flush) >= args.flush_seconds
+        ):
             flush()
         if args.once and not batch:
             break
