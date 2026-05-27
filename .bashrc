@@ -318,6 +318,7 @@ alias ws='positron'
 # AI / Code assistants
 alias cla='claude --dangerously-skip-permissions --permission-mode bypassPermissions'
 alias sclaude='claude --dangerously-skip-permissions --permission-mode bypassPermissions'
+alias gslc='claude --dangerously-skip-permissions --permission-mode bypassPermissions'
 alias slc='claude --dangerously-skip-permissions --permission-mode bypassPermissions'
 
 alias clx='codex --yolo'
@@ -510,3 +511,5 @@ dark-theme()   { theme-dark; }
 
 # Apply persisted theme to this shell on startup.
 [ -r "$_THEME_MODE_FILE" ] && _theme_apply_env "$(cat "$_THEME_MODE_FILE")"
+
+alias bdip="bd list --status=in_progress"
