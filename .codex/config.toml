@@ -77,5 +77,14 @@ RESEND_API_KEY = "${op://Personal/api-resend/credential}"
 environment = "dev"
 log_user_prompt = true
 
+# `exporter` covers OTel LOGS; `trace_exporter` covers OTel TRACES.
+# Codex's tracing layer emits the rich session/turn/op.dispatch spans through
+# `trace_exporter` — without this section, those spans default to OtelExporterKind::None
+# and disappear, which is what was happening before 2026-05-26.
+# Both pipe into beacon-otelcol on :4317, which fans into runtime.jsonl, which the
+# Braintrust bridge then ships out (see ../.beacon/braintrust-bridge/).
 [otel.exporter."otlp-grpc"]
+endpoint = "http://127.0.0.1:4317"
+
+[otel.trace_exporter."otlp-grpc"]
 endpoint = "http://127.0.0.1:4317"
