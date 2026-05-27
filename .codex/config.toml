@@ -71,3 +71,11 @@ RESEND_API_KEY = "${op://Personal/api-resend/credential}"
 
 [tui.model_availability_nux]
 "gpt-5.5" = 3
+
+
+[otel]
+environment = "dev"
+log_user_prompt = true
+
+[otel.exporter."otlp-grpc"]
+endpoint = "http://127.0.0.1:4317"
