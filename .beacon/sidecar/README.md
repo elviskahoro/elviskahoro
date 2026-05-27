@@ -10,7 +10,7 @@ Beacon ships its own custom `beacon-otelcol` build that only exports to
 are compiled in. That's why this lives as a separate collector instead of
 extending Beacon's own config.
 
-```
+```text
 Claude Code / Codex ──OTLP──▶ beacon-otelcol ──▶ runtime.jsonl
                                                        │
                                               this sidecar (filelog receiver)
@@ -30,24 +30,30 @@ Claude Code / Codex ──OTLP──▶ beacon-otelcol ──▶ runtime.jsonl
 ## One-time setup on a new machine
 
 1. Install [Beacon](https://github.com/Asymptote-Labs/agent-beacon) and bring up the endpoint agent:
+
    ```sh
    brew tap asymptote-labs/tap
    brew install beacon
    beacon endpoint install --harness=claude,codex
    ```
+
 2. Install `otelcol-contrib` (no Homebrew formula — grab the release tarball):
+
    ```sh
    curl -fsSL -o /tmp/otelcol-contrib.tar.gz \
      "https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v0.121.0/otelcol-contrib_0.121.0_darwin_arm64.tar.gz"
    tar -xzf /tmp/otelcol-contrib.tar.gz -C /tmp otelcol-contrib
    install -m 0755 /tmp/otelcol-contrib ~/.local/bin/otelcol-contrib
    ```
+
 3. Run `./setup.sh symlinks copies` to materialize the launchd plist symlink
    and copy the collector runtime files into `~/.beacon/sidecar/`. The runtime
    files (`otelcol.yaml`, `run.sh`) are copied rather than symlinked because
    macOS TCC blocks launchd-spawned processes from reading anything under
    `~/Documents/`. Re-run `./setup.sh copies` after any edit to those files.
+
 4. Create the secrets bootstrap file (chmod 600, never committed):
+
    ```sh
    umask 077
    cat > ~/.beacon/sidecar/infisical.env <<'EOF'
@@ -55,12 +61,15 @@ Claude Code / Codex ──OTLP──▶ beacon-otelcol ──▶ runtime.jsonl
    INFISICAL_TOKEN=<service-token-with-dev-read>
    EOF
    ```
+
    The Infisical project must define these secrets in the `dev` env:
    `HYPERDX_API_KEY`, `LOGFIRE_TOKEN`, `DASH0_AUTH_TOKEN`, `ARIZE_API_KEY`,
    `ARIZE_SPACE_ID`, `BRAINTRUST_API_KEY`, `BRAINTRUST_API_URL`
    (e.g. `https://api.braintrust.dev` for US, `https://api-eu.braintrust.dev`
    for EU, or your self-hosted data plane), `BRAINTRUST_PROJECT`.
+
 5. Bootstrap the launchd agent:
+
    ```sh
    launchctl bootstrap "gui/$(id -u)" ~/Library/LaunchAgents/com.beacon.sidecar.otlp.user.plist
    ```
