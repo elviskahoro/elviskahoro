@@ -12,6 +12,7 @@ Usage: $0 [--dry-run] [command]
 Commands:
   (none)      Run all setup steps
   symlinks    Create dotfile symlinks only
+  copies      Copy non-symlinkable files (e.g. Beacon sidecar runtime files)
   mcp         Sync MCP server configs to Claude Code CLI and Codex
   help        Show this help message
 
@@ -38,6 +39,11 @@ symlinks_mappings=(
   # Directories (repo root -> $HOME)
   ".vim"
   ".warp"
+  # Beacon sidecar plist — symlink is fine, launchctl reads it at load time.
+  # The runtime files (otelcol.yaml, run.sh) are installed via copy_mappings
+  # below because macOS TCC blocks launchd-spawned processes from reading
+  # anything under ~/Documents/.
+  "Library/LaunchAgents/com.beacon.sidecar.otlp.user.plist"
   # Nested config files (file-by-file)
   ".config/karabiner.json"
   ".config/.tmux.conf"
@@ -152,6 +158,66 @@ cmd_symlinks() {
   fi
 }
 
+# --- Copy mappings ------------------------------------------------------------
+# Files that must exist as real files on the install side (not symlinks) because
+# macOS TCC blocks launchd-spawned processes from reading anything whose final
+# resolved path is under ~/Documents/. Re-run `setup.sh copies` after edits.
+
+copy_mappings=(
+  ".beacon/sidecar/otelcol.yaml"
+  ".beacon/sidecar/run.sh"
+)
+
+cmd_copies() {
+  local copied=()
+  local skipped=()
+
+  for item in "${copy_mappings[@]}"; do
+    source="${DOTFILES_DIR}/${item}"
+    target="${HOME}/${item}"
+
+    if [[ ! -e ${source} ]]; then
+      echo "WARNING: Source does not exist, skipping: ${source}"
+      continue
+    fi
+
+    target_parent="$(dirname "${target}")"
+    if [[ ! -d ${target_parent} ]]; then
+      log "Creating directory: ${target_parent}"
+      if [[ ${DRY_RUN} == false ]]; then
+        mkdir -p "${target_parent}"
+      fi
+    fi
+
+    # Skip if target is already a regular file with identical content.
+    if [[ -f ${target} && ! -L ${target} ]] && cmp -s "${source}" "${target}"; then
+      skipped+=("${item}")
+      continue
+    fi
+
+    log "Copying: ${source} -> ${target}"
+    if [[ ${DRY_RUN} == false ]]; then
+      cp "${source}" "${target}"
+      # Preserve executable bit from source.
+      if [[ -x ${source} ]]; then
+        chmod +x "${target}"
+      fi
+    fi
+    copied+=("${item}")
+  done
+
+  echo ""
+  echo "=== Copies ==="
+  echo "Copied: ${#copied[@]}"
+  for item in "${copied[@]:+"${copied[@]}"}"; do
+    echo "  + ${item}"
+  done
+  echo "Skipped (unchanged): ${#skipped[@]}"
+  for item in "${skipped[@]:+"${skipped[@]}"}"; do
+    echo "  - ${item}"
+  done
+}
+
 # --- MCP Sync ----------------------------------------------------------------
 
 cmd_mcp() {
@@ -194,9 +260,11 @@ done
 case "${COMMAND:-all}" in
 all)
   cmd_symlinks
+  cmd_copies
   cmd_mcp
   ;;
 symlinks) cmd_symlinks ;;
+copies) cmd_copies ;;
 mcp) cmd_mcp ;;
 *)
   echo "Unknown command: ${COMMAND}"
