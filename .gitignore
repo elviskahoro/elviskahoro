@@ -5,3 +5,6 @@ tmp/
 !.claude/hooks/
 !.claude/hooks/**
 .mcp.json
+# Beacon sidecar runtime artifacts — secrets + rotating logs stay local only
+.beacon/sidecar/infisical.env
+.beacon/sidecar/sidecar.log

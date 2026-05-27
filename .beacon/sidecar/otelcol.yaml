@@ -1,0 +1,79 @@
+receivers:
+  filelog:
+    include:
+      - /Users/elvis/.beacon/endpoint/logs/runtime.jsonl
+    start_at: end
+    include_file_name: false
+    include_file_path: false
+    operators:
+      - type: json_parser
+        parse_from: body
+        parse_to: attributes
+        timestamp:
+          parse_from: attributes.timestamp
+          layout_type: gotime
+          layout: "2006-01-02T15:04:05.999999999Z07:00"
+          on_error: send
+
+processors:
+  memory_limiter:
+    check_interval: 1s
+    limit_mib: 128
+  batch:
+    timeout: 5s
+    send_batch_size: 128
+
+exporters:
+  otlphttp/hyperdx:
+    logs_endpoint: https://in-otel.hyperdx.io/v1/logs
+    headers:
+      authorization: ${env:HYPERDX_API_KEY}
+
+  otlphttp/logfire:
+    endpoint: https://logfire-us.pydantic.dev
+    headers:
+      Authorization: Bearer ${env:LOGFIRE_TOKEN}
+
+  otlphttp/dash0:
+    endpoint: https://ingress.us-west-2.aws.dash0.com
+    headers:
+      Authorization: Bearer ${env:DASH0_AUTH_TOKEN}
+      Dash0-Dataset: default
+
+  # Arize AX requires space_id + api_key headers on every export.
+  otlphttp/arize:
+    endpoint: https://otlp.arize.com
+    headers:
+      space_id: ${env:ARIZE_SPACE_ID}
+      api_key: ${env:ARIZE_API_KEY}
+
+  # Braintrust's OTel ingress only accepts traces (/otel/v1/traces); sending
+  # logs to it returns 403. Wire this exporter into a traces pipeline once
+  # the sidecar ingests spans — keeping it on the logs pipeline guarantees
+  # PermissionDenied errors. BRAINTRUST_API_URL overrides the data plane base
+  # URL (US default; EU: https://api-eu.braintrust.dev; self-hosted: yours).
+  # x-bt-parent accepts "project_id:<id>" or "project_name:<name>".
+  otlphttp/braintrust:
+    endpoint: ${env:BRAINTRUST_API_URL}/otel
+    headers:
+      Authorization: Bearer ${env:BRAINTRUST_API_KEY}
+      x-bt-parent: project_name:${env:BRAINTRUST_PROJECT}
+
+extensions:
+  health_check:
+    endpoint: 127.0.0.1:13134
+
+service:
+  telemetry:
+    metrics:
+      level: none
+  extensions: [health_check]
+  pipelines:
+    logs:
+      receivers: [filelog]
+      processors: [memory_limiter, batch]
+      exporters:
+        - otlphttp/hyperdx
+        - otlphttp/logfire
+        - otlphttp/dash0
+        - otlphttp/arize
