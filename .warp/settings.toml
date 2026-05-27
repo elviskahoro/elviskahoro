@@ -16,7 +16,7 @@ use_thin_strokes = "always"
 compact_subtitle = "command"
 enabled = true
 show_details_on_hover = true
-display_granularity = "panes"
+display_granularity = "tabs"
 primary_info = "working_directory"
 view_mode = "compact"
 use_latest_prompt_as_title = false
@@ -37,7 +37,7 @@ theme = {
   custom = { name = "Monokai Pro Spectrum", path = "/Users/elvis/.warp-preview/themes/monokai_pro_spectrum.yml" },
 }
 [appearance.window]
-zoom_level = 100
+zoom_level = 110
 override_opacity = 100
 
 [appearance.panes]
