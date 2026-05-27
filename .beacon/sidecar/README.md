@@ -3,7 +3,9 @@
 Standard `otelcol-contrib` running alongside [Asymptote Beacon](https://github.com/Asymptote-Labs/agent-beacon).
 Beacon emits normalized agent-harness telemetry to a local JSONL file; this
 sidecar tails that file and fans out via OTLP/HTTP to Hyperdx, Logfire, Dash0,
-Arize, and Braintrust.
+and Arize. Braintrust is **not** wired into the sidecar — its OTLP ingress
+only accepts `/otel/v1/traces`, not logs. Beacon events reach Braintrust via
+the sibling [braintrust-bridge](../braintrust-bridge/) daemon.
 
 Beacon ships its own custom `beacon-otelcol` build that only exports to
 `beaconjson`, `falcon_hec`, and `splunk_hec` — no `otlp`/`otlphttp` exporters
@@ -13,8 +15,12 @@ extending Beacon's own config.
 ```text
 Claude Code / Codex ──OTLP──▶ beacon-otelcol ──▶ runtime.jsonl
                                                        │
-                                              this sidecar (filelog receiver)
-                                              ──otlphttp──▶ Hyperdx / Logfire / Dash0 / Arize / Braintrust
+                                       ┌───────────────┴───────────────┐
+                                       ▼                               ▼
+                               this sidecar (filelog)         braintrust-bridge
+                               ──otlphttp──▶                  (Python, OTLP/JSON)
+                               Hyperdx / Logfire / Dash0      ──▶ Braintrust traces
+                               / Arize
 ```
 
 ## Files
@@ -64,9 +70,9 @@ Claude Code / Codex ──OTLP──▶ beacon-otelcol ──▶ runtime.jsonl
 
    The Infisical project must define these secrets in the `dev` env:
    `HYPERDX_API_KEY`, `LOGFIRE_TOKEN`, `DASH0_AUTH_TOKEN`, `ARIZE_API_KEY`,
-   `ARIZE_SPACE_ID`, `BRAINTRUST_API_KEY`, `BRAINTRUST_API_URL`
-   (e.g. `https://api.braintrust.dev` for US, `https://api-eu.braintrust.dev`
-   for EU, or your self-hosted data plane), `BRAINTRUST_PROJECT`.
+   `ARIZE_SPACE_ID`. The `BRAINTRUST_API_KEY` / `BRAINTRUST_API_URL` /
+   `BRAINTRUST_PROJECT` secrets are also expected but consumed by the
+   sibling `braintrust-bridge`, not this sidecar.
 
 5. Bootstrap the launchd agent:
 
