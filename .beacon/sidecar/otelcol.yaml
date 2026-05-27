@@ -47,17 +47,11 @@ exporters:
       space_id: ${env:ARIZE_SPACE_ID}
       api_key: ${env:ARIZE_API_KEY}
 
-  # Braintrust's OTel ingress only accepts traces (/otel/v1/traces); sending
-  # logs to it returns 403. Wire this exporter into a traces pipeline once
-  # the sidecar ingests spans — keeping it on the logs pipeline guarantees
-  # PermissionDenied errors. BRAINTRUST_API_URL overrides the data plane base
-  # URL (US default; EU: https://api-eu.braintrust.dev; self-hosted: yours).
-  # x-bt-parent accepts "project_id:<id>" or "project_name:<name>".
-  otlphttp/braintrust:
-    endpoint: ${env:BRAINTRUST_API_URL}/otel
-    headers:
-      Authorization: Bearer ${env:BRAINTRUST_API_KEY}
-      x-bt-parent: project_name:${env:BRAINTRUST_PROJECT}
+  # Braintrust intentionally absent: api.braintrust.dev only exposes
+  # /otel/v1/traces — sending logs returns 403 from upstream AWS infra
+  # (not Braintrust's gateway). Beacon events reach Braintrust via the
+  # sibling .beacon/braintrust-bridge daemon, which tails this same
+  # runtime.jsonl and POSTs synthesized spans to /otel/v1/traces.
 
 extensions:
   health_check:
