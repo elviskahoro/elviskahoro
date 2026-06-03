@@ -40,3 +40,6 @@ fi
 if [ -f "$HOME/.bashrc" ]; then
     source "$HOME/.bashrc"
 fi
+
+# Gastown multi-agent workspace manager (gt name is taken by Graphite)
+alias gastown="/opt/homebrew/opt/gastown/bin/gastown"
