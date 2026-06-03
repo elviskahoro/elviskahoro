@@ -29,6 +29,10 @@
       "type": "http",
       "url": "https://app.octolens.com/api/mcp",
       "headersHelper": "printf '{\"Authorization\":\"Bearer %s\"}' \"$(op read op://Personal/api-octolens/credential)\""
+    },
+    "exa": {
+      "type": "http",
+      "url": "https://mcp.exa.ai/mcp"
     }
   }
 }
