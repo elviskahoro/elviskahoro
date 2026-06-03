@@ -37,7 +37,7 @@ theme = {
   custom = { name = "Monokai Pro Spectrum", path = "/Users/elvis/.warp-preview/themes/monokai_pro_spectrum.yml" },
 }
 [appearance.window]
-zoom_level = 110
+zoom_level = 100
 override_opacity = 100
 
 [appearance.panes]
@@ -73,7 +73,7 @@ cloud_conversation_storage_enabled = true
 
 [agents.warp_agent.input]
 nld_in_terminal_enabled = false
-ai_auto_detection_enabled = true
+ai_auto_detection_enabled = false
 show_agent_tips = false
 include_agent_commands_in_history = true
 
