@@ -33,11 +33,9 @@ tab_close_button_position = "right"
 input_mode = "pinned_to_bottom"
 
 [appearance.themes]
-theme = {
-  custom = { name = "Monokai Pro Spectrum", path = "/Users/elvis/.warp-preview/themes/monokai_pro_spectrum.yml" },
-}
+theme = { custom = { name = "Monokai Pro Spectrum", path = "monokai_pro_spectrum.yml" } }
 [appearance.window]
-zoom_level = 100
+zoom_level = 110
 override_opacity = 100
 
 [appearance.panes]
@@ -97,6 +95,7 @@ voice_input_enabled = false
 auto_open_composer_on_cli_agent_start = false
 auto_dismiss_composer_after_submit = false
 auto_toggle_composer = false
+should_render_cli_agent_toolbar = false
 
 [agents.profiles]
 agent_mode_execute_readonly_commands = true
