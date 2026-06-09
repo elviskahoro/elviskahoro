@@ -31,8 +31,37 @@
     "dock": "right"
   },
   "agent": {
+    "profiles": {
+      "elvis": {
+        "default_model": {
+          "provider": "anthropic",
+          "model": "claude-sonnet-4-6-latest",
+          "enable_thinking": true,
+          "effort": "high"
+        },
+        "name": "Elvis",
+        "tools": {
+          "fetch": true
+        },
+        "enable_all_context_servers": false,
+        "context_servers": {}
+      }
+    },
     "tool_permissions": {
       "tools": {
+        "fetch": {
+          "always_allow": [
+            {
+              "pattern": "^https?://www\\.braintrust\\.dev"
+            },
+            {
+              "pattern": "^https?://fiddler\\.ai"
+            },
+            {
+              "pattern": "^https?://confident\\-ai\\.com"
+            }
+          ]
+        },
         "terminal": {
           "default": "allow"
         }
