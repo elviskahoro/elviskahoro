@@ -361,6 +361,8 @@
   suo       = uso
   usp       = uso
   pusr      = "!git push && gt restack --upstack"
+  pisr      = pusr
+  psir      = pusr
   psur      = pusr
   psr       = pusr
   usr       = "!gt restack --upstack"
