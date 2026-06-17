@@ -47,6 +47,7 @@ alt_screen_padding = { custom = { uniform_padding = 0.0 } }
 [terminal]
 maximum_grid_size = 500000
 show_terminal_zero_state_block = false
+osc52_clipboard_access = "write_only"
 
 [terminal.input]
 error_underlining_enabled = false
