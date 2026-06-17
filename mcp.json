@@ -18,18 +18,18 @@
       "command": "npx",
       "args": ["-y", "mcp-remote", "https://api.fathom.ai/mcp"]
     },
-    "dosu": {
-      "type": "http",
-      "url": "https://api.dosu.dev/v1/mcp/deployments/d23fd603-faca-4166-8ba5-71414c8a9d81",
-      "headers": {
-        "X-Dosu-API-Key": "${op://Personal/api-dosu/credential}"
-      }
-    },
-    "octolens": {
-      "type": "http",
-      "url": "https://app.octolens.com/api/mcp",
-      "headersHelper": "printf '{\"Authorization\":\"Bearer %s\"}' \"$(op read op://Personal/api-octolens/credential)\""
-    },
+    // "dosu": {
+    //   "type": "http",
+    //   "url": "https://api.dosu.dev/v1/mcp/deployments/d23fd603-faca-4166-8ba5-71414c8a9d81",
+    //   "headers": {
+    //     "X-Dosu-API-Key": "${op://Personal/api-dosu/credential}"
+    //   }
+    // },
+    // "octolens": {
+    //   "type": "http",
+    //   "url": "https://app.octolens.com/api/mcp",
+    //   "headersHelper": "printf '{\"Authorization\":\"Bearer %s\"}' \"$(op read op://Personal/api-octolens/credential)\""
+    // },
     "exa": {
       "type": "http",
       "url": "https://mcp.exa.ai/mcp"
