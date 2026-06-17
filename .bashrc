@@ -318,12 +318,13 @@ alias vs='positron'
 alias ws='positron'
 
 # AI / Code assistants
-alias cla='claude --dangerously-skip-permissions --permission-mode bypassPermissions'
-alias sclaude='claude --dangerously-skip-permissions --permission-mode bypassPermissions'
-alias gslc='claude --dangerously-skip-permissions --permission-mode bypassPermissions'
-alias slc='claude --dangerously-skip-permissions --permission-mode bypassPermissions'
+alias cla='paper start claude --dangerously-skip-permissions --permission-mode bypassPermissions'
+alias sclaude='paper start claude --dangerously-skip-permissions --permission-mode bypassPermissions'
+alias gslc='paper start claude --dangerously-skip-permissions --permission-mode bypassPermissions'
+alias slc='paper start claude --dangerously-skip-permissions --permission-mode bypassPermissions'
 
 alias clx='codex --yolo'
+alias xlc='codex --yolo'
 alias scodex='codex --yolo'
 alias slx='codex --yolo'
 
