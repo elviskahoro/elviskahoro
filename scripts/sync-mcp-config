@@ -114,7 +114,8 @@ def sync_mcp_config() -> bool:
     # Read canonical MCP configuration
     try:
         with canonical_file.open() as f:
-            canonical_data = json.load(f)
+            canonical_text = f.read()
+        canonical_data = _load_jsonc(canonical_text)
         mcp_servers = canonical_data.get("mcpServers", {})
     except (OSError, json.JSONDecodeError) as e:
         print(f"Error reading canonical MCP config: {e}", file=sys.stderr)
@@ -125,6 +126,8 @@ def sync_mcp_config() -> bool:
     # startup. Codex keeps the originals (with ${op://...}) since it's symlinked in
     # a public repo and the file stays in version control.
     mcp_servers_resolved = _resolve_auth_helpers(mcp_servers)
+    if mcp_servers_resolved is None:
+        return False
 
     # Sync to Claude Code CLI (user scope — available in all projects)
     if not sync_claude_cli(mcp_servers_resolved):
@@ -141,6 +144,66 @@ def sync_mcp_config() -> bool:
     print("✓ MCP configuration synced successfully")
     print(f"  - Updated {len(mcp_servers)} server(s)")
     return True
+
+
+def _load_jsonc(text: str) -> dict[str, Any]:
+    """Parse JSONC by stripping comments and trailing commas first.
+
+    This keeps the canonical config readable while allowing inactive servers to be
+    commented out without affecting sync output.
+    """
+    stripped = _strip_jsonc(text)
+    return json.loads(stripped)
+
+
+def _strip_jsonc(text: str) -> str:
+    """Remove // and /* */ comments plus trailing commas from JSONC text."""
+    result = []
+    i = 0
+    in_string = False
+    escape = False
+    length = len(text)
+
+    while i < length:
+        ch = text[i]
+        nxt = text[i + 1] if i + 1 < length else ""
+
+        if in_string:
+            result.append(ch)
+            if escape:
+                escape = False
+            elif ch == "\\":
+                escape = True
+            elif ch == '"':
+                in_string = False
+            i += 1
+            continue
+
+        if ch == '"':
+            in_string = True
+            result.append(ch)
+            i += 1
+            continue
+
+        if ch == "/" and nxt == "/":
+            i += 2
+            while i < length and text[i] not in "\r\n":
+                i += 1
+            continue
+
+        if ch == "/" and nxt == "*":
+            i += 2
+            while i + 1 < length and not (text[i] == "*" and text[i + 1] == "/"):
+                i += 1
+            i += 2 if i + 1 < length else 0
+            continue
+
+        result.append(ch)
+        i += 1
+
+    without_comments = "".join(result)
+    without_trailing_commas = re.sub(r",(?=\s*[}\]])", "", without_comments)
+    return without_trailing_commas
 
 
 def sync_claude_cli(mcp_servers: dict[str, Any]) -> bool:
@@ -162,6 +225,8 @@ def sync_claude_cli(mcp_servers: dict[str, Any]) -> bool:
         claude_path = shutil.which("claude") or "claude"
         # Claude does not expand ${op://...} — bake in the actual credentials.
         mcp_servers_resolved = _resolve_op_credentials(mcp_servers)
+        if mcp_servers_resolved is None:
+            return False
         for name, server_config in mcp_servers_resolved.items():
             # Remove first so re-runs refresh credentials. `add-json` is a
             # no-op when the server already exists, which would leave stale
@@ -275,6 +340,8 @@ def sync_warp_config(config_file: Path, mcp_servers: dict[str, Any]) -> bool:
 
         # Resolve 1Password references in env variables for Warp
         mcp_servers_resolved = _resolve_op_credentials(mcp_servers)
+        if mcp_servers_resolved is None:
+            return False
         config["mcpServers"] = mcp_servers_resolved
 
         with config_file.open("w") as f:
@@ -538,7 +605,7 @@ def _format_toml_value(value: Any) -> str:  # noqa: ANN401
     return str(value)
 
 
-def _resolve_auth_helpers(mcp_servers: dict[str, Any]) -> dict[str, Any]:
+def _resolve_auth_helpers(mcp_servers: dict[str, Any]) -> dict[str, Any] | None:
     """Execute headersHelper / envHelper shell commands and bake results in.
 
     Mirrors Claude Code's `headersHelper` field: a shell command that prints a
@@ -548,6 +615,7 @@ def _resolve_auth_helpers(mcp_servers: dict[str, Any]) -> dict[str, Any]:
     don't understand `headersHelper` — get a usable config too.
     """
     resolved_servers = {}
+    had_failure = False
 
     for server_name, server_config in mcp_servers.items():
         resolved_config = dict(server_config)
@@ -565,6 +633,7 @@ def _resolve_auth_helpers(mcp_servers: dict[str, Any]) -> dict[str, Any]:
                 # Resolution failed — restore the helper so the user notices and
                 # so Claude Code (which understands it) can still try at runtime.
                 resolved_config[helper_key] = helper_cmd
+                had_failure = True
                 continue
 
             existing = resolved_config.get(target_key) or {}
@@ -576,7 +645,7 @@ def _resolve_auth_helpers(mcp_servers: dict[str, Any]) -> dict[str, Any]:
 
         resolved_servers[server_name] = resolved_config
 
-    return resolved_servers
+    return None if had_failure else resolved_servers
 
 
 def _execute_auth_helper(
@@ -631,7 +700,7 @@ def _execute_auth_helper(
     return {str(k): str(v) for k, v in parsed.items()}
 
 
-def _resolve_op_credentials(mcp_servers: dict[str, Any]) -> dict[str, Any]:
+def _resolve_op_credentials(mcp_servers: dict[str, Any]) -> dict[str, Any] | None:
     """Resolve 1Password credential references in MCP server env variables.
 
     Finds ${op://...} references in env values and replaces them with actual
@@ -649,6 +718,7 @@ def _resolve_op_credentials(mcp_servers: dict[str, Any]) -> dict[str, Any]:
         If a reference can't be resolved, the original ${op://...} is preserved.
     """
     resolved_servers = {}
+    had_failure = False
 
     for server_name, server_config in mcp_servers.items():
         resolved_config = dict(server_config)
@@ -660,6 +730,9 @@ def _resolve_op_credentials(mcp_servers: dict[str, Any]) -> dict[str, Any]:
                 if isinstance(value, str) and "${op://" in value:
                     # This is a 1Password reference
                     resolved_value = _resolve_op_reference(value)
+                    if resolved_value is None:
+                        had_failure = True
+                        resolved_value = value
                     resolved_env[key] = resolved_value
                 else:
                     resolved_env[key] = value
@@ -674,6 +747,9 @@ def _resolve_op_credentials(mcp_servers: dict[str, Any]) -> dict[str, Any]:
             for key, value in resolved_config["headers"].items():
                 if isinstance(value, str) and "${op://" in value:
                     resolved_value = _resolve_op_reference(value)
+                    if resolved_value is None:
+                        had_failure = True
+                        resolved_value = value
                     resolved_headers[key] = resolved_value
                 else:
                     resolved_headers[key] = value
@@ -681,10 +757,12 @@ def _resolve_op_credentials(mcp_servers: dict[str, Any]) -> dict[str, Any]:
 
         resolved_servers[server_name] = resolved_config
 
+    if had_failure:
+        return None
     return resolved_servers
 
 
-def _resolve_op_reference(op_ref: str) -> str:
+def _resolve_op_reference(op_ref: str) -> str | None:
     """Resolve a single 1Password reference using the `op` CLI.
 
     Example:
@@ -695,7 +773,7 @@ def _resolve_op_reference(op_ref: str) -> str:
         op_ref: String containing ${op://vault/item/field} reference
 
     Returns:
-        Resolved credential value, or the original op_ref if resolution fails.
+        Resolved credential value, or None if resolution fails.
     """
     # Extract the op:// path from ${op://...}
     match = re.search(r"\$\{op://(.+?)\}", op_ref)
@@ -721,14 +799,17 @@ def _resolve_op_reference(op_ref: str) -> str:
         FileNotFoundError,
         subprocess.TimeoutExpired,
     ):
-        # If resolution fails, warn but don't crash
         print(
-            f"  ⚠ Warning: Could not resolve 1Password reference: {op_ref}",
+            f"Error: Could not resolve 1Password reference: {op_ref}",
             file=sys.stderr,
         )
+        return None
 
-    # Return original if resolution failed
-    return op_ref
+    print(
+        f"Error: Could not resolve 1Password reference: {op_ref}",
+        file=sys.stderr,
+    )
+    return None
 
 
 if __name__ == "__main__":
