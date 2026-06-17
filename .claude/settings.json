@@ -22,7 +22,7 @@
     ],
     "defaultMode": "auto"
   },
-  "model": "opus",
+  "model": "sonnet",
   "hooks": {
     "PreToolUse": [
       {
@@ -114,6 +114,7 @@
       }
     }
   },
+  "cleanupPeriodDays": 1095,
   "effortLevel": "low",
   "skipDangerousModePermissionPrompt": true,
   "theme": "custom:current",
