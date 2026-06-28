@@ -112,7 +112,7 @@
   "python.diagnostics.sourceMapsEnabled": true,
   "python.disableInstallationCheck": true,
   "python.terminal.activateEnvInCurrentTerminal": true,
-  "python.languageServer": "Pylance",
+  "python.languageServer": "None",
   "python.defaultInterpreterPath": "/Users/elvis/.pyenv/versions/3.12.4/bin/python",
   "python.testing.cwd": "src/tests/",
   "python.testing.pytestPath": "/Users/elvis/.pyenv/shims/pytest",
@@ -198,5 +198,9 @@
     "*.parquet": "duckdb.dataFileViewer",
     "*.csv": "duckdb.dataFileViewer",
     "*.tsv": "duckdb.dataFileViewer"
-  }
+  },
+  "assistant.enabled": true,
+  "positron.assistant.enable": true,
+  "kilo-code.new.agentWorkStyle": "skipped",
+  "kilo-code.new.autoApprove.enabled": true
 }
