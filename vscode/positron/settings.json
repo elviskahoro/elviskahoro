@@ -13,5 +13,10 @@
         "*.parquet": "duckdb.dataFileViewer",
         "*.csv": "duckdb.dataFileViewer",
         "*.tsv": "duckdb.dataFileViewer"
-    }
+    },
+    "python.languageServer": "None",
+    "assistant.enabled": true,
+    "positron.assistant.enable": true,
+    "kilo-code.new.agentWorkStyle": "skipped",
+    "kilo-code.new.autoApprove.enabled": true
 }
