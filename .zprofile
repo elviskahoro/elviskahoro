@@ -9,6 +9,7 @@ export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/bin:$PATH"
 export PATH="$PATH:/Users/elvis/go/bin"
 
-# bun
+# bun (reflex-bundled). Append, not prepend, so Homebrew's newer bun on PATH wins.
+# Reflex still finds its own bun via BUN_INSTALL regardless of PATH order.
 export BUN_INSTALL="$HOME/Library/Application Support/reflex/bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
+export PATH="$PATH:$BUN_INSTALL/bin"
