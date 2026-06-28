@@ -3,37 +3,38 @@ spacing = "normal"
 
 [appearance.text]
 font_name = "MonoLisa"
-enforce_minimum_contrast = "never"
 line_height_ratio = 1.399999976158142
 font_size = 14.0
 ai_font_name = "MonoLisa"
 notebook_font_size = 14.0
 match_ai_font = false
-match_notebook_to_monospace_font_size = false
 use_thin_strokes = "always"
+enforce_minimum_contrast = "never"
+match_notebook_to_monospace_font_size = false
 
 [appearance.vertical_tabs]
-compact_subtitle = "command"
 enabled = true
 show_details_on_hover = true
+compact_subtitle = "command"
+use_latest_prompt_as_title = false
 display_granularity = "tabs"
 primary_info = "working_directory"
 view_mode = "compact"
-use_latest_prompt_as_title = false
 
 [appearance.blocks]
-show_block_dividers = true
+show_block_dividers = false
 
 [appearance.tabs]
 show_indicators_button = true
-workspace_decoration_visibility = "always_show"
 tab_close_button_position = "right"
+workspace_decoration_visibility = "always_show"
 
 [appearance.input]
 input_mode = "pinned_to_bottom"
 
 [appearance.themes]
-theme = { custom = { name = "Monokai Pro Spectrum", path = "monokai_pro_spectrum.yml" } }
+theme = "dark"
+system_theme = false
 [appearance.window]
 zoom_level = 110
 override_opacity = 100
@@ -46,57 +47,60 @@ alt_screen_padding = { custom = { uniform_padding = 0.0 } }
 
 [terminal]
 maximum_grid_size = 500000
-show_terminal_zero_state_block = false
 osc52_clipboard_access = "write_only"
+show_terminal_zero_state_block = false
 
 [terminal.input]
-error_underlining_enabled = false
-alias_expansion_enabled = false
+input_box_type_setting = "classic"
 command_corrections = false
-show_terminal_input_message_bar = true
-syntax_highlighting = false
-show_hint_text = false
-input_box_type_setting = "universal"
-honor_ps1 = false
+error_underlining_enabled = false
 enable_slash_commands_in_terminal = true
+alias_expansion_enabled = true
+show_hint_text = false
+syntax_highlighting = false
+honor_ps1 = false
+show_terminal_input_message_bar = true
 
 [terminal.input.autosuggestions]
+keybinding_hint = false
 enabled = false
 show_ignore_button = true
-keybinding_hint = false
 
 [agents]
 cloud_conversation_storage_enabled = true
 
 [agents.warp_agent]
+is_any_ai_enabled = true
 
 [agents.warp_agent.input]
-nld_in_terminal_enabled = false
+nld_in_terminal_enabled = true
+include_agent_commands_in_history = true
 ai_auto_detection_enabled = false
 show_agent_tips = false
-include_agent_commands_in_history = true
 
 [agents.warp_agent.other]
 open_conversation_layout_preference = "split_pane"
-cloud_agent_computer_use_enabled = false
 thinking_display_mode = "always_show"
 should_render_use_agent_toolbar_for_user_commands = false
+cloud_agent_computer_use_enabled = true
+show_agent_notifications = true
+show_conversation_history = true
 
 [agents.warp_agent.active_ai]
-enabled = true
+enabled = false
+code_suggestions_enabled = true
+rule_suggestions_enabled = false
 intelligent_autosuggestions_enabled = false
-agent_mode_query_suggestions_enabled = true
-code_suggestions_enabled = false
-rule_suggestions_enabled = true
+agent_mode_query_suggestions_enabled = false
 
 [agents.voice]
 voice_input_enabled = false
 
 [agents.third_party]
+should_render_cli_agent_toolbar = true
 auto_open_composer_on_cli_agent_start = false
 auto_dismiss_composer_after_submit = false
 auto_toggle_composer = false
-should_render_cli_agent_toolbar = false
 
 [agents.profiles]
 agent_mode_execute_readonly_commands = true
@@ -112,21 +116,22 @@ is_agent_task_completed_enabled = true
 is_long_running_enabled = true
 is_needs_attention_enabled = true
 is_password_prompt_enabled = true
-long_running_threshold = 4
+long_running_threshold = 10
 mode = "enabled"
-play_notification_sound = false
+play_notification_sound = true
 
 [code]
 
 [code.editor]
-open_file_layout = "new_tab"
 open_code_panels_file_editor = "system_default"
 open_file_editor = "system_default"
-prefer_tabbed_editor_view = true
 show_project_explorer = true
-auto_open_code_review_pane_on_first_agent_change = false
+prefer_tabbed_editor_view = true
 show_code_review_button = true
+open_file_layout = "new_tab"
+auto_open_code_review_pane_on_first_agent_change = true
 prefer_markdown_viewer = false
+show_global_search = true
 
 [code.indexing]
 agent_mode_codebase_context_auto_indexing = true
@@ -134,19 +139,19 @@ agent_mode_codebase_context_auto_indexing = true
 [cloud_platform]
 
 [cloud_platform.third_party_api_keys]
-can_use_warp_credits_with_byok = false
+can_use_warp_credits_with_byok = true
 
 [account]
 is_settings_sync_enabled = true
 
 [general]
-default_session_mode = "terminal"
-show_warning_before_quitting = false
-should_confirm_close_session = false
-restore_session = false
-link_tooltip = false
 login_item = false
 new_tab_placement = "after_current_tab"
+link_tooltip = false
+restore_session = false
+default_session_mode = "agent"
+should_confirm_close_session = false
+show_warning_before_quitting = false
 
 [keys]
 ctrl_tab_behavior_setting = "activate_prev_next_tab"
@@ -187,7 +192,7 @@ custom_secret_regex_list = [
 ]
 
 [privacy.secret_redaction]
-enabled = false
+enabled = true
 secret_display_mode_setting = "asterisks"
 
 [global_hotkey]
@@ -200,13 +205,16 @@ enabled = true
 enabled = false
 
 [text_editing]
-vim_unnamed_system_clipboard = false
-vim_mode_enabled = true
-autocomplete_symbols = false
 vim_status_bar = false
+vim_unnamed_system_clipboard = false
+autocomplete_symbols = false
+vim_mode_enabled = true
 
 [workflows]
 show_global_workflows_in_universal_search = true
 
 [accessibility]
 accessibility_verbosity = "concise"
+
+[warp_drive]
+enabled = true
