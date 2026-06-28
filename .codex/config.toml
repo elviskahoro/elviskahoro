@@ -57,27 +57,31 @@ trust_level = "trusted"
 
 [mcp_servers]
 
-[mcp_servers.exa]
-type = "http"
-url = "https://mcp.exa.ai/mcp"
+[mcp_servers.codex_apps]
+command = "true"
+enabled = false
 
-[mcp_servers.fathom]
-command = "npx"
-args = ["-y", "mcp-remote", "https://api.fathom.ai/mcp"]
+# [mcp_servers.exa]
+# type = "http"
+# url = "https://mcp.exa.ai/mcp"
 
-[mcp_servers.linear]
-command = "npx"
-args = ["-y", "mcp-remote", "https://mcp.linear.app/mcp"]
+# [mcp_servers.fathom]
+# command = "npx"
+# args = ["-y", "mcp-remote", "https://api.fathom.ai/mcp"]
 
-[mcp_servers.linear.env]
-LINEAR_API_KEY = "${op://Personal/api-linear/credential}"
+# [mcp_servers.linear]
+# command = "npx"
+# args = ["-y", "mcp-remote", "https://mcp.linear.app/mcp"]
 
-[mcp_servers.resend]
-command = "npx"
-args = ["-y", "resend-mcp"]
+# [mcp_servers.linear.env]
+# LINEAR_API_KEY = "${op://Personal/api-linear/credential}"
 
-[mcp_servers.resend.env]
-RESEND_API_KEY = "${op://Personal/api-resend/credential}"
+# [mcp_servers.resend]
+# command = "npx"
+# args = ["-y", "resend-mcp"]
+
+# [mcp_servers.resend.env]
+# RESEND_API_KEY = "${op://Personal/api-resend/credential}"
 [tui.model_availability_nux]
 "gpt-5.5" = 4
 
