@@ -22,7 +22,7 @@ primary_info = "working_directory"
 view_mode = "compact"
 
 [appearance.blocks]
-show_block_dividers = false
+show_block_dividers = true
 
 [appearance.tabs]
 show_indicators_button = true
@@ -33,8 +33,7 @@ workspace_decoration_visibility = "always_show"
 input_mode = "pinned_to_bottom"
 
 [appearance.themes]
-theme = "dark"
-system_theme = false
+theme = { custom = { name = "Monokai Pro Spectrum", path = "monokai_pro_spectrum.yml" } }
 [appearance.window]
 zoom_level = 110
 override_opacity = 100
@@ -51,11 +50,11 @@ osc52_clipboard_access = "write_only"
 show_terminal_zero_state_block = false
 
 [terminal.input]
-input_box_type_setting = "classic"
+input_box_type_setting = "universal"
 command_corrections = false
 error_underlining_enabled = false
 enable_slash_commands_in_terminal = true
-alias_expansion_enabled = true
+alias_expansion_enabled = false
 show_hint_text = false
 syntax_highlighting = false
 honor_ps1 = false
@@ -70,10 +69,9 @@ show_ignore_button = true
 cloud_conversation_storage_enabled = true
 
 [agents.warp_agent]
-is_any_ai_enabled = true
 
 [agents.warp_agent.input]
-nld_in_terminal_enabled = true
+nld_in_terminal_enabled = false
 include_agent_commands_in_history = true
 ai_auto_detection_enabled = false
 show_agent_tips = false
@@ -82,12 +80,10 @@ show_agent_tips = false
 open_conversation_layout_preference = "split_pane"
 thinking_display_mode = "always_show"
 should_render_use_agent_toolbar_for_user_commands = false
-cloud_agent_computer_use_enabled = true
-show_agent_notifications = true
-show_conversation_history = true
+cloud_agent_computer_use_enabled = false
 
 [agents.warp_agent.active_ai]
-enabled = false
+enabled = true
 code_suggestions_enabled = true
 rule_suggestions_enabled = false
 intelligent_autosuggestions_enabled = false
@@ -97,7 +93,7 @@ agent_mode_query_suggestions_enabled = false
 voice_input_enabled = false
 
 [agents.third_party]
-should_render_cli_agent_toolbar = true
+should_render_cli_agent_toolbar = false
 auto_open_composer_on_cli_agent_start = false
 auto_dismiss_composer_after_submit = false
 auto_toggle_composer = false
@@ -116,9 +112,9 @@ is_agent_task_completed_enabled = true
 is_long_running_enabled = true
 is_needs_attention_enabled = true
 is_password_prompt_enabled = true
-long_running_threshold = 10
+long_running_threshold = 4
 mode = "enabled"
-play_notification_sound = true
+play_notification_sound = false
 
 [code]
 
@@ -129,9 +125,8 @@ show_project_explorer = true
 prefer_tabbed_editor_view = true
 show_code_review_button = true
 open_file_layout = "new_tab"
-auto_open_code_review_pane_on_first_agent_change = true
+auto_open_code_review_pane_on_first_agent_change = false
 prefer_markdown_viewer = false
-show_global_search = true
 
 [code.indexing]
 agent_mode_codebase_context_auto_indexing = true
@@ -149,7 +144,7 @@ login_item = false
 new_tab_placement = "after_current_tab"
 link_tooltip = false
 restore_session = false
-default_session_mode = "agent"
+default_session_mode = "terminal"
 should_confirm_close_session = false
 show_warning_before_quitting = false
 
@@ -192,14 +187,14 @@ custom_secret_regex_list = [
 ]
 
 [privacy.secret_redaction]
-enabled = true
+enabled = false
 secret_display_mode_setting = "asterisks"
 
 [global_hotkey]
 
 [global_hotkey.toggle_all_windows]
 keybinding = "shift-cmd-R"
-enabled = true
+enabled = false
 
 [global_hotkey.dedicated_window]
 enabled = false
@@ -215,6 +210,3 @@ show_global_workflows_in_universal_search = true
 
 [accessibility]
 accessibility_verbosity = "concise"
-
-[warp_drive]
-enabled = true
