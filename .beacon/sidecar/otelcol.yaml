@@ -34,8 +34,10 @@ exporters:
     headers:
       Authorization: Bearer ${env:LOGFIRE_TOKEN}
 
+  # Endpoint is data-driven via DASH0_OTLP_ENDPOINT (region differs per org,
+  # e.g. https://ingress.europe-west4.gcp.dash0.com). otlphttp appends /v1/logs.
   otlphttp/dash0:
-    endpoint: https://ingress.us-west-2.aws.dash0.com
+    endpoint: ${env:DASH0_OTLP_ENDPOINT}
     headers:
       Authorization: Bearer ${env:DASH0_AUTH_TOKEN}
       Dash0-Dataset: default
