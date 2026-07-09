@@ -7,7 +7,7 @@ set -eu
 
 # Bootstrap creds live outside ~/Documents/ because macOS TCC blocks launchd-
 # spawned processes from reading files under that path. Regenerate this file
-# from ~/Documents/ai/gtm-sdk/.env.local whenever the Infisical token rotates.
+# from ~/Documents/ai/.env.local whenever the Infisical token rotates.
 ENV_FILE="/Users/elvis/.beacon/sidecar/infisical.env"
 if [[ ! -f ${ENV_FILE} ]]; then
   echo "missing ${ENV_FILE}; cannot bootstrap Infisical auth" >&2
