@@ -364,6 +364,7 @@ def main() -> int:
         return EXIT_NO_BACKENDS
 
     resource_attrs = {
+        "service.namespace": "beacon",
         "service.name": "beacon-bridge",
         "service.version": SCOPE_VERSION,
         "telemetry.sdk.name": SCOPE_NAME,

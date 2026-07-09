@@ -6,8 +6,9 @@
 set -eu
 
 # Bootstrap creds live outside ~/Documents/ because macOS TCC blocks launchd-
-# spawned processes from reading files under that path. Regenerate this file
-# from ~/Documents/elviskahoro/dotfiles/.env.local when the Infisical token rotates.
+# spawned processes from reading files under that path. Source of truth is
+# ~/Documents/elviskahoro/dotfiles/beacon.env; run `./setup.sh copies` to
+# regenerate this real file (and kickstart the agents) when the token rotates.
 ENV_FILE="/Users/elvis/.beacon/sidecar/infisical.env"
 if [[ ! -f ${ENV_FILE} ]]; then
   echo "missing ${ENV_FILE}; cannot bootstrap Infisical auth" >&2
