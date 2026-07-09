@@ -336,6 +336,10 @@ def main() -> int:
         "service.version": SCOPE_VERSION,
         "telemetry.sdk.name": SCOPE_NAME,
         "telemetry.sdk.language": "python",
+        # Arize rejects spans (HTTP 500) unless they carry a model_id resource
+        # attribute or an arize.project.name span attribute. The other backends
+        # ignore this extra resource attribute, so it is safe to set globally.
+        "model_id": os.environ.get("ARIZE_MODEL_ID", "beacon"),
     }
 
     stop: dict = {}
