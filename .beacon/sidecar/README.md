@@ -2,10 +2,12 @@
 
 Standard `otelcol-contrib` running alongside [Asymptote Beacon](https://github.com/Asymptote-Labs/agent-beacon).
 Beacon emits normalized agent-harness telemetry to a local JSONL file; this
-sidecar tails that file and fans out via OTLP/HTTP to Hyperdx, Logfire, Dash0,
-and Arize. Braintrust is **not** wired into the sidecar — its OTLP ingress
-only accepts `/otel/v1/traces`, not logs. Beacon events reach Braintrust via
-the sibling [braintrust-bridge](../braintrust-bridge/) daemon.
+sidecar tails that file and fans out via OTLP/HTTP **logs** to the backends that
+natively ingest logs: Hyperdx, Logfire, and Dash0. Trace-only backends
+(Braintrust, LangSmith, Langfuse, Arize) are **not** wired into the sidecar —
+their OTLP ingress only accepts `/v1/traces`, not logs. Beacon events reach
+those via the sibling [traces bridge](../braintrust-bridge/) daemon, which
+synthesizes spans from the same `runtime.jsonl`.
 
 Beacon ships its own custom `beacon-otelcol` build that only exports to
 `beaconjson`, `falcon_hec`, and `splunk_hec` — no `otlp`/`otlphttp` exporters
@@ -17,10 +19,10 @@ Claude Code / Codex ──OTLP──▶ beacon-otelcol ──▶ runtime.jsonl
                                                        │
                                        ┌───────────────┴───────────────┐
                                        ▼                               ▼
-                               this sidecar (filelog)         braintrust-bridge
-                               ──otlphttp──▶                  (Python, OTLP/JSON)
-                               Hyperdx / Logfire / Dash0      ──▶ Braintrust traces
-                               / Arize
+                               this sidecar (filelog)         traces bridge
+                               ──otlphttp logs──▶             (Python, OTLP/JSON spans)
+                               Hyperdx / Logfire / Dash0      ──▶ Braintrust / LangSmith
+                                                                  / Langfuse / Arize
 ```
 
 ## Files

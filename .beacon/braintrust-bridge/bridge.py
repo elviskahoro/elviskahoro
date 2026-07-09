@@ -1,10 +1,16 @@
 #!/usr/bin/env python3
-# Beacon → Braintrust traces bridge.
+# Beacon -> traces bridge.
 #
-# Braintrust's OTLP ingress only accepts traces (/otel/v1/traces), not logs —
-# the sibling sidecar therefore drops Braintrust from its logs pipeline. This
-# daemon closes the gap by tailing the same runtime.jsonl the sidecar reads
-# and POSTing each Beacon event to Braintrust as a one-span OTLP/JSON trace.
+# Several observability backends only accept OTLP *traces* (/v1/traces), not
+# logs -- the sibling sidecar collector therefore drops them from its logs
+# pipeline. This daemon closes the gap: it tails the same runtime.jsonl the
+# sidecar reads and POSTs each Beacon event as a one-span OTLP/JSON trace to
+# every configured trace backend (Braintrust, LangSmith, Langfuse, Arize).
+#
+# A backend is enabled iff its credentials are present in the environment
+# (injected by `infisical run`), so backends are added incrementally just by
+# adding the relevant secrets in Infisical -- no code change required. With no
+# backend configured the daemon exits 2 so the launchd agent surfaces it.
 #
 # Stdlib-only on purpose (system Python 3.9 on macOS); no uv / pip dependency
 # chain so the launchd agent is robust to environment drift.
@@ -12,6 +18,7 @@
 from __future__ import annotations
 
 import argparse
+import base64
 import json
 import os
 import secrets
@@ -23,7 +30,7 @@ import urllib.parse
 import urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, NamedTuple
 
 if TYPE_CHECKING:
     from collections.abc import Iterable
@@ -32,10 +39,30 @@ DEFAULT_INPUT = Path("/Users/elvis/.beacon/endpoint/logs/runtime.jsonl")
 DEFAULT_BATCH_SIZE = 16
 DEFAULT_FLUSH_SECONDS = 5.0
 HTTP_TIMEOUT = 10.0
+SCOPE_NAME = "beacon-traces-bridge"
+SCOPE_VERSION = "0.2"
 HTTP_INVALID_STATUS = 300
 HEX_TRACE_ID_LENGTH = 32
-SCOPE_NAME = "beacon-braintrust-bridge"
-SCOPE_VERSION = "0.1"
+EXIT_NO_BACKENDS = 2
+
+# Backend OTLP/HTTP trace endpoints used when a per-backend override env var is
+# absent. All accept OTLP/JSON at a `.../v1/traces` path; they differ only in
+# how they authenticate, which build_destinations() encodes per backend.
+DEFAULT_BRAINTRUST_API_URL = "https://api.braintrust.dev"
+DEFAULT_LANGSMITH_ENDPOINT = "https://api.smith.langchain.com/otel/v1/traces"
+# Beacon traces get their OWN LangSmith project so they never mix into the
+# shared LANGSMITH_PROJECT that app code (e.g. gtm-sdk) writes to.
+DEFAULT_LANGSMITH_PROJECT = "beacon"
+DEFAULT_LANGFUSE_HOST = "https://us.cloud.langfuse.com"
+DEFAULT_ARIZE_ENDPOINT = "https://otlp.arize.com/v1/traces"
+
+
+class Destination(NamedTuple):
+    """One trace backend: where to POST and how to authenticate."""
+
+    name: str
+    endpoint: str
+    headers: dict
 
 
 def log(level: str, msg: str, **fields: object) -> None:
@@ -58,8 +85,8 @@ def parse_timestamp_ns(value: str) -> int:
 
 
 def attr_value(v: object) -> dict:
-    # OTLP/JSON AnyValue encoding. Stringify nested structures so Braintrust
-    # always sees a leaf primitive (its UI flattens these into key/value rows).
+    # OTLP/JSON AnyValue encoding. Stringify nested structures so backends
+    # always see a leaf primitive (their UIs flatten these into key/value rows).
     if isinstance(v, bool):
         return {"boolValue": v}
     if isinstance(v, int):
@@ -79,7 +106,7 @@ def flatten(obj: object, prefix: str = "") -> Iterable[tuple[str, object]]:
             key = f"{prefix}.{k}" if prefix else k
             yield from flatten(v, key)
     elif isinstance(obj, list):
-        # Lists are kept as JSON strings under the parent key — OTLP attributes
+        # Lists are kept as JSON strings under the parent key -- OTLP attributes
         # are a flat map and don't model heterogeneous arrays well enough to
         # round-trip cleanly.
         yield prefix, obj
@@ -112,14 +139,21 @@ def derive_span_name(event: dict) -> str:
     return "beacon.event"
 
 
+def severity_to_status(severity: object) -> int:
+    # OTel StatusCode: 0=UNSET, 1=OK, 2=ERROR.
+    if isinstance(severity, str) and severity.lower() in {"error", "critical", "fatal"}:
+        return 2
+    return 0
+
+
 def event_to_span(event: dict) -> dict:
     ts_str = event.get("timestamp")
     if not isinstance(ts_str, str):
-        # Unknown shape — skip rather than backdate.
+        # Unknown shape -- skip rather than backdate.
         msg = "missing timestamp"
         raise TypeError(msg)
     start_ns = parse_timestamp_ns(ts_str)
-    # Beacon events are point-in-time. Give a 1µs dummy duration so the span
+    # Beacon events are point-in-time. Give a 1us dummy duration so the span
     # is non-degenerate in trace viewers that filter zero-duration spans.
     end_ns = start_ns + 1_000
     return {
@@ -132,13 +166,6 @@ def event_to_span(event: dict) -> dict:
         "attributes": to_attributes(event),
         "status": {"code": severity_to_status(event.get("severity"))},
     }
-
-
-def severity_to_status(severity: object) -> int:
-    # OTel StatusCode: 0=UNSET, 1=OK, 2=ERROR.
-    if isinstance(severity, str) and severity.lower() in {"error", "critical", "fatal"}:
-        return 2
-    return 0
 
 
 def build_payload(spans: list[dict], resource_attrs: dict) -> bytes:
@@ -158,19 +185,73 @@ def build_payload(spans: list[dict], resource_attrs: dict) -> bytes:
     return json.dumps(body, separators=(",", ":")).encode()
 
 
-def post_batch(endpoint: str, auth: str, parent: str, payload: bytes) -> None:
-    parsed = urllib.parse.urlparse(endpoint)
+def build_destinations() -> list[Destination]:
+    """Assemble the enabled trace backends from environment credentials.
+
+    Each backend is opt-in: present credentials -> enabled. This lets the user
+    turn a backend on by adding its Infisical secret, with no code change.
+    """
+    dests: list[Destination] = []
+
+    braintrust_key = os.environ.get("BRAINTRUST_API_KEY")
+    if braintrust_key:
+        api_url = os.environ.get("BRAINTRUST_API_URL", DEFAULT_BRAINTRUST_API_URL).rstrip("/")
+        project = os.environ.get("BRAINTRUST_PROJECT", "beacon")
+        dests.append(
+            Destination(
+                "braintrust",
+                f"{api_url}/otel/v1/traces",
+                {
+                    "Authorization": f"Bearer {braintrust_key}",
+                    "x-bt-parent": f"project_name:{project}",
+                },
+            ),
+        )
+
+    langsmith_key = os.environ.get("LANGSMITH_API_KEY")
+    if langsmith_key:
+        endpoint = os.environ.get("LANGSMITH_OTEL_ENDPOINT", DEFAULT_LANGSMITH_ENDPOINT)
+        # Deliberately NOT os.environ["LANGSMITH_PROJECT"]: that is the shared
+        # app project; beacon telemetry routes to its own via the beacon-scoped
+        # override, defaulting to "beacon".
+        project = os.environ.get("BEACON_LANGSMITH_PROJECT", DEFAULT_LANGSMITH_PROJECT)
+        headers = {"x-api-key": langsmith_key, "Langsmith-Project": project}
+        dests.append(Destination("langsmith", endpoint, headers))
+
+    langfuse_public = os.environ.get("LANGFUSE_PUBLIC_KEY")
+    langfuse_secret = os.environ.get("LANGFUSE_SECRET_KEY")
+    if langfuse_public and langfuse_secret:
+        host = os.environ.get("LANGFUSE_HOST", DEFAULT_LANGFUSE_HOST).rstrip("/")
+        token = base64.b64encode(f"{langfuse_public}:{langfuse_secret}".encode()).decode()
+        dests.append(
+            Destination(
+                "langfuse",
+                f"{host}/api/public/otel/v1/traces",
+                {"Authorization": f"Basic {token}"},
+            ),
+        )
+
+    arize_space = os.environ.get("ARIZE_SPACE_ID")
+    arize_key = os.environ.get("ARIZE_API_KEY")
+    if arize_space and arize_key:
+        endpoint = os.environ.get("ARIZE_OTEL_ENDPOINT", DEFAULT_ARIZE_ENDPOINT)
+        dests.append(
+            Destination("arize", endpoint, {"space_id": arize_space, "api_key": arize_key}),
+        )
+
+    return dests
+
+
+def post_batch(dest: Destination, payload: bytes) -> None:
+    parsed = urllib.parse.urlparse(dest.endpoint)
     if parsed.scheme not in ("http", "https"):
         msg = f"Invalid URL scheme: {parsed.scheme}"
         raise ValueError(msg)
+    headers = {"Content-Type": "application/json", **dest.headers}
     req = urllib.request.Request(  # noqa: S310
-        endpoint,
+        dest.endpoint,
         data=payload,
-        headers={
-            "Authorization": f"Bearer {auth}",
-            "Content-Type": "application/json",
-            "x-bt-parent": parent,
-        },
+        headers=headers,
         method="POST",
     )
     with urllib.request.urlopen(req, timeout=HTTP_TIMEOUT) as resp:  # noqa: S310
@@ -179,7 +260,8 @@ def post_batch(endpoint: str, auth: str, parent: str, payload: bytes) -> None:
     if status >= HTTP_INVALID_STATUS:
         log(
             "warn",
-            "braintrust returned non-2xx",
+            "backend returned non-2xx",
+            backend=dest.name,
             status=status,
             body=body.decode(errors="replace"),
         )
@@ -220,15 +302,7 @@ def tail_lines(path: Path, stop: dict) -> Iterable[str]:
             time.sleep(0.5)
 
 
-def env(name: str, default: str | None = None) -> str:
-    v = os.environ.get(name, default)
-    if v is None or v == "":
-        log("error", "missing required env var", name=name)
-        sys.exit(2)
-    return v
-
-
-def make_config() -> tuple[argparse.Namespace, str, str, str, dict]:
+def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser()
     parser.add_argument(
         "--input",
@@ -242,24 +316,28 @@ def make_config() -> tuple[argparse.Namespace, str, str, str, dict]:
         action="store_true",
         help="Drain available lines and exit (for testing)",
     )
-    args = parser.parse_args()
-
-    api_url = env("BRAINTRUST_API_URL").rstrip("/")
-    api_key = env("BRAINTRUST_API_KEY")
-    project = env("BRAINTRUST_PROJECT")
-    endpoint = f"{api_url}/otel/v1/traces"
-    parent = f"project_name:{project}"
-    resource_attrs = {
-        "service.name": "beacon-bridge",
-        "service.version": SCOPE_VERSION,
-        "telemetry.sdk.name": "beacon-braintrust-bridge",
-        "telemetry.sdk.language": "python",
-    }
-    return args, endpoint, api_key, parent, resource_attrs
+    return parser.parse_args()
 
 
 def main() -> int:
-    args, endpoint, api_key, parent, resource_attrs = make_config()
+    args = parse_args()
+    destinations = build_destinations()
+    if not destinations:
+        log(
+            "error",
+            "no trace backends configured; set BRAINTRUST_API_KEY / "
+            "LANGSMITH_API_KEY / LANGFUSE_PUBLIC_KEY+LANGFUSE_SECRET_KEY / "
+            "ARIZE_SPACE_ID+ARIZE_API_KEY",
+        )
+        return EXIT_NO_BACKENDS
+
+    resource_attrs = {
+        "service.name": "beacon-bridge",
+        "service.version": SCOPE_VERSION,
+        "telemetry.sdk.name": SCOPE_NAME,
+        "telemetry.sdk.language": "python",
+    }
+
     stop: dict = {}
 
     def handle_signal(signum: int, _frame: object) -> None:
@@ -269,35 +347,42 @@ def main() -> int:
     signal.signal(signal.SIGTERM, handle_signal)
     signal.signal(signal.SIGINT, handle_signal)
 
-    log("info", "starting", endpoint=endpoint, input=args.input, batch=args.batch_size)
+    log(
+        "info",
+        "starting",
+        backends=[d.name for d in destinations],
+        input=args.input,
+        batch=args.batch_size,
+    )
 
     batch: list[dict] = []
     last_flush = time.monotonic()
-    sent = 0
-    dropped = 0
+    counters: dict = {d.name: {"sent": 0, "dropped": 0} for d in destinations}
 
     def flush() -> None:
-        nonlocal sent, dropped, last_flush
+        nonlocal last_flush
         if not batch:
             return
         payload = build_payload(batch, resource_attrs)
-        try:
-            post_batch(endpoint, api_key, parent, payload)
-            sent += len(batch)
-            log(
-                "info",
-                "flushed",
-                spans=len(batch),
-                total_sent=sent,
-                bytes=len(payload),
-            )
-        except urllib.error.HTTPError as e:
-            body = e.read(512).decode(errors="replace") if e.fp else ""
-            log("warn", "http error", status=e.code, body=body)
-            dropped += len(batch)
-        except (urllib.error.URLError, TimeoutError, OSError) as e:
-            log("warn", "transport error", error=str(e))
-            dropped += len(batch)
+        for dest in destinations:
+            try:
+                post_batch(dest, payload)
+                counters[dest.name]["sent"] += len(batch)
+                log(
+                    "info",
+                    "flushed",
+                    backend=dest.name,
+                    spans=len(batch),
+                    total_sent=counters[dest.name]["sent"],
+                    bytes=len(payload),
+                )
+            except urllib.error.HTTPError as e:
+                body = e.read(512).decode(errors="replace") if e.fp else ""
+                log("warn", "http error", backend=dest.name, status=e.code, body=body)
+                counters[dest.name]["dropped"] += len(batch)
+            except (urllib.error.URLError, TimeoutError, OSError) as e:
+                log("warn", "transport error", backend=dest.name, error=str(e))
+                counters[dest.name]["dropped"] += len(batch)
         batch.clear()
         last_flush = time.monotonic()
 
@@ -311,20 +396,17 @@ def main() -> int:
         try:
             event = json.loads(line)
             span = event_to_span(event)
-        except (json.JSONDecodeError, ValueError) as e:
+        except (json.JSONDecodeError, ValueError, TypeError) as e:
             log("warn", "skip malformed line", error=str(e), preview=line[:120])
             continue
         batch.append(span)
-        if (
-            len(batch) >= args.batch_size
-            or (time.monotonic() - last_flush) >= args.flush_seconds
-        ):
+        if len(batch) >= args.batch_size or (time.monotonic() - last_flush) >= args.flush_seconds:
             flush()
         if args.once and not batch:
             break
 
     flush()
-    log("info", "exit", total_sent=sent, total_dropped=dropped)
+    log("info", "exit", counters=counters)
     return 0
 
 

@@ -10,11 +10,12 @@ usage() {
 Usage: $0 [--dry-run] [command]
 
 Commands:
-  (none)      Run all setup steps
-  symlinks    Create dotfile symlinks only
-  copies      Copy non-symlinkable files (e.g. Beacon sidecar runtime files)
-  mcp         Sync MCP server configs to Claude Code CLI and Codex
-  help        Show this help message
+  (none)        Run all setup steps
+  symlinks      Create dotfile symlinks only
+  copies        Copy non-symlinkable files (e.g. Beacon runtime files)
+  launchagents  Install Beacon launch-agent plists as real files and load them
+  mcp           Sync MCP server configs to Claude Code CLI and Codex
+  help          Show this help message
 
 Options:
   --dry-run   Preview changes without applying them
@@ -39,11 +40,10 @@ symlinks_mappings=(
   # Directories (repo root -> $HOME)
   ".vim"
   ".warp"
-  # Beacon sidecar plist — symlink is fine, launchctl reads it at load time.
-  # The runtime files (otelcol.yaml, run.sh) are installed via copy_mappings
-  # below because macOS TCC blocks launchd-spawned processes from reading
-  # anything under ~/Documents/.
-  "Library/LaunchAgents/com.beacon.sidecar.otlp.user.plist"
+  # NOTE: Beacon launch-agent plists are NOT symlinked. launchd's login-time
+  # scan cannot read a plist whose resolved path is under ~/Documents/ (macOS
+  # TCC), so a symlinked agent silently fails to load on boot. They are installed
+  # as real files and (re)bootstrapped by cmd_launchagents below.
   # Nested config files (file-by-file)
   ".config/karabiner.json"
   ".config/.tmux.conf"
@@ -166,6 +166,8 @@ cmd_symlinks() {
 copy_mappings=(
   ".beacon/sidecar/otelcol.yaml"
   ".beacon/sidecar/run.sh"
+  ".beacon/braintrust-bridge/bridge.py"
+  ".beacon/braintrust-bridge/run.sh"
 )
 
 cmd_copies() {
@@ -195,6 +197,19 @@ cmd_copies() {
       continue
     fi
 
+    # A legacy symlink here (e.g. otelcol.yaml pointing into ~/Documents) must be
+    # replaced with a real file: `cp` through a symlink back to the source fails
+    # ("identical file") and aborts under `set -e`. Back it up and remove first.
+    if [[ -L ${target} ]]; then
+      ensure_backup_dir
+      backup_path="${BACKUP_DIR}/${item}"
+      log "Replacing legacy symlink with real file: ${target}"
+      if [[ ${DRY_RUN} == false ]]; then
+        mkdir -p "$(dirname "${backup_path}")"
+        mv "${target}" "${backup_path}"
+      fi
+    fi
+
     log "Copying: ${source} -> ${target}"
     if [[ ${DRY_RUN} == false ]]; then
       cp "${source}" "${target}"
@@ -213,6 +228,106 @@ cmd_copies() {
     echo "  + ${item}"
   done
   echo "Skipped (unchanged): ${#skipped[@]}"
+  for item in "${skipped[@]:+"${skipped[@]}"}"; do
+    echo "  - ${item}"
+  done
+}
+
+# --- Launch agents ------------------------------------------------------------
+# launchd's login-time scan of ~/Library/LaunchAgents cannot read a plist whose
+# resolved path is under ~/Documents/ (macOS TCC), so a symlinked agent silently
+# fails to load on boot/login. Install each plist as a REAL file and
+# (re)bootstrap it. Idempotent: an unchanged, already-loaded agent is skipped.
+# Re-run `setup.sh launchagents` after editing a plist.
+
+launchagents_mappings=(
+  "Library/LaunchAgents/com.beacon.sidecar.otlp.user.plist"
+  "Library/LaunchAgents/com.beacon.braintrust.bridge.user.plist"
+)
+
+cmd_launchagents() {
+  local domain
+  domain="gui/$(id -u)"
+  local installed=()
+  local loaded=()
+  local skipped=()
+
+  for item in "${launchagents_mappings[@]}"; do
+    source="${DOTFILES_DIR}/${item}"
+    target="${HOME}/${item}"
+    local label
+    label="$(basename "${item}" .plist)"
+
+    if [[ ! -e ${source} ]]; then
+      echo "WARNING: Source does not exist, skipping: ${source}"
+      continue
+    fi
+
+    target_parent="$(dirname "${target}")"
+    if [[ ! -d ${target_parent} ]]; then
+      log "Creating directory: ${target_parent}"
+      if [[ ${DRY_RUN} == false ]]; then
+        mkdir -p "${target_parent}"
+      fi
+    fi
+
+    # Does the plist need (re)writing as a real file?
+    local need_copy=false
+    if [[ -L ${target} ]]; then
+      # Legacy symlink (the load-at-boot bug) — back it up, replace with a copy.
+      ensure_backup_dir
+      backup_path="${BACKUP_DIR}/${item}"
+      log "Replacing legacy symlink with real file: ${target}"
+      if [[ ${DRY_RUN} == false ]]; then
+        mkdir -p "$(dirname "${backup_path}")"
+        mv "${target}" "${backup_path}"
+      fi
+      need_copy=true
+    elif [[ ! -f ${target} ]]; then
+      need_copy=true
+    elif ! cmp -s "${source}" "${target}"; then
+      need_copy=true
+    fi
+
+    if [[ ${need_copy} == true ]]; then
+      log "Installing plist (real file): ${target}"
+      if [[ ${DRY_RUN} == false ]]; then
+        cp "${source}" "${target}"
+      fi
+      installed+=("${item}")
+    fi
+
+    # (Re)load when the plist changed or the agent isn't currently loaded.
+    local is_loaded=false
+    if launchctl print "${domain}/${label}" >/dev/null 2>&1; then
+      is_loaded=true
+    fi
+    if [[ ${need_copy} == true || ${is_loaded} == false ]]; then
+      log "Bootstrapping launch agent: ${domain}/${label}"
+      if [[ ${DRY_RUN} == false ]]; then
+        launchctl bootout "${domain}/${label}" 2>/dev/null || true
+        if ! launchctl bootstrap "${domain}" "${target}"; then
+          echo "WARNING: launchctl bootstrap failed for ${label}" >&2
+        fi
+        launchctl enable "${domain}/${label}" 2>/dev/null || true
+      fi
+      loaded+=("${item}")
+    else
+      skipped+=("${item}")
+    fi
+  done
+
+  echo ""
+  echo "=== Launch agents ==="
+  echo "Installed/updated: ${#installed[@]}"
+  for item in "${installed[@]:+"${installed[@]}"}"; do
+    echo "  + ${item}"
+  done
+  echo "Loaded: ${#loaded[@]}"
+  for item in "${loaded[@]:+"${loaded[@]}"}"; do
+    echo "  ~ ${item}"
+  done
+  echo "Skipped (unchanged & loaded): ${#skipped[@]}"
   for item in "${skipped[@]:+"${skipped[@]}"}"; do
     echo "  - ${item}"
   done
@@ -261,10 +376,12 @@ case "${COMMAND:-all}" in
 all)
   cmd_symlinks
   cmd_copies
+  cmd_launchagents
   cmd_mcp
   ;;
 symlinks) cmd_symlinks ;;
 copies) cmd_copies ;;
+launchagents) cmd_launchagents ;;
 mcp) cmd_mcp ;;
 *)
   echo "Unknown command: ${COMMAND}"
