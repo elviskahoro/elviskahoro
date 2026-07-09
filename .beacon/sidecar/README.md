@@ -32,7 +32,7 @@ Claude Code / Codex ──OTLP──▶ beacon-otelcol ──▶ runtime.jsonl
 | `~/.beacon/sidecar/otelcol.yaml` | `.beacon/sidecar/otelcol.yaml` | Collector config |
 | `~/.beacon/sidecar/run.sh` | `.beacon/sidecar/run.sh` | Launcher; wraps `otelcol-contrib` in `infisical run` |
 | `~/Library/LaunchAgents/com.beacon.sidecar.otlp.user.plist` | `Library/LaunchAgents/com.beacon.sidecar.otlp.user.plist` | macOS user launch agent |
-| `~/.beacon/sidecar/infisical.env` | **(not tracked)** | Bootstrap creds for Infisical |
+| `~/.beacon/sidecar/infisical.env` | `beacon.env` (repo root, gitignored) → copied by `setup.sh copies` | Bootstrap creds for Infisical |
 | `~/.beacon/sidecar/sidecar.log` | **(not tracked)** | Rotating stdout/stderr |
 
 ## One-time setup on a new machine
@@ -60,17 +60,21 @@ Claude Code / Codex ──OTLP──▶ beacon-otelcol ──▶ runtime.jsonl
    macOS TCC blocks launchd-spawned processes from reading anything under
    `~/Documents/`. Re-run `./setup.sh copies` after any edit to those files.
 
-4. Create the secrets bootstrap file (chmod 600, never committed):
+4. Put the bootstrap creds in `beacon.env` at the dotfiles repo root (gitignored
+   via `*.env`), then materialize the real file with `./setup.sh copies`:
 
    ```sh
-   umask 077
-   cat > ~/.beacon/sidecar/infisical.env <<'EOF'
+   cat > ~/Documents/elviskahoro/dotfiles/beacon.env <<'EOF'
    INFISICAL_PROJECT_ID=<project-uuid>
    INFISICAL_TOKEN=<service-token-with-dev-read>
    EOF
+   ./setup.sh copies   # copies beacon.env -> ~/.beacon/sidecar/infisical.env (0600) and kickstarts the agents
    ```
 
-   The Infisical project must define these secrets in the `dev` env:
+   The bootstrap file must **not** be a symlink into `~/Documents/`: TCC blocks
+   the launchd-spawned read ("Operation not permitted"). `setup.sh copies`
+   deploys it as a real file outside `~/Documents/` and re-run it after any token
+   rotation. The Infisical project must define these secrets in the `dev` env:
    `HYPERDX_API_KEY`, `LOGFIRE_TOKEN`, `DASH0_AUTH_TOKEN`, `ARIZE_API_KEY`,
    `ARIZE_SPACE_ID`. The `BRAINTRUST_API_KEY` / `BRAINTRUST_API_URL` /
    `BRAINTRUST_PROJECT` secrets are also expected but consumed by the
@@ -96,9 +100,11 @@ Each backend has its own UI / API to confirm ingestion (e.g.
 ## Gotchas
 
 - **macOS TCC blocks `~/Documents/` for launchd-spawned processes.** The
-  secrets file lives at `~/.beacon/sidecar/infisical.env`, *not* in any
-  `Documents/.env.local`, because launchd can't read the latter without Full
-  Disk Access.
+  secrets file lives at `~/.beacon/sidecar/infisical.env` as a **real file**,
+  *not* a symlink into `Documents/beacon.env`, because launchd can't read
+  anything resolving under `~/Documents/` without Full Disk Access — a symlink
+  crashloops the agent with `source: … Operation not permitted`. The dotfiles
+  `beacon.env` is the source of truth; `setup.sh copies` deploys it.
 - **`beacon endpoint repair` does not touch this sidecar** — different binary,
   different launchd label, different config dir.
 - **Filelog uses `start_at: end`.** Events written *before* the sidecar starts

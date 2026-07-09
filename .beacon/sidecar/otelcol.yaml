@@ -19,6 +19,17 @@ processors:
   memory_limiter:
     check_interval: 1s
     limit_mib: 128
+  resource/beacon:
+    attributes:
+      - key: service.name
+        value: beacon-sidecar
+        action: upsert
+      - key: service.namespace
+        value: beacon
+        action: upsert
+      - key: service.version
+        value: "0.2"
+        action: upsert
   batch:
     timeout: 5s
     send_batch_size: 128
@@ -63,7 +74,7 @@ service:
   pipelines:
     logs:
       receivers: [filelog]
-      processors: [memory_limiter, batch]
+      processors: [memory_limiter, resource/beacon, batch]
       exporters:
         - otlphttp/hyperdx
         - otlphttp/logfire

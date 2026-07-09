@@ -162,12 +162,20 @@ cmd_symlinks() {
 # Files that must exist as real files on the install side (not symlinks) because
 # macOS TCC blocks launchd-spawned processes from reading anything whose final
 # resolved path is under ~/Documents/. Re-run `setup.sh copies` after edits.
+#
+# Entries are either "path" (same relative path under the repo root and $HOME)
+# or "src=>dst" for a renamed copy. The Infisical bootstrap file uses the latter:
+# it lives at the repo root as beacon.env (gitignored — carries a service token)
+# but deploys to ~/.beacon/sidecar/infisical.env, the real file both launch
+# agents source. A symlink here would resolve back under ~/Documents/ and TCC
+# would block the launchd-spawned read ("Operation not permitted").
 
 copy_mappings=(
   ".beacon/sidecar/otelcol.yaml"
   ".beacon/sidecar/run.sh"
   ".beacon/braintrust-bridge/bridge.py"
   ".beacon/braintrust-bridge/run.sh"
+  "beacon.env=>.beacon/sidecar/infisical.env"
 )
 
 cmd_copies() {
@@ -175,8 +183,13 @@ cmd_copies() {
   local skipped=()
 
   for item in "${copy_mappings[@]}"; do
-    source="${DOTFILES_DIR}/${item}"
-    target="${HOME}/${item}"
+    if [[ ${item} == *"=>"* ]]; then
+      source="${DOTFILES_DIR}/${item%%=>*}"
+      target="${HOME}/${item##*=>}"
+    else
+      source="${DOTFILES_DIR}/${item}"
+      target="${HOME}/${item}"
+    fi
 
     if [[ ! -e ${source} ]]; then
       echo "WARNING: Source does not exist, skipping: ${source}"
@@ -217,6 +230,10 @@ cmd_copies() {
       if [[ -x ${source} ]]; then
         chmod +x "${target}"
       fi
+      # The Infisical bootstrap file carries a service token — lock it to 0600.
+      if [[ "$(basename "${target}")" == "infisical.env" ]]; then
+        chmod 600 "${target}"
+      fi
     fi
     copied+=("${item}")
   done
@@ -231,6 +248,20 @@ cmd_copies() {
   for item in "${skipped[@]:+"${skipped[@]}"}"; do
     echo "  - ${item}"
   done
+
+  # Every copied file is consumed by a running launch agent (collector config,
+  # launcher, daemon, or the injected secret), so a copy only takes effect after
+  # a restart. Kickstart any loaded beacon agent when something actually changed.
+  if [[ ${DRY_RUN} == false && ${#copied[@]} -gt 0 ]]; then
+    local domain
+    domain="gui/$(id -u)"
+    for label in com.beacon.sidecar.otlp.user com.beacon.braintrust.bridge.user; do
+      if launchctl print "${domain}/${label}" >/dev/null 2>&1; then
+        echo "Kickstarting ${label} to pick up copied files"
+        launchctl kickstart -k "${domain}/${label}" >/dev/null 2>&1 || true
+      fi
+    done
+  fi
 }
 
 # --- Launch agents ------------------------------------------------------------
