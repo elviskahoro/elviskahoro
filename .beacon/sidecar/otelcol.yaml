@@ -29,10 +29,12 @@ exporters:
     headers:
       authorization: ${env:HYPERDX_API_KEY}
 
+  # LOGFIRE_WRITE_TOKEN is the valid ingest token; LOGFIRE_TOKEN is revoked
+  # ("Unknown token" 401 on both /v1/logs and /v1/traces).
   otlphttp/logfire:
     endpoint: https://logfire-us.pydantic.dev
     headers:
-      Authorization: Bearer ${env:LOGFIRE_TOKEN}
+      Authorization: Bearer ${env:LOGFIRE_WRITE_TOKEN}
 
   # Endpoint is data-driven via DASH0_OTLP_ENDPOINT (region differs per org,
   # e.g. https://ingress.europe-west4.gcp.dash0.com). otlphttp appends /v1/logs.
