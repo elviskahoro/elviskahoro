@@ -46,7 +46,7 @@
   "workbench.editor.enablePreview": true,
   "workbench.startupEditor": "none",
   "workbench.sideBar.location": "right",
-  "workbench.iconTheme": "Monokai Pro (Filter Spectrum) Icons",
+  "workbench.iconTheme": "Gruvbox Light Soft Icons",
   "workbench.list.smoothScrolling": true,
   "workbench.reduceMotion": "on",
   "workbench.fontAliasing": "auto",

@@ -1,5 +1,6 @@
 {
     "workbench.editor.enablePreview": true,
+    "workbench.iconTheme": "Gruvbox Light Soft Icons",
     "files.associations": {
         "renv.lock": "json"
     },
