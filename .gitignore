@@ -8,6 +8,7 @@ tmp/
 # Local env files — secrets stay out of git
 .env
 .env.*
+*.env
 !.env.example
 # Beacon sidecar runtime artifacts — secrets + rotating logs stay local only
 .beacon/sidecar/infisical.env
