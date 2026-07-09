@@ -55,6 +55,11 @@ DEFAULT_LANGSMITH_ENDPOINT = "https://api.smith.langchain.com/otel/v1/traces"
 DEFAULT_LANGSMITH_PROJECT = "beacon"
 DEFAULT_LANGFUSE_HOST = "https://us.cloud.langfuse.com"
 DEFAULT_ARIZE_ENDPOINT = "https://otlp.arize.com/v1/traces"
+# Observability backends that already receive logs from the sidecar and also
+# accept OTLP traces at these endpoints (Dash0's is region-specific, so it is
+# derived from DASH0_OTLP_ENDPOINT instead of a constant).
+DEFAULT_HYPERDX_ENDPOINT = "https://in-otel.hyperdx.io/v1/traces"
+DEFAULT_LOGFIRE_ENDPOINT = "https://logfire-us.pydantic.dev/v1/traces"
 
 
 class Destination(NamedTuple):
@@ -238,6 +243,33 @@ def build_destinations() -> list[Destination]:
         dests.append(
             Destination("arize", endpoint, {"space_id": arize_space, "api_key": arize_key}),
         )
+
+    # Log-native backends that ALSO accept OTLP traces: send the synthesized
+    # spans so HyperDX/Logfire/Dash0 have correlated logs + traces. Same creds
+    # as the sidecar's logs pipeline.
+    hyperdx_key = os.environ.get("HYPERDX_API_KEY")
+    if hyperdx_key:
+        endpoint = os.environ.get("HYPERDX_OTEL_TRACES_ENDPOINT", DEFAULT_HYPERDX_ENDPOINT)
+        # HyperDX takes the raw key in a lowercase `authorization` header.
+        dests.append(Destination("hyperdx", endpoint, {"authorization": hyperdx_key}))
+
+    # LOGFIRE_TOKEN is revoked ("Unknown token"); prefer the valid write token.
+    logfire_token = os.environ.get("LOGFIRE_WRITE_TOKEN") or os.environ.get("LOGFIRE_TOKEN")
+    if logfire_token:
+        endpoint = os.environ.get("LOGFIRE_OTEL_TRACES_ENDPOINT", DEFAULT_LOGFIRE_ENDPOINT)
+        dests.append(
+            Destination("logfire", endpoint, {"Authorization": f"Bearer {logfire_token}"}),
+        )
+
+    dash0_token = os.environ.get("DASH0_AUTH_TOKEN")
+    dash0_endpoint = os.environ.get("DASH0_OTLP_ENDPOINT")
+    if dash0_token and dash0_endpoint:
+        base = dash0_endpoint.rstrip("/")
+        headers = {
+            "Authorization": f"Bearer {dash0_token}",
+            "Dash0-Dataset": os.environ.get("DASH0_DATASET", "default"),
+        }
+        dests.append(Destination("dash0", f"{base}/v1/traces", headers))
 
     return dests
 
