@@ -5,6 +5,10 @@ tmp/
 !.claude/hooks/
 !.claude/hooks/**
 .mcp.json
+# Local env files — secrets stay out of git
+.env
+.env.*
+!.env.example
 # Beacon sidecar runtime artifacts — secrets + rotating logs stay local only
 .beacon/sidecar/infisical.env
 .beacon/sidecar/sidecar.log
