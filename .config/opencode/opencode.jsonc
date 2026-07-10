@@ -1,0 +1,25 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  // Anthropic API key is read automatically from $ANTHROPIC_API_KEY.
+  "model": "anthropic/claude-opus-4-8",
+  "plugin": ["@warp-dot-dev/opencode-warp"],
+  "disabled_providers": ["anthropic", "opencodezen"],
+  "provider": {
+    "kilo": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "Kilo Gateway",
+      "options": {
+        "baseURL": "https://api.kilo.ai/api/gateway",
+        "apiKey": "{env:KILO_API_KEY}",
+        "headers": {
+          "X-KiloCode-OrganizationId": "{env:KILOCODE_ORG_ID}"
+        }
+      },
+      "models": {
+        "anthropic/claude-sonnet-4-5": {
+          "name": "Claude Sonnet 4.5"
+        }
+      }
+    }
+  }
+}
