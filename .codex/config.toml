@@ -61,6 +61,12 @@ trust_level = "trusted"
 [projects."/Users/elvis/Documents/ai/projects/portal-queue-automation"]
 trust_level = "trusted"
 
+[projects."/Users/elvis/Documents/town"]
+trust_level = "trusted"
+
+[projects."/Users/elvis/Documents/town/gtm_sdk"]
+trust_level = "trusted"
+
 [notice.model_migrations]
 "gpt-5.3-codex" = "gpt-5.4"
 
