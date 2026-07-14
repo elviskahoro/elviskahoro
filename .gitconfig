@@ -264,7 +264,7 @@
   reabse    = rebase
   rebse     = rebase
   rebae     = rebase
-  roborev   = "!roborev"
+	roborev = !roborev
 
   rb        = "!gt rebase"
   rba       = "!gt rebase --abort"
@@ -502,3 +502,6 @@
 [credential "https://gist.github.com"]
 	helper = 
 	helper = !/opt/homebrew/bin/gh auth git-credential
+[credential "https://dolthub.com"]
+	username = elvis
+	useHttpPath = true
