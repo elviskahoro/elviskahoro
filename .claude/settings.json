@@ -23,7 +23,7 @@
     ],
     "defaultMode": "auto"
   },
-  "model": "haiku",
+  "model": "opus[1m]",
   "disableClaudeAiConnectors": true,
   "hooks": {
     "PreToolUse": [
