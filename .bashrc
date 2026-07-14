@@ -10,8 +10,6 @@ if command -v security >/dev/null 2>&1; then
   OPENAI_API_KEY_VALUE="$(security find-generic-password -a "$USER" -s OPENAI_API_KEY -w 2>/dev/null)"
   [ -n "$OPENAI_API_KEY_VALUE" ] && export OPENAI_API_KEY="$OPENAI_API_KEY_VALUE"
 
-  ANTHROPIC_API_KEY_VALUE="$(security find-generic-password -a "$USER" -s ANTHROPIC_API_KEY -w 2>/dev/null)"
-  [ -n "$ANTHROPIC_API_KEY_VALUE" ] && export ANTHROPIC_API_KEY="$ANTHROPIC_API_KEY_VALUE"
 
   # WARP_API_KEY_VALUE="$(security find-generic-password -a "$USER" -s WARP_API_KEY -w 2>/dev/null)"
   # [ -n "$WARP_API_KEY_VALUE" ] && export WARP_API_KEY="$WARP_API_KEY_VALUE"
@@ -321,8 +319,10 @@ alias ws='positron'
 
 # AI / Code assistants
 alias sclaude='claude --dangerously-skip-permissions --permission-mode bypassPermissions'
-alias     slc='paper start claude --dangerously-skip-permissions --permission-mode bypassPermissions'
+alias     slc='claude --dangerously-skip-permissions --permission-mode bypassPermissions'
 alias    gslc='claude --dangerously-skip-permissions --permission-mode bypassPermissions'
+alias    glsc='claude --dangerously-skip-permissions --permission-mode bypassPermissions'
+
 
 alias clx='codex --yolo'
 alias xlc='codex --yolo'
@@ -336,7 +336,7 @@ alias robo='roborev'
 alias py='python'
 alias urp='uv run python'
 
-alias pi='uv pip'
+alias pi='pi-coding-agent'
 alias pipu='uv pip'
 alias pipuv='uv pip'
 alias pipv='uv pip'
