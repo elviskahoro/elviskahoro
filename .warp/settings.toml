@@ -82,7 +82,7 @@ include_agent_commands_in_history = true
 
 [agents.warp_agent.other]
 cloud_agent_computer_use_enabled = false
-should_render_use_agent_toolbar_for_user_commands = true
+should_render_use_agent_toolbar_for_user_commands = false
 open_conversation_layout_preference = "new_tab"
 show_conversation_history = true
 show_agent_notifications = true
