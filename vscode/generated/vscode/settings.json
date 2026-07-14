@@ -173,7 +173,7 @@
   "breadcrumbs.symbolSortOrder": "type",
   "outline.showConstants": false,
   "outline.showVariables": false,
-  "extensions.autoUpdate": "onlyEnabledExtensions",
+  "extensions.autoUpdate": "on",
   "vim.mouseSelectionGoesIntoVisualMode": false,
   "vim.hlsearch": true,
   "vim.highlightedyank.enable": true,
@@ -190,5 +190,14 @@
     "markdown": false,
     "scminput": false
 },
-"workbench.sideBar.location": "right"
+"workbench.sideBar.location": "right",
+"terminal.integrated.commandsToSkipShell": [
+    "kilo-code.new.agentManagerOpen",
+    "kilo-code.new.agentManager.showTerminal",
+    "kilo-code.new.agentManager.runScript"
+],
+"kilo-code.new.agentWorkStyle": "skipped",
+"kilo-code.new.autocomplete.enableAutoTrigger": true,
+"kilo-code.new.autocomplete.enableSmartInlineTaskKeybinding": true,
+"kilo-code.new.autocomplete.enableChatAutocomplete": true
 }
