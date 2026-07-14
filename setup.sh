@@ -14,6 +14,7 @@ Commands:
   symlinks      Create dotfile symlinks only
   copies        Copy non-symlinkable files (e.g. Beacon runtime files)
   launchagents  Install Beacon launch-agent plists as real files and load them
+  bin           Create ~/.local/bin command shims (gt -> Gas Town, graphite -> Graphite)
   mcp           Sync MCP server configs to Claude Code CLI and Codex
   help          Show this help message
 
@@ -364,6 +365,111 @@ cmd_launchagents() {
   done
 }
 
+# --- Command shims ------------------------------------------------------------
+# Gas Town (gastown) and Graphite both ship a CLI named `gt`. Homebrew let
+# Graphite win ${prefix}/bin/gt, so bare `gt` resolved to Graphite in every
+# shell -- including the non-interactive ones Gas Town polecats run in, which
+# broke `gt prime` / `gt hook` / `gt mail check` (issue #2). A shell alias can't
+# fix that: it only applies to interactive shells, not `sh -c` / agent subshells.
+#
+# So we shim at the PATH level instead. ~/.local/bin is first on PATH, so a `gt`
+# there wins everywhere. We point it at Gas Town and expose Graphite under its
+# own `graphite` name -- which the git aliases in .gitconfig now call
+# (`!graphite ...`), so `git a`, `git bc`, etc. keep working. Idempotent.
+
+BIN_DIR="${HOME}/.local/bin"
+
+cmd_bin() {
+  local created=()
+  local skipped=()
+  local backed_up=()
+  local missing=()
+
+  local prefix
+  prefix="$(brew --prefix 2>/dev/null || echo /opt/homebrew)"
+
+  # link name => absolute target binary
+  local bin_shims=(
+    "gt=>${prefix}/opt/gastown/bin/gastown"
+    "graphite=>${prefix}/bin/gt"
+  )
+
+  if [[ ! -d ${BIN_DIR} ]]; then
+    log "Creating directory: ${BIN_DIR}"
+    if [[ ${DRY_RUN} == false ]]; then
+      mkdir -p "${BIN_DIR}"
+    fi
+  fi
+
+  for item in "${bin_shims[@]}"; do
+    local name="${item%%=>*}"
+    local target="${item##*=>}"
+    local link="${BIN_DIR}/${name}"
+
+    if [[ ! -e ${target} ]]; then
+      echo "WARNING: shim target does not exist, skipping: ${name} -> ${target}"
+      missing+=("${name}")
+      continue
+    fi
+
+    # Already the correct symlink?
+    if [[ -L ${link} && "$(readlink "${link}")" == "${target}" ]]; then
+      skipped+=("${name}")
+      continue
+    fi
+
+    # Back up an existing real file or a symlink pointing elsewhere.
+    if [[ -e ${link} || -L ${link} ]]; then
+      ensure_backup_dir
+      backup_path="${BACKUP_DIR}/.local/bin/${name}"
+      log "Backing up: ${link} -> ${backup_path}"
+      if [[ ${DRY_RUN} == false ]]; then
+        mkdir -p "$(dirname "${backup_path}")"
+        mv "${link}" "${backup_path}"
+      fi
+      backed_up+=("${name}")
+    fi
+
+    log "Linking shim: ${link} -> ${target}"
+    if [[ ${DRY_RUN} == false ]]; then
+      ln -s "${target}" "${link}"
+    fi
+    created+=("${name}")
+  done
+
+  echo ""
+  echo "=== Command shims ==="
+  echo "Created: ${#created[@]}"
+  for item in "${created[@]:+"${created[@]}"}"; do
+    echo "  + ${item}"
+  done
+  echo "Skipped (already linked): ${#skipped[@]}"
+  for item in "${skipped[@]:+"${skipped[@]}"}"; do
+    echo "  - ${item}"
+  done
+  echo "Backed up: ${#backed_up[@]}"
+  for item in "${backed_up[@]:+"${backed_up[@]}"}"; do
+    echo "  ~ ${item}"
+  done
+  if [[ ${#missing[@]} -gt 0 ]]; then
+    echo "Missing targets (not installed?): ${#missing[@]}"
+    for item in "${missing[@]:+"${missing[@]}"}"; do
+      echo "  ! ${item}"
+    done
+  fi
+
+  # Warn if a bare `gt` still resolves to Graphite ahead of the shim on PATH.
+  if [[ ${DRY_RUN} == false ]] && command -v gt >/dev/null 2>&1; then
+    local resolved
+    resolved="$(command -v gt)"
+    if [[ ${resolved} != "${BIN_DIR}/gt" ]]; then
+      echo ""
+      echo "WARNING: 'gt' resolves to ${resolved}, not ${BIN_DIR}/gt."
+      echo "         Ensure ${BIN_DIR} is early in PATH (it is set in .zshrc)."
+    fi
+  fi
+}
+
 # --- MCP Sync ----------------------------------------------------------------
 
 cmd_mcp() {
@@ -408,11 +514,13 @@ all)
   cmd_symlinks
   cmd_copies
   cmd_launchagents
+  cmd_bin
   cmd_mcp
   ;;
 symlinks) cmd_symlinks ;;
 copies) cmd_copies ;;
 launchagents) cmd_launchagents ;;
+bin) cmd_bin ;;
 mcp) cmd_mcp ;;
 *)
   echo "Unknown command: ${COMMAND}"
