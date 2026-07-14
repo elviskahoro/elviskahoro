@@ -1,9 +1,12 @@
 {
   "$schema": "https://app.kilo.ai/config.json",
   "permission": {
-    "bash": "allow"
+    "bash": "allow",
+    "external_directory": {
+      "/Users/elvis/Documents/elviskahoro/dotfiles/.config/kilo/*": "allow"
+    }
   },
-  "model": "kilo/kilo-auto/frontier",
+  "model": "kilo/minimax/minimax-m2.1:free",
   "small_model": "kilo/kilo-auto/frontier",
   "agent": {
     "plan": {
