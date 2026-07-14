@@ -39,7 +39,9 @@ if [ -f "$HOME/.bashrc" ]; then
     source "$HOME/.bashrc"
 fi
 
-# Gastown multi-agent workspace manager (gt name is taken by Graphite)
+# Gastown multi-agent workspace manager. `gt` now resolves to Gastown via the
+# ~/.local/bin/gt shim (created by `setup.sh bin`), which shadows Homebrew's
+# Graphite `gt`. Graphite moved to the `graphite` name (see .gitconfig aliases).
 alias gastown="/opt/homebrew/opt/gastown/bin/gastown"
 alias md='glow'
 

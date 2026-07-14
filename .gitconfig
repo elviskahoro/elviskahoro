@@ -4,17 +4,17 @@
 
 [alias]
 
-  a         = "!gt add"
-  aa        = "!gt add ."
+  a         = "!graphite add"
+  aa        = "!graphite add ."
   aaa       = aa
   aaaa      = aa
-  absorb    = "!gt absorb"
+  absorb    = "!graphite absorb"
   ab        = absorb
   abb       = absorb
   abn       = absorb
   cab       = asborb
-  ap        = "!gt add --patch"
-  au        = "!gt add -u"
+  ap        = "!graphite add --patch"
+  au        = "!graphite add -u"
   aiu       = au
   ai        = au
   aui       = au
@@ -32,9 +32,9 @@
   dau       = au
   gau       = au
   aug       = au
-  auca      = "!gt au && gt ca"
+  auca      = "!graphite au && graphite ca"
 
-  bc        = "!gt create"
+  bc        = "!graphite create"
   gbc       = switch -c
   bcx       = bc
   bcdl      = bc
@@ -42,20 +42,20 @@
   cb        = bc
   bce       = bc
   bvc       = bc
-  bci       = "!gt create --insert"
+  bci       = "!graphite create --insert"
   gbc       = switch -c
-  bcn       = "!gt branch create --no-verify"
-  be        = "!gt downstack edit"
+  bcn       = "!graphite branch create --no-verify"
+  be        = "!graphite downstack edit"
   gbl       = branch -a
   bl        = branch --list
-  bd        = "!f() { if [ $# -eq 0 ]; then gt down; else gt down $1; fi }; f"
+  bd        = "!f() { if [ $# -eq 0 ]; then graphite down; else graphite down $1; fi }; f"
   bds       = bd
   db        = bd
   bp        = bd
   gbd       = bd
-  bdd       = "!gt down && git diff HEAD~$1"
-  bdl       = "!gt branch delete"
-  brd       = "!gt branch unbranch"
+  bdd       = "!graphite down && git diff HEAD~$1"
+  bdl       = "!graphite branch delete"
+  brd       = "!graphite branch unbranch"
   gbrd      = branch -D
   bgrd      = gbrd
   brvd      = gbrd
@@ -68,19 +68,19 @@
   gbtd      = gbrd
   gbr       = gbrd
   gbd       = gbrd
-  brf       = "!gt branch fold"
+  brf       = "!graphite branch fold"
   brsf      = brf
-  brn       = "!gt rename"
+  brn       = "!graphite rename"
   rbn       = brn
-  brsp      = "!gt split"
+  brsp      = "!graphite split"
   bsp       = brsp
-  brsq      = "!gt squash"
+  brsq      = "!graphite squash"
   brrsq     = brsq
-  brt       = "!gt track"
+  brt       = "!graphite track"
   bt        = brt
   btt       = bt
-  btm       = "!gt bottom"
-  bu        = "!f() { if [ $# -eq 0 ]; then gt up; else gt up $1; fi }; f"
+  btm       = "!graphite bottom"
+  bu        = "!f() { if [ $# -eq 0 ]; then graphite up; else graphite up $1; fi }; f"
   bn        = bu
   by        = bu
   nu        = bu
@@ -91,20 +91,20 @@
   bug       = bu
   gbu       = bu
   buy       = bu
-  buff      = "!gt up && git push --force"
-  #bucc     = "!gt upstack test 'trunk check --fix --ignore-git-state'"
-  bucc      = "!gt up && trunk check --fix --filter=-trivy,-checkov,-osv-scanner,-semgrep"
+  buff      = "!graphite up && git push --force"
+  #bucc     = "!graphite upstack test 'trunk check --fix --ignore-git-state'"
+  bucc      = "!graphite up && trunk check --fix --filter=-trivy,-checkov,-osv-scanner,-semgrep"
   bcc       = bucc
   buc       = bucc
-  bud       = "!gt up && git diff HEAD~$1"
-  bca       = "!gt up && trunk check --fix --ignore-git-state --filter=-trivy,-checkov,-osv-scanner"
+  bud       = "!graphite up && git diff HEAD~$1"
+  bca       = "!graphite up && trunk check --fix --ignore-git-state --filter=-trivy,-checkov,-osv-scanner"
 
-  ca        = "!gt modify"
+  ca        = "!graphite modify"
   ac        = ca
   aca       = ca
   cva       = ca
   gca       = commit --amend --no-edit --no-verify
-  cam       = "!gt modify"
+  cam       = "!graphite modify"
   acam      = cam
   cvam      = cam
   acm       = cam
@@ -135,7 +135,7 @@
   cloen     = clone
   cr        = chr
   check     = "!trunk check"
-  co        = "! gt modify -c"
+  co        = "! graphite modify -c"
   gco       = commit
   gcxo      = gco
   cgco      = gco
@@ -144,27 +144,27 @@
   comit     = gco
   goc       = gco
   gcp       = gco
-  com       = "!gt commit -m"
-  con       = "!gt commit create --no-verify"
+  com       = "!graphite commit -m"
+  con       = "!graphite commit create --no-verify"
   gcon      = commit --no-verify
-  ct        = "!gt continue"
+  ct        = "!graphite continue"
   ctr       = ct
   continue  = ct
-  cp        = "!gt cherry-pick"
-  cpa       = "!gt cherry-pick --abort"
-  cpc       = "!gt cherry-pick --continue"
+  cp        = "!graphite cherry-pick"
+  cpa       = "!graphite cherry-pick --abort"
+  cpc       = "!graphite cherry-pick --continue"
 
   d         = "!f() { if [ $# -eq 0 ]; then git diff; else git diff HEAD~$1; fi }; f"
   dash      = "!gh dash"
   f         = d
   dd        = d 1
   d1        = d 1
-  dc        = "!gt diff --cached"
+  dc        = "!graphite diff --cached"
   dcd       = dc
   ddc       = dc
   ds        = "!f() { if [ $# -eq 0 ]; then git show --name-only; else git log --name-only -$1; fi }; f"
-  dsr       = "!gt downstack restack"
-  dst       = "!gt downstack test"
+  dsr       = "!graphite downstack restack"
+  dst       = "!graphite downstack test"
   dl        = "!f() { if [ $# -eq 0 ]; then git show --name-only; else git show --name-only HEAD~$(($1 - 1)); fi }; f"
   gdl       = dl
   dk        = dl
@@ -177,18 +177,18 @@
   drun      = branch -D run
 
   g         = "!git"
-  get       = "!gt get"
+  get       = "!graphite get"
   gh        = "!gh"
 
   iit       = init
   int       = init
   inti      = init
 
-  l         = "!gt log --reverse --show-untracked"
+  l         = "!graphite log --reverse --show-untracked"
   al        = l
   k         = l
   sl        = l
-  ll        = "!gt log short --reverse --show-untracked"
+  ll        = "!graphite log short --reverse --show-untracked"
   ls        = ls-files
   gl        = log
   lt        = log --oneline
@@ -203,14 +203,14 @@
 
   o         = "!gh pr view --web || gh repo view --web"
   open      = o
-  go        = "!gt pr"
+  go        = "!graphite pr"
   gfo       = go
-  onto      = "!gt upstack onto"
+  onto      = "!graphite upstack onto"
 
   pbd       = "!git push --no-verify origin --delete $(git branch --show-current)"
-  pbf       = "!gt push -u origin HEAD"
+  pbf       = "!graphite push -u origin HEAD"
   pbdf      = "!git push --no-verify origin --delete $(git branch --show-current) && git push --no-verify -u origin HEAD"
-  pl        = "!gt pull"
+  pl        = "!graphite pull"
   puill     = pl
   ipull     = pl
   poull     = pl
@@ -221,9 +221,9 @@
   ull       = pl
   pulp      = pl
 
-  plm       = "!gt fetch origin main:main"
+  plm       = "!graphite fetch origin main:main"
   prev      = "!f() { if [ $# -eq 0 ]; then git checkout HEAD^1; else git checkout HEAD^$1; fi }; f"
-  prv       = "!gt pr"
+  prv       = "!graphite pr"
   gpr       = "!gh pr create --web"
 
   pshy      = push
@@ -266,14 +266,14 @@
   rebae     = rebase
 	roborev = !roborev
 
-  rb        = "!gt rebase"
-  rba       = "!gt rebase --abort"
-  rbm       = "!gt rebase main"
-  rbc       = "!gt continue"
+  rb        = "!graphite rebase"
+  rba       = "!graphite rebase --abort"
+  rbm       = "!graphite rebase main"
+  rbc       = "!graphite continue"
   grbc      = rebase --continue
-  reo       = "!gt reorder"
+  reo       = "!graphite reorder"
   rr        = "!reflex run"
-  rs        = "!gt sync"
+  rs        = "!graphite sync"
 
   s         = status
   sg        = s
@@ -286,11 +286,11 @@
   sds       = ss
   gss       = ssg
   ssp       = ssg
-  sw        = "!gt switch"
-  swc       = "!gt switch -c"
+  sw        = "!graphite switch"
+  swc       = "!graphite switch -c"
   sh        = "!f() { if [ $# -eq 0 ]; then git show; else git show HEAD~$1; fi }; f"
   gsq       = "!f() { if [ $# -gt 2 ]; then echo "must be more than one"; else git rebase -i HEAD~$1; fi }; f"
-  sta       = "!gt stash"
+  sta       = "!graphite stash"
   atash     = sta
   tas       = sta
   stah      = sta
@@ -304,27 +304,27 @@
   stas      = sta
   sgta      = sta
   stcc      = stash clear
-  stp       = "!gt stash pop"
+  stp       = "!graphite stash pop"
   spt       = stp
   stop      = stp
   tp        = stp
   sto       = stp
   sp        = stp
   stpo      = stp
-  st        = "!gt stash --patch"
+  st        = "!graphite stash --patch"
   ta        = st
   astash    = stash
-  stau      = "!gt stash --include-untracked"
-  stcc      = "!gt stash clear"
-  std       = "!gt stash drop"
+  stau      = "!graphite stash --include-untracked"
+  stcc      = "!graphite stash clear"
+  std       = "!graphite stash drop"
   tsd       = std
   setd      = std
   stdt      = std
   sted      = std
   stgd      = std
-  std2      = "!gt stash drop && gt stash drop"
-  stl       = "!gt stash list"
-  sts       = "!gt stash show"
+  std2      = "!graphite stash drop && graphite stash drop"
+  stl       = "!graphite stash list"
+  sts       = "!graphite stash show"
 
   sinit     = submodule init
   su        = submodule update
@@ -338,20 +338,20 @@
   staash    = stash
   sstash    = submodule foreach --recursive "git stash"
   astsh     = stash
-  sync      = "!gt sync"
+  sync      = "!graphite sync"
 
   t         = "!pytest --ignore-glob='*/pycord/*' --import-mode=prepend"
   test      = "!pre-commit run --all-files"
-  top       = "!gt top"
+  top       = "!graphite top"
   vtop      = top
   op        = top
   otp       = top
-  topd      = "!gt top && gt down"
+  topd      = "!graphite top && graphite down"
   topn      = topd
   topb      = topd
 
   u         = au
-  uso       = "!gt move"
+  uso       = "!graphite move"
   usor      = uso
   usro      = uso
   usi       = uso
@@ -360,18 +360,18 @@
   uos       = uso
   suo       = uso
   usp       = uso
-  pusr      = "!git push && gt restack --upstack"
+  pusr      = "!git push && graphite restack --upstack"
   pisr      = pusr
   psir      = pusr
   psur      = pusr
   psr       = pusr
-  usr       = "!gt restack --upstack"
+  usr       = "!graphite restack --upstack"
   us        = usr
   uisr      = usr
   usir      = usr
   usrt      = usr
   sur       = usr
-  ust       = "!gt upstack test"
+  ust       = "!graphite upstack test"
 
   wls       = worktree list
   wsl       = worktree list
@@ -402,13 +402,13 @@
   wd        = "!f() { branch=$(git -C \"$1\" rev-parse --abbrev-ref HEAD 2>/dev/null); git worktree remove \"$1\" && { [ -n \"$branch\" ] && git branch -d \"$branch\" 2>/dev/null; echo \"Removed worktree: $1${branch:+ (branch: $branch)}\"; }; }; f"
 
   branch-rename-with-ai = "!if ! git diff --cached --quiet; then echo \"Error: staged changes present; commit or unstage before running\" >&2; exit 1; fi && DIFF=$(git diff HEAD~1 HEAD 2>/dev/null) && if [ -z \"$DIFF\" ]; then echo \"Error: no previous commit to diff\" >&2; exit 1; fi && MSG=$(curl -s https://api.openai.com/v1/responses -H \"Authorization: Bearer $OPENAI_API_KEY\" -H \"Content-Type: application/json\" -d \"$(jq -n --arg diff \"$DIFF\" '{model:\"gpt-4.1-mini\",input:[{role:\"system\",content:\"Write a concise git branch name in kebab-case with a Conventional Commits prefix (e.g. feat/add-user-login, fix/typo-in-readme, chore/update-deps). Use 2-6 words after the slash. Return ONLY the branch name, no quotes, no trailing punctuation, no explanation.\"},{role:\"user\",content:(\"Create a branch name for this diff:\\n\\n\" + $diff)}],max_output_tokens:40,temperature:0.2}')\" 2>/dev/null | jq -r '.output_text // ([.output[]?.content[]?.text // empty] | join(\"\"))') && if [ -z \"$MSG\" ] || [ \"$MSG\" = \"null\" ]; then echo \"Error: API call failed to generate branch name\" >&2; exit 1; fi && printf \"%s\\n\" \"$MSG\""
-  brai = !MSG=$(git branch-rename-with-ai) && gt rename \"$MSG\"
+  brai = !MSG=$(git branch-rename-with-ai) && graphite rename \"$MSG\"
   brau = brai
 
   aislc = "!DIFF=$(git diff --cached) && if [ -z \"$DIFF\" ]; then echo \"Error: no staged changes\" >&2; exit 1; fi && MSG=$(curl -s https://api.anthropic.com/v1/messages -H \"x-api-key: $ANTHROPIC_API_KEY\" -H \"anthropic-version: 2023-06-01\" -H \"content-type: application/json\" -d \"$(jq -n --arg diff \"$DIFF\" '{model:\"claude-haiku-4-5-20251001\",max_tokens:100,messages:[{role:\"user\",content:(\"Create a concise git commit message in conventional commits format (type: description). Return ONLY the message, nothing else.\\n\\n\" + $diff)}]}')\" 2>/dev/null | jq -r \".content[0].text\") && if [ -z \"$MSG\" ] || [ \"$MSG\" = \"null\" ]; then echo \"Error: API call failed to generate commit message\" >&2; exit 1; fi && printf \"%s\\n\" \"$MSG\""
 
   aiclx = "!DIFF=$(git diff --cached) && if [ -z \"$DIFF\" ]; then echo \"Error: no staged changes\" >&2; exit 1; fi && MSG=$(curl -s https://api.openai.com/v1/responses -H \"Authorization: Bearer $OPENAI_API_KEY\" -H \"Content-Type: application/json\" -d \"$(jq -n --arg diff \"$DIFF\" '{model:\"gpt-4.1-mini\",input:[{role:\"system\",content:\"Write a concise git commit message in Conventional Commits format (type: description or type(scope): description). Return only the message.\"},{role:\"user\",content:(\"Create a commit message for this staged diff:\\n\\n\" + $diff)}],max_output_tokens:80,temperature:0.2}')\" 2>/dev/null | jq -r '.output_text // ([.output[]?.content[]?.text // empty] | join(\"\"))') && if [ -z \"$MSG\" ] || [ \"$MSG\" = \"null\" ]; then echo \"Error: API call failed to generate commit message\" >&2; exit 1; fi && printf \"%s\\n\" \"$MSG\""
-  bcai = !MSG=$(git aiclx) && gt create -m \"$MSG\"
+  bcai = !MSG=$(git aiclx) && graphite create -m \"$MSG\"
   bcao = bcai
   gcai = !MSG=$(git aiclx) && git commit -m \"$MSG\"
 
