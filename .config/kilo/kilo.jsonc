@@ -3,7 +3,8 @@
   "permission": {
     "bash": "allow",
     "external_directory": {
-      "/Users/elvis/Documents/elviskahoro/dotfiles/.config/kilo/*": "allow"
+      "/Users/elvis/Documents/elviskahoro/dotfiles/.config/kilo/*": "allow",
+      "/tmp/*": "allow"
     }
   },
   "model": "kilo/minimax/minimax-m2.1:free",
@@ -34,6 +35,10 @@
   },
   "indexing": {
     "provider": "kilo",
-    "model": "mistralai/mistral-embed-2312"
+    "model": "mistralai/mistral-embed-2312",
+    "enabled": true
+  },
+  "skills": {
+    "paths": ["/Users/elvis/Documents/ai/.agents/skills"]
   }
 }
