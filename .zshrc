@@ -41,6 +41,7 @@ fi
 
 # Gastown multi-agent workspace manager (gt name is taken by Graphite)
 alias gastown="/opt/homebrew/opt/gastown/bin/gastown"
+alias md='glow'
 
 # >>> open-knowledge cli >>>
 # ! Contents within this block are managed by OpenKnowledge. Do not edit.
@@ -49,4 +50,9 @@ alias gastown="/opt/homebrew/opt/gastown/bin/gastown"
 # <<< open-knowledge cli <<<
 
 alias pi='npx @earendil-works/pi-coding-agent'
+alias dotfils='dotfiles'
 export PATH="$HOME/.local/bin:$PATH"
+
+# --- Gas Town Integration (managed by gt) ---
+[[ -f "/Users/elvis/.config/gastown/shell-hook.sh" ]] && source "/Users/elvis/.config/gastown/shell-hook.sh"
+# --- End Gas Town ---
