@@ -15,7 +15,7 @@ Commands:
   copies        Copy non-symlinkable files (e.g. Beacon runtime files)
   launchagents  Install Beacon launch-agent plists as real files and load them
   bin           Create ~/.local/bin command shims (gt -> Gas Town, graphite -> Graphite)
-  mcp           Sync MCP server configs to Claude Code CLI and Codex
+  mcp           Sync MCP server configs to Claude Code CLI, Codex user config, and Warp
   help          Show this help message
 
 Options:
@@ -176,6 +176,9 @@ copy_mappings=(
   ".beacon/sidecar/run.sh"
   ".beacon/braintrust-bridge/bridge.py"
   ".beacon/braintrust-bridge/run.sh"
+  # Codex user settings must be a real file. The project-local `.codex/config.toml`
+  # stays empty so Codex does not treat telemetry as project config.
+  ".codex/user-config.toml=>.codex/config.toml"
   "beacon.env=>.beacon/sidecar/infisical.env"
 )
 
