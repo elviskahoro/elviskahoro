@@ -199,7 +199,7 @@ custom_secret_regex_list = [
 
 [privacy.secret_redaction]
 secret_display_mode_setting = "asterisks"
-enabled = true
+enabled = false
 
 [global_hotkey]
 
