@@ -517,3 +517,4 @@ dark-theme()   { theme-dark; }
 [ -r "$_THEME_MODE_FILE" ] && _theme_apply_env "$(cat "$_THEME_MODE_FILE")"
 
 alias bdip="bd list --status=in_progress"
+alias cop="copilot --yolo"
