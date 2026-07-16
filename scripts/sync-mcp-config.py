@@ -1,22 +1,23 @@
 #!/usr/bin/env python3
-r"""Synchronize MCP server configurations from a canonical source to Claude Code (user scope), Codex, and Warp.
+r"""Synchronize MCP server configurations from a canonical source to Claude Code (user scope), Codex user config, and Warp.
 
 SETUP:
   1. Ensure mcp.json exists in the dotfiles root with your MCP servers
-  2. Create symlink: ln -s <dotfiles>/.codex/config.toml ~/.codex/config.toml
+  2. Run `./setup.sh copies` so ~/.codex/config.toml is installed as a real file
+     from .codex/user-config.toml
 
 USAGE:
   ./bin/sync-mcp-config
 
   This syncs MCP servers from mcp.json to:
   - Claude Code CLI (via `claude mcp add-json --scope user`, available globally)
-  - dotfiles/.codex/config.toml (TOML format, in repo, symlinked from ~/.codex/config.toml)
+  - dotfiles/.codex/user-config.toml (TOML format, copied to ~/.codex/config.toml)
   - ~/.warp/.mcp.json (JSON format, synced directly)
 
 DESIGN:
   - Canonical source: mcp.json in dotfiles root
   - Claude target: `claude mcp add-json --scope user` (no settings.json needed)
-  - Codex target: dotfiles/.codex/config.toml (surgically replaces only mcp_servers section)
+  - Codex target: dotfiles/.codex/user-config.toml (surgically replaces only mcp_servers section)
   - Warp target: ~/.warp/.mcp.json (direct merge of mcpServers into JSON file)
 
   The Codex script uses a surgical replacement approach to preserve all other config
@@ -45,8 +46,8 @@ AUTH HELPERS (headersHelper / envHelper):
   the helper at sync time, resolving 1Password references:
   - Claude Code CLI: helpers executed at registration → actual credentials baked in
   - Warp: helpers executed at sync → actual credentials baked in (~/.warp/.mcp.json is local)
-  - Codex: helpers NOT executed → original `headersHelper` preserved (config.toml
-    is symlinked in public repo, so credentials must not be committed)
+  - Codex: helpers NOT executed → original `headersHelper` preserved (user config is
+    copied to ~/.codex/config.toml, so credentials must not be committed)
 
   For targets that keep headersHelper (Codex in public repos), Claude Code will
   execute it at runtime. To rotate credentials, re-run the sync.
@@ -92,7 +93,7 @@ def sync_mcp_config() -> bool:
       1. Locate canonical mcp.json in dotfiles root
       2. Parse MCP servers from JSON
       3. Sync to Claude Code CLI (via `claude mcp add-json --scope user`)
-      4. Sync to Codex (dotfiles/.codex/config.toml)
+      4. Sync to Codex user config (dotfiles/.codex/user-config.toml)
       5. Sync to Warp (~/.warp/.mcp.json)
 
     Returns:
@@ -100,7 +101,7 @@ def sync_mcp_config() -> bool:
     """
     dotfiles_root = get_dotfiles_root()
     canonical_file = dotfiles_root / "mcp.json"
-    codex_config = dotfiles_root / ".codex" / "config.toml"
+    codex_config = dotfiles_root / ".codex" / "user-config.toml"
     warp_config = Path.home() / ".warp" / ".mcp.json"
 
     # Validate canonical file exists
@@ -123,8 +124,8 @@ def sync_mcp_config() -> bool:
 
     # Resolve auth helpers (headersHelper/envHelper) once — bake results into
     # Claude/Warp configs so 1Password is queried only during sync, not on each MCP
-    # startup. Codex keeps the originals (with ${op://...}) since it's symlinked in
-    # a public repo and the file stays in version control.
+    # startup. Codex keeps the originals in the separate user config copy, while
+    # the repo-local project file stays empty.
     mcp_servers_resolved = _resolve_auth_helpers(mcp_servers)
     if mcp_servers_resolved is None:
         return False
@@ -133,7 +134,7 @@ def sync_mcp_config() -> bool:
     if not sync_claude_cli(mcp_servers_resolved):
         return False
 
-    # Sync to Codex (original, unresolved — safe for public repo)
+    # Sync to Codex user config (original, unresolved — safe for public repo)
     if not sync_codex_config(codex_config, mcp_servers):
         return False
 
@@ -376,7 +377,7 @@ def sync_codex_config(config_file: Path, mcp_servers: dict[str, Any]) -> bool:
       Codex:   args = ["item1", "item2"]
 
     Args:
-        config_file: Path to .codex/config.toml in dotfiles repo
+        config_file: Path to .codex/user-config.toml in dotfiles repo
         mcp_servers: MCP servers dict from canonical source
 
     Returns:
