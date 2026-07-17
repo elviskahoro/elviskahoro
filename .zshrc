@@ -55,6 +55,3 @@ alias pi='npx @earendil-works/pi-coding-agent'
 alias dotfils='dotfiles'
 export PATH="$HOME/.local/bin:$PATH"
 
-# --- Gas Town Integration (managed by gt) ---
-[[ -f "/Users/elvis/.config/gastown/shell-hook.sh" ]] && source "/Users/elvis/.config/gastown/shell-hook.sh"
-# --- End Gas Town ---
