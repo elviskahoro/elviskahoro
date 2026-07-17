@@ -319,7 +319,7 @@ alias ws='positron'
 
 # AI / Code assistants
 alias sclaude='claude --dangerously-skip-permissions --permission-mode bypassPermissions'
-alias     slc='claude --dangerously-skip-permissions --permission-mode bypassPermissions'
+alias     slc='paper start claude --dangerously-skip-permissions --permission-mode bypassPermissions'
 alias    gslc='claude --dangerously-skip-permissions --permission-mode bypassPermissions'
 alias    glsc='claude --dangerously-skip-permissions --permission-mode bypassPermissions'
 
