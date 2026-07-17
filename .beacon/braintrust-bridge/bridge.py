@@ -4,8 +4,15 @@
 # Several observability backends only accept OTLP *traces* (/v1/traces), not
 # logs -- the sibling sidecar collector therefore drops them from its logs
 # pipeline. This daemon closes the gap: it tails the same runtime.jsonl the
-# sidecar reads and POSTs each Beacon event as a one-span OTLP/JSON trace to
-# every configured trace backend (Braintrust, LangSmith, Langfuse, Arize).
+# sidecar reads and POSTs Beacon events as OTLP/JSON spans to every configured
+# trace backend (Braintrust, LangSmith, Langfuse, Arize).
+#
+# Events are NOT sent as a flat pile of root spans. Each harness session becomes
+# ONE trace whose events nest under synthetic container spans: session -> turn
+# -> call (tool/model). Backends that list one row per root span (Braintrust,
+# LangSmith, Langfuse) therefore show one entry per session with its turns and
+# tool/model calls nested inside, instead of one entry per raw event. See
+# build_containers()/plan_event() for the tier logic.
 #
 # A backend is enabled iff its credentials are present in the environment
 # (injected by `infisical run`), so backends are added incrementally just by
@@ -19,6 +26,7 @@ from __future__ import annotations
 
 import argparse
 import base64
+import hashlib
 import json
 import os
 import secrets
@@ -40,10 +48,23 @@ DEFAULT_BATCH_SIZE = 16
 DEFAULT_FLUSH_SECONDS = 5.0
 HTTP_TIMEOUT = 10.0
 SCOPE_NAME = "beacon-traces-bridge"
-SCOPE_VERSION = "0.2"
+# 0.3: session-scoped hierarchy (session -> turn -> call) replaced flat
+# one-root-span-per-event output.
+SCOPE_VERSION = "0.3"
 HTTP_INVALID_STATUS = 300
 HEX_TRACE_ID_LENGTH = 32
 EXIT_NO_BACKENDS = 2
+
+# Coarse -> fine correlation tiers used to nest a session's events under
+# synthetic container spans. For each tier the first key present on the event
+# (looked up in raw.attributes) supplies the grouping id, so one spec spans
+# harnesses: claude_code emits prompt.id / tool_use_id / request_id, codex_cli
+# emits conversation.id / call_id. The session tier is always the trace root
+# and is handled separately (see plan_event).
+GROUP_TIERS = (
+    ("turn", ("prompt.id", "conversation.id")),
+    ("call", ("tool_use_id", "request_id", "call_id")),
+)
 
 # Backend OTLP/HTTP trace endpoints used when a per-backend override env var is
 # absent. All accept OTLP/JSON at a `.../v1/traces` path; they differ only in
@@ -123,15 +144,46 @@ def to_attributes(d: dict) -> list[dict]:
     return [{"key": k, "value": attr_value(v)} for k, v in flatten(d) if k]
 
 
-def derive_trace_id(event: dict) -> str:
+def attr_lookup(event: dict, keys: Iterable[str]) -> str | None:
+    """First non-empty value among `keys` in the event's raw.attributes."""
+    attrs = (event.get("raw") or {}).get("attributes") or {}
+    for k in keys:
+        v = attrs.get(k)
+        if v not in (None, ""):
+            return str(v)
+    return None
+
+
+def session_id_of(event: dict) -> str | None:
+    """The session id, preferring the top-level envelope, then raw.attributes.
+
+    Returns None for session-less events (e.g. process-global aggregate
+    metrics), which are then emitted as standalone root spans.
+    """
     sess = (event.get("session") or {}).get("id")
-    if isinstance(sess, str):
-        hex_only = sess.replace("-", "")
-        if len(hex_only) == HEX_TRACE_ID_LENGTH and all(
-            c in "0123456789abcdefABCDEF" for c in hex_only
-        ):
-            return hex_only.lower()
-    return secrets.token_hex(16)
+    if isinstance(sess, str) and sess.strip():
+        return sess.strip()
+    return attr_lookup(event, ("session.id",))
+
+
+def _stable_hex(text: str, nbytes: int) -> str:
+    # Deterministic id: same input -> same id across batches and process
+    # restarts, so a child span emitted in one flush links to its container even
+    # when they never share a batch.
+    return hashlib.sha256(text.encode("utf-8")).hexdigest()[: nbytes * 2]
+
+
+def trace_id_for(session_key: str) -> str:
+    # Reuse a UUID session's own hex (recognizable in backends); otherwise hash
+    # any session string to a stable 32-hex trace id so grouping still works.
+    hex_only = session_key.replace("-", "").lower()
+    if len(hex_only) == HEX_TRACE_ID_LENGTH and all(c in "0123456789abcdef" for c in hex_only):
+        return hex_only
+    return _stable_hex("beacon-trace:" + session_key, 16)
+
+
+def span_id_for(*parts: str) -> str:
+    return _stable_hex("beacon-span:" + "\x1f".join(parts), 8)
 
 
 def derive_span_name(event: dict) -> str:
@@ -151,7 +203,7 @@ def severity_to_status(severity: object) -> int:
     return 0
 
 
-def event_to_span(event: dict) -> dict:
+def build_leaf_span(event: dict, trace_id: str, parent_id: str | None) -> dict:
     ts_str = event.get("timestamp")
     if not isinstance(ts_str, str):
         # Unknown shape -- skip rather than backdate.
@@ -161,8 +213,8 @@ def event_to_span(event: dict) -> dict:
     # Beacon events are point-in-time. Give a 1us dummy duration so the span
     # is non-degenerate in trace viewers that filter zero-duration spans.
     end_ns = start_ns + 1_000
-    return {
-        "traceId": derive_trace_id(event),
+    span = {
+        "traceId": trace_id,
         "spanId": secrets.token_hex(8),
         "name": derive_span_name(event),
         "kind": 1,  # SPAN_KIND_INTERNAL
@@ -171,6 +223,109 @@ def event_to_span(event: dict) -> dict:
         "attributes": to_attributes(event),
         "status": {"code": severity_to_status(event.get("severity"))},
     }
+    if parent_id:
+        span["parentSpanId"] = parent_id
+    return span
+
+
+def container_name(tier: str, key: str, event: dict) -> str:
+    # Human-readable label for a grouping span, using the triggering event when
+    # it carries something friendlier than the raw correlation id.
+    attrs = (event.get("raw") or {}).get("attributes") or {}
+    if tier == "turn":
+        prompt = attrs.get("prompt")
+        if isinstance(prompt, str) and prompt.strip():
+            return "turn: " + prompt.strip().splitlines()[0][:60]
+        return f"turn {key[:8]}"
+    if tier == "call":
+        tool = attrs.get("tool_name") or attrs.get("slug")
+        if isinstance(tool, str) and tool.strip():
+            return "tool " + tool.strip()
+        model = attrs.get("model")
+        if isinstance(model, str) and model.strip():
+            return "model " + model.strip()
+        return f"call {key[:8]}"
+    return f"{tier} {key[:8]}"
+
+
+def plan_event(event: dict) -> tuple[str, dict, list[dict]]:
+    """Map one Beacon event to a leaf span plus the container spans it nests in.
+
+    The container chain is session -> turn -> call, each tier included only when
+    the event carries the id that defines it, so a session becomes ONE trace
+    whose spans nest by turn and by tool/model call instead of a flat pile of
+    root spans. Returns (trace_id, leaf_span, containers) where containers are
+    descriptor dicts (coarsest first); their start/end are filled in at flush
+    from the spans they contain. Raises TypeError if the event has no timestamp.
+    """
+    session_key = session_id_of(event)
+    if session_key is None:
+        # Session-less aggregate metrics (token/cost/active_time totals) have no
+        # session to nest under; keep the legacy one-standalone-root-span shape.
+        trace_id = secrets.token_hex(16)
+        return trace_id, build_leaf_span(event, trace_id, None), []
+
+    trace_id = trace_id_for(session_key)
+    harness = (event.get("harness") or {}).get("name") or "agent"
+
+    session_span_id = span_id_for(trace_id, "session")
+    containers: list[dict] = [
+        {
+            "span_id": session_span_id,
+            "trace_id": trace_id,
+            "parent_id": None,
+            "tier": "session",
+            "name": f"{harness} session {session_key[:8]}",
+            "attributes": {
+                "beacon.tier": "session",
+                "session.id": session_key,
+                "harness.name": harness,
+            },
+        },
+    ]
+    parent_id = session_span_id
+    for tier_name, keys in GROUP_TIERS:
+        key = attr_lookup(event, keys)
+        if not key or key == session_key:
+            # Skip a tier that just re-labels the session (codex_cli reuses the
+            # session uuid as conversation.id) -- it would add an inert wrapper.
+            continue
+        tier_span_id = span_id_for(trace_id, tier_name, key)
+        containers.append(
+            {
+                "span_id": tier_span_id,
+                "trace_id": trace_id,
+                "parent_id": parent_id,
+                "tier": tier_name,
+                "name": container_name(tier_name, key, event),
+                "attributes": {
+                    "beacon.tier": tier_name,
+                    f"{tier_name}.id": key,
+                    "session.id": session_key,
+                },
+            },
+        )
+        parent_id = tier_span_id
+
+    return trace_id, build_leaf_span(event, trace_id, parent_id), containers
+
+
+def make_container_span(desc: dict, start_ns: int, end_ns: int) -> dict:
+    if end_ns <= start_ns:
+        end_ns = start_ns + 1_000
+    span = {
+        "traceId": desc["trace_id"],
+        "spanId": desc["span_id"],
+        "name": desc["name"],
+        "kind": 1,  # SPAN_KIND_INTERNAL
+        "startTimeUnixNano": str(start_ns),
+        "endTimeUnixNano": str(end_ns),
+        "attributes": to_attributes(desc["attributes"]),
+        "status": {"code": 0},
+    }
+    if desc.get("parent_id"):
+        span["parentSpanId"] = desc["parent_id"]
+    return span
 
 
 def build_payload(spans: list[dict], resource_attrs: dict) -> bytes:
@@ -392,34 +547,72 @@ def main() -> int:
         batch=args.batch_size,
     )
 
+    # batch holds parsed events (not spans): container spans are synthesized at
+    # flush time so a container's duration can span the child events in the
+    # batch. emitted_containers dedupes containers across flushes so each
+    # session/turn/call root is sent once (a restart may re-emit at most one per
+    # live container -- benign: backends upsert by span id or the row is inert).
     batch: list[dict] = []
+    emitted_containers: set = set()
     last_flush = time.monotonic()
     counters: dict = {d.name: {"sent": 0, "dropped": 0} for d in destinations}
+
+    def build_spans() -> tuple[list[dict], int]:
+        """Turn the buffered events into leaf spans + newly-seen container spans."""
+        spans: list[dict] = []
+        pending: dict = {}  # container span_id -> {"desc", "start", "end"}
+        for event in batch:
+            try:
+                _trace_id, leaf, containers = plan_event(event)
+            except (ValueError, TypeError) as e:
+                log("warn", "skip unplannable event", error=str(e))
+                continue
+            spans.append(leaf)
+            start, end = int(leaf["startTimeUnixNano"]), int(leaf["endTimeUnixNano"])
+            for c in containers:
+                if c["span_id"] in emitted_containers:
+                    continue
+                p = pending.get(c["span_id"])
+                if p is None:
+                    pending[c["span_id"]] = {"desc": c, "start": start, "end": end}
+                else:
+                    p["start"] = min(p["start"], start)
+                    p["end"] = max(p["end"], end)
+        for span_id, p in pending.items():
+            spans.append(make_container_span(p["desc"], p["start"], p["end"]))
+            emitted_containers.add(span_id)
+        return spans, len(pending)
 
     def flush() -> None:
         nonlocal last_flush
         if not batch:
             return
-        payload = build_payload(batch, resource_attrs)
+        spans, n_containers = build_spans()
+        if not spans:
+            batch.clear()
+            last_flush = time.monotonic()
+            return
+        payload = build_payload(spans, resource_attrs)
         for dest in destinations:
             try:
                 post_batch(dest, payload)
-                counters[dest.name]["sent"] += len(batch)
+                counters[dest.name]["sent"] += len(spans)
                 log(
                     "info",
                     "flushed",
                     backend=dest.name,
-                    spans=len(batch),
+                    spans=len(spans),
+                    containers=n_containers,
                     total_sent=counters[dest.name]["sent"],
                     bytes=len(payload),
                 )
             except urllib.error.HTTPError as e:
                 body = e.read(512).decode(errors="replace") if e.fp else ""
                 log("warn", "http error", backend=dest.name, status=e.code, body=body)
-                counters[dest.name]["dropped"] += len(batch)
+                counters[dest.name]["dropped"] += len(spans)
             except (urllib.error.URLError, TimeoutError, OSError) as e:
                 log("warn", "transport error", backend=dest.name, error=str(e))
-                counters[dest.name]["dropped"] += len(batch)
+                counters[dest.name]["dropped"] += len(spans)
         batch.clear()
         last_flush = time.monotonic()
 
@@ -432,11 +625,13 @@ def main() -> int:
             break
         try:
             event = json.loads(line)
-            span = event_to_span(event)
-        except (json.JSONDecodeError, ValueError, TypeError) as e:
+        except json.JSONDecodeError as e:
             log("warn", "skip malformed line", error=str(e), preview=line[:120])
             continue
-        batch.append(span)
+        if not isinstance(event, dict):
+            log("warn", "skip non-object line", preview=line[:120])
+            continue
+        batch.append(event)
         if len(batch) >= args.batch_size or (time.monotonic() - last_flush) >= args.flush_seconds:
             flush()
         if args.once and not batch:

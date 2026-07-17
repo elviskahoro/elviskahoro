@@ -16,8 +16,9 @@ These backends' OTLP ingress only accepts `/v1/traces`, not `/v1/logs`:
 The sibling [sidecar collector](../sidecar/) only emits **logs** (its `filelog`
 receiver produces log records, and `otelcol-contrib` has no log→trace
 connector), so those backends can't live in the sidecar's logs pipeline. This
-daemon closes the gap: it tails the same `runtime.jsonl` and POSTs each event
-as a one-span OTLP/JSON trace to every configured backend.
+daemon closes the gap: it tails the same `runtime.jsonl` and POSTs the events as
+OTLP/JSON spans to every configured backend, grouped into one trace per session
+(see [Session-scoped hierarchy](#session-scoped-hierarchy)).
 
 ```text
                           ┌─▶ Braintrust  /otel/v1/traces      (Bearer + x-bt-parent)
@@ -45,21 +46,48 @@ daemon exits 2 so the launchd agent surfaces the misconfiguration.
 > telemetry would pollute it. It routes to `BEACON_LANGSMITH_PROJECT` instead,
 > defaulting to `beacon`.
 
-## Span shape
+## Session-scoped hierarchy
 
-| OTel field | Source |
-| --- | --- |
-| `traceId` | `event.session.id` with dashes stripped (UUID → 32 hex), else random 16 bytes — groups a harness session into one trace |
-| `spanId` | random 8 bytes per event |
-| `name` | `event.message` ‖ `event.event.action` ‖ `"beacon.event"` |
-| `kind` | `SPAN_KIND_INTERNAL` |
-| `startTimeUnixNano` | from `event.timestamp` |
-| `endTimeUnixNano` | start + 1µs (Beacon events are point-in-time) |
-| `attributes` | dot-flattened event envelope |
-| `status.code` | `ERROR` when `severity ∈ {error, critical, fatal}`, else `UNSET` |
+A harness session becomes **one trace** whose events nest under synthetic
+container spans, instead of one root span per event (which made every backend
+that lists one row per root span show a session as a flat pile of unrelated
+entries). The tiers, coarsest first:
+
+```text
+session          (traceId = session.id; one root span per session)
+└── turn         (prompt.id ‖ conversation.id)
+    └── call     (tool_use_id ‖ request_id ‖ call_id)   e.g. "tool Bash", "model claude-opus-4-8"
+        └── event leaf spans (the raw Beacon events)
+```
+
+Each tier is included only when the event carries the id that defines it, and a
+tier whose id equals the session id is skipped (codex_cli reuses the session
+uuid as `conversation.id`, so its tree is just session → call). The correlation
+keys are harness-agnostic — claude_code emits `prompt.id` / `tool_use_id` /
+`request_id`; codex_cli emits `conversation.id` / `call_id`. Container span ids
+are a **deterministic** hash of the tier's ids, so a child emitted in one flush
+links to its container even when they never share a batch (or a restart).
+
+Events with **no** session id (process-global aggregate metrics — token/cost/
+active-time totals) have nothing to nest under, so they stay as standalone root
+spans as before.
+
+### Span fields
+
+| OTel field | Leaf (event) | Container (session / turn / call) |
+| --- | --- | --- |
+| `traceId` | `session.id` → 32 hex (UUID reused, else hashed); random when session-less | same as its leaves |
+| `spanId` | random 8 bytes | deterministic hash of the tier ids |
+| `parentSpanId` | deepest container present (absent when session-less) | its parent tier (absent on the session root) |
+| `name` | `event.message` ‖ `event.event.action` ‖ `"beacon.event"` | e.g. `claude_code session <8hex>`, `turn: <prompt>`, `tool Bash`, `model <id>` |
+| `startTimeUnixNano` | from `event.timestamp` | earliest child in the flush that first emits it |
+| `endTimeUnixNano` | start + 1µs (events are point-in-time) | latest child in that flush |
+| `attributes` | dot-flattened event envelope | tier + its id + session id |
+| `status.code` | `ERROR` when `severity ∈ {error, critical, fatal}`, else `UNSET` | `UNSET` |
 
 The same payload goes to every backend; only the auth headers differ. Resource
-attributes carry `service.name=beacon-bridge`; scope is `beacon-traces-bridge`.
+attributes carry `service.name=beacon-bridge`; scope is `beacon-traces-bridge`
+version `0.3`.
 
 ## Files
 
