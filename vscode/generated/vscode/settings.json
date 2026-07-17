@@ -199,5 +199,8 @@
 "kilo-code.new.agentWorkStyle": "skipped",
 "kilo-code.new.autocomplete.enableAutoTrigger": true,
 "kilo-code.new.autocomplete.enableSmartInlineTaskKeybinding": true,
-"kilo-code.new.autocomplete.enableChatAutocomplete": true
+"kilo-code.new.autocomplete.enableChatAutocomplete": true,
+"remote.SSH.remotePlatform": {
+    "cart-admit-tlf6.devbox.namespace": "linux"
+}
 }
