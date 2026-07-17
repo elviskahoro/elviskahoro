@@ -23,7 +23,7 @@
     ],
     "defaultMode": "auto"
   },
-  "model": "haiku",
+  "model": "sonnet",
   "disableClaudeAiConnectors": true,
   "hooks": {
     "PreToolUse": [
