@@ -39,6 +39,8 @@ if [ -f "$HOME/.bashrc" ]; then
     source "$HOME/.bashrc"
 fi
 
+export GASTOWN_DISABLED=1
+
 # Gastown multi-agent workspace manager. `gt` now resolves to Gastown via the
 # ~/.local/bin/gt shim (created by `setup.sh bin`), which shadows Homebrew's
 # Graphite `gt`. Graphite moved to the `graphite` name (see .gitconfig aliases).
