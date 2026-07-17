@@ -171,5 +171,8 @@
     "vim.handleKeys": {
         "<C-s>": false,
         "<C-z>": false
+    },
+    "remote.SSH.remotePlatform": {
+        "cart-admit-tlf6.devbox.namespace": "linux"
     }
 }
