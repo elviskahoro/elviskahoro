@@ -18,7 +18,7 @@ display_granularity = "tabs"
 primary_info = "working_directory"
 view_mode = "compact"
 show_details_on_hover = true
-use_latest_prompt_as_title = false
+use_latest_prompt_as_title = true
 enabled = true
 show_panel_in_restored_windows = true
 
@@ -38,7 +38,7 @@ input_mode = "pinned_to_bottom"
 system_theme = false
 theme = { custom = { name = "Monokai Pro Spectrum", path = "monokai_pro_spectrum.yml" } }
 [appearance.window]
-zoom_level = 110
+zoom_level = 100
 override_opacity = 100
 
 [appearance.panes]
@@ -83,7 +83,7 @@ include_agent_commands_in_history = true
 [agents.warp_agent.other]
 cloud_agent_computer_use_enabled = false
 should_render_use_agent_toolbar_for_user_commands = false
-open_conversation_layout_preference = "split_pane"
+open_conversation_layout_preference = "new_tab"
 show_conversation_history = true
 show_agent_notifications = true
 thinking_display_mode = "always_show"
@@ -93,7 +93,7 @@ orchestration_message_display_mode = "always_show"
 
 [agents.warp_agent.active_ai]
 enabled = true
-rule_suggestions_enabled = false
+rule_suggestions_enabled = true
 code_suggestions_enabled = true
 agent_mode_query_suggestions_enabled = false
 intelligent_autosuggestions_enabled = false
@@ -102,7 +102,7 @@ intelligent_autosuggestions_enabled = false
 voice_input_enabled = false
 
 [agents.third_party]
-should_render_cli_agent_toolbar = false
+should_render_cli_agent_toolbar = true
 auto_open_composer_on_cli_agent_start = false
 auto_dismiss_composer_after_submit = false
 auto_toggle_composer = false
@@ -121,19 +121,19 @@ is_agent_task_completed_enabled = true
 is_long_running_enabled = true
 is_needs_attention_enabled = true
 is_password_prompt_enabled = true
-long_running_threshold = 4
+long_running_threshold = 10
 mode = "enabled"
-play_notification_sound = false
+play_notification_sound = true
 
 [code]
 
 [code.editor]
 open_code_panels_file_editor = "system_default"
 open_file_editor = "system_default"
-prefer_tabbed_editor_view = true
+prefer_tabbed_editor_view = false
 open_file_layout = "new_tab"
 show_code_review_button = true
-prefer_markdown_viewer = false
+prefer_markdown_viewer = true
 show_project_explorer = true
 show_global_search = true
 auto_open_code_review_pane_on_first_agent_change = false
@@ -153,8 +153,8 @@ is_settings_sync_enabled = true
 login_item = false
 new_tab_placement = "after_current_tab"
 should_confirm_close_session = false
-show_warning_before_quitting = false
-link_tooltip = false
+show_warning_before_quitting = true
+link_tooltip = true
 restore_session = false
 default_session_mode = "terminal"
 preserve_input_focus_on_block_selection = true
