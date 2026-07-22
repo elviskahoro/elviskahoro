@@ -13,3 +13,6 @@ export PATH="$PATH:/Users/elvis/go/bin"
 # Reflex still finds its own bun via BUN_INSTALL regardless of PATH order.
 export BUN_INSTALL="$HOME/Library/Application Support/reflex/bun"
 export PATH="$PATH:$BUN_INSTALL/bin"
+
+# Added by Obsidian
+export PATH="$PATH:/Applications/Obsidian.app/Contents/MacOS"
