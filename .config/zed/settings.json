@@ -102,7 +102,7 @@
     "line_numbers": true,
   },
   "icon_theme": {
-    "mode": "light",
+    "mode": "dark",
     "light": "Material Icon Theme",
     "dark": "Material Icon Theme"
   },
@@ -136,7 +136,7 @@
   "theme": {
     "mode": "dark",
     "light": "Gruvbox Light",
-    "dark": "Monokai Pro (Filter Spectrum)"
+    "dark": "Monokai Vibrant Amped"
   },
   "ui_font_family": "MonoLisa",
   "ui_font_size": 14.0,
