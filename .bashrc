@@ -117,7 +117,7 @@ alias fcdx='cd ~/Documents/reflex-dev/devx'
 alias grow='cd /Users/elvis/Documents/elviskahoro/growth-machine'
 alias growth='cd /Users/elvis/Documents/elviskahoro/growth-machine'
 
-alias obsidian='cd /Users/elvis/Documents/elviskahoro/obsidian'
+#alias obsidian='cd /Users/elvis/Documents/elviskahoro/obsidian'
 alias oc='opencode'
 alias os='cd /Users/elvis/Documents/dlt-hub/gtm-os'
 
