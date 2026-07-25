@@ -519,3 +519,7 @@ dark-theme()   { theme-dark; }
 
 alias bdip="bd list --status=in_progress"
 alias cop="copilot --yolo"
+
+
+# Added by Antigravity CLI installer
+export PATH="/Users/elvis/.local/bin:$PATH"

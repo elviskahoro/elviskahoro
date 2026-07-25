@@ -16,3 +16,7 @@ export PATH="$PATH:$BUN_INSTALL/bin"
 
 # Added by Obsidian
 export PATH="$PATH:/Applications/Obsidian.app/Contents/MacOS"
+
+
+# Added by Antigravity CLI installer
+export PATH="/Users/elvis/.local/bin:$PATH"

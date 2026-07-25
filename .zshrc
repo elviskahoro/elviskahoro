@@ -63,3 +63,7 @@ if [ -x "$HOME/.local/bin/paperctl" ]; then
   esac
 fi
 # < [|o=o|] < paper shell init < [|o=o|] <
+
+
+# Added by Antigravity CLI installer
+export PATH="/Users/elvis/.local/bin:$PATH"

@@ -4,3 +4,7 @@
 [ -f "$HOME/.ok/env.sh" ] && . "$HOME/.ok/env.sh"
 # <<< open-knowledge cli <<<
 
+
+
+# Added by Antigravity CLI installer
+export PATH="/Users/elvis/.local/bin:$PATH"
