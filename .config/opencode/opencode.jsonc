@@ -12,7 +12,7 @@
         "baseURL": "https://api.kilo.ai/api/gateway",
         "apiKey": "{env:KILO_API_KEY}",
         "headers": {
-          "X-KiloCode-OrganizationId": "{env:KILOCODE_ORG_ID}"
+          // "X-KiloCode-OrganizationId": "{env:KILOCODE_ORG_ID}"
         }
       },
       "models": {
