@@ -507,3 +507,5 @@
 [credential "https://dolthub.com"]
 	username = elvis
 	useHttpPath = true
+[beads]
+	role = maintainer
