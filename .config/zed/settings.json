@@ -14,18 +14,16 @@
   },
   "auto_update": false,
   "edit_predictions": {
-    "provider": "copilot"
+    "provider": "zed"
   },
   "context_servers": {
-    "mcp-server-context7": {
-      "enabled": false,
-      "remote": false,
-      "settings": {}
+    "linear": {
+      "enabled": true,
+      "url": "https://mcp.linear.app/mcp"
     },
-    "mcp-server-exa-search": {
-      "enabled": false,
-      "remote": false,
-      "settings": {}
+    "resend": {
+      "enabled": true,
+      "url": "https://mcp.resend.com/mcp"
     }
   },
   "cli_default_open_behavior": "new_window",
@@ -54,6 +52,12 @@
     },
     "tool_permissions": {
       "tools": {
+        "mcp:linear:list_issues": {
+          "default": "allow"
+        },
+        "mcp:resend:send-email": {
+          "default": "allow"
+        },
         "fetch": {
           "always_allow": [
             {
@@ -73,10 +77,10 @@
       }
     },
     "default_model": {
-      "provider": "anthropic",
-      "model": "claude-sonnet-4-6-latest",
-      "enable_thinking": true,
-      "effort": "high"
+      "effort": "high",
+      "provider": "zed.dev",
+      "model": "claude-sonnet-5",
+      "enable_thinking": true
     },
     "dock": "right",
     "favorite_models": [],
