@@ -94,7 +94,7 @@ orchestration_message_display_mode = "always_show"
 [agents.warp_agent.active_ai]
 enabled = true
 rule_suggestions_enabled = true
-code_suggestions_enabled = true
+code_suggestions_enabled = false
 agent_mode_query_suggestions_enabled = false
 intelligent_autosuggestions_enabled = false
 
