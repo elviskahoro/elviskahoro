@@ -57,3 +57,11 @@ alias pi='npx @earendil-works/pi-coding-agent'
 alias dotfils='dotfiles'
 export PATH="$HOME/.local/bin:$PATH"
 
+# > [|o=o|] > paper shell init script > [|o=o|] >
+if [ -x "$HOME/.local/bin/paperctl" ]; then
+  case ":$PATH:" in
+    *":$HOME/.local/bin:"*) ;;
+    *) export PATH="$HOME/.local/bin:$PATH" ;;
+  esac
+fi
+# < [|o=o|] < paper shell init < [|o=o|] <
