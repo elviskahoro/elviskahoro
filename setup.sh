@@ -369,16 +369,9 @@ cmd_launchagents() {
 }
 
 # --- Command shims ------------------------------------------------------------
-# Gas Town (gastown) and Graphite both ship a CLI named `gt`. Homebrew let
-# Graphite win ${prefix}/bin/gt, so bare `gt` resolved to Graphite in every
-# shell -- including the non-interactive ones Gas Town polecats run in, which
-# broke `gt prime` / `gt hook` / `gt mail check` (issue #2). A shell alias can't
-# fix that: it only applies to interactive shells, not `sh -c` / agent subshells.
-#
-# So we shim at the PATH level instead. ~/.local/bin is first on PATH, so a `gt`
-# there wins everywhere. We point it at Gas Town and expose Graphite under its
-# own `graphite` name -- which the git aliases in .gitconfig now call
-# (`!graphite ...`), so `git a`, `git bc`, etc. keep working. Idempotent.
+# Expose Graphite under its stable `graphite` name. Interactive shells alias
+# `gt` to `graphite`; Gas City uses the `gc` command and no longer needs a
+# Gas Town `gt` shim.
 
 BIN_DIR="${HOME}/.local/bin"
 
@@ -393,7 +386,6 @@ cmd_bin() {
 
   # link name => absolute target binary
   local bin_shims=(
-    "gt=>${prefix}/opt/gastown/bin/gastown"
     "graphite=>${prefix}/bin/gt"
   )
 
