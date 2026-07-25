@@ -179,6 +179,7 @@
   g         = "!git"
   get       = "!graphite get"
   gh        = "!gh"
+  git       = "!git"
 
   iit       = init
   int       = init
