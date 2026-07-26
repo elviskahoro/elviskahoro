@@ -13,3 +13,5 @@ tmp/
 # Beacon sidecar runtime artifacts — secrets + rotating logs stay local only
 .beacon/sidecar/infisical.env
 .beacon/sidecar/sidecar.log
+# Warp's own downloaded TUI-preview build (binary + bundled skills)
+.warp/tui-preview/
