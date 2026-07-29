@@ -366,6 +366,7 @@
   psir      = pusr
   psur      = pusr
   psr       = pusr
+  pusrt     = pusr
   usr       = "!graphite restack --upstack"
   us        = usr
   uisr      = usr
