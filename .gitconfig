@@ -274,7 +274,7 @@
   grbc      = rebase --continue
   reo       = "!graphite reorder"
   rr        = "!reflex run"
-  rs        = "!graphite sync"
+	rs = !graphite restack
 
   s         = status
   sg        = s
