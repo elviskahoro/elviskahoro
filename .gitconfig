@@ -362,6 +362,7 @@
   suo       = uso
   usp       = uso
   pusr      = "!git push && graphite restack --upstack"
+  puysr     = pusr
   pisr      = pusr
   psir      = pusr
   psur      = pusr
