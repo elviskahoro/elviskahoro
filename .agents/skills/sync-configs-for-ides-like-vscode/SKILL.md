@@ -88,6 +88,15 @@ generic/ + editor/  →  compose.sh  →  generated/<editor>/  ←symlink←  ~/
 
 ## Execution Steps
 
+### Step 0: Read LEARNINGS.md
+
+Read `LEARNINGS.md` in this skill directory first. It accumulates verified
+command-ID quirks, gotchas, and known cleanup debt from past sync sessions —
+treat it as institutional memory, not as ground truth to cite blindly. If an
+entry references a specific command ID or file state, and you're about to act
+on it, re-verify rather than trust it unconditionally (apps update; files get
+cleaned up).
+
 ### Step 1: Read generated files and current source files
 
 Since editors are symlinked to `generated/<editor>/`, the generated files ARE the live config. Read in parallel:
@@ -163,6 +172,14 @@ Present a summary to the user.
 
 **When moving a keybinding to generic, check other editors' files for conflicts** — the same key combo must not be bound to a different command in another editor's specific file.
 
+**Before adding any command to generic, verify it actually exists in every installed editor** — VS Code forks can rename or drop core commands (see `LEARNINGS.md`). Check with:
+
+```bash
+grep -rl "<commandId>" "/Applications/<Editor>.app/Contents/Resources/app" 2>/dev/null
+```
+
+If the command differs or is missing in one editor, that binding must be a per-editor override in `<editor>/keybindings.json`, not `generic/keybindings.json` — even if the same key/intent is shared across editors.
+
 ### Step 6: Apply changes
 
 After user confirmation:
@@ -182,6 +199,15 @@ If the user asks to sync all editors, or if a generic change was made:
 2. Flag any new changes introduced by the generic update
 3. Offer to update other editors' overrides if needed
 
+### Step 8: Record new learnings
+
+If this session surfaced something worth remembering for next time — a
+verified command-ID quirk, a gotcha that cost time to track down, cleanup
+debt you noticed but didn't fix, or a confirmation that something works the
+same across editors — append a short, dated entry to `LEARNINGS.md`. Don't
+log routine syncs with no surprises; this file is for nonobvious knowledge,
+not a change log (git history already covers that).
+
 ## Important Rules
 
 - **JSONC handling**: Generated files may contain comments (JSONC) if the editor added them. Strip comments before comparing. Source files in the dotfiles repo use pure JSON (no comments).
@@ -190,3 +216,5 @@ If the user asks to sync all editors, or if a generic change was made:
 - **Editor-specific settings.json should be minimal** — only keys that differ from generic. If an editor override matches generic, remove it from the override file.
 - **Order doesn't matter for settings** (object keys), but **order matters for keybindings** (array entries) — generic entries must come before editor-specific entries in the composed output.
 - **Always regenerate after source changes** — after updating any source file, run `compose.sh` to rebuild generated files. The editors are symlinked to generated, so they pick up changes immediately.
+- **Never assume a command ID is shared across editors** — verify against the installed app before placing a binding in `generic/keybindings.json` (see Step 5 and `LEARNINGS.md`).
+- **Read and update `LEARNINGS.md`** — check it at the start (Step 0) and append nonobvious findings at the end (Step 8). It's the skill's persistent memory across sessions.
