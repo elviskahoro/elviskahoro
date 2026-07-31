@@ -340,6 +340,10 @@
     "command": "-workbench.action.files.newUntitledFile"
   },
   {
+    "key": "ctrl+alt+cmd+n",
+    "command": "workbench.action.files.newUntitledFile"
+  },
+  {
     "key": "shift+cmd+s",
     "command": "-workbench.action.files.saveAs"
   },
@@ -473,7 +477,12 @@
     "command": "editor.action.revealDefinition",
     "when": "editorHasDefinitionProvider && editorTextFocus && !isInEmbeddedEditor"
   },
-{
+  {
+    "key": "shift+cmd+enter",
+    "command": "editor.action.triggerParameterHints",
+    "when": "editorHasSignatureHelpProvider && editorTextFocus"
+  },
+  {
     "key": "ctrl+shift+b",
     "command": "editor.debug.action.toggleBreakpoint"
   },

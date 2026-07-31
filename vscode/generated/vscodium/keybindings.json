@@ -340,6 +340,10 @@
     "command": "-workbench.action.files.newUntitledFile"
   },
   {
+    "key": "ctrl+alt+cmd+n",
+    "command": "workbench.action.files.newUntitledFile"
+  },
+  {
     "key": "shift+cmd+s",
     "command": "-workbench.action.files.saveAs"
   },
