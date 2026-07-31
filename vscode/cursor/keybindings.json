@@ -121,16 +121,6 @@
         "when": "notebookCellListFocused && !inputFocus && notebookChatOuterFocusPosition == ''"
     },
     {
-        "key": "shift+cmd+enter",
-        "command": "editor.action.triggerParameterHints",
-        "when": "editorHasSignatureHelpProvider && editorTextFocus"
-    },
-    {
-        "key": "shift+cmd+enter",
-        "command": "workbench.action.toggleEditorWidths",
-        "when": "!editorTextFocus && !notebookEditorFocused && !notebookCellListFocused"
-    },
-    {
         "key": "cmd+l",
         "command": "-aichat.newchataction"
     },

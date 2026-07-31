@@ -44,7 +44,8 @@
   "workbench.editor.tabActionCloseVisibility": false,
   "workbench.editor.focusRecentEditorAfterClose": false,
   "workbench.editor.enablePreview": false,
-"workbench.startupEditor": "none",
+  "workbench.startupEditor": "none",
+  "workbench.sideBar.location": "right",
   "workbench.iconTheme": "Monokai Pro (Filter Spectrum) Icons",
   "workbench.list.smoothScrolling": true,
   "workbench.reduceMotion": "on",
@@ -112,7 +113,7 @@
   "python.disableInstallationCheck": true,
   "python.terminal.activateEnvInCurrentTerminal": true,
   "python.languageServer": "Pylance",
-  "python.defaultInterpreterPath": "",
+  "python.defaultInterpreterPath": "/Users/elvis/.pyenv/versions/3.12.4/bin/python",
   "python.testing.cwd": "src/tests/",
   "python.testing.pytestPath": "/Users/elvis/.pyenv/shims/pytest",
   "[python]": {
@@ -173,7 +174,7 @@
   "breadcrumbs.symbolSortOrder": "type",
   "outline.showConstants": false,
   "outline.showVariables": false,
-  "extensions.autoUpdate": "on",
+  "extensions.autoUpdate": "onlyEnabledExtensions",
   "vim.mouseSelectionGoesIntoVisualMode": false,
   "vim.hlsearch": true,
   "vim.highlightedyank.enable": true,
@@ -184,21 +185,13 @@
     "<C-s>": false,
     "<C-z>": false
   },
+  "remote.SSH.remotePlatform": {
+    "cart-admit-tlf6.devbox.namespace": "linux"
+  },
   "github.copilot.enable": {
     "*": true,
     "plaintext": false,
     "markdown": false,
     "scminput": false
-},
-"workbench.sideBar.location": "right",
-"terminal.integrated.commandsToSkipShell": [
-    "kilo-code.new.agentManagerOpen",
-    "kilo-code.new.agentManager.showTerminal",
-    "kilo-code.new.agentManager.runScript"
-],
-"kilo-code.new.agentWorkStyle": "skipped",
-"kilo-code.new.autocomplete.enableAutoTrigger": true,
-"kilo-code.new.autocomplete.enableSmartInlineTaskKeybinding": true,
-"kilo-code.new.autocomplete.enableChatAutocomplete": true,
-"chat.mcp.gallery.enabled": true
+  }
 }

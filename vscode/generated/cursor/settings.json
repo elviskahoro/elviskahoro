@@ -185,9 +185,10 @@
     "<C-s>": false,
     "<C-z>": false
   },
+  "remote.SSH.remotePlatform": {
+    "cart-admit-tlf6.devbox.namespace": "linux"
+  },
   "window.commandCenter": true,
   "cursorPreview.disableInlineCompletions": false,
-"cursorPreview.enableInlineCompletion": true,
-"window.autoDetectColorScheme": false,
-"vim.disableExtension": true
+  "cursorPreview.enableInlineCompletion": true
 }

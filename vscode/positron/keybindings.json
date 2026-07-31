@@ -560,7 +560,7 @@
   },
   {
     "key": "shift+cmd+enter",
-    "command": "workbench.action.toggleEditorWidths"
+    "command": "workbench.action.toggleMaximizeEditorGroup"
   },
   {
     "key": "shift+cmd+b",

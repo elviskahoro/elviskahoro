@@ -44,7 +44,8 @@
   "workbench.editor.tabActionCloseVisibility": false,
   "workbench.editor.focusRecentEditorAfterClose": false,
   "workbench.editor.enablePreview": false,
-"workbench.startupEditor": "none",
+  "workbench.startupEditor": "none",
+  "workbench.sideBar.location": "right",
   "workbench.iconTheme": "Monokai Pro (Filter Spectrum) Icons",
   "workbench.list.smoothScrolling": true,
   "workbench.reduceMotion": "on",
@@ -184,11 +185,9 @@
     "<C-s>": false,
     "<C-z>": false
   },
+  "remote.SSH.remotePlatform": {
+    "cart-admit-tlf6.devbox.namespace": "linux"
+  },
   "continue.enableContinueForCompletions": true,
-"continue.enableAutoScroll": true,
-"terminal.integrated.commandsToSkipShell": [
-    "kilo-code.new.agentManagerOpen",
-    "kilo-code.new.agentManager.showTerminal",
-    "kilo-code.new.agentManager.runScript"
-]
+  "continue.enableAutoScroll": true
 }
