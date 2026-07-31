@@ -26,19 +26,19 @@ Some tools that give me joy:
 - [git config](/.gitconfig)
 - [warp](https://warp.dev) - terminal
 - [graphite](https://graphite.dev/) - git navigation + [stacked diffs](https://www.youtube.com/live/m23jkzMFETg?si=b_VE0PK4hcMHI-pc&t=2702)
-- [dagger](https://dagger.io/) - CI/CD engine + [see example here](https://gist.github.com/elviskahoro/b6c0afe6ceba1f3b27010ceea7a2cc2f)
 - [trunk](https://trunk.io/) - linting
-- [dlt](https://github.com/dlt-hub/dlt) - ETL / data movement
-- [lancedb](https://lancedb.com/) - vector DB
+- [dagger](https://dagger.io/) - CI/CD engine + [see example here](https://gist.github.com/elviskahoro/b6c0afe6ceba1f3b27010ceea7a2cc2f)
+- [roborev](https://www.roborev.io/) - local AI code review, runs continuously off git commits
+- [conductor](https://conductor.build/) - run parallel Claude Code agents in isolated worktrees
 - [modal](https://modal.com/) - compute + python scripts
 - [hookdeck](https://hookdeck.com/) - webhooks
+- [dlt](https://github.com/dlt-hub/dlt) - ETL / data movement
+- [lancedb](https://lancedb.com/) - vector DB
 - [flox](https://flox.dev/) - developer environment management
-- [stashpad](https://www.stashpad.com/) :( rip
 - [attio](https://attio.com/) - CRM - built a [Python SDK](https://github.com/elviskahoro/attio-sdk-python)
 - [clay](http://clay.com/) - GTM
+- [stashpad](https://www.stashpad.com/) :( rip
 - [koala](https://getkoala.com/) - even more GTM - rip - curse you cursor :(
-- [front](https://front.com/) - CSM + scaling comms
-- [coderabbit](https://www.coderabbit.ai/) - local AI code review: `coderabbit --prompt-only`
 
 ## CLIs
 
@@ -48,7 +48,6 @@ Some tools that give me joy:
 - [fx](https://github.com/antonmedv/fx) - json
 - [bat](https://github.com/sharkdp/bat) - modern cat
 - [llama](https://github.com/antonmedv/llama) - navigation
-- [starship](https://github.com/starship/starship) - prompt (although not needed with Warp)
 
 ## Apps
 
