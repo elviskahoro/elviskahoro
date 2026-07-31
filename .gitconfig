@@ -420,6 +420,7 @@
   gcai = !MSG=$(git aiclx) && git commit -m \"$MSG\"
 
   tai = "!f() { sha=$(git rev-parse HEAD) || return 1; if roborev list --json --limit 0 | jq -e --arg s \"$sha\" 'any(.[]; ((.git_ref // \"\") | startswith($s[0:12])) and .status != \"failed\")' >/dev/null 2>&1; then echo \"roborev: review already exists for ${sha:0:12} — waiting\"; roborev wait \"$@\"; else roborev review --wait \"$@\"; fi; }; f"
+	mt = "!f() { git push . \"$1\":main; }; f"
 
 [init]
 	defaultBranch = main
