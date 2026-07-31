@@ -104,6 +104,9 @@ alias docs='cd ~/Documents/'
 alias dofiles='dotfiles'
 alias dotfiels='dotfiles'
 alias dotiles='dotfiles'
+alias doitfiles='dotfiles'
+alias dotifles='dotfiles'
+
 alias dotfiles='cd /Users/elvis/Documents/elviskahoro/dotfiles'
 alias down='cd ~/Downloads/'
 alias dsk='cd ~/Desktop'
@@ -113,6 +116,8 @@ alias ekk='cd /Users/elvis/Documents/elviskahoro'
 alias elvis='cd ~/Documents/elviskahoro'
 
 alias fcdx='cd ~/Documents/reflex-dev/devx'
+
+alias gtm-sdk='cd /Users/elvis/Documents/hq/gtm-sdk'
 
 alias grow='cd /Users/elvis/Documents/elviskahoro/growth-machine'
 alias growth='cd /Users/elvis/Documents/elviskahoro/growth-machine'
