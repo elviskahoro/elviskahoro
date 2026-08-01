@@ -8,6 +8,30 @@
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
   "agent_servers": {
+    "pi-acp": {
+      "type": "registry"
+    },
+    "opencode": {
+      "type": "registry"
+    },
+    "github-copilot-cli": {
+      "type": "registry"
+    },
+    "gemini": {
+      "type": "registry"
+    },
+    "cursor": {
+      "type": "registry"
+    },
+    "codex-acp": {
+      "type": "registry"
+    },
+    "cline": {
+      "type": "registry"
+    },
+    "claude-acp": {
+      "type": "registry"
+    },
     "kilo": {
       "type": "registry"
     }
