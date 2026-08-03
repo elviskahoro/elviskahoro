@@ -341,8 +341,8 @@
   astsh     = stash
   sync      = "!graphite sync"
 
-  t         = "!pytest --ignore-glob='*/pycord/*' --import-mode=prepend"
-  test      = "!pre-commit run --all-files"
+  t         = "!uv run pytest -n auto"
+  test      = t
   top       = "!graphite top"
   vtop      = top
   op        = top
