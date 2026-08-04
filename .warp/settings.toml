@@ -113,6 +113,46 @@ agent_mode_execute_readonly_commands = true
 [agents.mcp_servers]
 file_based_mcp_enabled = false
 
+[agents.execution_profiles]
+
+[agents.execution_profiles.default]
+apply_code_diffs = "agent_decides"
+ask_user_question = "always_ask"
+autosync_plans_to_warp_drive = true
+command_allowlist = []
+command_denylist = [
+  'bash(\s.*)?',
+  'fish(\s.*)?',
+  'pwsh(\s.*)?',
+  'sh(\s.*)?',
+  'zsh(\s.*)?',
+  'curl(\s.*)?',
+  'eval(\s.*)?',
+  'exec(\s.*)?',
+  'source(\s.*)?',
+  'rm(\s.*)?',
+  'wget(\s.*)?',
+  'dig(\s.*)?',
+  'nslookup(\s.*)?',
+  'host(\s.*)?',
+  'ssh(\s.*)?',
+  'scp(\s.*)?',
+  'rsync(\s.*)?',
+  'telnet(\s.*)?',
+]
+computer_use = "never"
+context_window_limit = 1000000
+directory_allowlist = []
+execute_commands = "always_ask"
+mcp_allowlist = []
+mcp_denylist = []
+mcp_permissions = "agent_decides"
+name = "Default"
+read_files = "agent_decides"
+run_agents = "always_ask"
+web_search_enabled = true
+write_to_pty = "always_allow"
+
 [notifications]
 toast_duration_secs = 8
 
