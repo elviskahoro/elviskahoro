@@ -75,7 +75,11 @@
       }
     },
     "tool_permissions": {
+      "default": "allow",
       "tools": {
+        "search_web": {
+          "default": "allow"
+        },
         "mcp:linear:list_issues": {
           "default": "allow"
         },
@@ -83,6 +87,7 @@
           "default": "allow"
         },
         "fetch": {
+          "default": "allow",
           "always_allow": [
             {
               "pattern": "^https?://www\\.braintrust\\.dev"
@@ -99,6 +104,9 @@
           "default": "allow"
         }
       }
+    },
+    "sandbox_permissions": {
+      "allow_all_hosts": true
     },
     "default_model": {
       "effort": "high",
