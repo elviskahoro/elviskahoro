@@ -5,3 +5,4 @@ schema_version = 1
 authors = ["Monokai (ported by Elvis Kahoro)"]
 description = "Monokai Pro (Filter Spectrum) theme for Zed"
 repository = "https://github.com/elviskahoro/monokai-spectrum-zed"
+themes = ["themes/monokai-spectrum.json"]

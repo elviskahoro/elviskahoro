@@ -24,6 +24,7 @@ Some tools that give me joy:
 ## Daily
 
 - [git config](/.gitconfig)
+- [zed config](/.config/zed/README.md) - editor settings/keymap/theme, incl. why themes need a manual install step
 - [warp](https://warp.dev) - terminal
 - [graphite](https://graphite.dev/) - git navigation + [stacked diffs](https://www.youtube.com/live/m23jkzMFETg?si=b_VE0PK4hcMHI-pc&t=2702)
 - [trunk](https://trunk.io/) - linting

@@ -52,7 +52,10 @@ symlinks_mappings=(
   ".config/bash_profile.sh"
   ".config/starship.toml"
   ".config/git/.gitmessage"
+  # Zed. See .config/zed/README.md for how settings/keymap/themes fit
+  # together and why themes/monokai-spectrum needs a manual install step.
   ".config/zed/settings.json"
+  ".config/zed/keymap.json"
 )
 
 backup_dir_created=false
