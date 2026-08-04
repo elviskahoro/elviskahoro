@@ -127,7 +127,6 @@ alias oc='opencode'
 alias os='cd /Users/elvis/Documents/dlt-hub/gtm-os'
 
 alias play='cd ~/Documents/elviskahoro/playground'
-alias pygithub='cd ~/Library/Caches/pypoetry/virtualenvs/warpdotdev-dx-_OAhpmWh-py3.10/lib/python3.10/site-packages/github'
 
 alias skills='cd /Users/elvis/Documents/elviskahoro/ai/.agents/skills'
 alias sills='skills'
@@ -404,8 +403,8 @@ alias trkn='trunk'
 alias trukn='trunk'
 
 # Misc tools
+alias warp='warp-preview'
 alias awrp='warp'
-alias warp='oz'
 
 alias batp='bat --paging=never'
 alias less='less -R'
