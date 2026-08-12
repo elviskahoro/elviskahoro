@@ -205,5 +205,6 @@
   "assistant.enabled": true,
   "positron.assistant.enable": true,
   "kilo-code.new.agentWorkStyle": "skipped",
-  "kilo-code.new.autoApprove.enabled": true
+"kilo-code.new.autoApprove.enabled": true,
+"authentication.anthropic.baseUrl": "http://127.0.0.1:51539"
 }

@@ -324,8 +324,9 @@ alias ws='positron'
 
 # AI / Code assistants
 alias sclaude='claude --dangerously-skip-permissions --permission-mode bypassPermissions'
-alias     slc='paperctl start claude --dangerously-skip-permissions --permission-mode bypassPermissions'
-alias     skc='paperctl start claude --dangerously-skip-permissions --permission-mode bypassPermissions'
+alias     slc='claude --dangerously-skip-permissions --permission-mode bypassPermissions'
+#alias     slc='paperctl start claude --dangerously-skip-permissions --permission-mode bypassPermissions'
+#alias     skc='paperctl start claude --dangerously-skip-permissions --permission-mode bypassPermissions'
 alias    gslc='claude --dangerously-skip-permissions --permission-mode bypassPermissions'
 alias    glsc='claude --dangerously-skip-permissions --permission-mode bypassPermissions'
 alias   paper='paperctl'
@@ -525,7 +526,9 @@ dark-theme()   { theme-dark; }
 
 alias bdip="bd list --status=in_progress"
 alias cop="copilot --yolo"
-
+alias csv="vd"
+alias td="tw"
+alias tv="tw"
 
 # Added by Antigravity CLI installer
 export PATH="/Users/elvis/.local/bin:$PATH"
