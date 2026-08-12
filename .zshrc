@@ -45,6 +45,42 @@ alias gastown="/opt/homebrew/opt/gastown/bin/gastown"
 alias gt='graphite'
 alias md='glow'
 
+# gbds: sync .beads/ changes from the current branch into main, without
+# checking main out or touching the current working tree.
+gbds() {
+  local repo_root
+  repo_root=$(git rev-parse --show-toplevel) || return 1
+
+  if [ "$(git symbolic-ref --short HEAD 2>/dev/null)" = "main" ]; then
+    echo "gbds: already on main" >&2
+    return 1
+  fi
+
+  if [ -z "$(git status --porcelain -- .beads)" ]; then
+    echo "gbds: no changes under .beads" >&2
+    return 1
+  fi
+
+  local wt_dir
+  wt_dir=$(mktemp -d)
+  git worktree add -q "$wt_dir" main || return 1
+
+  rsync -a --delete "$repo_root/.beads/" "$wt_dir/.beads/"
+
+  (
+    cd "$wt_dir" || exit 1
+    git add .beads
+    if git diff --cached --quiet; then
+      echo "gbds: nothing to commit on main" >&2
+    else
+      git commit -q -m "chore: sync .beads"
+      echo "gbds: committed to main ($(git rev-parse --short HEAD))"
+    fi
+  )
+
+  git worktree remove "$wt_dir" --force
+}
+
 # >>> open-knowledge cli >>>
 # ! Contents within this block are managed by OpenKnowledge. Do not edit.
 # ! Delete this whole block to opt out — OpenKnowledge will not re-add it.
@@ -67,3 +103,9 @@ fi
 
 # Added by Antigravity CLI installer
 export PATH="/Users/elvis/.local/bin:$PATH"
+
+PATH="/Users/elvis/perl5/bin${PATH:+:${PATH}}"; export PATH;
+PERL5LIB="/Users/elvis/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="/Users/elvis/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"/Users/elvis/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/Users/elvis/perl5"; export PERL_MM_OPT;
