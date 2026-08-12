@@ -66,6 +66,24 @@ active — don't assume it's the custom port just because this repo has a
 `themes/` directory. To use the third-party one: Command Palette →
 `zed: extensions` → search "Monokai Vibrant Amped" → Install.
 
+## Keybinding syntax gotchas
+
+Two easy-to-miss rules in `keymap.json` that look valid but silently do
+nothing (or the wrong thing):
+
+- **`shift-` only combines with letters.** For punctuation, `shift-cmd--`
+  (meant as Shift+Cmd+Minus) is not valid syntax and never matches anything —
+  Zed wants the character Shift actually produces instead: `cmd-_` for
+  Shift+Cmd+Minus, `cmd-+` for Shift+Cmd+Equal. Same pattern for any other
+  shifted symbol. See [Keybinding Syntax](https://zed.dev/docs/key-bindings#keybinding-syntax).
+- **More specific context wins, silently.** A binding under `"context":
+  "Editor"` overrides an identical keystroke bound under `"context":
+  "Workspace"` whenever the editor is focused — no warning, it just fires the
+  Editor one. Before adding a shortcut, grep this file for the same key
+  string across all context blocks (remember punctuation keys per the rule
+  above — `cmd-_` and `cmd-+` are the forms to search for, not
+  `shift-cmd--`/`shift-cmd-=`).
+
 ## Stray files to watch for
 
 `~/.config/zed/keymap_backup.json` (a plain file, not a symlink) can appear
