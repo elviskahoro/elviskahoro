@@ -15,3 +15,5 @@ tmp/
 .beacon/sidecar/sidecar.log
 # Warp's own downloaded TUI-preview build (binary + bundled skills)
 .warp/tui-preview/
+# Warp's downloaded TUI executable
+.warp/tui/versions/*/warp-tui-stable
