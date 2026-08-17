@@ -190,5 +190,11 @@
   },
   "window.commandCenter": true,
   "cursorPreview.disableInlineCompletions": false,
-  "cursorPreview.enableInlineCompletion": true
+"cursorPreview.enableInlineCompletion": true,
+"[kson]": {
+    "editor.defaultFormatter": "kson.kson"
+},
+"workbench.editorAssociations": {
+    "*.pdf": "pdfViewer.PDFEdit"
+}
 }
