@@ -1,7 +1,8 @@
 {
   "$schema": "https://opencode.ai/config.json",
   // Anthropic API key is read automatically from $ANTHROPIC_API_KEY.
-  "model": "anthropic/claude-opus-4-8",
+  "model": "fireworks-ai/accounts/fireworks/models/glm-5p2",
+  "small_model": "fireworks-ai/accounts/fireworks/models/kimi-k3",
   "plugin": ["@warp-dot-dev/opencode-warp"],
   "disabled_providers": ["anthropic", "opencodezen"],
   "provider": {
