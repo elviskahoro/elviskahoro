@@ -17,9 +17,6 @@
     "github-copilot-cli": {
       "type": "registry"
     },
-    "gemini": {
-      "type": "registry"
-    },
     "cursor": {
       "type": "registry"
     },
@@ -41,6 +38,10 @@
     "provider": "zed"
   },
   "context_servers": {
+    "exa": {
+      "enabled": true,
+      "url": "https://mcp.exa.ai/mcp"
+    },
     "linear": {
       "enabled": true,
       "url": "https://mcp.linear.app/mcp"
@@ -58,11 +59,14 @@
     "dock": "right"
   },
   "agent": {
+    "thinking_display": "always_expanded",
+    "single_file_review": true,
+    "sidebar_side": "right",
     "profiles": {
       "elvis": {
         "default_model": {
-          "provider": "anthropic",
-          "model": "claude-sonnet-4-6-latest",
+          "provider": "zed.dev",
+          "model": "claude-sonnet-5",
           "enable_thinking": true,
           "effort": "high"
         },
@@ -109,9 +113,9 @@
       "allow_all_hosts": true
     },
     "default_model": {
-      "provider": "zed.dev",
-      "model": "claude-haiku-4-5",
-      "enable_thinking": true
+      "provider": "openai",
+      "model": "gpt-5-mini",
+      "enable_thinking": false
     },
     "dock": "right",
     "favorite_models": [],
