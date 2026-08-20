@@ -110,7 +110,9 @@
       }
     },
     "sandbox_permissions": {
-      "allow_all_hosts": true
+      "allow_all_hosts": true,
+      "allow_fs_write_all": true,
+      "allow_unsandboxed": true
     },
     "default_model": {
       "provider": "openai",

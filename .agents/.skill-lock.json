@@ -213,7 +213,7 @@
       "installedAt": "2026-07-10T23:04:48.285Z",
       "updatedAt": "2026-07-10T23:04:48.285Z"
     },
-    "cavecrew": {
+    "caveman-cavecrew": {
       "source": "JuliusBrussee/caveman",
       "sourceType": "github",
       "sourceUrl": "https://github.com/JuliusBrussee/caveman.git",
@@ -339,7 +339,7 @@
       "installedAt": "2026-08-18T18:45:08.571Z",
       "updatedAt": "2026-08-18T18:45:08.571Z"
     },
-    "lean-build": {
+    "caveman-lean-build": {
       "source": "JuliusBrussee/caveman",
       "sourceType": "github",
       "sourceUrl": "https://github.com/JuliusBrussee/caveman.git",
@@ -348,7 +348,7 @@
       "installedAt": "2026-08-18T18:45:08.572Z",
       "updatedAt": "2026-08-18T18:45:08.572Z"
     },
-    "investigate-first": {
+    "caveman-investigate-first": {
       "source": "JuliusBrussee/caveman",
       "sourceType": "github",
       "sourceUrl": "https://github.com/JuliusBrussee/caveman.git",
@@ -357,7 +357,7 @@
       "installedAt": "2026-08-18T18:45:08.573Z",
       "updatedAt": "2026-08-18T18:45:08.573Z"
     },
-    "migration": {
+    "caveman-migration": {
       "source": "JuliusBrussee/caveman",
       "sourceType": "github",
       "sourceUrl": "https://github.com/JuliusBrussee/caveman.git",
@@ -366,7 +366,7 @@
       "installedAt": "2026-08-18T18:45:08.573Z",
       "updatedAt": "2026-08-18T18:45:08.573Z"
     },
-    "safe-refactor": {
+    "caveman-safe-refactor": {
       "source": "JuliusBrussee/caveman",
       "sourceType": "github",
       "sourceUrl": "https://github.com/JuliusBrussee/caveman.git",
@@ -375,7 +375,7 @@
       "installedAt": "2026-08-18T18:45:08.573Z",
       "updatedAt": "2026-08-18T18:45:08.573Z"
     },
-    "surgical-patch": {
+    "caveman-surgical-patch": {
       "source": "JuliusBrussee/caveman",
       "sourceType": "github",
       "sourceUrl": "https://github.com/JuliusBrussee/caveman.git",
@@ -384,7 +384,7 @@
       "installedAt": "2026-08-18T18:45:08.574Z",
       "updatedAt": "2026-08-18T18:45:08.574Z"
     },
-    "verify-and-stop": {
+    "caveman-verify-and-stop": {
       "source": "JuliusBrussee/caveman",
       "sourceType": "github",
       "sourceUrl": "https://github.com/JuliusBrussee/caveman.git",
