@@ -69,25 +69,59 @@ still wins in whatever context its `when` clause covers. When fixing a
 generic keybinding bug, always also grep the affected key across every
 `<editor>/keybindings.json` for a shadowing duplicate, not just generic.
 
-## Cursor: "add to current chat" vs "new chat" commands for selections (2026-08-24)
+## Cursor: correct command for "add selection to current chat" is `aichat.newchataction`, NOT any `composer.*` command (2026-08-24, corrected same day)
 
-Cursor ships two similarly-named composer commands, verified by reading
-`workbench.desktop.main.js` (minified IDs `NFe`/`Nyn`) rather than trusting
-their (identical, seemingly copy-pasted) internal titles:
+First pass at this (see git history on this file) wrongly concluded
+`composer.addsymbolstocomposer` (minified id `NFe`) was "add to current
+chat" based on its title (`"New Chat with Selections"`, itself misleading —
+titles in this bundle are not reliable) and reading its `run()` in
+isolation. That was wrong on two counts, both confirmed live in the running
+app, not just from source reading:
 
-- `composer.addsymbolstocomposer` — resolves the *currently selected*
-  composer/chat, opens it, and adds the selection/symbols to it. This is
-  "add to current chat."
-- `composer.addsymbolstonewcomposer` — creates a brand-new composer tab
-  first, then internally calls `composer.addsymbolstocomposer` to add the
-  selection to that new tab. This is "new chat with selection."
-- `composer.newAgentChat` — always opens a fresh empty agent chat (no
-  selection handling).
+1. `composer.addsymbolstocomposer` / `composer.addsymbolstonewcomposer`
+   (`NFe`/`Nyn`) unconditionally destructure their *second* argument
+   (`t.codeSelections`, `t.locationLinks`) with no null-guard. A plain
+   `keybindings.json` entry invokes a command with **no arguments at all**,
+   so `t` is `undefined` and it throws
+   `Cannot read properties of undefined (reading 'codeSelections')`
+   immediately. These two command IDs can never be driven by a static
+   keybinding — full stop, regardless of `when` clause.
+2. `editor.action.addSymbolToChat` / `editor.action.addSymbolToNewChat`
+   (ids `I2r`/`R2r`, menu title "Add Symbol to Current/New Chat...") don't
+   crash (they always pass a well-formed `{locationLinks: [...]}` arg to
+   `NFe`/`Nyn`), but they resolve the symbol *at the cursor position* via
+   the language's definition provider (`X$d` → go-to-definition), not the
+   raw selected text. On a plain text selection with no resolvable
+   identifier, `locationLinks` comes back empty, `NFe` early-returns without
+   attaching anything, and (for the *New Chat* variant specifically) a new
+   chat tab still gets created first regardless — confirmed live: "creates
+   a new chat successfully but doesn't add the selection to chat."
 
-`cursor/keybindings.json` had `cmd+l` bound to `composer.newAgentChat`,
-which is why selecting code and pressing Cmd+L always opened a new chat
-instead of adding to the open one. Fixed by rebinding `cmd+l` to
-`composer.addsymbolstocomposer`.
+The actual command wired to Cursor's own built-in "Add to Chat ⌘L" hover
+button (the one that appears over a text selection, `editor.contrib.hoverController`
+→ class `N6i`, gated by the `hideChatEditTooltip`/"Toolbar on Selection"
+setting) is minified id `Lyn`, which resolves to the string
+**`"aichat.newchataction"`** — found by tracing the button's click handler
+(`n.executeCommand(l, ...)` where `l = isGlass ? GTd : Lyn`) rather than
+guessing from any command's title. `Lyn`'s `run(e,t)` just forwards
+`(accessor, arg)` through to `composer.startComposerPrompt2` without ever
+dereferencing into `arg` unguarded, so it's safe to bind bare with no args.
+
+This is also literally Cursor's stock default for Cmd+L — `cursor/keybindings.json`
+had overridden it away to `composer.newAgentChat` since commit `63e296c`
+(pre-dating this investigation), which is the actual original root cause:
+Cmd+L always opened a *new* chat instead of adding to the current one
+because the override discarded the correct stock command. Fix: bind `cmd+l`
+straight to `aichat.newchataction`, no `when` clause needed — confirmed
+working live (selection gets added to the current chat).
+
+Lesson: for this app, a command's declared `title` is not trustworthy
+(multiple unrelated commands share the exact string "Open Chat" or "New
+Chat with Selections"). To find the real command behind a UI affordance,
+trace the click handler / keybinding registration to its id constant, then
+resolve that constant to its string literal (`grep '\bXyz="'`) — don't
+infer behavior from the title or from reading one command's `run()` in
+isolation.
 
 ## Known cleanup debt: positron/keybindings.json is largely a stale copy of generic
 

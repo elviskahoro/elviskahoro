@@ -122,17 +122,7 @@
     },
     {
         "key": "cmd+l",
-        "command": "-aichat.newchataction"
-    },
-    {
-        "key": "cmd+l",
-        "command": "composer.addsymbolstocomposer",
-        "when": "editorHasSelection"
-    },
-    {
-        "key": "cmd+l",
-        "command": "composer.newAgentChat",
-        "when": "!editorHasSelection"
+        "command": "aichat.newchataction"
     },
     {
         "key": "shift+cmd+l",
