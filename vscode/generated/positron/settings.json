@@ -132,6 +132,9 @@
   "[sql]": {
     "editor.defaultFormatter": "adpyke.vscode-sql-formatter"
   },
+  "[kson]": {
+    "editor.defaultFormatter": "kson.kson"
+  },
   "projectManager.git.baseFolders": [
     "/Users/elvis/Code"
   ],
@@ -188,25 +191,23 @@
   "remote.SSH.remotePlatform": {
     "cart-admit-tlf6.devbox.namespace": "linux"
   },
+  "workbench.editorAssociations": {
+    "*.pdf": "pdfViewer.PDFEdit",
+    "*.copilotmd": "vscode.markdown.preview.editor",
+    "*.parquet": "duckdb.dataFileViewer",
+    "*.csv": "duckdb.dataFileViewer",
+    "*.tsv": "duckdb.dataFileViewer"
+  },
   "files.associations": {
     "renv.lock": "json"
   },
   "terminal.integrated.commandsToSkipShell": [
     "kilo-code.new.agentManagerOpen",
     "kilo-code.new.agentManager.showTerminal",
-    "kilo-code.new.agentManager.runScript",
-    "kilo-code.new.agentManager.previousTerminal",
-    "kilo-code.new.agentManager.nextTerminal"
-],
-  "workbench.editorAssociations": {
-    "*.copilotmd": "vscode.markdown.preview.editor",
-    "*.parquet": "duckdb.dataFileViewer",
-    "*.csv": "duckdb.dataFileViewer",
-    "*.tsv": "duckdb.dataFileViewer"
-  },
+    "kilo-code.new.agentManager.runScript"
+  ],
   "assistant.enabled": true,
   "positron.assistant.enable": true,
   "kilo-code.new.agentWorkStyle": "skipped",
-"kilo-code.new.autoApprove.enabled": true,
-"authentication.anthropic.baseUrl": "http://127.0.0.1:51539"
+  "kilo-code.new.autoApprove.enabled": true
 }

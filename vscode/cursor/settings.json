@@ -1,5 +1,6 @@
 {
     "window.commandCenter": true,
     "cursorPreview.disableInlineCompletions": false,
-    "cursorPreview.enableInlineCompletion": true
+    "cursorPreview.enableInlineCompletion": true,
+    "cursor.composer.queueMessageDefaultBehavior": "steer"
 }

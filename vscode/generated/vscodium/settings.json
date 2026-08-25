@@ -132,6 +132,9 @@
   "[sql]": {
     "editor.defaultFormatter": "adpyke.vscode-sql-formatter"
   },
+  "[kson]": {
+    "editor.defaultFormatter": "kson.kson"
+  },
   "projectManager.git.baseFolders": [
     "/Users/elvis/Code"
   ],
@@ -187,6 +190,9 @@
   },
   "remote.SSH.remotePlatform": {
     "cart-admit-tlf6.devbox.namespace": "linux"
+  },
+  "workbench.editorAssociations": {
+    "*.pdf": "pdfViewer.PDFEdit"
   },
   "continue.enableContinueForCompletions": true,
   "continue.enableAutoScroll": true
