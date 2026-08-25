@@ -6,6 +6,7 @@
 
   a         = "!graphite add"
   aa        = "!graphite add ."
+  dd        = aa
   aaa       = aa
   aaaa      = aa
   absorb    = "!graphite absorb"
