@@ -126,7 +126,13 @@
     },
     {
         "key": "cmd+l",
-        "command": "composer.newAgentChat"
+        "command": "composer.addsymbolstocomposer",
+        "when": "editorHasSelection"
+    },
+    {
+        "key": "cmd+l",
+        "command": "composer.newAgentChat",
+        "when": "!editorHasSelection"
     },
     {
         "key": "shift+cmd+l",

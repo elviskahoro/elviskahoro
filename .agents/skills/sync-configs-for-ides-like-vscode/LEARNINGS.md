@@ -24,6 +24,29 @@ If a command is missing (or differently named) in one editor, that binding
 belongs in `<editor>/keybindings.json` as a per-editor override — not
 `generic/keybindings.json`.
 
+## Correction: `vscode/generated/` is NOT gitignored — it's tracked
+
+As of 2026-08-24, there is no `vscode/.gitignore`, and `git ls-files
+vscode/generated/` lists every generated settings/keybindings file as
+tracked. The Architecture section above (and CLAUDE.md) still call it "OUTPUT:
+composed files, gitignored" — that's aspirational/stale, not current fact.
+Practical effect: after any sync session that edits source files and reruns
+`compose.sh`, the regenerated `generated/<editor>/*.json` files show up as
+real tracked diffs and should be staged and committed alongside the source
+changes, not left as untracked/ignored working-tree noise.
+
+## Gotcha: one flagged drifted key is often not the only one
+
+When a user (or a prior session) flags a single setting as having drifted
+into a generated file outside its source, don't assume it's the only
+drift — diff the *whole* generated file against generic+editor composed, not
+just the one key mentioned. In one session, a Cursor `generated/settings.json`
+had three undocumented live-only keys (`cursor.composer.queueMessageDefaultBehavior`,
+`[kson]` formatter, `workbench.editorAssociations` for `*.pdf`) though only the
+first had been explicitly flagged. The other two were general prefs that
+belonged in `generic/settings.json` and would otherwise have been silently
+wiped on the next `compose.sh` run.
+
 ## Verified: core maximize/layout commands match across all three editors (2026-07-31)
 
 - `workbench.action.toggleMaximizeEditorGroup` ("maximize pane") — confirmed
@@ -45,6 +68,26 @@ nothing observable — the editor-specific duplicate (appended after generic)
 still wins in whatever context its `when` clause covers. When fixing a
 generic keybinding bug, always also grep the affected key across every
 `<editor>/keybindings.json` for a shadowing duplicate, not just generic.
+
+## Cursor: "add to current chat" vs "new chat" commands for selections (2026-08-24)
+
+Cursor ships two similarly-named composer commands, verified by reading
+`workbench.desktop.main.js` (minified IDs `NFe`/`Nyn`) rather than trusting
+their (identical, seemingly copy-pasted) internal titles:
+
+- `composer.addsymbolstocomposer` — resolves the *currently selected*
+  composer/chat, opens it, and adds the selection/symbols to it. This is
+  "add to current chat."
+- `composer.addsymbolstonewcomposer` — creates a brand-new composer tab
+  first, then internally calls `composer.addsymbolstocomposer` to add the
+  selection to that new tab. This is "new chat with selection."
+- `composer.newAgentChat` — always opens a fresh empty agent chat (no
+  selection handling).
+
+`cursor/keybindings.json` had `cmd+l` bound to `composer.newAgentChat`,
+which is why selecting code and pressing Cmd+L always opened a new chat
+instead of adding to the open one. Fixed by rebinding `cmd+l` to
+`composer.addsymbolstocomposer`.
 
 ## Known cleanup debt: positron/keybindings.json is largely a stale copy of generic
 
