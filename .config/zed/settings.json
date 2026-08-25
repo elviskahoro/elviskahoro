@@ -115,9 +115,10 @@
       "allow_unsandboxed": true
     },
     "default_model": {
-      "provider": "openai",
-      "model": "gpt-5-mini",
-      "enable_thinking": false
+      "effort": "high",
+      "provider": "zed.dev",
+      "model": "claude-sonnet-4-6",
+      "enable_thinking": true
     },
     "dock": "right",
     "favorite_models": [],
