@@ -7,8 +7,8 @@
 # security add-generic-password -U -a "$USER" -s ANTHROPIC_API_KEY -w "sk-ant-..."
 # security add-generic-password -U -a "$USER" -s WARP_API_KEY -w "oz_default_..."
 if command -v security >/dev/null 2>&1; then
-  OPENAI_API_KEY_VALUE="$(security find-generic-password -a "$USER" -s OPENAI_API_KEY -w 2>/dev/null)"
-  [ -n "$OPENAI_API_KEY_VALUE" ] && export OPENAI_API_KEY="$OPENAI_API_KEY_VALUE"
+#   OPENAI_API_KEY_VALUE="$(security find-generic-password -a "$USER" -s OPENAI_API_KEY -w 2>/dev/null)"
+#   [ -n "$OPENAI_API_KEY_VALUE" ] && export OPENAI_API_KEY="$OPENAI_API_KEY_VALUE"
 
 
   # WARP_API_KEY_VALUE="$(security find-generic-password -a "$USER" -s WARP_API_KEY -w 2>/dev/null)"
