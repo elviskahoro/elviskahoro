@@ -196,5 +196,6 @@
 },
 "workbench.editorAssociations": {
     "*.pdf": "pdfViewer.PDFEdit"
-}
+},
+"cursor.composer.queueMessageDefaultBehavior": "steer"
 }
