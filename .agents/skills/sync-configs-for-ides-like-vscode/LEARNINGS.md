@@ -133,3 +133,31 @@ dedicated dedup pass. Until then, don't assume `positron/keybindings.json`
 contains only true overrides; diff it against `generic/keybindings.json`
 (`diff <(jq -S . generic/keybindings.json) <(jq -S . positron/keybindings.json)`)
 before treating an entry there as intentional.
+
+## Kilo Code 7.x renamed its commands to `kilo-code.new.*` (2026-10-01)
+
+Positron/VSCodium have Kilo Code 7.x installed; its `package.json` only
+contributes `kilo-code.new.*` commands. The old IDs in `generic/keybindings.json`
+and `positron/keybindings.json` raised "command 'kilo-code.addToContext' not found":
+
+- `kilo-code.addToContext` -> `kilo-code.new.addToContext`
+- `kilo-code.ghost.generateSuggestions` -> `kilo-code.new.autocomplete.generateSuggestions`
+- context key `kilocode.ghost.enableSmartInlineTaskKeybinding` -> `kilocode.autocomplete.enableSmartInlineTaskKeybinding`
+
+Verify with `jq -r '.contributes.commands[].command' ~/.positron/extensions/kilocode.kilo-code-*/package.json`.
+Cursor has no Kilo installed (its own `cmd+l` override shadows these anyway).
+
+## Gotcha: `compose.sh all` clobbers uncommitted live drift in generated/*/settings.json (2026-10-01)
+
+`generated/<editor>/settings.json` is the live file the editor writes to. If it
+has uncommitted in-editor edits, running `compose.sh` (especially `all`) silently
+overwrites them. Before recomposing, `git diff` the generated files; if dirty,
+either classify the drift into sources first or compose only the editor you need.
+Recovery path if it happens: the editors keep local-history snapshots at
+`~/Library/Application Support/<Editor>/User/History/*/entries.json` (match on
+`resource` ending in `settings.json`; newest entry = last save). Note `cp` may
+be aliased to interactive — use `command cp -f`.
+
+**Policy (2026-10-01):** Kilo Code is used in Positron only. All `kilo-code.*`
+keybindings and settings live in `positron/` — never in `generic/`. Re-check
+`grep -c kilo generated/*/keybindings.json` shows 0 for cursor/vscode/vscodium.
