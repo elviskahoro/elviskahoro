@@ -1097,6 +1097,11 @@
     "when": "editorTextFocus && kilocode.autocomplete.enableSmartInlineTaskKeybinding && !editorTabMovesFocus && !github.copilot.completions.enabled && !inSnippetMode"
   },
   {
+    "key": "cmd+n",
+    "command": "kilo-code.new.plusButtonClicked",
+    "when": "kilo-code.new.sidebarFocused || activeWebviewPanelId == 'kilo-code.new.TabPanel'"
+  },
+  {
     "key": "shift+enter",
     "command": "renameFile",
     "when": "filesExplorerFocus"
