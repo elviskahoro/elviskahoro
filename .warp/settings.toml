@@ -38,7 +38,7 @@ input_mode = "pinned_to_bottom"
 system_theme = false
 theme = { custom = { name = "Monokai Pro Spectrum", path = "monokai_pro_spectrum.yml" } }
 [appearance.window]
-zoom_level = 110
+zoom_level = 100
 override_opacity = 100
 
 [appearance.panes]
@@ -251,7 +251,7 @@ enabled = true
 enabled = false
 
 [text_editing]
-vim_mode_enabled = true
+vim_mode_enabled = false
 autocomplete_symbols = false
 vim_status_bar = false
 vim_unnamed_system_clipboard = false
