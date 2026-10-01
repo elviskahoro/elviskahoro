@@ -1,0 +1,52 @@
+{
+  "skill_name": "job-application-copilot",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "hey can you help me apply to this role? https://boards.greenhouse.io/stripe/jobs/6345941 — its a program operations analyst position at Stripe. I've got my resume ready to go, let's do this",
+      "expected_output": "Claude navigates to the Greenhouse posting, reads the job details, confirms the role with the user, clicks Apply, begins filling standard fields from the resume, drafts answers to screening questions, presents everything for approval before submit, and provides encouraging energy throughout.",
+      "files": [],
+      "expectations": [
+        "Claude uses tabs_context_mcp and navigate to reach the job posting URL",
+        "Claude takes a screenshot to confirm the page loaded and shows the role title and company",
+        "Claude confirms the role with the user before starting the application",
+        "Claude uses read_page to identify form fields",
+        "Claude fills standard fields (name, email, phone, location) from resume data",
+        "Claude drafts screening question answers grounded in the user's actual resume experience",
+        "Claude presents drafted answers for user approval before entering them",
+        "Claude asks for explicit confirmation before clicking Submit",
+        "Claude provides encouraging, role-specific energy after submission",
+        "Claude updates the session tracker count"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "ok let's knock out some applications today. i want to apply to a few ops roles. first one is at Figma — go to their careers page and find anything program ops or business ops related. my resume is the one i shared earlier. let's get it",
+      "expected_output": "Claude navigates to Figma's careers page, searches for relevant ops roles, presents options to the user for selection, then proceeds to fill out the chosen application with appropriate energy and screening question support.",
+      "files": [],
+      "expectations": [
+        "Claude navigates to Figma's careers page (not a job board)",
+        "Claude searches or filters for operations-related roles",
+        "Claude presents found roles to the user and waits for selection before proceeding",
+        "Claude does not start filling an application until the user picks a specific role",
+        "Claude provides warm opening energy appropriate for the start of a session",
+        "Claude handles the application form systematically, field by field"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "that's 6 apps down today. here's one more — just paste this into the workday form, it's asking why I want to work at Salesforce and I'm blanking. the role is a Partner Operations Analyst. help me answer this and let's finish strong",
+      "expected_output": "Claude recognizes they're mid-session at app #7, drafts a compelling 'why Salesforce' answer tailored to the Partner Operations Analyst role using the user's resume experience (especially partner/GTM experience from Creators Corner and SVB), and delivers peak-energy encouragement for pushing through app fatigue.",
+      "files": [],
+      "expectations": [
+        "Claude recognizes this is application #7 in the session and calibrates energy accordingly (peak/building momentum)",
+        "Claude drafts a 'why Salesforce' answer that specifically references the user's partner operations experience",
+        "Claude connects the user's GTM, partnership, and data experience to the Salesforce role specifically",
+        "Claude does not use generic language — the answer could only belong to this user for this role",
+        "Claude presents the draft for approval before entering it",
+        "Claude provides motivational energy that acknowledges the grind of 7 applications",
+        "Claude does not fabricate skills or experience the user doesn't have"
+      ]
+    }
+  ]
+}
