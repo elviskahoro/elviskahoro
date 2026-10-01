@@ -17,9 +17,6 @@
     "github-copilot-cli": {
       "type": "registry"
     },
-    "cursor": {
-      "type": "registry"
-    },
     "codex-acp": {
       "type": "registry"
     },
@@ -115,9 +112,8 @@
       "allow_unsandboxed": true
     },
     "default_model": {
-      "effort": "high",
-      "provider": "zed.dev",
-      "model": "claude-sonnet-4-6",
+      "provider": "openrouter",
+      "model": "z-ai/glm-5.3-flash",
       "enable_thinking": true
     },
     "dock": "right",
