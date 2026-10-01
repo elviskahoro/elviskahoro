@@ -512,16 +512,6 @@
     "when": "editorTextFocus && vim.active && vim.use<C-l> && !inDebugRepl && !inDebugMode"
   },
   {
-    "key": "cmd+l",
-    "command": "kilo-code.addToContext",
-    "when": "editorHasSelection && editorTextFocus"
-  },
-  {
-    "key": "shift+cmd+l",
-    "command": "kilo-code.ghost.generateSuggestions",
-    "when": "editorTextFocus && kilocode.ghost.enableSmartInlineTaskKeybinding && !editorTabMovesFocus && !github.copilot.completions.enabled && !inSnippetMode"
-  },
-  {
     "key": "shift+enter",
     "command": "renameFile",
     "when": "filesExplorerFocus"
