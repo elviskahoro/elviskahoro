@@ -177,7 +177,7 @@
   "breadcrumbs.symbolSortOrder": "type",
   "outline.showConstants": false,
   "outline.showVariables": false,
-  "extensions.autoUpdate": "onlyEnabledExtensions",
+  "extensions.autoUpdate": "on",
   "vim.mouseSelectionGoesIntoVisualMode": false,
   "vim.hlsearch": true,
   "vim.highlightedyank.enable": true,
@@ -204,10 +204,17 @@
   "terminal.integrated.commandsToSkipShell": [
     "kilo-code.new.agentManagerOpen",
     "kilo-code.new.agentManager.showTerminal",
-    "kilo-code.new.agentManager.runScript"
-  ],
+    "kilo-code.new.agentManager.runScript",
+    "kilo-code.new.agentManager.previousTerminal",
+    "kilo-code.new.agentManager.nextTerminal"
+],
   "assistant.enabled": true,
   "positron.assistant.enable": true,
   "kilo-code.new.agentWorkStyle": "skipped",
-  "kilo-code.new.autoApprove.enabled": true
+  "kilo-code.new.autoApprove.enabled": true,
+  "extensions.supportAgentsWindow": {
+    "monokai.theme-monokai-pro-vscode": true
+  },
+  "kilo-code.new.autocomplete.provider": "kilo",
+  "kilo-code.new.autocomplete.model": "mistralai/codestral-2508"
 }

@@ -177,7 +177,7 @@
   "breadcrumbs.symbolSortOrder": "type",
   "outline.showConstants": false,
   "outline.showVariables": false,
-  "extensions.autoUpdate": "onlyEnabledExtensions",
+  "extensions.autoUpdate": "on",
   "vim.mouseSelectionGoesIntoVisualMode": false,
   "vim.hlsearch": true,
   "vim.highlightedyank.enable": true,
@@ -199,5 +199,8 @@
     "plaintext": false,
     "markdown": false,
     "scminput": false
+  },
+  "extensions.supportAgentsWindow": {
+    "monokai.theme-monokai-pro-vscode": true
   }
 }
