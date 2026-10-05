@@ -48,17 +48,19 @@ git_bcw() {
   git worktree add -b "$name" "../worktrees/$name" && cd "../worktrees/$name"
 }
 
-# Enqueue a roborev review for HEAD only if a non-failed job (queued/running/done)
-# already exists for it. Previously-failed reviews are allowed to retry.
+# Ensure HEAD is reviewed and block until the verdict: enqueue only if no
+# non-failed job (queued/running/done) exists for it, otherwise wait on the
+# existing one. Previously-failed reviews are allowed to retry.
 roborev-once() {
   local sha
   sha=$(git rev-parse HEAD) || return 1
   if roborev list --json --limit 0 \
        | jq -e --arg sha "$sha" 'any(.[]; ((.git_ref // "") | startswith($sha[0:12])) and .status != "failed")' \
        >/dev/null 2>&1; then
-    echo "roborev: review already exists for ${sha:0:12} — skipping"
+    echo "roborev: review already exists for ${sha:0:12} — waiting"
+    roborev wait "$@"
   else
-    roborev review "$@"
+    roborev review --wait "$@"
   fi
 }
 
@@ -532,3 +534,5 @@ alias tv="tw"
 
 # Added by Antigravity CLI installer
 export PATH="/Users/elvis/.local/bin:$PATH"
+
+. "$HOME/.cargo/env"

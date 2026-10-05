@@ -260,13 +260,15 @@
   e         = r
   rcb       = "!vim ~/.bashrc"
   rcg       = "!vim ~/.gitconfig"
-  review    = "!f() { sha=$(git rev-parse HEAD) || return 1; if roborev list --json --limit 0 | jq -e --arg s \"$sha\" 'any(.[]; ((.git_ref // \"\") | startswith($s[0:12])) and .status != \"failed\")' >/dev/null 2>&1; then echo \"roborev: review already exists for ${sha:0:12} — skipping\"; else roborev review --wait \"$@\"; fi; }; f"
+  review    = "!f() { sha=$(git rev-parse HEAD) || return 1; if roborev list --json --limit 0 | jq -e --arg s \"$sha\" 'any(.[]; ((.git_ref // \"\") | startswith($s[0:12])) and .status != \"failed\")' >/dev/null 2>&1; then echo \"roborev: review already exists for ${sha:0:12} — waiting\"; roborev wait \"$@\"; else roborev review --wait \"$@\"; fi; }; f"
 
   rebae     = rebase
   reabse    = rebase
   rebse     = rebase
   rebae     = rebase
-	roborev = !roborev
+	# roborev passthrough, except `review` always gets --wait: a bare review only
+	# enqueues a background daemon job and exits before any verdict exists.
+	roborev = "!f() { if [ \"$1\" = \"review\" ]; then shift; case \" $* \" in *\" --wait \"*|*\" --local \"*) set -- review \"$@\";; *) set -- review --wait \"$@\";; esac; fi; exec roborev \"$@\"; }; f"
 
   rb        = "!graphite rebase"
   rba       = "!graphite rebase --abort"
