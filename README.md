@@ -4,7 +4,7 @@
 
 I've starred a lot of repos (nearly 2k) and I used to organize them into lists but this was becoming too cumbersome so I built a [web app to search through (~30k) projects with natural language.](https://githubsearch.app)
 
-I've also been working on a [GTM SDK](https://gtmsdk.com/) that makes it easy to bootstrap GTM Agents--something I've been dreaming off as an early stage eng/growth employee--happy to finally have the time to work on it!
+I've also been working on a [GTM SDK](https://gtmsdk.com/) that makes it easy to bootstrap GTM Agents--something I've always dreamed of as an early stage eng/growth employee--happy to finally have the time to work on it!
 
 Anyways, I'm elvis (he/him/his), I like Python, playing soccer, watching JJK, and attending [Epic Church SF]([https://www.epicsf.com/](https://www.epicsf.com/about#vision))
 
