@@ -112,3 +112,6 @@ PERL_MM_OPT="INSTALL_BASE=/Users/elvis/perl5"; export PERL_MM_OPT;
 
 # bun
 export PATH="$HOME/.bun/bin:$PATH"
+
+# direnv: load per-project .envrc
+eval "$(direnv hook zsh)"
