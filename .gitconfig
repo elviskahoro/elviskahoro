@@ -268,7 +268,7 @@
   rebae     = rebase
 	# roborev passthrough, except `review` always gets --wait: a bare review only
 	# enqueues a background daemon job and exits before any verdict exists.
-	roborev = "!f() { if [ \"$1\" = \"review\" ]; then shift; case \" $* \" in *\" --wait \"*|*\" --local \"*) set -- review \"$@\";; *) set -- review --wait \"$@\";; esac; fi; exec roborev \"$@\"; }; f"
+	roborev = !roborev
 
   rb        = "!graphite rebase"
   rba       = "!graphite rebase --abort"
