@@ -68,6 +68,15 @@
     },
   },
   {
+    // ctrl-tab opens the agent thread switcher by default; unbound so the key is free for
+    // Wispr Flow. A null binding also shadows the Workspace-level ctrl-tab tab switcher
+    // while these contexts are focused. ctrl-shift-tab is left at its default.
+    "context": "AgentPanel || ThreadsSidebar",
+    "bindings": {
+      "ctrl-tab": null,
+    },
+  },
+  {
     "context": "ProjectPanel",
     "bindings": {
       // shift-cmd-c copies the relative file path of selected file in file explorer
