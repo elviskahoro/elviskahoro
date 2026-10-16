@@ -17,3 +17,5 @@ tmp/
 .warp/tui-preview/
 # Warp's downloaded TUI executable
 .warp/tui/versions/*/warp-tui-stable
+# Skill sync tool's trash of replaced skill copies
+.agents/skills/.trash/
