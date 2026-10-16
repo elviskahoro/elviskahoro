@@ -23,6 +23,10 @@
     "provider": "zed"
   },
   "context_servers": {
+    "attio": {
+      "enabled": true,
+      "url": "https://mcp.attio.com/mcp"
+    },
     "exa": {
       "enabled": true,
       "url": "https://mcp.exa.ai/mcp"
