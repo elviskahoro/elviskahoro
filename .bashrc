@@ -527,6 +527,8 @@ dark-theme()   { theme-dark; }
 # Apply persisted theme to this shell on startup.
 [ -r "$_THEME_MODE_FILE" ] && _theme_apply_env "$(cat "$_THEME_MODE_FILE")"
 
+alias data1="tw"
+alias data2="vd"
 alias bdip="bd list --status=in_progress"
 alias cop="copilot --yolo"
 alias csv="vd"
