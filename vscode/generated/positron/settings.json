@@ -216,5 +216,6 @@
     "monokai.theme-monokai-pro-vscode": true
   },
   "kilo-code.new.autocomplete.provider": "kilo",
-  "kilo-code.new.autocomplete.model": "mistralai/codestral-2508"
+"kilo-code.new.autocomplete.model": "mistralai/codestral-2508",
+"chat.disableAIFeatures": false
 }
