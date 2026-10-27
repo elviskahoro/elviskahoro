@@ -229,6 +229,7 @@ alias dl='g dl'
 alias eg='g'
 
 alias g='git'
+alias sg='git'
 alias G='g'
 alias ga='g'
 alias gaa='g aa'
