@@ -114,13 +114,43 @@
       "allow_unsandboxed": true
     },
     "default_model": {
-      "effort": "high",
-      "provider": "zed.dev",
-      "model": "claude-sonnet-5-5",
-      "enable_thinking": true
+      "provider": "openrouter",
+      "model": "openrouter/auto",
+      "enable_thinking": false
     },
     "dock": "right",
-    "favorite_models": [],
+    "favorite_models": [
+      {
+        "provider": "openrouter",
+        "model": "z-ai/glm-5.3",
+        "enable_thinking": true
+      },
+      {
+        "provider": "openrouter",
+        "model": "~z-ai/glm-flash-latest",
+        "enable_thinking": true
+      },
+      {
+        "provider": "openrouter",
+        "model": "~deepseek/deepseek-flash-latest",
+        "enable_thinking": true
+      },
+      {
+        "provider": "openrouter",
+        "model": "minimax/minimax-m3",
+        "enable_thinking": true
+      },
+      {
+        "provider": "openrouter",
+        "model": "moonshotai/kimi-k3",
+        "enable_thinking": true
+      },
+      {
+        "provider": "openrouter",
+        "model": "moonshotai/kimi-k3.1-pro",
+        "enable_thinking": true
+      }
+    ],
     "model_parameters": []
   },
   "git_panel": {
