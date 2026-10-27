@@ -26,6 +26,7 @@
   },
   "auto_update": false,
   "edit_predictions": {
+    "mode": "subtle",
     "provider": "zed"
   },
   "context_servers": {
