@@ -115,3 +115,6 @@ export PATH="$HOME/.bun/bin:$PATH"
 
 # direnv: load per-project .envrc
 eval "$(direnv hook zsh)"
+
+# Resend CLI
+export PATH="$HOME/.resend/bin:$PATH"
