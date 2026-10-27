@@ -8,6 +8,9 @@
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
   "agent_servers": {
+    "pi-acp": {
+      "type": "registry"
+    },
     "codex-acp": {
       "type": "registry"
     },
