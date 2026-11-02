@@ -202,5 +202,7 @@
   },
   "extensions.supportAgentsWindow": {
     "monokai.theme-monokai-pro-vscode": true
-  }
+  },
+  "chat.useHooks": true,
+  "github.copilot.chat.otel.dbSpanExporter.enabled": true
 }
