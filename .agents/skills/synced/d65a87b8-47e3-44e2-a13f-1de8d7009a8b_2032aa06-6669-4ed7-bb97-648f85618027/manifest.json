@@ -1,5 +1,5 @@
 {
-  "lastUpdated": 1793130455601,
+  "lastUpdated": 1793211063806,
   "skills": [
     {
       "skillId": "docs",
@@ -240,7 +240,7 @@
       "name": "skill-creator",
       "description": "Create new skills, modify and improve existing skills, and measure skill performance. Use when users want to create a skill from scratch, edit, or optimize an existing skill, run evals to test a skill, benchmark skill performance with variance analysis, or optimize a skill's description for better triggering accuracy.",
       "source": "anthropic-example",
-      "updatedAt": "2026-10-21T20:47:56.610025Z"
+      "updatedAt": "2026-10-28T17:00:24.127636Z"
     },
     {
       "skillId": "theme-factory",
@@ -312,7 +312,7 @@
       "name": "computer-use",
       "description": "Read this skill before the first step of any request to do something in an app on the person's own computer (Notes, Finder, System Settings, any desktop app), to look at their screen, or for \"computer use\". Computer use (desktop control) lets Claude take screenshots of the person's desktop and control it with clicks, typing and scrolling through the Claude desktop app; its tools are named mcp__computer-use__* when the session runs in the desktop app and mcp__remote-devices__computer_* when a cloud session is linked to the person's computer; before computer use is turned on for a conversation there may be no such tools, only an enable__mcp__remote-devices__computer tool, which turns it on. It covers turning it on, picking the right tool, the access flow, and the safety rules for tiered apps, links and financial actions. It is not for websites, which go through Claude in Chrome or the built-in browser and their own skills.",
       "source": "anthropic-example",
-      "updatedAt": "2026-10-08T17:34:24.164396Z"
+      "updatedAt": "2026-10-28T18:00:31.869646Z"
     }
   ]
 }
