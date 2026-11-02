@@ -68,6 +68,26 @@
     },
   },
   {
+    // cmd-l while the agent panel is focused: add the editor/terminal selection (or current
+    // line if the cursor is empty) from the last-used buffer to the thread, without leaving
+    // the chat. AddSelectionToThread is a workspace-level handler that skips the panel's own
+    // input when looking for a source, so no need to refocus the buffer first.
+    // Needs both blocks: the chat input is an Editor, and the default "Editor" cmd-l
+    // (editor::SelectLine) sits at a deeper node than "AgentPanel", so it would win there.
+    // Kept as separate blocks since ">" binds looser than "||" in context expressions.
+    "context": "AgentPanel > Editor",
+    "bindings": {
+      "cmd-l": "agent::AddSelectionToThread",
+    },
+  },
+  {
+    // non-editor focus inside the panel (thread messages, buttons, agent terminal)
+    "context": "AgentPanel",
+    "bindings": {
+      "cmd-l": "agent::AddSelectionToThread",
+    },
+  },
+  {
     // ctrl-tab opens the agent thread switcher by default; unbound so the key is free for
     // Wispr Flow. A null binding also shadows the Workspace-level ctrl-tab tab switcher
     // while these contexts are focused. ctrl-shift-tab is left at its default.
