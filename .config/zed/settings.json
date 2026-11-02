@@ -57,7 +57,7 @@
   "agent": {
     "thinking_display": "always_expanded",
     "single_file_review": true,
-    "sidebar_side": "right",
+    "sidebar_side": "left",
     "profiles": {
       "elvis": {
         "default_model": {
