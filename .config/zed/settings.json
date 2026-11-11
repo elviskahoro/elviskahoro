@@ -77,6 +77,16 @@
     "tool_permissions": {
       "default": "allow",
       "tools": {
+        "restore_file_from_disk": {
+          "default": "allow"
+        },
+        "edit_file": {
+          "always_allow": [
+            {
+              "pattern": "^isabel\\-may/\\.zed/"
+            }
+          ]
+        },
         "open": {
           "default": "allow"
         },
