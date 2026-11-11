@@ -24,6 +24,11 @@
       "cmd-l": "agent::ToggleFocus",
       // shift-cmd-b opens/closes the right dock (where the agent panel lives)
       "shift-cmd-b": "workspace::ToggleRightDock",
+      // shift-cmd-s opens the task spawn picker (replaces the default workspace::SaveAs);
+      // shift-cmd-r is unbound (default task::Spawn lives in "Workspace && !Terminal", same
+      // tree depth as this block, so this null wins on load order)
+      "shift-cmd-s": "task::Spawn",
+      "shift-cmd-r": null,
       // cmd-1 / cmd-2 navigate previous/next tab globally (override default activate-by-index)
       "cmd-1": "pane::ActivatePreviousItem",
       "cmd-2": "pane::ActivateNextItem",
