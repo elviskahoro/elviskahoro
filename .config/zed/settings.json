@@ -124,9 +124,10 @@
       "allow_unsandboxed": true
     },
     "default_model": {
-      "provider": "openrouter",
-      "model": "openrouter/auto",
-      "enable_thinking": false
+      "effort": "high",
+      "provider": "zed.dev",
+      "model": "claude-sonnet-5-5",
+      "enable_thinking": true
     },
     "dock": "right",
     "favorite_models": [
