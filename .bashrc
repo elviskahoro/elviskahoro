@@ -393,7 +393,7 @@ alias nfm='fnm'
 
 # Reflex
 alias refelx='reflex'
-alias rr='reflex run'
+alias rr='uv run reflex run --frontend-port'
 alias rv='roborev'
 alias rrld='reflex run --loglevel=debug'
 
