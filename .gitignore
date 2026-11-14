@@ -1,6 +1,7 @@
 tmp/
 .claude/*
 !.claude/settings.json
+!.claude/CLAUDE.md
 !.claude/themes/
 !.claude/hooks/
 !.claude/hooks/**
