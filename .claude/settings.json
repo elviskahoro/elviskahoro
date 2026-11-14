@@ -116,7 +116,6 @@
       }
     }
   },
-  "effortLevel": "xhigh",
   "skipDangerousModePermissionPrompt": true,
   "theme": "custom:current",
   "editorMode": "vim",

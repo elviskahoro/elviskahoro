@@ -1,5 +1,5 @@
 {
-  "lastUpdated": 1794584448901,
+  "lastUpdated": 1794681961389,
   "skills": [
     {
       "skillId": "docs",
@@ -22,8 +22,7 @@
       "description": "End-to-end paid mentoring engagement agent. Manages dual-audience communications (mentee + paying client/sponsor), application coaching, competitive intelligence, community engagement strategy, billing, and professional development planning. Trigger when M says 'mentoring session,' 'mentee,' 'client update,' 'Clarisse,' 'Seeling,' 'GSoC,' 'open source mentoring,' 'coaching engagement,' 'sponsor email,' 'write to the parent,' 'evaluation window,' 'competitive intel,' 'prerequisite mapping,' 'call script,' 'mentoring invoice,' or any reference to managing a paid mentoring relationship. Also trigger when M is drafting communications where the audience is either a student she's coaching or the person paying for that coaching. Trigger proactively when M mentions working with someone on an application, proposal, or open source contribution and there's a separate paying party involved.",
       "source": "plugin",
       "updatedAt": "2026-04-03T02:56:33.342842Z",
-      "backingPluginId": "plugin_01N5mtw9qqQzo6SgsiXKk4LX",
-      "creatorType": "user"
+      "backingPluginId": "plugin_01N5mtw9qqQzo6SgsiXKk4LX"
     },
     {
       "skillId": "skill_01EkT2FPoQXxXD8Efa8wyDi2",
@@ -31,8 +30,7 @@
       "description": "On-demand Gmail inbox cleanup using the Eisenhower Matrix. Trigger when the user says \"inbox cleanup,\" \"clean my inbox,\" \"email triage,\" \"process my inbox,\" \"inbox zero,\" \"sort my emails,\" \"triage emails,\" \"clean up email,\" \"deal with my inbox,\" or any variation of wanting their Gmail inbox organized, archived, labeled, and responded to. Also trigger when the user says \"too many emails,\" \"inbox is a mess,\" \"email overwhelm,\" or casually mentions needing to get through their email. This skill handles the full pipeline: Eisenhower Matrix classification, label application, Q4 archival, and lens-reviewed draft responses. Trigger proactively and liberally.",
       "source": "plugin",
       "updatedAt": "2026-04-08T21:40:29.885657Z",
-      "backingPluginId": "plugin_016oAPnLgX874g44MGrXkcTY",
-      "creatorType": "user"
+      "backingPluginId": "plugin_016oAPnLgX874g44MGrXkcTY"
     },
     {
       "skillId": "morning",
@@ -48,8 +46,7 @@
       "description": "Research one interesting development from the AI and data engineering world, draft a LinkedIn post in M's devtools-insider voice, run it through full review, present the publish-ready draft for M's explicit yes, then post to LinkedIn and add the follow-up comment.",
       "source": "plugin",
       "updatedAt": "2026-06-16T19:25:08.804471Z",
-      "backingPluginId": "plugin_01SvRSZ17xQqJcb622fpBTWh",
-      "creatorType": "user"
+      "backingPluginId": "plugin_01SvRSZ17xQqJcb622fpBTWh"
     },
     {
       "skillId": "skill_01Eh2KAifNowGxXkW2mPG8zf",
@@ -57,8 +54,7 @@
       "description": "Autonomous job application agent for Ali Rohde Jobs newsletters. Trigger when user says \"let's apply,\" \"ali rohde,\" \"apply to jobs,\" \"job apps,\" \"knock out some apps,\" \"apply to this role,\" \"let's go through the list,\" or shares an Ali Rohde Jobs newsletter URL, or references applying to Chief of Staff, BizOps, or VC roles from a newsletter. Also trigger when the user says \"edition [number],\" pastes a substack link, or says anything about going through a job list top to bottom. This skill handles the entire end-to-end flow: reading the newsletter, checking which roles are live, filling out applications, crafting screening answers in M's voice, and tracking progress. Always trigger proactively — if the user mentions job applications at all, this is the skill.",
       "source": "plugin",
       "updatedAt": "2026-03-30T01:41:25.904698Z",
-      "backingPluginId": "plugin_01Qbsx8J3Aoo8XidcbijhSmZ",
-      "creatorType": "user"
+      "backingPluginId": "plugin_01Qbsx8J3Aoo8XidcbijhSmZ"
     },
     {
       "skillId": "skill_01HEc23vhRxRMVG8MciDYKku",
@@ -66,8 +62,7 @@
       "description": "Audit and clean up M's Google Calendar across both accounts — find conflicts, remove declined events, and prep tomorrow's schedule. Trigger when the user says \"clean my calendar,\" \"calendar cleanup,\" \"audit my calendar,\" \"check my calendar,\" \"what's on my calendar tomorrow,\" \"any conflicts,\" \"calendar check,\" \"prep tomorrow,\" \"day prep,\" \"nightly cleanup,\" \"8pm cleanup,\" or any variation of wanting their calendar audited, conflicts resolved, or next day prepped. Also trigger when the user says \"my calendar is a mess,\" \"am I double-booked,\" \"do I have anything conflicting,\" or casually mentions needing to review what's coming up. This skill handles the full pipeline: cross-calendar conflict detection, email cross-referencing for declined events, tomorrow's audit, and auto-resolution with a clean summary. Trigger proactively and liberally — if the user mentions their calendar at all, this is the skill.",
       "source": "plugin",
       "updatedAt": "2026-04-03T04:44:48.502471Z",
-      "backingPluginId": "plugin_01W5PV6sQnRLPhRrhpj77WTn",
-      "creatorType": "user"
+      "backingPluginId": "plugin_01W5PV6sQnRLPhRrhpj77WTn"
     },
     {
       "skillId": "skill_015sojQg59cj2aEFJnP94VeQ",
@@ -75,8 +70,7 @@
       "description": "Job application co-pilot that fills out career page applications alongside the user using the browser — clicking through forms, crafting screening question answers, tracking apps, and keeping energy high. Trigger when user says \"let's apply,\" \"help me apply,\" \"application time,\" \"knock out some apps,\" \"apply to this role,\" or shares a job URL, career page, or company with apply intent. Also trigger for pasted job descriptions, \"I found a role at [company],\" or any signal of wanting to submit through Workday, Greenhouse, Lever, Ashby, iCIMS, Taleo, etc. Even casual \"I should apply to that\" triggers this. Always trigger proactively.",
       "source": "plugin",
       "updatedAt": "2026-03-26T07:17:39.341169Z",
-      "backingPluginId": "plugin_01GSXAqDNYxbnY5WGFQCSm5W",
-      "creatorType": "user"
+      "backingPluginId": "plugin_01GSXAqDNYxbnY5WGFQCSm5W"
     },
     {
       "skillId": "skill_01G2vf8LKCZQMfcBHXa6fXsP",
@@ -84,8 +78,7 @@
       "description": "Strategic application agent for competitive programs, fellowships, internships, grants, or roles. Trigger on: 'application strategy,' 'perfect applicant,' 'position this application,' 'what do the reviewers want,' 'research this program,' 'how do I stand out,' 'submission plan,' 'strengthen this application,' or when mentoring someone through an application. Also trigger on casual mentions like 'applying to X' or 'she's applying to Y.' Three modes: Discovery (deep research on program, evaluators, competition), Strategy (Perfect Applicant checklist, positioning, submission plan), Materials Review (edit through Pabrai, Promoted Employee, Lens Review). Not for filling out web forms (use job-application-copilot). This is strategy, research, and positioning.",
       "source": "plugin",
       "updatedAt": "2026-03-30T00:56:14.315870Z",
-      "backingPluginId": "plugin_01To5m5kCfDbSELquBHads35",
-      "creatorType": "user"
+      "backingPluginId": "plugin_01To5m5kCfDbSELquBHads35"
     },
     {
       "skillId": "skill_011iaXJXrGihWxh4QJweLepE",
@@ -93,8 +86,7 @@
       "description": "Run any decision through the Pabrai-Buffett-Munger framework. Trigger on: 'run this through Pabrai,' 'should I do this,' 'help me decide,' 'is this a good bet,' 'what would Pabrai/Buffett/Munger say,' 'invert this,' 'asymmetric bet,' 'is the downside capped,' 'I'm torn between,' 'pros and cons,' 'is this worth it,' 'what's the smart move,' 'decision check,' or any decision being weighed — career moves, purchases, business decisions, time allocation, pricing, job offers, client decisions, lifestyle changes. Also trigger on casual signals like 'I'm thinking about doing X' or 'should I take this opportunity.' Trigger proactively and liberally.",
       "source": "plugin",
       "updatedAt": "2026-03-28T06:40:20.124323Z",
-      "backingPluginId": "plugin_01GnqfiTypfiCi4jD43aFuMB",
-      "creatorType": "user"
+      "backingPluginId": "plugin_01GnqfiTypfiCi4jD43aFuMB"
     },
     {
       "skillId": "skill_018b1igkKP3LQnLPS9QE67GE",
@@ -102,8 +94,7 @@
       "description": "Apply Marcella's distinctive voice to professional content. Trigger on: 'write this in my voice,' 'make this sound like me,' 'Marcella voice,' 'use my voice,' 'voice check,' or whenever any content is being drafted for M to send, submit, or publish. Use proactively when M is applying to jobs, writing professional communications, screening answers, application content, LinkedIn posts, or crafting any message that represents her professionally. Also trigger when reviewing drafts, rewriting content, or when any other skill produces written output that M will send externally. This skill ensures all content reflects her core operating principles: direct, specific, confident, and earned not inflated.",
       "source": "plugin",
       "updatedAt": "2026-04-14T01:24:54.184670Z",
-      "backingPluginId": "plugin_01NkKYmuhgYaigkFAbY3APn5",
-      "creatorType": "user"
+      "backingPluginId": "plugin_01NkKYmuhgYaigkFAbY3APn5"
     },
     {
       "skillId": "skill_01JnnbnkaUVvQUfbLSpeaJSf",
@@ -111,8 +102,7 @@
       "description": "French learning companion that uses Claude in Chrome to navigate Duolingo lessons and provide deep supplementary teaching alongside each exercise. Use this skill whenever the user says \"let's do Duolingo,\" \"French practice,\" \"Duolingo session,\" \"language practice,\" \"time for French,\" \"open Duolingo,\" \"do my French lesson,\" \"practice French,\" \"Duolingo time,\" or any variation of wanting to study French or do a Duolingo lesson. Also trigger when the user mentions wanting grammar explanations, cultural context, or memory tricks for French vocabulary. Even casual mentions like \"let's learn some French\" or \"I need to practice\" should trigger this skill.",
       "source": "plugin",
       "updatedAt": "2026-03-25T18:16:07.822984Z",
-      "backingPluginId": "plugin_01FwDhDFm4SQ7S3FRmNpJGdq",
-      "creatorType": "user"
+      "backingPluginId": "plugin_01FwDhDFm4SQ7S3FRmNpJGdq"
     },
     {
       "skillId": "skill_01AZWTxADDTWFSH7aLY86zYY",
@@ -120,8 +110,7 @@
       "description": "Manage and respond to LinkedIn messages daily. Handles recruiter vetting, networking follow-ups, event connections, and relationship management using M's voice and frameworks. Trigger when the user says \"respond to my LinkedIn messages,\" \"LinkedIn inbox,\" \"check my LinkedIn DMs,\" \"linkedin messages,\" \"respond to recruiters,\" \"manage my LinkedIn,\" \"who messaged me on LinkedIn,\" \"LinkedIn follow-ups,\" \"recruiter messages,\" \"reply to that recruiter,\" \"vet this recruiter,\" or any variation of wanting to read, triage, draft, or send LinkedIn messages. Also trigger on casual mentions like \"what's in my LinkedIn inbox,\" \"any new messages on LinkedIn,\" \"handle my LinkedIn,\" \"check LinkedIn,\" or when the user references any LinkedIn conversation. Trigger proactively and liberally. If the user mentions LinkedIn messaging at all, this is the skill.",
       "source": "plugin",
       "updatedAt": "2026-04-03T20:06:53.881520Z",
-      "backingPluginId": "plugin_0133bgt6ZuWksqzT69gzK6mY",
-      "creatorType": "user"
+      "backingPluginId": "plugin_0133bgt6ZuWksqzT69gzK6mY"
     },
     {
       "skillId": "skill_01WDrRaZuRt3YgH8ibWrBbAW",
@@ -137,8 +126,7 @@
       "description": "Gracefully close out a session before the user leaves. Use this skill whenever the user says 'close out,' 'wrap up,' 'before I go,' 'leaving this chat,' 'end of session,' 'sign off,' 'that's it for now,' 'I'm done,' 'session summary,' 'what did we do,' or any indication they're about to leave and want things tied up. Also trigger proactively when the user says goodbye, thanks you at the end of a long session, or says 'moving to a different chat.' Even casual signals like 'ok I think that's everything' or 'cool thanks' after a multi-step session should trigger this skill. The goal is to make sure nothing falls through the cracks — every session ends clean.",
       "source": "plugin",
       "updatedAt": "2026-03-25T18:15:18.257911Z",
-      "backingPluginId": "plugin_01NRRiyNbQuvYuoifDkuAuax",
-      "creatorType": "user"
+      "backingPluginId": "plugin_01NRRiyNbQuvYuoifDkuAuax"
     },
     {
       "skillId": "skill_019khukduEWibCfNvkjgaUCn",
@@ -146,8 +134,7 @@
       "description": "Shop on Amazon — search for a product, find the best match, confirm details, add to cart, and bring the user to the checkout page ready to place their order. Use this skill whenever the user says things like \"buy this on Amazon\", \"order [product] from Amazon\", \"add this to my Amazon cart\", \"can you shop on Amazon for me\", \"find this on Amazon and add to cart\", \"look this up on Amazon\", or pastes a product name/description with purchase intent. Also trigger when the user says \"I want to get [product]\", \"I need to buy [product]\", \"check the price on Amazon\", \"find the best deal on Amazon\", or any variation of wanting to purchase something. Even if the user just says \"buy this\" or \"order this\" while describing a product, this is the right skill. Always trigger proactively — the user should never have to say \"use the Amazon skill.\"",
       "source": "plugin",
       "updatedAt": "2026-03-23T21:49:38.265171Z",
-      "backingPluginId": "plugin_01XCuJYGZiu31s6GhvHRfiT3",
-      "creatorType": "user"
+      "backingPluginId": "plugin_01XCuJYGZiu31s6GhvHRfiT3"
     },
     {
       "skillId": "skill_01AaEwrSguSJcjZE5savPCgh",
@@ -155,8 +142,7 @@
       "description": "Creates one SOP",
       "source": "plugin",
       "updatedAt": "2026-03-09T17:59:58.355794Z",
-      "backingPluginId": "plugin_01S3SBeWVV6pQSmTTYUVWzWf",
-      "creatorType": "user"
+      "backingPluginId": "plugin_01S3SBeWVV6pQSmTTYUVWzWf"
     },
     {
       "skillId": "skill_01BuPuXJKPRkUB66T4zCUJbW",
@@ -164,8 +150,7 @@
       "description": "Accountability coach with emotional support. Trigger this skill whenever the user shows signs of task-switching, avoidance, or trying to move on before completing something they started. Trigger when the user says things like \"let's move on,\" \"actually let's do X instead,\" \"forget it for now,\" \"I'll come back to this,\" or changes topic mid-task. Also trigger when the user says \"hold me accountable,\" \"keep me on track,\" \"don't let me skip this,\" \"make me finish,\" \"I'm stalling,\" \"I don't know why I haven't done this,\" or seems stuck without knowing what they're waiting for. The skill activates PROACTIVELY — if Claude notices the user started something and is now redirecting before it's done, step in warmly before being asked. The coach holds the line with genuine warmth, not harshness — redirecting the user back to what they started, celebrating completions, and providing real emotional support. Use this skill liberally. Most people abandon tasks far more than they realize.",
       "source": "plugin",
       "updatedAt": "2026-03-21T22:46:13.129160Z",
-      "backingPluginId": "plugin_01TMPjjD6rNwTJ9rk8DTzDWF",
-      "creatorType": "user"
+      "backingPluginId": "plugin_01TMPjjD6rNwTJ9rk8DTzDWF"
     },
     {
       "skillId": "skill_01VEQtgyizZVs9AMHD5nbb6A",
@@ -205,8 +190,7 @@
       "description": "Create a Notion task board for any lever in the Life OS system. Use this skill whenever the user mentions creating a board, task board, Kanban, or tracker for one of their Life OS levers — things like \"make a board for my Fitness lever,\" \"create a task tracker for Side Project,\" \"set up a board for Move,\" or \"build out the Career lever like you did with Wedding.\" Also trigger when the user says \"create a board like the Wedding one\" or references the pattern of Lane/Priority/Owner task boards inside their Notion Life OS. Even casual mentions like \"can you do a board for X\" or \"set up X the same way\" should trigger this skill.",
       "source": "plugin",
       "updatedAt": "2026-03-05T04:06:58.065857Z",
-      "backingPluginId": "plugin_018LCMUx7tqgM2w1GBjKHBSM",
-      "creatorType": "user"
+      "backingPluginId": "plugin_018LCMUx7tqgM2w1GBjKHBSM"
     },
     {
       "skillId": "skill_01PhQ3JFoN7U6Xp1JrVoGNGF",
@@ -214,8 +198,7 @@
       "description": "Set up a complete annual calendar system for any Life OS 3.0 pillar. Use this skill whenever the user says \"lever up [pillar]\", \"lever up my [pillar]\", \"set up calendar for [pillar]\", \"do what we did for Health but for [pillar]\", \"calendar system for [pillar name]\", \"front-load my [pillar] appointments\", \"create forcing functions for [pillar]\", \"apply the Health pillar approach to [pillar]\", \"lever up\", \"annual calendar for [pillar]\", \"do the same thing for pillar [number]\", or references building out calendar events for any of their 7 Life OS pillars. Also trigger when the user mentions wanting recurring calendar blocks, forcing functions, or the \"Matteo principle\" for a non-Health pillar. This skill captures the exact methodology used to build the Health pillar calendar and makes it repeatable for all 7 pillars.",
       "source": "plugin",
       "updatedAt": "2026-03-20T15:50:24.100907Z",
-      "backingPluginId": "plugin_015f3ro7cKZdTKPk7i2p7Ezk",
-      "creatorType": "user"
+      "backingPluginId": "plugin_015f3ro7cKZdTKPk7i2p7Ezk"
     },
     {
       "skillId": "skill_015a9KhgEz1jt7CsxGTZyUXp",
@@ -223,8 +206,7 @@
       "description": "Run any draft message through twelve expert review lenses before sending. Trigger when user says: \"review this,\" \"make this better,\" \"polish this draft,\" \"run this through the lenses,\" \"lens review,\" \"zero-second read,\" \"review my email,\" \"help me rewrite this,\" \"is this ready to send,\" \"help me with this message,\" or shares a draft for feedback. Also trigger when iterating on a message multiple times. Applies twelve lenses in order: KYA/Know Your Audience (always first), Empowering Reframe (no exceptions), Promise Audit (no exceptions), de Botton (emotional intelligence), Voss (tactical empathy and negotiation), Nader (strategy), Sandberg (power positioning), Pabrai (asymmetric thinking and leverage), Self-Advocacy (domain language and institutional leverage), SDR (conversion), Gottmans (connection and bids), Zero-Second Read (signal audit — always last).",
       "source": "plugin",
       "updatedAt": "2026-03-24T01:55:20.209219Z",
-      "backingPluginId": "plugin_011TcgmU45CqHoK3PTgQRckw",
-      "creatorType": "user"
+      "backingPluginId": "plugin_011TcgmU45CqHoK3PTgQRckw"
     },
     {
       "skillId": "skill_01DBpJiTaUQ9opS8tArLjqMj",
@@ -232,8 +214,7 @@
       "description": "Draft and send messages through web-based patient portals, provider portals, or any authenticated messaging platform using the browser extension. Use this skill whenever the user says \"send a message to my doctor,\" \"message my provider,\" \"send a portal message,\" \"use the patient portal,\" \"message through LifeStance,\" \"send through the portal,\" \"portal message,\" \"draft a message to my doctor,\" \"write a message for my provider,\" \"help me write to my psychiatrist,\" or wants to compose and/or send a message through any web-based portal that requires login. Also trigger when the user references sending a pre-written message (from Notion, a doc, or the conversation) to someone through a web interface, or when they mention any patient portal by name (LifeStance, MyChart, AdvancedMD, Epic, Athena, etc.). Even casual mentions like \"can you send that to my psychiatrist,\" \"put that message in the portal,\" \"I need to tell my doctor about X,\" or \"help me ask my provider about Y\" should trigger this skill.",
       "source": "plugin",
       "updatedAt": "2026-03-24T01:40:01.009969Z",
-      "backingPluginId": "plugin_01JpCYuGofKs17ZSibLRzTnK",
-      "creatorType": "user"
+      "backingPluginId": "plugin_01JpCYuGofKs17ZSibLRzTnK"
     },
     {
       "skillId": "skill-creator",
