@@ -19,20 +19,10 @@ tmp/
 .warp/tui/versions/*/warp-tui-stable
 # Skill sync tool's trash of replaced skill copies
 .agents/skills/.trash/
-# Synced skills published by Anthropic (manifest source: anthropic / anthropic-example),
-# not authored here. Includes the Microsoft Office ones (docx/pptx/xlsx).
-# Own skills (manifest source: plugin) stay tracked.
-.agents/skills/synced/*/docx/
-.agents/skills/synced/*/pptx/
-.agents/skills/synced/*/xlsx/
-.agents/skills/synced/*/pdf/
-.agents/skills/synced/*/docs/
-.agents/skills/synced/*/google-workspace/
-.agents/skills/synced/*/import-memory/
-.agents/skills/synced/*/morning/
-.agents/skills/synced/*/skill-creator/
-.agents/skills/synced/*/built-in-browser/
-.agents/skills/synced/*/chrome-browser/
-.agents/skills/synced/*/computer-use/
-.agents/skills/synced/*/deep-research/
-.agents/skills/synced/*/theme-factory/
+# Skills synced from Claude cloud into synced/<account>/<skill>/ (Anthropic-published
+# docx/pptx/xlsx/etc. and account plugin skills) are not authored here. Ignore every
+# skill dir; the sync-state files directly in each bucket (manifest.json,
+# .last-complete-round) stay tracked.
+.agents/skills/synced/*/*/
+# Hotdata CLI re-creates this symlink into ~/.agents/skills on update
+.agents/skills/hotdata
