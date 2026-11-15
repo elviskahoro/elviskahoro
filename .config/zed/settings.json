@@ -7,6 +7,270 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "language_models": {
+    "openai_compatible": {
+      "Fireworks": {
+        "api_url": "https://api.fireworks.ai/inference/v1",
+        "available_models": [
+          {
+            "name": "accounts/fireworks/routers/glm-5p3-fast",
+            "max_tokens": 1048576,
+            "max_output_tokens": 131072,
+            "max_completion_tokens": 1048576,
+            "capabilities": {
+              "tools": true,
+              "images": false,
+              "parallel_tool_calls": true,
+              "prompt_cache_key": false,
+              "chat_completions": true,
+              "interleaved_reasoning": false,
+              "max_tokens_parameter": false
+            }
+          },
+          {
+            "name": "accounts/fireworks/models/kimi-k3",
+            "max_tokens": 1048576,
+            "max_output_tokens": 262000,
+            "max_completion_tokens": 1048576,
+            "capabilities": {
+              "tools": true,
+              "images": true,
+              "parallel_tool_calls": true,
+              "prompt_cache_key": false,
+              "chat_completions": true,
+              "interleaved_reasoning": false,
+              "max_tokens_parameter": false
+            }
+          },
+          {
+            "name": "accounts/fireworks/routers/kimi-k3-fast",
+            "max_tokens": 1048576,
+            "max_output_tokens": 262000,
+            "max_completion_tokens": 1048576,
+            "capabilities": {
+              "tools": true,
+              "images": true,
+              "parallel_tool_calls": true,
+              "prompt_cache_key": false,
+              "chat_completions": true,
+              "interleaved_reasoning": false,
+              "max_tokens_parameter": false
+            }
+          },
+          {
+            "name": "accounts/fireworks/models/ember-1",
+            "max_tokens": 1048576,
+            "max_output_tokens": 262000,
+            "max_completion_tokens": 1048576,
+            "capabilities": {
+              "tools": true,
+              "images": true,
+              "parallel_tool_calls": true,
+              "prompt_cache_key": false,
+              "chat_completions": true,
+              "interleaved_reasoning": false,
+              "max_tokens_parameter": false
+            }
+          },
+          {
+            "name": "accounts/fireworks/models/glm-5p3",
+            "max_tokens": 1048576,
+            "max_output_tokens": 131072,
+            "max_completion_tokens": 1048576,
+            "capabilities": {
+              "tools": true,
+              "images": false,
+              "parallel_tool_calls": true,
+              "prompt_cache_key": false,
+              "chat_completions": true,
+              "interleaved_reasoning": false,
+              "max_tokens_parameter": false
+            }
+          },
+          {
+            "name": "accounts/fireworks/models/glm-5p3-flash",
+            "max_tokens": 1048576,
+            "max_output_tokens": 131072,
+            "max_completion_tokens": 1048576,
+            "capabilities": {
+              "tools": true,
+              "images": true,
+              "parallel_tool_calls": true,
+              "prompt_cache_key": false,
+              "chat_completions": true,
+              "interleaved_reasoning": false,
+              "max_tokens_parameter": false
+            }
+          },
+          {
+            "name": "accounts/fireworks/routers/glm-5p2-fast",
+            "max_tokens": 1048576,
+            "max_output_tokens": 131072,
+            "max_completion_tokens": 1048576,
+            "capabilities": {
+              "tools": true,
+              "images": false,
+              "parallel_tool_calls": true,
+              "prompt_cache_key": false,
+              "chat_completions": true,
+              "interleaved_reasoning": false,
+              "max_tokens_parameter": false
+            }
+          },
+          {
+            "name": "accounts/fireworks/models/deepseek-v4p1-flash",
+            "max_tokens": 1048576,
+            "max_output_tokens": 384000,
+            "max_completion_tokens": 1048576,
+            "capabilities": {
+              "tools": true,
+              "images": true,
+              "parallel_tool_calls": true,
+              "prompt_cache_key": false,
+              "chat_completions": true,
+              "interleaved_reasoning": false,
+              "max_tokens_parameter": false
+            }
+          },
+          {
+            "name": "accounts/fireworks/models/deepseek-v4p1-flash-1017",
+            "max_tokens": 1048576,
+            "max_output_tokens": 384000,
+            "max_completion_tokens": 1048576,
+            "capabilities": {
+              "tools": true,
+              "images": true,
+              "parallel_tool_calls": true,
+              "prompt_cache_key": false,
+              "chat_completions": true,
+              "interleaved_reasoning": false,
+              "max_tokens_parameter": false
+            }
+          },
+          {
+            "name": "accounts/fireworks/models/qwen3p8-max",
+            "max_tokens": 262144,
+            "max_output_tokens": 65536,
+            "max_completion_tokens": 262144,
+            "capabilities": {
+              "tools": true,
+              "images": true,
+              "parallel_tool_calls": true,
+              "prompt_cache_key": false,
+              "chat_completions": true,
+              "interleaved_reasoning": false,
+              "max_tokens_parameter": false
+            }
+          },
+          {
+            "name": "accounts/fireworks/models/qwen3p8-2p4t-a95b",
+            "max_tokens": 262144,
+            "max_output_tokens": 65536,
+            "max_completion_tokens": 262144,
+            "capabilities": {
+              "tools": true,
+              "images": false,
+              "parallel_tool_calls": true,
+              "prompt_cache_key": false,
+              "chat_completions": true,
+              "interleaved_reasoning": false,
+              "max_tokens_parameter": false
+            }
+          },
+          {
+            "name": "accounts/fireworks/models/minimax-m3",
+            "max_tokens": 512000,
+            "max_output_tokens": 512000,
+            "max_completion_tokens": 512000,
+            "capabilities": {
+              "tools": true,
+              "images": true,
+              "parallel_tool_calls": true,
+              "prompt_cache_key": false,
+              "chat_completions": true,
+              "interleaved_reasoning": false,
+              "max_tokens_parameter": false
+            }
+          },
+          {
+            "name": "accounts/fireworks/models/nemotron-3-ultra-nvfp4",
+            "max_tokens": 262144,
+            "max_output_tokens": 32768,
+            "max_completion_tokens": 262144,
+            "capabilities": {
+              "tools": true,
+              "images": false,
+              "parallel_tool_calls": true,
+              "prompt_cache_key": false,
+              "chat_completions": true,
+              "interleaved_reasoning": false,
+              "max_tokens_parameter": false
+            }
+          },
+          {
+            "name": "accounts/fireworks/models/nemotron-lightning-3p5-30b-a3b",
+            "max_tokens": 262144,
+            "max_output_tokens": 32768,
+            "max_completion_tokens": 262144,
+            "capabilities": {
+              "tools": true,
+              "images": false,
+              "parallel_tool_calls": true,
+              "prompt_cache_key": false,
+              "chat_completions": true,
+              "interleaved_reasoning": false,
+              "max_tokens_parameter": false
+            }
+          },
+          {
+            "name": "accounts/fireworks/models/gpt-oss-120b",
+            "max_tokens": 131072,
+            "max_output_tokens": 32768,
+            "max_completion_tokens": 131072,
+            "capabilities": {
+              "tools": true,
+              "images": false,
+              "parallel_tool_calls": true,
+              "prompt_cache_key": false,
+              "chat_completions": true,
+              "interleaved_reasoning": false,
+              "max_tokens_parameter": false
+            }
+          },
+          {
+            "name": "accounts/fireworks/models/inkling",
+            "max_tokens": 1048576,
+            "max_output_tokens": 131072,
+            "max_completion_tokens": 1048576,
+            "capabilities": {
+              "tools": true,
+              "images": true,
+              "parallel_tool_calls": true,
+              "prompt_cache_key": false,
+              "chat_completions": true,
+              "interleaved_reasoning": false,
+              "max_tokens_parameter": false
+            }
+          },
+          {
+            "name": "auto",
+            "max_tokens": 262144,
+            "max_output_tokens": 65536,
+            "max_completion_tokens": 262144,
+            "capabilities": {
+              "tools": true,
+              "images": true,
+              "parallel_tool_calls": true,
+              "prompt_cache_key": false,
+              "chat_completions": true,
+              "interleaved_reasoning": false,
+              "max_tokens_parameter": false
+            }
+          }
+        ]
+      }
+    }
+  },
   "agent_servers": {
     "pi-acp": {
       "type": "registry"
@@ -55,9 +319,11 @@
     "dock": "right"
   },
   "agent": {
+    "threads_sidebar": {
+      "position": "left"
+    },
     "thinking_display": "always_expanded",
     "single_file_review": true,
-    "sidebar_side": "left",
     "profiles": {
       "elvis": {
         "default_model": {
@@ -124,10 +390,9 @@
       "allow_unsandboxed": true
     },
     "default_model": {
-      "effort": "high",
-      "provider": "zed.dev",
-      "model": "claude-sonnet-5-5",
-      "enable_thinking": true
+      "provider": "Fireworks",
+      "model": "accounts/fireworks/routers/glm-5p3-fast",
+      "enable_thinking": false
     },
     "dock": "right",
     "favorite_models": [
