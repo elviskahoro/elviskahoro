@@ -119,3 +119,5 @@ eval "$(direnv hook zsh)"
 
 # Resend CLI
 export PATH="$HOME/.resend/bin:$PATH"
+
+export PATH="/Users/elvis/.pixi/bin:$PATH"
