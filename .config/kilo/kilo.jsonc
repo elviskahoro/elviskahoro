@@ -4,7 +4,9 @@
     "bash": "allow",
     "external_directory": {
       "/Users/elvis/Documents/elviskahoro/dotfiles/.config/kilo/*": "allow",
-      "/tmp/*": "allow"
+      "/tmp/*": "allow",
+      "/Users/elvis/Documents/hq/repos/correspondence/messages/clara_kridler/*": "allow",
+      "/Users/elvis/Documents/hq/repos/correspondence/outreach/linkedin/chelsea_hill/*": "allow"
     }
   },
   "model": "kilo/minimax/minimax-m2.1:free",
