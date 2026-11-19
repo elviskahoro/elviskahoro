@@ -1,6 +1,6 @@
 #!/bin/bash
-# Check if we're in a git worktree
-if [[ -f .git ]]; then
+# Linked worktree: git-dir differs from common dir. Submodules (also have a .git file) do not.
+if [[ "$(git rev-parse --git-dir)" != "$(git rev-parse --git-common-dir)" ]]; then
   echo "Cannot switch branches: you're in a git worktree"
   exit 1
 fi
