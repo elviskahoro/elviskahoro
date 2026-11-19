@@ -2,7 +2,8 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init --path)"
+# disabled: pyenv rehash lock hung shell startup for 60s
+# eval "$(pyenv init --path)"
 eval "$(fnm env --use-on-cd --shell zsh)"
 
 export PATH="$HOME/.local/bin:$PATH"
