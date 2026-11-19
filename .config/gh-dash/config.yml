@@ -1,0 +1,113 @@
+prSections:
+    - title: My Pull Requests
+      filters: is:open author:@me
+    - title: Needs My Review
+      filters: is:open review-requested:@me
+    - title: Involved
+      filters: is:open involves:@me -author:@me
+issuesSections:
+    - title: Open Issues
+      filters: is:open is:issue involves:@me archived:false -label:blocked sort:created-desc
+    - title: linear-inbox
+      filters: is:open is:issue involves:@me -label:blocked sort:created-desc repo:SanhedrinTech/linear-inbox
+    - title: gtm-sdk
+      filters: is:open is:issue involves:@me -label:blocked sort:created-desc repo:elviskahoro/gtm-sdk
+    - title: attio
+      filters: is:open is:issue involves:@me -label:blocked sort:created-desc repo:elviskahoro/sdk-python-attio
+    - title: linear
+      filters: is:open is:issue involves:@me -label:blocked sort:created-desc repo:elviskahoro/sdk-python-linear
+    - title: ai
+      filters: is:open is:issue involves:@me -label:blocked sort:created-desc repo:SanhedrinTech/ai
+    - title: isabel-may
+      filters: is:open is:issue author:isabel-may org:SanhedrinTech sort:created-desc
+notificationsSections:
+    - title: All
+      filters: ""
+    - title: Created
+      filters: reason:author
+    - title: Participating
+      filters: reason:participating
+    - title: Mentioned
+      filters: reason:mention
+    - title: Review Requested
+      filters: reason:review-requested
+    - title: Assigned
+      filters: reason:assign
+    - title: Subscribed
+      filters: reason:subscribed
+    - title: Team Mentioned
+      filters: reason:team-mention
+repo:
+    branchesRefetchIntervalSeconds: 30
+    prsRefetchIntervalSeconds: 60
+defaults:
+    preview:
+        open: true
+        width: 0.45
+        height: 0.6
+        position: auto
+    prsLimit: 20
+    prApproveComment: LGTM
+    issuesLimit: 20
+    notificationsLimit: 20
+    view: issues
+    layout:
+        prs:
+            updatedAt:
+                width: 5
+            createdAt:
+                width: 5
+            repo:
+                width: 20
+            author:
+                width: 15
+            authorIcon:
+                hidden: false
+            labels:
+                width: 22
+                hidden: true
+            assignees:
+                width: 20
+                hidden: true
+            base:
+                width: 15
+                hidden: true
+            lines:
+                width: 15
+        issues:
+            updatedAt:
+                width: 5
+            createdAt:
+                hidden: true
+            repo:
+                width: 15
+            creator:
+                hidden: true
+            creatorIcon:
+                hidden: true
+            assignees:
+                width: 20
+                hidden: true
+            comments:
+                hidden: true
+            reactions:
+                hidden: true
+    refetchIntervalMinutes: 30
+keybindings:
+    issues:
+        - key: O
+          name: conductor workspace
+          command: ~/.config/gh-dash/conductor-issue.sh {{.RepoName}} {{.IssueNumber}}
+repoPaths: {}
+theme:
+    ui:
+        sectionsShowCount: true
+        table:
+            showSeparator: true
+            compact: false
+pager:
+    diff: ""
+confirmQuit: false
+showAuthorIcons: true
+smartFilteringAtLaunch: false
+includeReadNotifications: true

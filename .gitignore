@@ -25,3 +25,6 @@ tmp/
 .agents/skills/synced/
 # Hotdata CLI re-creates this symlink into ~/.agents/skills on update
 .agents/skills/hotdata
+# gh-dash: .envrc holds CONDUCTOR_API_KEY; backups are noise
+.config/gh-dash/.envrc
+.config/gh-dash/*.bak*
