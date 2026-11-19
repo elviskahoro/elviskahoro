@@ -44,6 +44,7 @@ export GASTOWN_DISABLED=1
 alias gastown="/opt/homebrew/opt/gastown/bin/gastown"
 alias gt='graphite'
 alias md='glow'
+alias dsh='gh dash'
 
 # gbds: sync .beads/ changes from the current branch into main, without
 # checking main out or touching the current working tree.
