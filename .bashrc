@@ -87,7 +87,7 @@ alias cdcd='cd ~/Desktop'
 alias cdd='cd ~/Desktop'
 alias cddocs='cd ~/Documents/'
 alias cddt='cd ~/Desktop/test/temp'
-alias cdhq='cd /Users/elvis/Documents/hq/repos/oss-hq'
+alias cdhq='cd /Users/elvis/Documents/hq'
 alias cdr='cd /Users/elvis/Documents/hq/repos'
 alias cdshowcase='cd ~/Documents/showcase'
 alias cdtrunk='cd ~/Documents/devx/.trunk/config'
@@ -540,3 +540,4 @@ alias tv="tw"
 export PATH="/Users/elvis/.local/bin:$PATH"
 
 . "$HOME/.cargo/env"
+alias oss="cd /Users/elvis/Documents/hq/repos/oss-hq"
