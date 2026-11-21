@@ -10,12 +10,10 @@ Anyways, I'm elvis (he/him/his), I like Python, playing soccer, watching JJK, an
 
 I grew up in Kennesaw, GA and went to Pomona College [(Erdos #2)](https://pages.pomona.edu/~sg064747/PAPERS/PRBTP.pdf)
 
-I currently work at [dltHub](https://dlthub.com/blog/hugging-face-dlt-ml), the company building [dlt](https://github.com/dlt-hub/dlt)--an OSS (Apache-2.0) Python SDK for devs (+ their agents) building production-grade data pipelines!
-
 I previously worked at:
-
-- [Chalk](https://github.com/chalk-ai/docs/pull/357/changes) - a modern data infrastructure platform for real-time machine learning and low-latency inference
-- [Warp](https://github.com/warpdotdev/Warp/issues?q=is%3Aissue%20involves%3Aelviskahoro) - a modern cross-platform GPU-accelerated cloud-backed terminal (written in Rust) with AI built in!
+- [dltHub](https://dlthub.com/blog/hugging-face-dlt-ml) - an OSS (Apache-2.0) Python SDK for developers (+ their agents) building enterprise-grade data pipelines
+- [Chalk](https://github.com/chalk-ai/docs/pull/357/changes) - a data infrastructure platform for real-time machine learning and low-latency inference
+- [Warp](https://github.com/warpdotdev/Warp/issues?q=is%3Aissue%20involves%3Aelviskahoro) - a cross-platform GPU-accelerated cloud-backed terminal (written in Rust) with AI built in!
 - Emory University - doing [NLP/IR in Public Health!](https://pubmed.ncbi.nlm.nih.gov/36534457/)
 - Facebook - SWE (Core Growth - MPK21.Z1) right next to Full Circle.
 
